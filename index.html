@@ -447,4 +447,179 @@ function toast(message){
   toastTimer=setTimeout(()=>el.classList.remove("show"),2400);
 }
 function go(page){
-  document.querySelectorAll(".page").forEach(el=>el.classList.toggle("active",el.id==="p
+  document.querySelectorAll(".page").forEach(el=>el.classList.toggle("active",el.id==="page-"+page));
+  document.querySelectorAll(".nav-btn").forEach(el=>el.classList.toggle("active",el.dataset.page===page));
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+document.querySelectorAll("[data-go]").forEach(btn=>btn.addEventListener("click",()=>go(btn.dataset.go)));
+document.querySelectorAll(".nav-btn").forEach(btn=>btn.addEventListener("click",()=>go(btn.dataset.page)));
+$("year").textContent=new Date().getFullYear();
+
+let accent=0;
+$("themeBtn").addEventListener("click",()=>{
+  accent=(accent+1)%3;
+  const colors=[["#5798FF","#9A7BFF"],["#32C9B2","#5798FF"],["#F2A65A","#E879F9"]];
+  document.documentElement.style.setProperty("--blue",colors[accent][0]);
+  document.documentElement.style.setProperty("--purple",colors[accent][1]);
+  toast("Accent colour updated");
+});
+
+/* Calculator: only accepts digits and calculator operators. */
+let calcExpr="",calcDone=false;
+function renderCalc(){ $("calcDisplay").value=calcExpr||"0"; }
+function calculate(){
+  if(!calcExpr)return;
+  if(!/^[0-9+\-*/%.() ]+$/.test(calcExpr)){toast("Invalid calculation");return}
+  try{
+    const result=Function('"use strict"; return ('+calcExpr+')')();
+    if(typeof result!=="number"||!Number.isFinite(result))throw Error();
+    calcExpr=String(Number(result.toPrecision(12)));
+    calcDone=true;renderCalc();
+  }catch(e){calcExpr="";renderCalc();toast("Check your calculation")}
+}
+$("calcKeys").addEventListener("click",e=>{
+  const key=e.target.closest("[data-key]")?.dataset.key;
+  if(!key)return;
+  if(key==="C"){calcExpr="";calcDone=false;renderCalc();return}
+  if(key==="back"){calcExpr=calcExpr.slice(0,-1);calcDone=false;renderCalc();return}
+  if(key==="="){calculate();return}
+  if(calcDone&&!"+-*/%".includes(key)){calcExpr="";calcDone=false}
+  if(key==="." ){
+    const last=calcExpr.split(/[+\-*/%]/).pop();
+    if(last.includes("."))return;
+  }
+  calcExpr+=key;renderCalc();
+});
+
+/* Notes: browser localStorage only. */
+const NOTES_KEY="myUtilityProfessionalNotes";
+let notes=[];
+try{notes=JSON.parse(localStorage.getItem(NOTES_KEY)||"[]");if(!Array.isArray(notes))notes=[]}catch(e){notes=[]}
+function persistNotes(){
+  try{localStorage.setItem(NOTES_KEY,JSON.stringify(notes));return true}
+  catch(e){toast("Browser storage unavailable. Notes could not be saved.");return false}
+}
+function renderNotes(){
+  $("noteCount").textContent=notes.length;
+  $("noteSub").textContent=notes.length+" saved note"+(notes.length===1?"":"s");
+  const list=$("noteList");list.replaceChildren();
+  if(!notes.length){list.innerHTML='<div class="empty" style="grid-column:1/-1">No notes yet. Create your first note above.</div>';return}
+  notes.forEach(note=>{
+    const card=document.createElement("article");card.className="note";
+    const title=document.createElement("h3");title.textContent=note.title;
+    const date=document.createElement("small");date.textContent=note.date;
+    const body=document.createElement("p");body.textContent=note.body;
+    const actions=document.createElement("div");actions.className="note-actions";
+    const edit=document.createElement("button");edit.className="btn small";edit.textContent="Edit";
+    edit.addEventListener("click",()=>{
+      $("noteTitle").value=note.title;$("noteBody").value=note.body;
+      notes=notes.filter(n=>n.id!==note.id);persistNotes();renderNotes();go("notes");
+      $("noteTitle").focus();
+    });
+    const del=document.createElement("button");del.className="btn small";del.textContent="Delete";
+    del.addEventListener("click",()=>{
+      if(confirm("Delete this note?")){notes=notes.filter(n=>n.id!==note.id);persistNotes();renderNotes();toast("Note deleted")}
+    });
+    actions.append(edit,del);card.append(title,date,body,actions);list.append(card);
+  });
+}
+$("saveNote").addEventListener("click",()=>{
+  const title=$("noteTitle").value.trim(),body=$("noteBody").value.trim();
+  if(!title||!body){toast("Enter both a title and note");return}
+  notes.unshift({id:Date.now(),title,body,date:new Date().toLocaleString()});
+  if(persistNotes()){
+    $("noteTitle").value="";$("noteBody").value="";renderNotes();toast("Note saved on this device");
+  }
+});
+renderNotes();
+
+/* Class 10 Science quiz. */
+const questions=[
+ {q:"Which part of a cell contains genetic information?",o:["Cell wall","Nucleus","Vacuole","Cytoplasm"],a:1,e:"The nucleus contains chromosomes made of DNA, which carries genetic information."},
+ {q:"Which gas is released during photosynthesis?",o:["Carbon dioxide","Nitrogen","Oxygen","Hydrogen"],a:2,e:"Plants use carbon dioxide and water to make food, releasing oxygen."},
+ {q:"What is the SI unit of electric current?",o:["Volt","Ohm","Watt","Ampere"],a:3,e:"Electric current is measured in amperes (A)."},
+ {q:"Which lens is used to correct myopia?",o:["Concave lens","Convex lens","Bifocal lens only","Cylindrical lens only"],a:0,e:"A concave lens diverges light so the image forms on the retina."},
+ {q:"What is the functional unit of the kidney?",o:["Neuron","Alveolus","Nephron","Villus"],a:2,e:"Nephrons filter blood and help form urine."},
+ {q:"Which substance is produced when an acid reacts with a metal?",o:["Oxygen","Hydrogen","Nitrogen","Chlorine"],a:1,e:"Many acids react with metals to produce a salt and hydrogen gas."}
+];
+let qIndex=0,score=0,answered=false;
+function renderQuiz(){
+  const q=questions[qIndex];
+  $("quizArea").innerHTML="";
+  const progress=document.createElement("p");progress.className="muted";
+  progress.textContent="QUESTION "+(qIndex+1)+" OF "+questions.length+" · SCORE "+score;
+  const question=document.createElement("div");question.className="quiz-question";question.textContent=q.q;
+  $("quizArea").append(progress,question);
+  q.o.forEach((option,i)=>{
+    const b=document.createElement("button");b.className="choice";b.textContent=String.fromCharCode(65+i)+". "+option;
+    b.addEventListener("click",()=>{
+      if(answered)return;answered=true;
+      const good=i===q.a;
+      if(good)score++;
+      const feedback=document.createElement("div");feedback.className="feedback "+(good?"good":"bad");
+      feedback.textContent=(good?"Correct! ":"Not quite. Correct answer: "+q.o[q.a]+". ")+q.e;
+      $("quizArea").append(feedback);
+      const next=document.createElement("button");next.className="btn primary";next.style.marginTop="14px";
+      next.textContent=qIndex===questions.length-1?"See result":"Next question →";
+      next.addEventListener("click",()=>{
+        if(qIndex<questions.length-1){qIndex++;answered=false;renderQuiz()}
+        else{
+          $("quizArea").innerHTML="";
+          const h=document.createElement("h2");h.textContent="Practice complete!";
+          const p=document.createElement("p");p.className="muted";p.textContent="Your score: "+score+" / "+questions.length;
+          const b=document.createElement("button");b.className="btn primary";b.textContent="Try again";
+          b.addEventListener("click",()=>{qIndex=0;score=0;answered=false;renderQuiz()});
+          $("quizArea").append(h,p,b);
+        }
+      });
+      $("quizArea").append(next);
+    });
+    $("quizArea").append(b);
+  });
+}
+renderQuiz();
+
+/* Number guessing game. */
+let secret=Math.floor(Math.random()*100)+1,attempts=0,gameOver=false;
+function resetGame(){
+  secret=Math.floor(Math.random()*100)+1;attempts=0;gameOver=false;
+  $("guessInput").value="";$("gameMessage").textContent="Make your first guess to begin.";
+  $("guessCount").textContent="Attempts: 0";
+}
+function makeGuess(){
+  if(gameOver){toast("Start a new game first");return}
+  const n=Number($("guessInput").value);
+  if(!Number.isInteger(n)||n<1||n>100){toast("Enter a whole number from 1 to 100");return}
+  attempts++;
+  $("guessCount").textContent="Attempts: "+attempts;
+  if(n===secret){$("gameMessage").textContent="Correct! You found the number in "+attempts+" attempts. 🎉";gameOver=true}
+  else $("gameMessage").textContent=n<secret?"Too low — try a higher number.":"Too high — try a lower number.";
+}
+$("guessBtn").addEventListener("click",makeGuess);
+$("guessInput").addEventListener("keydown",e=>{if(e.key==="Enter")makeGuess()});
+$("newGame").addEventListener("click",resetGame);
+
+/* Local assistant demo, not a real AI connection. */
+function addChat(text,type){
+  const msg=document.createElement("div");msg.className="chat-msg "+type;msg.textContent=text;
+  $("chatBox").append(msg);$("chatBox").scrollTop=$("chatBox").scrollHeight;
+}
+$("chatForm").addEventListener("submit",e=>{
+  e.preventDefault();
+  const input=$("chatInput"),text=input.value.trim();if(!text)return;
+  addChat(text,"user");input.value="";
+  const t=text.toLowerCase();
+  let answer;
+  if(t.includes("hello")||t.includes("hi"))answer="Hello! 👋 Welcome to My Utility. What would you like to explore?";
+  else if(t.includes("calculator"))answer="Open Calculator from the sidebar. Use the keypad to enter an expression and press = to calculate.";
+  else if(t.includes("note"))answer="Open My Notes, enter a title and some text, then select Save note. Notes are stored in this browser.";
+  else if(t.includes("study")||t.includes("science"))answer="Visit Study Centre to practise Class 10 Science multiple-choice questions and read explanations.";
+  else if(t.includes("game"))answer="Open Mini Game and guess a number from 1 to 100. I'll tell you whether your guess is too high or too low.";
+  else if(t.includes("who are you")||t.includes("your name"))answer="I'm the My Utility demo assistant. This is a simple built-in demo, not a real AI model.";
+  else if(t.includes("time")||t.includes("date"))answer="Today's date on your device is "+new Date().toLocaleDateString()+".";
+  else answer="I received your message, but this demo has limited built-in replies. To answer general questions, My Utility needs a connection to a real AI service.";
+  setTimeout(()=>addChat(answer,"ai"),180);
+});
+</script>
+</body>
+</html>
