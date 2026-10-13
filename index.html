@@ -3,438 +3,220 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#08111f">
+<meta name="theme-color" content="#07111f">
 <title>My Utility</title>
 <style>
-:root{
- --bg:#07101e;--panel:#101d30;--panel2:#14243a;
- --text:#edf5ff;--muted:#9aadc5;--line:#263b55;
- --blue:#55a7ff;--cyan:#56eadb;--purple:#b69aff;
-}
+:root{--bg:#07111f;--panel:#101e32;--panel2:#152840;--text:#eef6ff;--muted:#a3b5cc;--line:#2b405b;--cyan:#57ead9;--blue:#438ff0}
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(ellipse at top,#132a46,var(--bg) 60%);
- color:var(--text);font-family:Arial,sans-serif;min-height:100vh}
-button,input,select{font:inherit}
+body{margin:0;background:radial-gradient(ellipse at top,#142b48,var(--bg) 65%);color:var(--text);font-family:Arial,sans-serif;min-height:100vh}
+button,input,select,textarea{font:inherit}
 button{cursor:pointer}
-button:disabled{cursor:not-allowed}
-header{padding:22px 5%;border-bottom:1px solid var(--line);
- display:flex;justify-content:space-between;align-items:center;gap:12px}
-.brand{font-size:23px;font-weight:900;letter-spacing:.4px}
-.brand span{color:var(--cyan)}
-.sub{color:var(--muted);font-size:12px;margin-top:5px}
-.wrap{max-width:1150px;margin:auto;padding:24px 5% 55px}
-.hero{padding:24px 0 20px}
-.eyebrow{color:var(--cyan);font-size:12px;font-weight:bold;letter-spacing:2px}
-h1{font-size:clamp(28px,5vw,43px);margin:12px 0}
-p{line-height:1.55;color:var(--muted)}
-h2{font-size:22px;margin:25px 0 15px}
-h3{margin:12px 0 8px;font-size:17px}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:20px 5%;border-bottom:1px solid var(--line)}
+.brand{font-size:23px;font-weight:900}.brand span{color:var(--cyan)}
+.smalltext{font-size:12px;color:var(--muted);margin-top:5px}
+.wrap{max-width:1150px;margin:auto;padding:22px 5% 50px}
+.hero{padding:22px 0}.eyebrow{font-size:12px;color:var(--cyan);letter-spacing:2px;font-weight:bold}
+h1{font-size:clamp(29px,5vw,43px);margin:12px 0}
+h2{font-size:22px;margin:20px 0 15px}h3{font-size:17px;margin:12px 0 8px}
+p{color:var(--muted);font-size:13px;line-height:1.6}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
-.card{background:linear-gradient(145deg,var(--panel2),var(--panel));
- border:1px solid var(--line);border-radius:19px;padding:19px;min-width:0}
-.card p{font-size:13px;margin:7px 0 15px}
-.ico{font-size:29px}
-.tag{display:inline-block;color:var(--cyan);border:1px solid #2a6869;
- border-radius:20px;padding:5px 9px;font-size:11px}
-.btn{border:1px solid var(--line);border-radius:11px;padding:11px 14px;
- background:#172941;color:var(--text);font-weight:bold}
-.btn.primary{background:linear-gradient(100deg,#176ed1,#268cbb);
- border-color:transparent;color:white}
-.btn.small{padding:9px 12px;font-size:12px}
-.btn:disabled{opacity:.45}
-.card-foot{display:flex;align-items:center;justify-content:space-between;
- gap:8px;flex-wrap:wrap;margin-top:13px}
-.top-actions{display:flex;gap:8px;flex-wrap:wrap}
-.hidden{display:none!important}
-.screen-head{display:flex;align-items:center;justify-content:space-between;
- flex-wrap:wrap;gap:12px;margin-bottom:20px}
-.screen-head h2{margin:0}
-input,select{width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);
- background:#081525;color:var(--text);margin:6px 0 12px}
-.calc{max-width:430px}
-.calc-display{font-size:27px;text-align:right;min-height:65px;overflow-wrap:anywhere}
-.calc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
-.calc-grid button{padding:16px 5px;font-size:17px}
-.question{margin-bottom:14px}
-.option{display:block;width:100%;text-align:left;margin-top:8px}
-.option.correct{border-color:#4cdaa5;background:#123c35}
-.option.wrong{border-color:#ff8585;background:#49232e}
-.result{padding:12px;border-radius:10px;background:#12283b;margin-top:12px}
-.set-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:13px}
-footer{text-align:center;color:var(--muted);font-size:12px;padding:20px}
-a{color:var(--cyan)}
-@media(max-width:520px){
- header{padding:17px 5%}.brand{font-size:20px}.wrap{padding-top:15px}
- .card{padding:16px}.hero{padding-top:18px}
-}
+.card{background:linear-gradient(145deg,var(--panel2),var(--panel));border:1px solid var(--line);border-radius:18px;padding:18px;min-width:0}
+.ico{font-size:28px}.tag{display:inline-block;border:1px solid #2a6967;color:var(--cyan);border-radius:20px;padding:5px 9px;font-size:10px;font-weight:bold}
+.btn{border:1px solid var(--line);border-radius:10px;padding:10px 13px;background:#182c45;color:var(--text);font-weight:bold}
+.btn.primary{background:linear-gradient(100deg,#176cd2,#198da9);border:0;color:white}
+.btn.small{font-size:12px;padding:9px 11px}.btn:disabled{opacity:.45;cursor:not-allowed}
+.foot{display:flex;align-items:center;justify-content:space-between;gap:9px;flex-wrap:wrap;margin-top:15px}
+.headrow{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}
+.headrow h2{margin:0}.hidden{display:none!important}
+input,select,textarea{width:100%;padding:12px;border-radius:10px;background:#081625;color:var(--text);border:1px solid var(--line);margin:5px 0 12px}
+.calc{max-width:440px}.display{font-size:26px;text-align:right;min-height:60px}
+.keygrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.keygrid button{padding:15px 4px;font-size:16px}
+.option{display:block;width:100%;text-align:left;margin:8px 0}
+.correct{border-color:#52dba7!important;background:#123e35!important}.wrong{border-color:#ff8989!important;background:#49242d!important}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:18px}
+@media(max-width:500px){header{padding:16px 5%}.brand{font-size:20px}.wrap{padding-top:14px}.card{padding:15px}}
 </style>
 </head>
 <body>
 <header>
- <div>
-  <div class="brand">MY <span>UTILITY</span> ✦</div>
-  <div class="sub">Your study and productivity space</div>
- </div>
- <button class="btn" onclick="goHome()">⌂ Home</button>
+ <div><div class="brand">MY <span>UTILITY</span> ✦</div><div class="smalltext">Your personal study workspace</div></div>
+ <button class="btn" onclick="home()">⌂ Home</button>
 </header>
 
 <main class="wrap">
-<!-- DASHBOARD -->
 <section id="home">
- <div class="hero">
-  <div class="eyebrow">YOUR PERSONAL WORKSPACE</div>
-  <h1>Make every minute <span style="color:var(--cyan)">count.</span></h1>
-  <p>Study smarter. Practise questions. Keep your tools in one place.</p>
- </div>
+ <div class="hero"><div class="eyebrow">YOUR DIGITAL WORKSPACE</div>
+ <h1>Make every minute <span style="color:var(--cyan)">count.</span></h1>
+ <p>Study smarter. Practise questions. Keep your tools in one place.</p></div>
  <h2>⚡ Quick Tools</h2>
  <div class="grid">
-  <article class="card">
-   <div class="ico">🧮</div><h3>Scientific Calculator</h3>
-   <p>Calculate expressions and common scientific functions.</p>
-   <div class="card-foot"><span class="tag">MATH TOOLS</span>
-   <button class="btn primary small" onclick="show('calculator')">Start Calculator →</button></div>
-  </article>
-  <article class="card">
-   <div class="ico">📝</div><h3>Board Sample Papers</h3>
-   <p>Choose a subject, then open Set 1, Set 2 or Set 3.</p>
-   <div class="card-foot"><span class="tag">CLASS 10</span>
-   <button class="btn primary small" onclick="show('papers')">Browse Papers →</button></div>
-  </article>
-  <article class="card">
-   <div class="ico">📚</div><h3>Chapter PPT Library</h3>
-   <p>Browse subjects and open presentations that have been added.</p>
-   <div class="card-foot"><span class="tag">NCERT STUDY</span>
-   <button class="btn primary small" onclick="show('subjects')">Open Library →</button></div>
-  </article>
-  <article class="card">
-   <div class="ico">🎯</div><h3>Practice Quiz</h3>
-   <p>Try a few Class 10 Science questions and check your answers.</p>
-   <div class="card-foot"><span class="tag">QUICK PRACTICE</span>
-   <button class="btn primary small" onclick="show('quiz')">Start Practice →</button></div>
-  </article>
-  <article class="card">
-   <div class="ico">📌</div><h3>Quick Notes</h3>
-   <p>Write a reminder or a short revision note for this session.</p>
-   <div class="card-foot"><span class="tag">NOTES</span>
-   <button class="btn primary small" onclick="show('notes')">Open Notes →</button></div>
-  </article>
+  <article class="card"><div class="ico">🧮</div><h3>Scientific Calculator</h3><p>Calculate expressions and scientific functions.</p><div class="foot"><span class="tag">MATH TOOLS</span><button class="btn primary small" onclick="show('calculator')">Start Calculator →</button></div></article>
+  <article class="card"><div class="ico">📄</div><h3>CBSE Sample Papers</h3><p>Choose a subject and open Set 1, Set 2 or Set 3.</p><div class="foot"><span class="tag">CLASS 10</span><button class="btn primary small" onclick="show('papers')">Browse Papers →</button></div></article>
+  <article class="card"><div class="ico">📚</div><h3>Chapter PPT Library</h3><p>Browse all subjects and available presentations.</p><div class="foot"><span class="tag">NCERT STUDY</span><button class="btn primary small" onclick="show('subjects')">Open Library →</button></div></article>
+  <article class="card"><div class="ico">🎯</div><h3>Science Practice Quiz</h3><p>Answer quick questions and check your score.</p><div class="foot"><span class="tag">PRACTICE</span><button class="btn primary small" onclick="startQuiz()">Start Practice →</button></div></article>
+  <article class="card"><div class="ico">📌</div><h3>Quick Notes</h3><p>Write and copy revision notes.</p><div class="foot"><span class="tag">NOTES</span><button class="btn primary small" onclick="show('notes')">Open Notes →</button></div></article>
  </div>
 </section>
 
-<!-- SUBJECT LIST -->
 <section id="subjects" class="hidden">
- <div class="screen-head"><h2>📚 Subject Library</h2>
- <button class="btn" onclick="show('home')">← Dashboard</button></div>
- <p>Choose a subject to see its chapter list. Only supplied PPTs can be opened.</p>
- <div class="grid" id="subjectCards"></div>
+ <div class="headrow"><h2>📚 Subject Library</h2><button class="btn" onclick="home()">← Dashboard</button></div>
+ <p>Choose a subject to view all its listed chapters.</p><div class="grid" id="subjectCards"></div>
 </section>
 
-<!-- CHAPTER LIST -->
 <section id="chapters" class="hidden">
- <div class="screen-head"><h2 id="subjectTitle">Chapters</h2>
- <button class="btn" onclick="show('subjects')">← Subjects</button></div>
+ <div class="headrow"><h2 id="subjectTitle">Chapters</h2><button class="btn" onclick="show('subjects')">← Subjects</button></div>
  <div class="grid" id="chapterCards"></div>
 </section>
 
-<!-- SAMPLE PAPER SUBJECTS -->
 <section id="papers" class="hidden">
- <div class="screen-head"><h2>📄 CBSE Sample Papers</h2>
- <button class="btn" onclick="show('home')">← Dashboard</button></div>
- <p>Choose a subject. Each subject has its own Set 1, Set 2 and Set 3 screen.</p>
- <div class="grid" id="paperSubjects"></div>
+ <div class="headrow"><h2>📄 CBSE Sample Papers</h2><button class="btn" onclick="home()">← Dashboard</button></div>
+ <p>Step 1: Choose a subject.</p><div class="grid" id="paperSubjects"></div>
 </section>
 
-<!-- SET SELECTION -->
 <section id="sets" class="hidden">
- <div class="screen-head"><h2 id="setsTitle">Choose a Set</h2>
- <button class="btn" onclick="show('papers')">← Subjects</button></div>
- <p>Select a set below. Add your PDF files to the repository when ready.</p>
- <div class="set-grid" id="setCards"></div>
+ <div class="headrow"><h2 id="setsTitle">Choose a Set</h2><button class="btn" onclick="show('papers')">← Subjects</button></div>
+ <p>Step 2: Choose a set. Each set opens on its own screen.</p><div class="grid" id="setCards"></div>
 </section>
 
-<!-- PAPER VIEWER -->
 <section id="paperViewer" class="hidden">
- <div class="screen-head"><h2 id="paperViewerTitle">Sample Paper</h2>
- <button class="btn" onclick="show('sets')">← Back to Sets</button></div>
- <div class="card">
-  <div class="ico">📑</div>
-  <h3 id="paperName"></h3>
-  <p id="paperMessage">This set's PDF has not been added yet.</p>
-  <a id="paperLink" class="hidden" target="_blank" rel="noopener">Open Sample Paper PDF ↗</a>
- </div>
+ <div class="headrow"><h2 id="paperTitle">Sample Paper</h2><button class="btn" onclick="show('sets')">← Back to Sets</button></div>
+ <div class="card"><div class="ico">📑</div><h3 id="paperName"></h3><p id="paperInfo"></p><a id="paperLink" class="hidden" target="_blank" rel="noopener">Open PDF ↗</a></div>
 </section>
 
-<!-- CALCULATOR -->
 <section id="calculator" class="hidden">
- <div class="screen-head"><h2>🧮 Scientific Calculator</h2>
- <button class="btn" onclick="show('home')">← Dashboard</button></div>
- <div class="card calc">
-  <input id="calcDisplay" class="calc-display" value="0" aria-label="Calculator display">
-  <div class="calc-grid" id="calcButtons"></div>
-  <p>Functions: sin, cos, tan, square root, powers and π. Trigonometry uses degrees.</p>
- </div>
+ <div class="headrow"><h2>🧮 Scientific Calculator</h2><button class="btn" onclick="home()">← Dashboard</button></div>
+ <div class="card calc"><input id="display" class="display" value="0" aria-label="Calculator display"><div class="keygrid" id="keys"></div><p>Trigonometric functions use degrees.</p></div>
 </section>
 
-<!-- QUIZ -->
 <section id="quiz" class="hidden">
- <div class="screen-head"><h2>🎯 Science Practice</h2>
- <button class="btn" onclick="show('home')">← Dashboard</button></div>
- <div id="quizArea"></div>
- <button id="quizRestart" class="btn primary hidden" onclick="startQuiz()">Try Again</button>
+ <div class="headrow"><h2>🎯 Science Practice</h2><button class="btn" onclick="home()">← Dashboard</button></div>
+ <div id="quizArea"></div><button id="retry" class="btn primary hidden" onclick="startQuiz()">Try Again</button>
 </section>
 
-<!-- NOTES -->
 <section id="notes" class="hidden">
- <div class="screen-head"><h2>📌 Quick Notes</h2>
- <button class="btn" onclick="show('home')">← Dashboard</button></div>
- <div class="card">
-  <h3>Write a note</h3>
-  <p>This note stays in this page while it remains open. Copy important notes elsewhere to keep them.</p>
-  <textarea id="noteText" rows="9" style="width:100%;background:#081525;color:var(--text);border:1px solid var(--line);border-radius:12px;padding:14px" placeholder="Write your revision points here..."></textarea>
-  <button class="btn primary" onclick="copyNotes()">Copy Notes</button>
-  <span id="noteStatus" class="sub"></span>
- </div>
+ <div class="headrow"><h2>📌 Quick Notes</h2><button class="btn" onclick="home()">← Dashboard</button></div>
+ <div class="card"><h3>Your revision notes</h3><p>Copy your notes before leaving this page.</p><textarea id="noteText" rows="9" placeholder="Write your notes here..."></textarea><button class="btn primary" onclick="copyNotes()">Copy Notes</button><span id="noteStatus" class="smalltext"></span></div>
 </section>
 </main>
 <footer>MY UTILITY · Made for learning ✦</footer>
 
 <script>
 const $=id=>document.getElementById(id);
+function show(id){document.querySelectorAll("main>section").forEach(s=>s.classList.add("hidden"));$(id).classList.remove("hidden");window.scrollTo({top:0,behavior:"smooth"})}
+function home(){show("home")}
+
 const SUBJECTS={
- "Science":[
- "Chemical Reactions and Equations",
- "Acids, Bases and Salts",
- "Metals and Non-metals",
- "Carbon and its Compounds",
- "Life Processes",
- "Control and Coordination",
- "How Do Organisms Reproduce?",
- "Heredity",
- "Light – Reflection and Refraction",
- "The Human Eye and the Colourful World",
- "Electricity",
- "Magnetic Effects of Electric Current",
- "Our Environment"
- ],
- "Mathematics":[
- "Real Numbers","Polynomials","Pair of Linear Equations in Two Variables",
- "Quadratic Equations","Arithmetic Progressions","Triangles",
- "Coordinate Geometry","Introduction to Trigonometry",
- "Some Applications of Trigonometry","Circles","Areas Related to Circles",
- "Surface Areas and Volumes","Statistics","Probability"
- ],
- "Social Science":[
- "History – The Rise of Nationalism in Europe","History – Nationalism in India",
- "History – The Making of a Global World","History – The Age of Industrialisation",
- "History – Print Culture and the Modern World",
- "Geography – Resources and Development","Geography – Forest and Wildlife Resources",
- "Geography – Water Resources","Geography – Agriculture",
- "Geography – Minerals and Energy Resources","Geography – Manufacturing Industries",
- "Geography – Lifelines of National Economy",
- "Political Science – Power Sharing","Political Science – Federalism",
- "Political Science – Gender, Religion and Caste",
- "Political Science – Political Parties","Political Science – Outcomes of Democracy",
- "Economics – Development","Economics – Sectors of the Indian Economy",
- "Economics – Money and Credit","Economics – Globalisation and the Indian Economy"
- ],
- "English":[
- "A Letter to God","Nelson Mandela: Long Walk to Freedom",
- "Two Stories about Flying","From the Diary of Anne Frank",
- "Glimpses of India","Mijbil the Otter","Madam Rides the Bus",
- "The Sermon at Benares","The Proposal","First Flight Poems",
- "Footprints Without Feet"
- ],
- "Hindi":[
- "नेताजी का चश्मा","बालगोबिन भगत","लखनवी अंदाज़","मानवीय करुणा की दिव्य चमक",
- "एक कहानी यह भी","स्त्री शिक्षा के विरोधी कुतर्कों का खंडन",
- "नौबतखाने में इबादत","संस्कृति","माता का आँचल","जॉर्ज पंचम की नाक",
- "साना-साना हाथ जोड़ि","एही ठैयाँ झुलनी हेरानी हो रामा"
- ],
- "Information Technology":[
- "Introduction to DBMS","Starting with LibreOffice Base",
- "Data Models","Database Tables","Queries and Forms","Reports"
- ]
+"Science":[
+"Chemical Reactions and Equations","Acids, Bases and Salts","Metals and Non-metals",
+"Carbon and its Compounds","Life Processes","Control and Coordination",
+"How Do Organisms Reproduce?","Heredity","Light – Reflection and Refraction",
+"The Human Eye and the Colourful World","Electricity","Magnetic Effects of Electric Current","Our Environment"],
+"Mathematics":["Real Numbers","Polynomials","Pair of Linear Equations in Two Variables","Quadratic Equations","Arithmetic Progressions","Triangles","Coordinate Geometry","Introduction to Trigonometry","Some Applications of Trigonometry","Circles","Areas Related to Circles","Surface Areas and Volumes","Statistics","Probability"],
+"Social Science":["The Rise of Nationalism in Europe","Nationalism in India","The Making of a Global World","The Age of Industrialisation","Print Culture and the Modern World","Resources and Development","Forest and Wildlife Resources","Water Resources","Agriculture","Minerals and Energy Resources","Manufacturing Industries","Lifelines of National Economy","Power Sharing","Federalism","Gender, Religion and Caste","Political Parties","Outcomes of Democracy","Development","Sectors of the Indian Economy","Money and Credit","Globalisation and the Indian Economy"],
+"English":["A Letter to God","Nelson Mandela: Long Walk to Freedom","Two Stories about Flying","From the Diary of Anne Frank","Glimpses of India","Mijbil the Otter","Madam Rides the Bus","The Sermon at Benares","The Proposal","First Flight Poems","Footprints Without Feet"],
+"Hindi":["नेताजी का चश्मा","बालगोबिन भगत","लखनवी अंदाज़","मानवीय करुणा की दिव्य चमक","एक कहानी यह भी","स्त्री शिक्षा के विरोधी कुतर्कों का खंडन","नौबतखाने में इबादत","संस्कृति","माता का आँचल","जॉर्ज पंचम की नाक","साना-साना हाथ जोड़ि"],
+"Information Technology":["Introduction to DBMS","Starting with LibreOffice Base","Data Models","Database Tables","Queries and Forms","Reports"]
 };
 
-/* Only the two supplied presentations are enabled. */
-const CHAPTER_PPTS={
- "How Do Organisms Reproduce?":
- "presentations/class-10-biology-how-do-organisms-reproduce.pptx",
- "The Human Eye and the Colourful World":
- "presentations/class-10-physics-the-human-eye.pptx"
+/* These are the only two chapters with supplied PPTs. */
+const PPT={
+"How Do Organisms Reproduce?":"presentations/class-10-biology-how-do-organisms-reproduce.pptx",
+"The Human Eye and the Colourful World":"presentations/class-10-physics-the-human-eye.pptx"
 };
 
-function show(id){
- document.querySelectorAll("main>section").forEach(s=>s.classList.add("hidden"));
- $(id).classList.remove("hidden");
- window.scrollTo({top:0,behavior:"smooth"});
-}
-function goHome(){show("home")}
-
-function makeCard(icon,title,description,buttonText,action,tagText="AVAILABLE"){
- const card=document.createElement("article");card.className="card";
- const ic=document.createElement("div");ic.className="ico";ic.textContent=icon;
+function card(icon,title,desc,buttonText,action,tag="AVAILABLE"){
+ const el=document.createElement("article");el.className="card";
+ const i=document.createElement("div");i.className="ico";i.textContent=icon;
  const h=document.createElement("h3");h.textContent=title;
- const p=document.createElement("p");p.textContent=description;
- const foot=document.createElement("div");foot.className="card-foot";
- const tag=document.createElement("span");tag.className="tag";tag.textContent=tagText;
- const b=document.createElement("button");b.className="btn primary small";
- b.textContent=buttonText;b.addEventListener("click",action);
- foot.append(tag,b);card.append(ic,h,p,foot);return card;
+ const p=document.createElement("p");p.textContent=desc;
+ const f=document.createElement("div");f.className="foot";
+ const t=document.createElement("span");t.className="tag";t.textContent=tag;
+ const b=document.createElement("button");b.className="btn primary small";b.textContent=buttonText;b.onclick=action;
+ f.append(t,b);el.append(i,h,p,f);return el;
 }
-
-Object.keys(SUBJECTS).forEach(subject=>{
- $("subjectCards").append(makeCard("📚",subject,
- SUBJECTS[subject].length+" chapters listed","View Chapters →",
- ()=>openSubject(subject)));
- $("paperSubjects").append(makeCard("📄",subject,
- "Open this subject's three sample-paper sets.","Choose Subject →",
- ()=>openSets(subject),"3 SETS"));
+Object.keys(SUBJECTS).forEach(s=>{
+ $("subjectCards").append(card("📚",s,SUBJECTS[s].length+" chapters listed","View Chapters →",()=>openSubject(s)));
+ $("paperSubjects").append(card("📄",s,"Three separate sample-paper sets.","Choose Subject →",()=>openSets(s),"3 SETS"));
 });
-
-function openSubject(subject){
- $("subjectTitle").textContent="📚 "+subject+" — Chapters";
- const host=$("chapterCards");host.innerHTML="";
- SUBJECTS[subject].forEach((chapter,index)=>{
-  const available=Boolean(CHAPTER_PPTS[chapter]);
-  const card=document.createElement("article");card.className="card";
-  const ic=document.createElement("div");ic.className="ico";ic.textContent=available?"📊":"📖";
-  const h=document.createElement("h3");h.textContent=chapter;
-  const p=document.createElement("p");
-  p.textContent=(subject==="Science"?"Chapter ":"Topic ")+(index+1)+" · "+
-  (available?"Presentation available":"PPT not added yet");
-  const foot=document.createElement("div");foot.className="card-foot";
-  const tag=document.createElement("span");tag.className="tag";
-  tag.textContent=available?"PPT READY":"NOT ADDED";
-  const b=document.createElement("button");
-  b.className="btn small"+(available?" primary":"");
-  b.textContent=available?"Open PPT ↗":"PPT Not Added";
-  b.disabled=!available;
-  if(available)b.onclick=()=>openPPT(chapter);
-  foot.append(tag,b);card.append(ic,h,p,foot);host.append(card);
+function openSubject(s){
+ $("subjectTitle").textContent="📚 "+s+" — Chapters";const host=$("chapterCards");host.innerHTML="";
+ SUBJECTS[s].forEach((c,n)=>{
+  const available=!!PPT[c];const el=document.createElement("article");el.className="card";
+  const i=document.createElement("div");i.className="ico";i.textContent=available?"📊":"📖";
+  const h=document.createElement("h3");h.textContent=c;
+  const p=document.createElement("p");p.textContent=(s==="Science"?"Chapter ":"Topic ")+(n+1)+" · "+(available?"Presentation available":"PPT not added yet");
+  const f=document.createElement("div");f.className="foot";
+  const t=document.createElement("span");t.className="tag";t.textContent=available?"PPT READY":"NOT ADDED";
+  const b=document.createElement("button");b.className="btn small"+(available?" primary":"");b.textContent=available?"Open PPT ↗":"PPT Not Added";b.disabled=!available;
+  if(available)b.onclick=()=>window.open(PPT[c],"_blank","noopener");
+  f.append(t,b);el.append(i,h,p,f);host.append(el);
  });
  show("chapters");
 }
-function openPPT(chapter){
- const path=CHAPTER_PPTS[chapter];
- if(path)window.open(path,"_blank","noopener");
-}
 
-let currentPaperSubject="",currentPaperSet=1;
-function openSets(subject){
- currentPaperSubject=subject;
- $("setsTitle").textContent="📄 "+subject+" — Sample Papers";
+let paperSubject="";
+function openSets(s){
+ paperSubject=s;$("setsTitle").textContent="📄 "+s+" — Sample Papers";
  const host=$("setCards");host.innerHTML="";
- [1,2,3].forEach(n=>{
-  host.append(makeCard("📑","Set "+n,
-   "Sample paper set "+n+" for "+subject+".","Open Set "+n+" →",
-   ()=>openPaper(n),"SET "+n));
- });
+ [1,2,3].forEach(n=>host.append(card("📑","Set "+n,"Sample paper set "+n+" for "+s,"Open Set "+n+" →",()=>openPaper(n),"SET "+n)));
  show("sets");
 }
+function slug(s){return s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"")}
 function openPaper(n){
- currentPaperSet=n;
- const filename="sample-papers/"+safeName(currentPaperSubject)+"-set-"+n+".pdf";
- $("paperViewerTitle").textContent=currentPaperSubject+" · Set "+n;
- $("paperName").textContent=currentPaperSubject+" — Sample Paper Set "+n;
- $("paperMessage").textContent="Expected PDF: "+filename+
- ". If the PDF has not been uploaded to GitHub yet, the link will not open.";
- const link=$("paperLink");link.href=filename;link.classList.remove("hidden");
- link.textContent="Open Set "+n+" PDF ↗";
+ const path="sample-papers/"+slug(paperSubject)+"-set-"+n+".pdf";
+ $("paperTitle").textContent=paperSubject+" · Set "+n;
+ $("paperName").textContent=paperSubject+" — Sample Paper Set "+n;
+ $("paperInfo").textContent="PDF location: "+path+". Upload the matching PDF to GitHub to make it available.";
+ $("paperLink").href=path;$("paperLink").classList.remove("hidden");$("paperLink").textContent="Open Set "+n+" PDF ↗";
  show("paperViewer");
-}
-function safeName(s){
- return s.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
 }
 
 /* Calculator */
-const keys=[
- ["AC","clear"],["⌫","back"],["(","("],[")",")"],
- ["sin","sin("],["cos","cos("],["tan","tan("],["÷","/"],
- ["7","7"],["8","8"],["9","9"],["×","*"],
- ["4","4"],["5","5"],["6","6"],["−","-"],
- ["1","1"],["2","2"],["3","3"],["+","+"],
- ["π","pi"],["0","0"],[".","."],["=","equals"],
- ["√","sqrt("],["x²","^2"],["xʸ","^"],["%","%"]
-];
-keys.forEach(([label,value])=>{
- const b=document.createElement("button");b.className="btn";b.textContent=label;
- b.onclick=()=>calcPress(value);$("calcButtons").append(b);
-});
-function calcPress(v){
- const d=$("calcDisplay");
- if(v==="clear"){d.value="0";return}
- if(v==="back"){d.value=d.value.length>1?d.value.slice(0,-1):"0";return}
- if(v==="equals"){
+const KEYLIST=[["AC","AC"],["⌫","DEL"],["(","("],[")",")"],["sin","sin("],["cos","cos("],["tan","tan("],["÷","/"],["7","7"],["8","8"],["9","9"],["×","*"],["4","4"],["5","5"],["6","6"],["−","-"],["1","1"],["2","2"],["3","3"],["+","+"],["π","pi"],["0","0"],[".","."],["=","="],["√","sqrt("],["x²","^2"],["xʸ","^"],["%","%"]];
+KEYLIST.forEach(([label,v])=>{const b=document.createElement("button");b.className="btn";b.textContent=label;b.onclick=()=>press(v);$("keys").append(b)});
+function press(v){
+ const d=$("display");
+ if(v==="AC"){d.value="0";return}
+ if(v==="DEL"){d.value=d.value.length>1?d.value.slice(0,-1):"0";return}
+ if(v==="="){
   try{
-   let exp=d.value.replace(/×/g,"*").replace(/÷/g,"/")
-    .replace(/−/g,"-").replace(/\bpi\b/g,"Math.PI")
-    .replace(/\bsin\(/g,"Math.sin(Math.PI/180*")
-    .replace(/\bcos\(/g,"Math.cos(Math.PI/180*")
-    .replace(/\btan\(/g,"Math.tan(Math.PI/180*")
-    .replace(/\bsqrt\(/g,"Math.sqrt(").replace(/\^/g,"**");
-   if(!/^[0-9+\-*/().%\sA-Za-z]*$/.test(exp)||
-      /(?:constructor|window|document|eval|Function)/i.test(exp))throw Error();
-   const result=Function('"use strict";return ('+exp+')')();
-   if(!Number.isFinite(result))throw Error();
-   d.value=String(Number(result.toPrecision(12)));
-  }catch(e){d.value="Error"}
-  return;
+   let e=d.value.replace(/×/g,"*").replace(/÷/g,"/").replace(/−/g,"-").replace(/\bpi\b/g,"Math.PI").replace(/\bsin\(/g,"Math.sin(Math.PI/180*").replace(/\bcos\(/g,"Math.cos(Math.PI/180*").replace(/\btan\(/g,"Math.tan(Math.PI/180*").replace(/\bsqrt\(/g,"Math.sqrt(").replace(/\^/g,"**");
+   if(!/^[0-9+\-*/().%\sA-Za-z]*$/.test(e)||/(constructor|window|document|eval|Function)/i.test(e))throw Error();
+   const r=Function('"use strict";return ('+e+')')();if(!Number.isFinite(r))throw Error();
+   d.value=String(Number(r.toPrecision(12)));
+  }catch(err){d.value="Error"}return;
  }
  if(v==="^2"){d.value+="**2";return}
- if(v==="pi"){d.value=d.value==="0"?"pi":d.value+"pi";return}
- if(d.value==="0"&&/^[0-9.]$/.test(v))d.value=v;
- else d.value+=v;
+ if(d.value==="0"&&/^[0-9.]$/.test(v))d.value=v;else d.value+=v;
 }
 
-/* Quick Science Quiz */
-const QUESTIONS=[
- {q:"Which structure controls the opening of the pupil?",a:["Retina","Iris","Optic nerve","Cornea"],c:1},
- {q:"Which gas is released during photosynthesis?",a:["Oxygen","Nitrogen","Hydrogen","Carbon monoxide"],c:0},
- {q:"What is the basic unit of heredity?",a:["Tissue","Organ","Gene","Cell wall"],c:2},
- {q:"Which lens is used to correct myopia?",a:["Convex lens","Concave lens","Cylindrical mirror","Plane glass"],c:1},
+/* Science practice quiz */
+const QS=[
+ {q:"Which part controls the size of the pupil?",a:["Retina","Iris","Optic nerve","Cornea"],c:1},
+ {q:"Which gas is released during photosynthesis?",a:["Oxygen","Nitrogen","Hydrogen","Carbon dioxide"],c:0},
+ {q:"What is the basic unit of heredity?",a:["Tissue","Gene","Organ","Cell wall"],c:1},
+ {q:"Which lens corrects myopia?",a:["Convex","Concave","Plane","None"],c:1},
  {q:"Where does fertilisation usually occur in humans?",a:["Uterus","Ovary","Oviduct","Vagina"],c:2}
 ];
-let qIndex=0,score=0,answered=false;
-function startQuiz(){qIndex=0;score=0;answered=false;renderQuestion();$("quizRestart").classList.add("hidden");show("quiz")}
-function renderQuestion(){
+let qi=0,score=0,answered=false;
+function startQuiz(){qi=0;score=0;answered=false;$("retry").classList.add("hidden");show("quiz");renderQ()}
+function renderQ(){
  const host=$("quizArea");host.innerHTML="";
- if(qIndex>=QUESTIONS.length){
-  host.innerHTML='<div class="card"><h3>Quiz complete!</h3><p>Your score: '+score+' / '+QUESTIONS.length+'</p><p>Keep revising and try again.</p></div>';
-  $("quizRestart").classList.remove("hidden");return;
- }
- const q=QUESTIONS[qIndex];
- const box=document.createElement("article");box.className="card question";
- const tag=document.createElement("span");tag.className="tag";tag.textContent="QUESTION "+(qIndex+1)+" OF "+QUESTIONS.length;
+ if(qi>=QS.length){host.innerHTML='<div class="card"><h3>Quiz complete!</h3><p>Your score: '+score+' / '+QS.length+'</p></div>';$("retry").classList.remove("hidden");return}
+ const q=QS[qi],box=document.createElement("article");box.className="card";
+ const tag=document.createElement("span");tag.className="tag";tag.textContent="QUESTION "+(qi+1)+" / "+QS.length;
  const h=document.createElement("h3");h.textContent=q.q;box.append(tag,h);
- q.a.forEach((answer,i)=>{
-  const b=document.createElement("button");b.className="btn option";b.textContent=String.fromCharCode(65+i)+". "+answer;
-  b.onclick=()=>{
-   if(answered)return;answered=true;
-   if(i===q.c){score++;b.classList.add("correct")}
-   else{b.classList.add("wrong");box.querySelectorAll(".option")[q.c].classList.add("correct")}
-   const next=document.createElement("button");next.className="btn primary";next.style.marginTop="14px";
-   next.textContent=qIndex===QUESTIONS.length-1?"See Result →":"Next Question →";
-   next.onclick=()=>{qIndex++;answered=false;renderQuestion()};
-   box.append(next);
-  };
-  box.append(b);
- });
- host.append(box);
+ q.a.forEach((a,i)=>{const b=document.createElement("button");b.className="btn option";b.textContent=String.fromCharCode(65+i)+". "+a;b.onclick=()=>{
+  if(answered)return;answered=true;
+  if(i===q.c){score++;b.classList.add("correct")}else{b.classList.add("wrong");box.querySelectorAll(".option")[q.c].classList.add("correct")}
+  const next=document.createElement("button");next.className="btn primary";next.textContent=qi===QS.length-1?"See Result →":"Next Question →";next.onclick=()=>{qi++;answered=false;renderQ()};box.append(next);
+ };box.append(b)});host.append(box);
 }
 function copyNotes(){
- const text=$("noteText").value;
- if(!text){$("noteStatus").textContent=" Write something first.";return}
- if(navigator.clipboard&&navigator.clipboard.writeText){
-  navigator.clipboard.writeText(text).then(()=>$("noteStatus").textContent=" Copied!").catch(()=>fallbackCopy(text));
- }else fallbackCopy(text);
-}
-function fallbackCopy(text){
- const area=$("noteText");area.focus();area.select();
- try{document.execCommand("copy");$("noteStatus").textContent=" Copied!";}
- catch(e){$("noteStatus").textContent=" Select the text and copy it manually."}
+ const a=$("noteText");a.focus();a.select();
+ try{document.execCommand("copy");$("noteStatus").textContent=" Notes copied."}
+ catch(e){$("noteStatus").textContent=" Select and copy the notes manually."}
 }
 </script>
 </body>
 </html>
-
