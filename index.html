@@ -1,1 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Utility | All-in-One Tools</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080d18;color:#edf3ff;font-family:Arial,sans-serif}
+header{padding:22px 16px;background:#101a2b;border-bottom:1px solid #263550}
+header h1{margin:0;color:#69c9ff}
+header p{color:#aab8d0;margin-bottom:0}
+nav{display:flex;gap:8px;overflow-x:auto;padding:12px;background:#0c1422;position:sticky;top:0}
+button{border:0;border-radius:10px;padding:11px 14px;background:#1769aa;color:white;font-weight:bold;cursor:pointer}
+nav button{white-space:nowrap}
+main{max-width:1000px;margin:auto;padding:18px}
+section{display:none}
+section.active{display:block}
+h2{color:#69c9ff}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.card{background:#111c2e;border:1px solid #263954;border-radius:16px;padding:18px;margin-bottom:14px}
+input,textarea{width:100%;padding:12px;margin:7px 0 12px;background:#080f1d;color:white;border:1px solid #344762;border-radius:9px;font-size:16px}
+textarea{min-height:130px;resize:vertical}
+.result{color:#8ee6b0;overflow-wrap:anywhere}
+footer{text-align:center;color:#9aabc4;padding:25px}
+a{color:#69c9ff}
+</style>
+</head>
+<body>
+<header>
+<h1>⚡ My Utility</h1>
+<p>Your everyday tools, all in one place.</p>
+</header>
 
+<nav>
+<button onclick="show('home')">Home</button>
+<button onclick="show('calculator')">Calculator</button>
+<button onclick="show('notes')">Notes</button>
+<button onclick="show('study')">Study</button>
+<button onclick="show('games')">Mini Game</button>
+<button onclick="show('assistant')">AI Demo</button>
+</nav>
+
+<main>
+<section id="home" class="active">
+<div class="card">
+<h2>Welcome to My Utility 👋</h2>
+<p>A simple hub for useful everyday tools.</p>
+</div>
+<div class="grid">
+<div class="card"><h3>🧮 Calculator</h3><p>Calculate basic maths.</p><button onclick="show('calculator')">Open</button></div>
+<div class="card"><h3>📝 Notes</h3><p>Write and save notes on this device.</p><button onclick="show('notes')">Open</button></div>
+<div class="card"><h3>📚 Study Centre</h3><p>Revise Class 10 science basics.</p><button onclick="show('study')">Open</button></div>
+<div class="card"><h3>🎮 Mini Game</h3><p>Try the number guessing game.</p><button onclick="show('games')">Play</button></div>
+</div>
+</section>
+
+<section id="calculator">
+<div class="card">
+<h2>🧮 Calculator</h2>
+<label>First number</label><input id="a" type="number" placeholder="Enter first number">
+<label>Second number</label><input id="b" type="number" placeholder="Enter second number">
+<div class="grid">
+<button onclick="calc('+')">Add +</button>
+<button onclick="calc('-')">Subtract −</button>
+<button onclick="calc('*')">Multiply ×</button>
+<button onclick="calc('/')">Divide ÷</button>
+</div>
+<h3 id="calcResult" class="result">Result appears here</h3>
+</div>
+</section>
+
+<section id="notes">
+<div class="card">
+<h2>📝 My Notes</h2>
+<textarea id="noteText" placeholder="Write your notes here..."></textarea>
+<button onclick="saveNote()">Save Notes</button>
+<button onclick="loadNote()">Load Notes</button>
+<p id="noteStatus" class="result"></p>
+<p><small>Notes are saved in this browser on this device.</small></p>
+</div>
+</section>
+
+<section id="study">
+<div class="card">
+<h2>📚 Class 10 Science</h2>
+<h3>Life Processes</h3>
+<p><b>Nutrition:</b> The process by which organisms obtain and use food.</p>
+<p><b>Respiration:</b> The process of releasing energy from food.</p>
+<p><b>Transportation:</b> Movement of materials inside an organism.</p>
+<p><b>Excretion:</b> Removal of metabolic wastes from the body.</p>
+<hr>
+<h3>Quick Quiz</h3>
+<p>Which organ pumps blood around the human body?</p>
+<button onclick="quiz('wrong')">Lungs</button>
+<button onclick="quiz('right')">Heart</button>
+<button onclick="quiz('wrong')">Stomach</button>
+<p id="quizResult" class="result"></p>
+</div>
+</section>
+
+<section id="games">
+<div class="card">
+<h2>🎮 Number Guessing Game</h2>
+<p>Guess a number from 1 to 10.</p>
+<input id="guess" type="number" min="1" max="10" placeholder="Your guess">
+<button onclick="playGame()">Check Guess</button>
+<p id="gameResult" class="result"></p>
+<button onclick="resetGame()">New Number</button>
+</div>
+</section>
+
+<section id="assistant">
+<div class="card">
+<h2>🤖 AI Demo</h2>
+<p>This is a simple offline demo, not a real AI model.</p>
+<input id="question" placeholder="Try: hello, time, or date">
+<button onclick="askDemo()">Ask</button>
+<p id="answer" class="result"></p>
+</div>
+</section>
+</main>
+
+<footer>My Utility · Simple tools, one place.</footer>
+
+<script>
+function show(id){
+document.querySelectorAll('main section').forEach(s=>s.classList.remove('active'));
+document.getElementById(id).classList.add('active');
+window.scrollTo({top:0,behavior:'smooth'});
+}
+function calc(op){
+const a=Number(document.getElementById('a').value);
+const b=Number(document.getElementById('b').value);
+if(document.getElementById('a').value===''||document.getElementById('b').value===''){
+document.getElementById('calcResult').textContent='Enter both numbers first.';return;
+}
+if(op==='/'&&b===0){document.getElementById('calcResult').textContent='Cannot divide by zero.';return;}
+let r=op==='+'?a+b:op==='-'?a-b:op==='*'?a*b:a/b;
+document.getElementById('calcResult').textContent='Result: '+r;
+}
+function saveNote(){
+try{localStorage.setItem('myUtilityNotes',document.getElementById('noteText').value);document.getElementById('noteStatus').textContent='Notes saved!';}
+catch(e){document.getElementById('noteStatus').textContent='Saving is unavailable in this browser.';}
+}
+function loadNote(){
+try{document.getElementById('noteText').value=localStorage.getItem('myUtilityNotes')||'';document.getElementById('noteStatus').textContent='Notes loaded.';}
+catch(e){document.getElementById('noteStatus').textContent='Loading is unavailable in this browser.';}
+}
+function quiz(answer){
+document.getElementById('quizResult').textContent=answer==='right'?'Correct! The heart pumps blood.':'Try again!';
+}
+let secret=Math.floor(Math.random()*10)+1;
+function playGame(){
+const v=Number(document.getElementById('guess').value);
+document.getElementById('gameResult').textContent=!v||v<1||v>10?'Enter a number from 1 to 10.':v===secret?'Correct! You guessed it!':v<secret?'Too low. Try again!':'Too high. Try again!';
+}
+function resetGame(){secret=Math.floor(Math.random()*10)+1;document.getElementById('guess').value='';document.getElementById('gameResult').textContent='New number ready!';}
+function askDemo(){
+const q=document.getElementById('question').value.toLowerCase();
+let answer=q.includes('hello')?'Hello! Welcome to My Utility.':q.includes('time')?'Current time: '+new Date().toLocaleTimeString():q.includes('date')?'Today is '+new Date().toLocaleDateString():'This demo only responds to hello, time, or date. It is not a real AI.';
+document.getElementById('answer').textContent=answer;
+}
+</script>
+</body>
+</html>
