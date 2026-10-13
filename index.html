@@ -1,253 +1,231 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#07111f">
-<title>My Utility | Ansh Mishra</title>
-<style>
-:root{color-scheme:dark;--bg:#07111f;--panel:#101e32;--panel2:#182c45;--text:#eef7ff;--muted:#a3b6ce;--line:#2b415c;--a:#5ce8dc;--blue:#348df2}
-body.light{color-scheme:light;--bg:#eff5fc;--panel:#fff;--panel2:#e5eef8;--text:#15283f;--muted:#53677d;--line:#d0deed;--a:#007e83;--blue:#176bc4}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,Arial,sans-serif;min-height:100vh;transition:.2s}
-button,input,textarea{font:inherit}
-button{cursor:pointer}
-header{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:15px 5%;background:var(--panel);border-bottom:1px solid var(--line)}
-.brand{font-size:22px;font-weight:900}.brand span{color:var(--a)}
-.muted,p{color:var(--muted);line-height:1.6}
-.small{font-size:12px}
-.wrap{max-width:1150px;margin:auto;padding:22px 5% 45px}
-.hero{padding:30px 22px;border:1px solid var(--line);border-radius:24px;background:radial-gradient(ellipse at 90% 10%,#288fa955,transparent 45%),var(--panel);margin-bottom:28px}
-.kicker{color:var(--a);letter-spacing:2px;font-weight:800;font-size:11px}
-h1{font-size:clamp(30px,6vw,48px);margin:12px 0}
-h2{font-size:23px}h3{font-size:17px;margin:12px 0 8px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:15px}
-.card{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px;min-width:0;box-shadow:0 10px 25px #0001}
-.card:hover{border-color:var(--a)}
-.icon{font-size:30px}
-.btn{border:1px solid var(--line);border-radius:11px;padding:10px 13px;background:var(--panel2);color:var(--text);font-weight:700}
-.primary{background:linear-gradient(110deg,#176fd0,#138d9c);color:white;border:0}
-.btn:disabled{opacity:.45}
-.foot,.head{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-top:15px}
-.head{margin:0 0 20px}
-.tag{font-size:10px;color:var(--a);border:1px solid var(--line);border-radius:20px;padding:5px 8px}
-.hidden{display:none!important}
-section.page{min-height:45vh}
-input,textarea{width:100%;padding:12px;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--text);margin:8px 0}
-.bigcard{padding:30px;text-align:center;font-size:21px;min-height:150px;display:grid;place-items:center;cursor:pointer}
-.gamegrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:18px 0}
-.tile{min-height:78px;font-size:27px;border-radius:13px;border:1px solid var(--line);background:var(--panel2);color:var(--text)}
-.slide{padding:clamp(20px,5vw,50px);min-height:300px;border-radius:20px;border:1px solid var(--line);background:var(--panel)}
-.slide h3{font-size:clamp(23px,4vw,34px);color:var(--a)}
-.slide li{margin:12px 0;line-height:1.5}
-footer{text-align:center;border-top:1px solid var(--line);padding:24px;color:var(--muted);font-size:13px}
-@media(max-width:500px){header{padding:12px 4%}.brand{font-size:19px}.wrap{padding:16px 4% 35px}.hero{padding:22px 17px}.card{padding:15px}.tile{min-height:65px}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090d19">
+  <title>My Utility — Learn. Explore. Grow.</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header>
- <div><div class="brand">MY <span>UTILITY</span> ✦</div><div class="muted small">Study • Explore • Grow</div></div>
- <button class="btn" id="themeBtn" onclick="toggleTheme()">☀️ Light</button>
-</header>
-<main class="wrap">
+  <div class="ambient ambient-one"></div>
+  <div class="ambient ambient-two"></div>
 
-<section class="page" id="home">
- <div class="hero"><div class="kicker">YOUR PERSONAL STUDY SPACE</div>
- <h1>Explore the <span style="color:var(--a)">Science</span> of learning.</h1>
- <p>One cool place for Class 10 revision, games, presentations and notes.</p>
- <button class="btn primary" onclick="openPage('library')">Explore Library →</button></div>
- <h2>⚡ Your Toolkit</h2>
- <div class="grid">
-  <article class="card"><div class="icon">🧬</div><h3>Science Library</h3><p>Explore Class 10 chapters and presentations.</p><div class="foot"><span class="tag">NCERT</span><button class="btn primary" onclick="openPage('library')">Open Library →</button></div></article>
-  <article class="card"><div class="icon">🃏</div><h3>Flashcards</h3><p>Reveal answers and revise important facts.</p><div class="foot"><span class="tag">REVISION</span><button class="btn primary" onclick="startFlashcards()">Study Cards →</button></div></article>
-  <article class="card"><div class="icon">🧠</div><h3>Memory Match</h3><p>Match science terms with their pairs.</p><div class="foot"><span class="tag">GAME</span><button class="btn primary" onclick="startGame()">Play Game →</button></div></article>
-  <article class="card"><div class="icon">🚀</div><h3>Daily Challenge</h3><p>Answer quick science questions and score points.</p><div class="foot"><span class="tag">QUIZ</span><button class="btn primary" onclick="startQuiz()">Start Challenge →</button></div></article>
-  <article class="card"><div class="icon">📓</div><h3>Quick Notes</h3><p>Write your own revision notes.</p><div class="foot"><span class="tag">NOTES</span><button class="btn primary" onclick="openPage('notes')">Open Notes →</button></div></article>
-  <article class="card"><div class="icon">🎯</div><h3>Focus Session</h3><p>Start a 25-minute study session.</p><div class="foot"><span class="tag">PRODUCTIVITY</span><button class="btn primary" onclick="startFocus()">Start Focus →</button></div></article>
- </div>
-</section>
+  <div class="overlay" id="overlay"></div>
 
-<section class="page hidden" id="library">
- <div class="head"><h2>🧬 Science Library</h2><button class="btn" onclick="openPage('home')">← Home</button></div>
- <div class="grid" id="chapterList"></div>
-</section>
+  <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+    <div class="side-brand">
+      <div class="brand-icon">M</div>
+      <div><b>My Utility</b><small>Your personal study space</small></div>
+      <button class="icon-button close-button" id="closeSidebar" aria-label="Close menu">×</button>
+    </div>
 
-<section class="page hidden" id="viewer">
- <div class="head"><h2 id="slideTitle">Presentation Studio</h2><button class="btn" onclick="openPage('library')">← Chapters</button></div>
- <div class="slide" id="slideContent"></div>
- <div class="foot"><button class="btn" onclick="moveSlide(-1)">← Previous</button><span id="slideCount" class="tag"></span><button class="btn primary" onclick="moveSlide(1)">Next →</button></div>
- <p class="small">These are website-created revision slides, not an exact rendering of your original PowerPoint file.</p>
- <button class="btn" onclick="document.getElementById('slideContent').requestFullscreen?.()">⛶ Full Screen</button>
-</section>
+    <div class="side-label">WORKSPACE</div>
+    <button class="nav-item active" data-page="home"><span>⌂</span> Home</button>
+    <button class="nav-item" data-page="library"><span>▤</span> Open Library</button>
+    <button class="nav-item" data-page="flashcards"><span>▣</span> Flashcards</button>
+    <button class="nav-item" data-page="games"><span>♧</span> Games</button>
+    <button class="nav-item" data-page="notes"><span>✎</span> Quick Notes</button>
+    <button class="nav-item" data-page="tools"><span>⌘</span> Study Tools</button>
+    <button class="nav-item" data-page="progress"><span>◷</span> Study Progress</button>
 
-<section class="page hidden" id="flash">
- <div class="head"><h2>🃏 Science Flashcards</h2><button class="btn" onclick="openPage('home')">← Home</button></div>
- <p>Tap the card to reveal its answer.</p>
- <div class="card bigcard" id="flashCard" onclick="flipCard()"></div>
- <div class="foot"><button class="btn" onclick="nextCard(-1)">← Previous</button><span id="flashCount" class="tag"></span><button class="btn primary" onclick="nextCard(1)">Next →</button></div>
-</section>
+    <div class="side-label">PERSONALISE</div>
+    <button class="nav-item" data-page="settings"><span>⚙</span> Settings</button>
+    <button class="nav-item" data-page="help"><span>ⓘ</span> Help & Guide</button>
 
-<section class="page hidden" id="game">
- <div class="head"><h2>🧠 Memory Match</h2><button class="btn" onclick="openPage('home')">← Home</button></div>
- <p>Match each science symbol with its identical pair.</p>
- <p id="gameStatus" class="tag"></p><div id="gameBoard" class="gamegrid"></div>
- <button class="btn primary" onclick="startGame()">↻ New Game</button>
-</section>
+    <div class="sidebar-bottom">
+      <div class="mini-status"><span class="status-dot"></span><span id="networkStatus">Checking connection…</span></div>
+      <small>MY UTILITY · VERSION 1.0.0</small>
+    </div>
+  </aside>
 
-<section class="page hidden" id="quiz">
- <div class="head"><h2>🚀 Daily Challenge</h2><button class="btn" onclick="openPage('home')">← Home</button></div>
- <div id="quizArea"></div>
- <button class="btn primary hidden" id="quizAgain" onclick="startQuiz()">Try Again</button>
-</section>
+  <header class="topbar">
+    <button class="icon-button menu-button" id="menuButton" aria-label="Open menu">☰</button>
+    <div class="brand-lockup">
+      <div class="brand-icon">M</div>
+      <div><b>My Utility</b><small>I had made this website for you to learn</small></div>
+    </div>
+    <div class="top-actions">
+      <div class="clock-pill" id="clock">--:--</div>
+      <button class="icon-button" id="themeQuick" aria-label="Toggle theme">☼</button>
+    </div>
+  </header>
 
-<section class="page hidden" id="notes">
- <div class="head"><h2>📓 Quick Notes</h2><button class="btn" onclick="openPage('home')">← Home</button></div>
- <div class="card"><p>Your notes save in this browser on this device.</p><textarea id="noteText" rows="10" placeholder="Write your revision notes..."></textarea><button class="btn primary" onclick="saveNotes()">Save Notes</button><span id="noteStatus" class="small muted"></span></div>
-</section>
+  <main class="main-container">
+    <section class="page active" id="page-home">
+      <div class="welcome-row">
+        <div>
+          <div class="eyebrow"><span class="pulse"></span> YOUR PERSONAL LEARNING SPACE</div>
+          <h1 id="welcomeTitle">A better way<br>to <span class="gradient-text">learn every day.</span></h1>
+          <p class="muted" id="welcomeSubtitle">Learn at your own pace. Explore new ideas. Make every study session count.</p>
+          <div class="hero-actions">
+            <button class="primary-button" data-go="library">Explore Library <span>↗</span></button>
+            <button class="glass-button" data-go="flashcards">Revise with Flashcards</button>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="hero-orb"><span>✦</span></div>
+          <div class="float-card float-top">✧ <span>Curiosity</span></div>
+          <div class="float-card float-bottom">↗ <span>Progress</span></div>
+        </div>
+      </div>
 
-<section class="page hidden" id="focus">
- <div class="head"><h2>🎯 Focus Session</h2><button class="btn" onclick="openPage('home')">← Home</button></div>
- <div class="card"><p>Focus on one task. Take a break when your session ends.</p><div id="focusTime" style="font-size:48px;font-weight:900;text-align:center;margin:25px">25:00</div><div class="foot"><button class="btn primary" id="focusStart" onclick="toggleFocus()">Start</button><button class="btn" onclick="resetFocus()">Reset</button></div><p id="focusMessage"></p></div>
-</section>
+      <div class="section-heading">
+        <div><div class="eyebrow">YOUR WORKSPACE</div><h2>What would you like to do?</h2></div>
+        <span class="muted small">Choose your next step</span>
+      </div>
 
-</main>
-<footer>Made by Ansh Mishra</footer>
+      <div class="feature-grid">
+        <button class="feature-card feature-library" data-go="library">
+          <span class="feature-icon">▤</span><span class="feature-arrow">↗</span>
+          <h3>Open Library</h3><p>Explore subjects, chapters and learning materials.</p><span class="card-link">Explore library →</span>
+        </button>
+        <button class="feature-card feature-flash" data-go="flashcards">
+          <span class="feature-icon">▣</span><span class="feature-arrow">↗</span>
+          <h3>Flashcards</h3><p>Practise questions and revise important concepts.</p><span class="card-link">Start revising →</span>
+        </button>
+        <button class="feature-card feature-games" data-go="games">
+          <span class="feature-icon">♧</span><span class="feature-arrow">↗</span>
+          <h3>Learning Games</h3><p>Challenge yourself with interactive mini-games.</p><span class="card-link">Play & learn →</span>
+        </button>
+        <button class="feature-card feature-notes" data-go="notes">
+          <span class="feature-icon">✎</span><span class="feature-arrow">↗</span>
+          <h3>Quick Notes</h3><p>Write down ideas and keep your notes organised.</p><span class="card-link">Write something →</span>
+        </button>
+        <button class="feature-card feature-tools" data-go="tools">
+          <span class="feature-icon">⌘</span><span class="feature-arrow">↗</span>
+          <h3>Study Tools</h3><p>Use your calculator, word counter and study timer.</p><span class="card-link">Open tools →</span>
+        </button>
+        <button class="feature-card feature-progress" data-go="progress">
+          <span class="feature-icon">◷</span><span class="feature-arrow">↗</span>
+          <h3>Your Progress</h3><p>Track the chapters and flashcards you complete.</p><span class="card-link">View progress →</span>
+        </button>
+      </div>
 
-<script>
-const $=id=>document.getElementById(id);
-function openPage(id){document.querySelectorAll("section.page").forEach(s=>s.classList.add("hidden"));$(id).classList.remove("hidden");window.scrollTo({top:0,behavior:"smooth"})}
+      <div class="bottom-grid">
+        <div class="panel continue-panel">
+          <div class="panel-heading"><div><div class="eyebrow">PICK UP WHERE YOU LEFT OFF</div><h3>Continue learning</h3></div><span class="panel-icon">↗</span></div>
+          <p class="muted" id="continueText">Your recent chapter will appear here as you study.</p>
+          <button class="text-button" id="continueButton">Open last activity →</button>
+        </div>
+        <div class="panel goal-panel">
+          <div class="panel-heading"><div><div class="eyebrow">SMALL STEPS, BIG RESULTS</div><h3>Daily study goal</h3></div><span class="panel-icon">✧</span></div>
+          <div class="goal-line"><strong id="goalMinutes">0</strong><span class="muted">minutes studied today</span></div>
+          <div class="progress-track"><div id="goalBar" class="progress-fill"></div></div>
+          <p class="muted small" id="goalText">Set your daily target in Settings.</p>
+        </div>
+      </div>
+    </section>
 
-function toggleTheme(){
- document.body.classList.toggle("light");
- const light=document.body.classList.contains("light");
- $("themeBtn").textContent=light?"🌙 Dark":"☀️ Light";
- document.querySelector('meta[name="theme-color"]').content=light?"#eff5fc":"#07111f";
- try{localStorage.setItem("mu-theme",light?"light":"dark")}catch(e){}
-}
-try{if(localStorage.getItem("mu-theme")==="light"){document.body.classList.add("light");$("themeBtn").textContent="🌙 Dark"}}catch(e){}
+    <section class="page" id="page-library">
+      <div class="page-intro"><div class="eyebrow">YOUR KNOWLEDGE HUB</div><h1>Open <span class="gradient-text">Library.</span></h1><p class="muted">Choose a subject, then select a chapter to mark your learning progress.</p></div>
+      <div class="search-wrap"><span>⌕</span><input id="librarySearch" placeholder="Search subjects or chapters…" aria-label="Search library"></div>
+      <div id="subjectGrid" class="subject-grid"></div>
+      <div id="chapterArea" class="panel hidden"><div class="panel-heading"><div><div class="eyebrow">SUBJECT CHAPTERS</div><h2 id="chapterTitle">Chapters</h2></div><button class="glass-button" id="backSubjects">← Subjects</button></div><div id="chapterList"></div></div>
+      <div id="chapterReader" class="panel hidden"></div>
+    </section>
 
-/* Built-in chapter revision slides.
-   Replace or expand these arrays with content from your original PPTs. */
-const decks={
-"How Do Organisms Reproduce?":[
-["What is reproduction?",["Reproduction produces new individuals of the same species.","It helps maintain continuity of a species."]],
-["Importance of reproduction",["It maintains a species across generations.","DNA copying passes hereditary information to offspring.","Variations can help populations adapt."]],
-["Asexual reproduction",["Usually involves one parent.","No fusion of male and female gametes.","Examples include fission, budding and vegetative propagation."]],
-["Sexual reproduction",["Involves formation and fusion of gametes.","It produces genetic variation among offspring."]],
-["Flower reproduction",["Stamen is the male reproductive part.","Carpel is the female reproductive part.","Pollination transfers pollen; fertilisation fuses gametes."]],
-["Human reproduction",["Fertilisation forms a zygote.","The embryo develops in the uterus.","The placenta helps exchange nutrients and waste."]]
-],
-"The Human Eye and the Colourful World":[
-["Parts of the human eye",["Cornea helps refract incoming light.","The iris controls pupil size.","The lens focuses light on the retina.","The optic nerve carries signals to the brain."]],
-["Accommodation",["Ciliary muscles change lens curvature.","The eye adjusts focus for near and distant objects.","The normal near point is about 25 cm."]],
-["Myopia",["Distant objects appear blurred.","The image forms in front of the retina.","A concave lens corrects myopia."]],
-["Hypermetropia",["Nearby objects appear blurred.","The image would form behind the retina.","A convex lens corrects hypermetropia."]],
-["Dispersion of light",["A prism separates white light into colours.","The visible spectrum is commonly remembered as VIBGYOR."]],
-["Atmospheric effects",["Atmospheric refraction explains twinkling of stars.","Scattering helps explain the blue appearance of the sky."]]
-]
-};
-let activeDeck=[],slide=0;
-function buildLibrary(){
- const host=$("chapterList");host.innerHTML="";
- Object.keys(decks).forEach(name=>host.append(makeCard("🔬",name,"Website revision slides · "+decks[name].length+" slides","Open Slides →",()=>openDeck(name),"SLIDES AVAILABLE")));
- const others=["Chemical Reactions and Equations","Acids, Bases and Salts","Carbon and its Compounds","Life Processes","Heredity","Electricity","Light – Reflection and Refraction","Our Environment"];
- others.forEach(name=>host.append(makeCard("📘",name,"Chapter listed; presentation not added yet.","Not Added",()=>{},"COMING SOON").querySelector("button").disabled=true));
-}
-function makeCard(icon,title,desc,label,action,tag){
- const el=document.createElement("article");el.className="card";
- const i=document.createElement("div");i.className="icon";i.textContent=icon;
- const h=document.createElement("h3");h.textContent=title;
- const p=document.createElement("p");p.textContent=desc;
- const f=document.createElement("div");f.className="foot";
- const t=document.createElement("span");t.className="tag";t.textContent=tag;
- const b=document.createElement("button");b.className="btn primary";b.textContent=label;b.onclick=action;
- f.append(t,b);el.append(i,h,p,f);return el;
-}
-buildLibrary();
-function openDeck(name){activeDeck=decks[name];slide=0;$("slideTitle").textContent=name;renderSlide();openPage("viewer")}
-function renderSlide(){
- const item=activeDeck[slide];const host=$("slideContent");host.innerHTML="";
- const h=document.createElement("h3");h.textContent=item[0];host.append(h);
- const ul=document.createElement("ul");item[1].forEach(txt=>{const li=document.createElement("li");li.textContent=txt;ul.append(li)});host.append(ul);
- $("slideCount").textContent="Slide "+(slide+1)+" / "+activeDeck.length;
-}
-function moveSlide(n){slide=Math.max(0,Math.min(activeDeck.length-1,slide+n));renderSlide()}
+    <section class="page" id="page-flashcards">
+      <div class="page-intro"><div class="eyebrow">ACTIVE RECALL</div><h1>Flashcards <span class="gradient-text">studio.</span></h1><p class="muted">Select a subject and chapter to practise available cards.</p></div>
+      <div class="panel">
+        <div class="form-grid">
+          <div class="field"><label for="flashSubject">Subject</label><select id="flashSubject"></select></div>
+          <div class="field"><label for="flashChapter">Chapter</label><select id="flashChapter"></select></div>
+        </div>
+        <div id="flashcard" class="flashcard"><div class="eyebrow">YOUR NEXT QUESTION</div><h2 id="flashQuestion">Choose a chapter to begin.</h2><div id="flashAnswer" class="flash-answer hidden"></div></div>
+        <div class="flash-controls"><span id="flashCount" class="muted small">0 cards</span><button class="glass-button" id="revealAnswer">Reveal answer</button><button class="primary-button" id="nextFlash">Next card →</button></div>
+        <div class="flash-controls"><button class="glass-button" id="markKnown">✓ I knew it</button><button class="glass-button" id="markReview">↻ Review again</button></div>
+        <p class="muted small" id="flashNotice">Cards appear when chapter content is added.</p>
+      </div>
+    </section>
 
-/* Flashcards */
-const flashcards=[
-["What is reproduction?","The process of producing new individuals."],
-["What is DNA?","The molecule carrying hereditary information."],
-["What is binary fission?","One cell divides to form two cells."],
-["What is budding?","A new individual develops from a parent outgrowth."],
-["What is pollination?","Transfer of pollen from anther to stigma."],
-["What is fertilisation?","Fusion of male and female gametes."],
-["What is the retina?","Light-sensitive layer at the back of the eye."],
-["What controls pupil size?","The iris."],
-["Which lens corrects myopia?","A concave lens."],
-["What is dispersion?","Splitting white light into its constituent colours."]
-];
-let fi=0,flipped=false;
-function startFlashcards(){fi=0;flipped=false;renderFlash();openPage("flash")}
-function renderFlash(){$("flashCard").textContent=flipped?flashcards[fi][1]:flashcards[fi][0];$("flashCount").textContent=(fi+1)+" / "+flashcards.length+" · Tap to flip"}
-function flipCard(){flipped=!flipped;renderFlash()}
-function nextCard(n){fi=(fi+n+flashcards.length)%flashcards.length;flipped=false;renderFlash()}
+    <section class="page" id="page-games">
+      <div class="page-intro"><div class="eyebrow">LEARN THROUGH PLAY</div><h1>Learning <span class="gradient-text">games.</span></h1><p class="muted">Short challenges to refresh your mind.</p></div>
+      <div class="feature-grid">
+        <button class="feature-card" data-game="quiz"><span class="feature-icon">?</span><h3>Quiz Challenge</h3><p>Answer a question and check your knowledge.</p><span class="card-link">Play now →</span></button>
+        <button class="feature-card" data-game="word"><span class="feature-icon">Aa</span><h3>Word Scramble</h3><p>Unscramble a word using its clue.</p><span class="card-link">Play now →</span></button>
+        <button class="feature-card" data-game="truefalse"><span class="feature-icon">✓</span><h3>True or False</h3><p>Test your judgement on simple statements.</p><span class="card-link">Play now →</span></button>
+        <button class="feature-card" data-game="math"><span class="feature-icon">∑</span><h3>Number Challenge</h3><p>Practise quick mental calculations.</p><span class="card-link">Play now →</span></button>
+        <button class="feature-card" data-game="memory"><span class="feature-icon">✦</span><h3>Quick Recall</h3><p>Answer a question before revealing the solution.</p><span class="card-link">Play now →</span></button>
+      </div>
+      <div class="panel hidden" id="gameArea"><div class="panel-heading"><h2 id="gameTitle">Challenge</h2><button class="glass-button" id="closeGame">Close</button></div><div id="gameContent"></div></div>
+    </section>
 
-/* Memory matching game */
-const symbols=["🧬","🔬","🧪","🌱","🪐","⚡","👁️","🦠"];
-let first=null,lock=false,matches=0,moves=0;
-function startGame(){
- const tiles=[...symbols,...symbols].sort(()=>Math.random()-.5);
- first=null;lock=false;matches=0;moves=0;$("gameBoard").innerHTML="";
- $("gameStatus").textContent="Moves: 0 · Pairs: 0 / 8";
- tiles.forEach((sym,i)=>{
-  const b=document.createElement("button");b.className="tile";b.textContent="❔";b.dataset.sym=sym;b.dataset.index=i;
-  b.onclick=()=>flipTile(b);$("gameBoard").append(b);
- });openPage("game");
-}
-function flipTile(b){
- if(lock||b.disabled||b===first)return;
- b.textContent=b.dataset.sym;
- if(!first){first=b;return}
- moves++;
- if(first.dataset.sym===b.dataset.sym){first.disabled=true;b.disabled=true;matches++;first=null;$("gameStatus").textContent="Moves: "+moves+" · Pairs: "+matches+" / 8";if(matches===8)$("gameStatus").textContent="🎉 You won in "+moves+" moves!"}
- else{lock=true;const prev=first;first=null;setTimeout(()=>{prev.textContent="❔";b.textContent="❔";lock=false},650);$("gameStatus").textContent="Moves: "+moves+" · Pairs: "+matches+" / 8"}
-}
-function startQuiz(){
- const qs=[
- ["Which part controls pupil size?",["Iris","Retina","Cornea","Optic nerve"],0],
- ["Which lens corrects myopia?",["Convex","Concave","Plane","No lens"],1],
- ["What carries hereditary information?",["DNA","Starch","Water","Oxygen"],0],
- ["What is pollen transfer called?",["Respiration","Pollination","Digestion","Excretion"],1],
- ["Which part detects light in the eye?",["Retina","Iris","Pupil","Ciliary muscle"],0]
- ];
- let n=0,score=0;const host=$("quizArea");host.innerHTML="";$("quizAgain").classList.add("hidden");
- function render(){
-  host.innerHTML="";
-  if(n===qs.length){host.innerHTML="<div class='card'><h3>Challenge complete! 🎉</h3><p>Your score: "+score+" / "+qs.length+"</p></div>";$("quizAgain").classList.remove("hidden");return}
-  const q=qs[n],box=document.createElement("div");box.className="card";
-  const h=document.createElement("h3");h.textContent=(n+1)+". "+q[0];box.append(h);
-  q[1].forEach((ans,i)=>{const b=document.createElement("button");b.className="btn";b.style.display="block";b.style.width="100%";b.style.margin="8px 0";b.textContent=ans;b.onclick=()=>{if(box.dataset.done)return;box.dataset.done="1";if(i===q[2]){score++;b.classList.add("primary")}else{b.style.borderColor="red"}const next=document.createElement("button");next.className="btn primary";next.textContent=n===qs.length-1?"See Score →":"Next Question →";next.onclick=()=>{n++;render()};box.append(next)};box.append(b)});
-  host.append(box);
- }
- render();openPage("quiz");
-}
+    <section class="page" id="page-notes">
+      <div class="page-intro"><div class="eyebrow">YOUR PERSONAL NOTEBOOK</div><h1>Quick <span class="gradient-text">Notes.</span></h1><p class="muted">Notes automatically save in this browser.</p></div>
+      <div class="panel">
+        <div class="field"><label for="noteTitle">Note title</label><input id="noteTitle" placeholder="e.g. Important science points"></div>
+        <div class="field"><label for="noteText">Your notes</label><textarea id="noteText" rows="9" placeholder="Write your ideas, revision points or reminders here…"></textarea></div>
+        <div class="note-actions"><span class="muted small" id="saveStatus">Auto-save ready</span><button class="glass-button" id="newNote">New note</button><button class="primary-button" id="saveNote">Save note</button></div>
+      </div>
+      <div class="section-heading"><div><div class="eyebrow">SAVED LOCALLY</div><h2>Your notes</h2></div></div>
+      <div id="notesList" class="notes-list"></div>
+    </section>
 
-/* Notes are saved locally in this browser. */
-try{$("noteText").value=localStorage.getItem("mu-notes")||""}catch(e){}
-function saveNotes(){try{localStorage.setItem("mu-notes",$("noteText").value);$("noteStatus").textContent=" Saved on this device."}catch(e){$("noteStatus").textContent=" Copy these notes to keep them."}}
+    <section class="page" id="page-tools">
+      <div class="page-intro"><div class="eyebrow">STUDY SMARTER</div><h1>Study <span class="gradient-text">Tools.</span></h1><p class="muted">Small utilities for your daily learning routine.</p></div>
+      <div class="grid-two">
+        <div class="panel"><div class="eyebrow">FOCUS SESSION</div><h2>Study Timer</h2><div id="timerDisplay" class="timer-display">00:00:00</div><div class="button-row"><button class="primary-button" id="timerStart">Start</button><button class="glass-button" id="timerPause">Pause</button><button class="glass-button" id="timerReset">Reset</button></div><p class="muted small">Study time is recorded when you finish a session.</p></div>
+        <div class="panel"><div class="eyebrow">QUICK CALCULATION</div><h2>Calculator</h2><input class="calculator-display" id="calcDisplay" inputmode="decimal" placeholder="e.g. (25*4)+12"><div class="button-row"><button class="primary-button" id="calculate">Calculate</button><button class="glass-button" id="clearCalc">Clear</button></div><p id="calcResult" class="muted" aria-live="polite">Your result appears here.</p></div>
+      </div>
+      <div class="panel tool-panel"><div class="eyebrow">WRITING TOOL</div><h2>Word Counter</h2><textarea id="wordInput" rows="5" placeholder="Paste or type your answer here…"></textarea><div class="counter-grid"><div><strong id="wordCount">0</strong><span>Words</span></div><div><strong id="charCount">0</strong><span>Characters</span></div><div><strong id="sentenceCount">0</strong><span>Sentences</span></div></div></div>
+    </section>
 
-/* Focus timer */
-let remaining=1500,timer=null;
-function showTime(){$("focusTime").textContent=String(Math.floor(remaining/60)).padStart(2,"0")+":"+String(remaining%60).padStart(2,"0")}
-function startFocus(){remaining=1500;showTime();$("focusMessage").textContent="Ready for a focused study session.";openPage("focus")}
-function toggleFocus(){
- if(timer){clearInterval(timer);timer=null;$("focusStart").textContent="Resume";return}
- $("focusStart").textContent="Pause";
- timer=setInterval(()=>{remaining--;showTime();if(remaining<=0){clearInterval(timer);timer=null;$("focusStart").textContent="Start Again";$("focusMessage").textContent="Session complete! Take a short break."}},1000);
-}
-function resetFocus(){clearInterval(timer);timer=null;remaining=1500;showTime();$("focusStart").textContent="Start";$("focusMessage").textContent=""}
-showTime();
-</script>
-</body>
-</html>
+    <section class="page" id="page-progress">
+      <div class="page-intro"><div class="eyebrow">YOUR JOURNEY</div><h1>Study <span class="gradient-text">Progress.</span></h1><p class="muted">Your locally saved study activity at a glance.</p></div>
+      <div class="stats-grid"><div class="stat-card"><span>Completed chapters</span><strong id="completedCount">0</strong></div><div class="stat-card"><span>Bookmarked chapters</span><strong id="bookmarkCount">0</strong></div><div class="stat-card"><span>Difficult topics</span><strong id="difficultCount">0</strong></div><div class="stat-card"><span>Flashcards known</span><strong id="knownCount">0</strong></div></div>
+      <div class="panel"><div class="panel-heading"><div><div class="eyebrow">ACTIVITY OVERVIEW</div><h2>Learning activity</h2></div></div><div id="progressDetails"></div></div>
+    </section>
 
+    <section class="page" id="page-settings">
+      <div class="page-intro"><div class="eyebrow">MAKE IT YOURS</div><h1>Personal <span class="gradient-text">Settings.</span></h1><p class="muted">Customise your learning space to suit you.</p></div>
+      <div class="settings-layout">
+        <div class="settings-menu">
+          <button class="setting-tab active" data-settings="appearance">◐ Appearance</button>
+          <button class="setting-tab" data-settings="reading">Aa Font & Reading</button>
+          <button class="setting-tab" data-settings="language">文 Language</button>
+          <button class="setting-tab" data-settings="privacy">⬡ Privacy & Data</button>
+          <button class="setting-tab" data-settings="study">◷ Study Preferences</button>
+          <button class="setting-tab" data-settings="about">ⓘ About My Utility</button>
+          <button class="setting-tab" data-settings="help">? Help & Guide</button>
+        </div>
+        <div class="panel settings-content">
+          <div class="settings-page active" id="settings-appearance">
+            <div class="eyebrow">VISUAL EXPERIENCE</div><h2>Appearance</h2>
+            <div class="setting-row"><div><b>Colour theme</b><p class="muted small">Choose light or dark appearance.</p></div><select id="themeSelect"><option value="dark">Dark</option><option value="light">Light</option></select></div>
+            <div class="setting-row"><div><b>Accent colour</b><p class="muted small">Choose the colour of buttons and highlights.</p></div><input type="color" id="accentSelect" value="#718cff"></div>
+            <div class="setting-row"><div><b>Background style</b><p class="muted small">Change the overall visual atmosphere.</p></div><select id="backgroundSelect"><option value="aurora">Aurora</option><option value="plain">Plain</option><option value="midnight">Midnight</option></select></div>
+            <div class="setting-row"><div><b>Layout style</b><p class="muted small">Choose your preferred spacing.</p></div><select id="layoutSelect"><option value="comfortable">Comfortable</option><option value="compact">Compact</option><option value="spacious">Spacious</option></select></div>
+            <div class="setting-row"><div><b>Animations</b><p class="muted small">Enable or disable smooth transitions.</p></div><label class="switch"><input type="checkbox" id="animationsToggle" checked><span></span></label></div>
+            <div class="setting-row"><div><b>High contrast</b><p class="muted small">Increase visual contrast for readability.</p></div><label class="switch"><input type="checkbox" id="contrastToggle"><span></span></label></div>
+          </div>
+          <div class="settings-page" id="settings-reading">
+            <div class="eyebrow">READING COMFORT</div><h2>Font & Reading</h2>
+            <div class="field"><label for="fontSize">Font size: <span id="fontSizeLabel">16px</span></label><input type="range" id="fontSize" min="14" max="22" value="16"></div>
+            <div class="setting-row"><div><b>Reading mode</b><p class="muted small">Reduce decorative elements while reading.</p></div><label class="switch"><input type="checkbox" id="readingToggle"><span></span></label></div>
+            <div class="setting-row"><div><b>Reduce motion</b><p class="muted small">Respect motion sensitivity preferences.</p></div><label class="switch"><input type="checkbox" id="motionToggle"><span></span></label></div>
+          </div>
+          <div class="settings-page" id="settings-language">
+            <div class="eyebrow">LANGUAGE</div><h2>Display language</h2>
+            <div class="field"><label for="languageSelect">Website language</label><select id="languageSelect"><option value="en">English</option><option value="hi">Hindi</option></select></div>
+            <p class="muted small">This changes supported interface labels. Learning content may remain in its original language.</p>
+          </div>
+          <div class="settings-page" id="settings-privacy">
+            <div class="eyebrow">YOUR DATA</div><h2>Privacy & Data</h2>
+            <p class="muted">Notes, preferences and study progress are saved locally in this browser. They are not automatically synced to other devices.</p>
+            <div class="setting-row"><div><b>Export backup</b><p class="muted small">Download your settings, notes and progress as JSON.</p></div><button class="glass-button" id="exportBackup">Export</button></div>
+            <div class="setting-row"><div><b>Restore backup</b><p class="muted small">Import a previously exported JSON backup.</p></div><button class="glass-button" id="importBackup">Import</button><input type="file" id="backupFile" accept=".json,application/json" hidden></div>
+            <div class="setting-row"><div><b>Clear saved data</b><p class="muted small">Remove saved notes and learning history.</p></div><button class="danger-button" id="clearData">Clear data</button></div>
+            <div class="setting-row"><div><b>Reset settings</b><p class="muted small">Restore preferences to their defaults.</p></div><button class="danger-button" id="resetSettings">Reset</button></div>
+          </div>
+          <div class="settings-page" id="settings-study">
+            <div class="eyebrow">STUDY PREFERENCES</div><h2>Your study goals</h2>
+            <div class="field"><label for="goalSelect">Daily goal (minutes)</label><select id="goalSelect"><option value="15">15 minutes</option><option value="30">30 minutes</option><option value="45">45 minutes</option><option value="60">60 minutes</option><option value="90">90 minutes</option><option value="120">120 minutes</option></select></div>
+            <div class="field"><label for="welcomeInput">Welcome message</label><input id="welcomeInput" maxlength="55" placeholder="A better way to learn every day"></div>
+            <div class="field"><label for="welcomeSubInput">Welcome subtitle</label><input id="welcomeSubInput" maxlength="120" placeholder="Your personal learning space"></div>
+            <button class="primary-button" id="saveStudySettings">Save preferences</button>
+          </div>
+          <div class="settings-page" id="settings-about">
+            <div class="eyebrow">THE PROJECT</div><h2>About My Utility</h2>
+            <div class="about-mark">M</div><h3>My Utility</h3><p class="muted">A personal learning space designed to make studying simpler, clearer and mor
