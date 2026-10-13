@@ -3,623 +3,720 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080D18">
-<meta name="description" content="My Utility — your personal productivity workspace.">
-<title>My Utility — Workspace</title>
+<meta name="theme-color" content="#080b18">
+<title>My Utility | Ultimate Dashboard</title>
 
 <style>
 :root{
-  --bg:#080D18;
-  --panel:#101827;
-  --panel2:#141F32;
-  --line:#25334B;
-  --text:#F3F6FC;
-  --muted:#91A0B8;
-  --blue:#5798FF;
-  --purple:#9A7BFF;
-  --green:#43D6A1;
-  --radius:20px;
+  --bg:#080b18;
+  --panel:rgba(19,25,48,.78);
+  --card:#111831;
+  --text:#f3f6ff;
+  --muted:#9ca9c8;
+  --line:rgba(153,174,255,.17);
+  --blue:#64a7ff;
+  --purple:#a879ff;
+  --cyan:#5cf3ed;
+  --shadow:0 18px 50px rgba(0,0,0,.23);
+}
+body.light{
+  --bg:#f2f5ff;
+  --panel:rgba(255,255,255,.9);
+  --card:#ffffff;
+  --text:#17203a;
+  --muted:#65708a;
+  --line:rgba(45,70,130,.15);
+  --blue:#326bea;
+  --purple:#8650e9;
+  --cyan:#078f99;
+  --shadow:0 15px 38px rgba(48,67,120,.10);
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
-  margin:0;
-  background:
-    radial-gradient(ellipse at 75% -10%,#182B50 0,transparent 42%),
-    var(--bg);
-  color:var(--text);
-  font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
-  min-height:100vh;
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Inter,system-ui,-apple-system,Arial,sans-serif;
+  transition:background .3s,color .3s;
 }
-button,input,textarea,select{font:inherit}
+button,input,select{font:inherit}
 button{cursor:pointer}
-button:focus-visible,input:focus-visible,textarea:focus-visible{
-  outline:2px solid var(--blue);outline-offset:3px
+button:focus-visible,input:focus-visible,select:focus-visible{
+  outline:2px solid var(--cyan);outline-offset:3px
 }
-.app{max-width:1440px;margin:auto;padding:24px}
+a{color:inherit;text-decoration:none}
+.app{max-width:1450px;margin:auto;padding:20px}
 .topbar{
   display:flex;align-items:center;justify-content:space-between;
-  gap:18px;margin-bottom:30px;flex-wrap:wrap
+  gap:15px;padding:14px 18px;border:1px solid var(--line);
+  background:var(--panel);backdrop-filter:blur(18px);
+  border-radius:22px;position:sticky;top:10px;z-index:20;
+  box-shadow:var(--shadow)
 }
-.brand{display:flex;align-items:center;gap:12px}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;font-size:19px}
 .logo{
-  width:46px;height:46px;border-radius:15px;
-  display:grid;place-items:center;
-  background:linear-gradient(135deg,var(--blue),var(--purple));
-  color:white;font-size:23px;font-weight:900;
-  box-shadow:0 8px 30px #5798ff30
+  width:45px;height:45px;border-radius:15px;display:grid;place-items:center;
+  background:linear-gradient(135deg,#527cff,#a15dff);
+  box-shadow:0 0 28px #647dff50;font-size:23px
 }
-.brand h1{font-size:20px;margin:0;letter-spacing:-.5px}
-.brand p{margin:4px 0 0;color:var(--muted);font-size:12px}
-.top-actions{display:flex;align-items:center;gap:10px}
-.status{
-  border:1px solid var(--line);border-radius:30px;
-  padding:9px 13px;color:#B8C8DC;font-size:12px
-}
-.status:before{
-  content:"";display:inline-block;width:7px;height:7px;
-  border-radius:50%;background:var(--green);margin-right:8px
-}
+.brand small{display:block;font-size:10px;letter-spacing:2px;color:var(--muted)}
+.top-actions{display:flex;align-items:center;gap:9px}
 .icon-btn,.btn{
-  border:1px solid var(--line);border-radius:12px;
-  color:var(--text);background:#172237;padding:11px 15px;
-  transition:.2s
+  border:1px solid var(--line);border-radius:13px;padding:11px 14px;
+  background:var(--card);color:var(--text)
 }
-.icon-btn:hover,.btn:hover{transform:translateY(-2px);border-color:#5B86C8}
 .btn.primary{
-  background:linear-gradient(135deg,#4288F5,#7365E9);
-  border-color:transparent;font-weight:700
+  background:linear-gradient(120deg,#447bff,#995dff);
+  color:white;border:0;font-weight:800;
+  box-shadow:0 8px 22px #675aff35
 }
-.btn.small{padding:8px 12px;font-size:13px}
-.layout{display:grid;grid-template-columns:235px minmax(0,1fr);gap:24px}
-.sidebar{
-  background:#0D1422;border:1px solid var(--line);
-  border-radius:var(--radius);padding:15px;
-  align-self:start;position:sticky;top:16px
-}
-.side-label{
-  color:#70829F;font-size:10px;letter-spacing:1.7px;
-  font-weight:800;margin:10px 10px 12px
-}
-.nav-btn{
-  width:100%;display:flex;align-items:center;gap:12px;
-  border:1px solid transparent;background:transparent;
-  color:#AAB7CC;text-align:left;padding:12px;
-  border-radius:12px;margin:3px 0;font-size:14px;
-  transition:.2s
-}
-.nav-btn .nav-icon{width:23px;text-align:center;font-size:17px}
-.nav-btn:hover{background:#151F31;color:white}
-.nav-btn.active{
-  color:white;background:linear-gradient(100deg,#254C83,#1B2944);
-  border-color:#36588B
-}
-.sidebar-bottom{
-  border-top:1px solid var(--line);margin-top:20px;
-  padding:16px 8px 5px;color:var(--muted);font-size:12px;line-height:1.7
-}
-.content{min-width:0}
+.btn:hover,.icon-btn:hover,.nav button:hover{transform:translateY(-2px)}
+button{transition:transform .2s,opacity .2s}
 .hero{
-  position:relative;overflow:hidden;
-  background:linear-gradient(120deg,#172B49,#171B36 72%,#252044);
-  border:1px solid #2B4164;border-radius:25px;
-  padding:clamp(25px,5vw,48px);margin-bottom:22px
+  position:relative;overflow:hidden;margin:23px 0;
+  padding:clamp(25px,5vw,60px);
+  border-radius:30px;border:1px solid var(--line);
+  background:linear-gradient(115deg,#101b3c 0%,#18204a 47%,#351b58 100%);
+  color:white;box-shadow:var(--shadow)
+}
+.hero:before,.hero:after{
+  content:"";position:absolute;border-radius:50%;pointer-events:none;
+  filter:blur(2px)
+}
+.hero:before{
+  width:280px;height:280px;right:5%;top:-100px;
+  background:radial-gradient(circle,#6b77ff75,transparent 70%)
 }
 .hero:after{
-  content:"";position:absolute;width:240px;height:240px;
-  right:-70px;top:-100px;border-radius:50%;
-  border:1px solid #8EB9FF20;
-  box-shadow:0 0 0 28px #8EB9FF08,0 0 0 60px #8EB9FF05
+  width:220px;height:220px;right:28%;bottom:-170px;
+  background:radial-gradient(circle,#26e5d855,transparent 70%)
 }
+.hero-content{position:relative;z-index:1;max-width:750px}
 .eyebrow{
-  color:#8DBBFF;font-size:11px;letter-spacing:2px;
-  font-weight:800;text-transform:uppercase
+  display:inline-flex;gap:8px;align-items:center;padding:8px 12px;
+  border:1px solid #ffffff2d;border-radius:30px;background:#ffffff0c;
+  font-size:12px;letter-spacing:1px;color:#c7d7ff
 }
-.hero h2{
-  font-size:clamp(27px,4vw,42px);line-height:1.13;
-  letter-spacing:-1.3px;margin:15px 0 12px;max-width:600px
-}
-.hero h2 span{
-  background:linear-gradient(90deg,#8BC5FF,#B7A4FF);
+.hero h1{font-size:clamp(35px,6vw,68px);line-height:1.06;margin:23px 0 15px;letter-spacing:-2px}
+.gradient-text{
+  background:linear-gradient(90deg,#72c7ff,#c6a3ff,#69fff0);
   -webkit-background-clip:text;background-clip:text;color:transparent
 }
-.hero p{color:#B3C1D6;line-height:1.8;max-width:540px;margin:0}
-.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:23px}
+.hero p{color:#c2cbe6;line-height:1.8;max-width:590px}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
 .stats{
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:14px;margin-bottom:30px
+  display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0
 }
-.stat,.card,.panel{
-  background:linear-gradient(145deg,#111C2D,#0F1726);
-  border:1px solid var(--line);border-radius:var(--radius)
+.stat,.panel,.tool-card{
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:21px;box-shadow:var(--shadow)
 }
-.stat{padding:18px}
-.stat-top{display:flex;justify-content:space-between;gap:8px}
-.stat-icon{
-  width:38px;height:38px;display:grid;place-items:center;
-  background:#263958;border-radius:12px;font-size:18px
-}
-.stat h3{font-size:25px;margin:18px 0 4px}
-.stat p{margin:0;color:var(--muted);font-size:12px}
+.stat{padding:20px}
+.stat-icon{font-size:22px}
+.stat strong{display:block;font-size:27px;margin:10px 0 3px}
+.stat span{font-size:12px;color:var(--muted)}
+.section{margin:36px 0;scroll-margin-top:100px}
 .section-head{
   display:flex;align-items:end;justify-content:space-between;
-  gap:12px;margin:29px 0 15px;flex-wrap:wrap
+  gap:15px;flex-wrap:wrap;margin-bottom:17px
 }
-.section-head h2{font-size:19px;letter-spacing:-.4px;margin:0}
-.section-head p{font-size:12px;color:var(--muted);margin:6px 0 0}
-.tools-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
-.card{padding:21px;transition:transform .22s,border-color .22s;min-width:0}
-.card:hover{transform:translateY(-3px);border-color:#3C5880}
-.card-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.tool-icon{
-  width:45px;height:45px;border-radius:14px;
-  display:grid;place-items:center;font-size:21px
+.section-head h2{margin:0;font-size:clamp(23px,3vw,32px);letter-spacing:-.6px}
+.section-head p{margin:8px 0 0;color:var(--muted);font-size:14px}
+.tools-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.tool-card{
+  position:relative;overflow:hidden;padding:22px;min-height:185px;
+  cursor:pointer
 }
-.i-blue{background:#1B3659}
-.i-purple{background:#30264D}
-.i-green{background:#153B36}
-.i-orange{background:#403020}
-.tag{font-size:10px;color:#A6B9D4;background:#1B283D;padding:6px 9px;border-radius:20px}
-.card h3{font-size:17px;margin:18px 0 7px}
-.card p{font-size:13px;line-height:1.7;color:var(--muted);margin:0 0 18px}
-.card-foot{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.arrow{color:#8EB8FF;font-size:13px;font-weight:700}
-.page{display:none;animation:appear .25s ease}
-.page.active{display:block}
-@keyframes appear{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
-.panel{padding:clamp(18px,3vw,28px);margin-bottom:18px}
-.panel h2{font-size:23px;margin:0 0 8px}
-.panel>p{color:var(--muted);font-size:13px;line-height:1.7}
+.tool-card:after{
+  content:"";position:absolute;width:130px;height:130px;
+  border-radius:50%;right:-65px;bottom:-70px;
+  background:var(--glow,#667cff);filter:blur(55px);opacity:.25
+}
+.tool-card:hover{border-color:#879bff70;transform:translateY(-4px)}
+.tool-card .big-icon{font-size:30px}
+.tool-card h3{margin:15px 0 8px;font-size:18px}
+.tool-card p{margin:0;color:var(--muted);font-size:13px;line-height:1.7}
+.panel{padding:23px}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:17px}
 .field{
-  width:100%;border:1px solid var(--line);background:#0B1321;
-  color:var(--text);border-radius:12px;padding:13px 14px;
-  margin:7px 0 13px;min-width:0
+  width:100%;background:var(--bg);color:var(--text);
+  border:1px solid var(--line);border-radius:12px;padding:13px;margin:7px 0 12px
 }
-textarea.field{min-height:140px;resize:vertical;line-height:1.6}
-.field-label{display:block;color:#B7C5D8;font-size:12px;font-weight:700;margin-top:10px}
-.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
-.row .field{flex:1}
-.note-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.note{
-  padding:16px;background:#0C1524;border:1px solid var(--line);
-  border-radius:15px;min-width:0
+label{font-size:13px;color:var(--muted)}
+.row{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.row .field{flex:1;min-width:120px}
+.result{
+  background:var(--bg);border:1px solid var(--line);border-radius:15px;
+  padding:16px;margin-top:14px;overflow-wrap:anywhere
 }
-.note h3{font-size:15px;margin:0 0 9px;overflow-wrap:anywhere}
-.note p{color:#A8B7CB;font-size:13px;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere}
-.note small{color:#7185A3}
-.note-actions{display:flex;gap:8px;flex-wrap:wrap}
-.calc{max-width:440px}
-.calc-display{
-  width:100%;padding:22px 15px;background:#09111D;
-  color:white;border:1px solid var(--line);border-radius:15px;
-  text-align:right;font-size:29px;margin:12px 0 15px
+.calc-screen{
+  width:100%;padding:20px;border-radius:15px;border:1px solid var(--line);
+  background:var(--bg);color:var(--text);font-size:27px;text-align:right;
+  margin:12px 0
 }
-.calc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
-.calc-key{
-  border:1px solid var(--line);background:#172338;color:white;
-  border-radius:12px;padding:17px 5px;font-size:17px
+.calc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.calc-grid button{
+  padding:15px 4px;border:1px solid var(--line);border-radius:12px;
+  background:var(--card);color:var(--text);font-weight:700
 }
-.calc-key:hover{background:#273A58}
-.calc-key.op{color:#9FC7FF;background:#1B2B44}
-.calc-key.equal{background:linear-gradient(135deg,#4288F5,#7365E9)}
-.calc-key.clear{color:#FF9C9C}
-.quiz-question{font-size:18px;line-height:1.6;margin:22px 0}
-.choice{
-  display:block;width:100%;text-align:left;padding:14px;
-  border:1px solid var(--line);border-radius:12px;
-  background:#0B1423;color:white;margin:9px 0
+.calc-grid button.operator{color:var(--cyan)}
+.calc-grid button.equals{background:linear-gradient(120deg,#447bff,#995dff);color:white}
+.question{font-size:18px;font-weight:750;line-height:1.6;margin:16px 0}
+.answers{display:grid;gap:10px}
+.answer{
+  text-align:left;padding:14px;border-radius:13px;
+  border:1px solid var(--line);background:var(--bg);color:var(--text)
 }
-.choice:hover{border-color:var(--blue);background:#14233A}
-.feedback{padding:13px;border-radius:12px;margin-top:12px;font-size:13px;line-height:1.6}
-.feedback.good{background:#14382F;color:#9DF0CC}
-.feedback.bad{background:#412329;color:#FFB5B5}
-.chat-box{
-  height:300px;overflow:auto;border:1px solid var(--line);
-  border-radius:14px;background:#0A1220;padding:14px;margin:15px 0
+.answer.correct{border-color:#29c997;background:#16845a22}
+.answer.wrong{border-color:#ff7777;background:#ff44441b}
+.answer:disabled{cursor:default}
+.pill{
+  display:inline-block;border:1px solid var(--line);border-radius:30px;
+  padding:6px 10px;color:var(--muted);font-size:12px
 }
-.chat-msg{max-width:90%;padding:12px 14px;border-radius:14px;margin:9px 0;font-size:13px;line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere}
-.chat-msg.user{background:#203E69;margin-left:auto}
-.chat-msg.ai{background:#192438;color:#D7E3F5}
-.muted{color:var(--muted)}
-.empty{padding:22px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:14px;font-size:13px}
-.footer{border-top:1px solid var(--line);padding:20px 0;margin-top:35px;color:#7486A1;font-size:11px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.game-board{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:17px
+}
+.game-cell{
+  min-height:72px;border:1px solid var(--line);border-radius:14px;
+  background:linear-gradient(135deg,#17254b,#282050);color:white;
+  font-size:27px
+}
+.game-cell.revealed{background:var(--card);color:var(--text)}
+.game-cell.matched{background:#16765a35;border-color:#30d7a0}
+.chapter-list{display:grid;gap:9px;margin-top:14px}
+.chapter{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:13px;border:1px solid var(--line);border-radius:13px;background:var(--bg)
+}
+.chapter button{flex-shrink:0}
+.photo-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:15px}
+.photo-grid img{width:100%;height:170px;object-fit:contain;background:var(--bg);border-radius:12px;border:1px solid var(--line)}
+.paper-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.paper{
+  padding:17px;border-radius:15px;border:1px solid var(--line);
+  background:var(--bg)
+}
+.paper h4{margin:0 0 8px}
+.paper p{font-size:12px;color:var(--muted)}
+.note{font-size:12px;color:var(--muted);line-height:1.7}
+footer{border-top:1px solid var(--line);margin-top:45px;padding:25px 0;text-align:center;color:var(--muted);font-size:12px}
 .toast{
-  position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);
-  background:#1B2C43;border:1px solid #38577D;color:white;
-  padding:12px 18px;border-radius:12px;opacity:0;pointer-events:none;
-  transition:.25s;z-index:10;font-size:13px;max-width:90vw;text-align:center
+  position:fixed;bottom:22px;left:50%;transform:translateX(-50%);
+  background:var(--card);border:1px solid var(--line);border-radius:13px;
+  padding:13px 18px;box-shadow:var(--shadow);z-index:100;display:none;
+  max-width:90%;text-align:center
 }
-.toast.show{opacity:1;transform:translate(-50%,0)}
-@media(max-width:800px){
-  .app{padding:15px}
-  .layout{grid-template-columns:1fr;gap:15px}
-  .sidebar{position:static;padding:10px;overflow:visible}
-  .side-label,.sidebar-bottom{display:none}
-  .sidebar nav{display:flex;overflow-x:auto;gap:5px}
-  .nav-btn{width:auto;white-space:nowrap;flex-shrink:0;margin:0;padding:10px}
-  .nav-btn .nav-icon{width:auto}
-  .stats{gap:9px}
-  .stat{padding:13px}
-  .stat h3{font-size:21px}
+.toast.show{display:block;animation:fade .25s}
+@keyframes fade{from{opacity:0;transform:translate(-50%,10px)}to{opacity:1;transform:translate(-50%,0)}}
+@media(max-width:850px){
+  .tools-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .two-col{grid-template-columns:1fr}
 }
-@media(max-width:500px){
+@media(max-width:520px){
   .app{padding:11px}
-  .tools-grid,.note-list{grid-template-columns:1fr}
-  .stats{grid-template-columns:1fr}
-  .stat{display:flex;align-items:center;gap:14px}
-  .stat h3{margin:0 0 4px}
-  .stat p{font-size:11px}
-  .stat-info{flex:1}
-  .hero{padding:24px 20px}
-  .hero h2{font-size:29px}
-  .brand h1{font-size:18px}
-  .status{display:none}
-  .card{padding:18px}
+  .topbar{padding:10px;border-radius:17px}
+  .brand{font-size:15px;gap:8px}
+  .logo{width:38px;height:38px}
+  .top-actions .btn{display:none}
+  .hero{border-radius:22px}
+  .tools-grid{grid-template-columns:1fr}
+  .stat{padding:14px}
+  .panel{padding:16px}
+  .paper-grid{grid-template-columns:1fr}
+  .photo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .game-cell{min-height:60px}
 }
 </style>
 </head>
 
 <body>
 <div class="app">
-  <header class="topbar">
-    <div class="brand">
-      <div class="logo">M</div>
-      <div>
-        <h1>My Utility<span style="color:#7EAFFF">.</span></h1>
-        <p>Your personal workspace</p>
-      </div>
-    </div>
-    <div class="top-actions">
-      <span class="status">Workspace ready</span>
-      <button class="icon-btn" id="themeBtn" title="Change accent">◈</button>
-    </div>
-  </header>
 
-  <div class="layout">
-    <aside class="sidebar">
-      <div class="side-label">WORKSPACE</div>
-      <nav id="navigation">
-        <button class="nav-btn active" data-page="home"><span class="nav-icon">⌂</span>Overview</button>
-        <button class="nav-btn" data-page="calculator"><span class="nav-icon">＋</span>Calculator</button>
-        <button class="nav-btn" data-page="notes"><span class="nav-icon">▤</span>My Notes</button>
-        <button class="nav-btn" data-page="study"><span class="nav-icon">◇</span>Study Centre</button>
-        <button class="nav-btn" data-page="game"><span class="nav-icon">✳</span>Mini Game</button>
-        <button class="nav-btn" data-page="ai"><span class="nav-icon">✦</span>AI Assistant</button>
-      </nav>
-      <div class="sidebar-bottom">
-        <strong style="color:#CFD9E9">MY UTILITY</strong><br>
-        Built for your everyday productivity.<br>
-        <span style="color:#6682AB">Version 2.0 · Free workspace</span>
-      </div>
-    </aside>
-
-    <main class="content">
-      <section class="page active" id="page-home">
-        <div class="hero">
-          <div class="eyebrow">YOUR DIGITAL WORKSPACE</div>
-          <h2>Make space for <span>better work.</span></h2>
-          <p>One simple place for calculations, notes, study sessions and everyday tools. Less clutter. More focus.</p>
-          <div class="hero-actions">
-            <button class="btn primary" data-go="study">Start studying ↗</button>
-            <button class="btn" data-go="notes">Open my notes</button>
-          </div>
-        </div>
-
-        <div class="stats">
-          <div class="stat">
-            <div class="stat-icon">▤</div>
-            <div class="stat-info"><h3 id="noteCount">0</h3><p>Saved notes on this device</p></div>
-          </div>
-          <div class="stat">
-            <div class="stat-icon">◇</div>
-            <div class="stat-info"><h3>Class 10</h3><p>Study workspace</p></div>
-          </div>
-          <div class="stat">
-            <div class="stat-icon">✦</div>
-            <div class="stat-info"><h3>6</h3><p>Workspace sections</p></div>
-          </div>
-        </div>
-
-        <div class="section-head">
-          <div><h2>Your tools</h2><p>Everything you need, right here.</p></div>
-        </div>
-
-        <div class="tools-grid">
-          <article class="card">
-            <div class="card-head"><div class="tool-icon i-blue">＋</div><span class="tag">QUICK TOOL</span></div>
-            <h3>Smart Calculator</h3><p>Handle everyday calculations with a clean, easy-to-use keypad.</p>
-            <div class="card-foot"><button class="btn small" data-go="calculator">Open calculator</button><span class="arrow">01 ↗</span></div>
-          </article>
-          <article class="card">
-            <div class="card-head"><div class="tool-icon i-purple">▤</div><span class="tag">PERSONAL</span></div>
-            <h3>My Notes</h3><p>Write down ideas, save reminders and keep your notes on this device.</p>
-            <div class="card-foot"><button class="btn small" data-go="notes">Open notes</button><span class="arrow">02 ↗</span></div>
-          </article>
-          <article class="card">
-            <div class="card-head"><div class="tool-icon i-green">◇</div><span class="tag">LEARNING</span></div>
-            <h3>Study Centre</h3><p>Practise Class 10 science questions and check your answers instantly.</p>
-            <div class="card-foot"><button class="btn small" data-go="study">Start practice</button><span class="arrow">03 ↗</span></div>
-          </article>
-          <article class="card">
-            <div class="card-head"><div class="tool-icon i-orange">✳</div><span class="tag">TAKE A BREAK</span></div>
-            <h3>Mini Game</h3><p>A quick number challenge to give your brain a short break.</p>
-            <div class="card-foot"><button class="btn small" data-go="game">Play now</button><span class="arrow">04 ↗</span></div>
-          </article>
-          <article class="card">
-            <div class="card-head"><div class="tool-icon i-purple">✦</div><span class="tag">CHAT</span></div>
-            <h3>AI Assistant Demo</h3><p>Try a simple local demo. Real AI responses require an AI service connection.</p>
-            <div class="card-foot"><button class="btn small" data-go="ai">Open assistant</button><span class="arrow">05 ↗</span></div>
-          </article>
-        </div>
-      </section>
-
-      <section class="page" id="page-calculator">
-        <div class="section-head"><div><h2>Calculator</h2><p>Simple calculations, without the clutter.</p></div></div>
-        <div class="panel calc">
-          <div class="eyebrow">QUICK CALCULATOR</div>
-          <input class="calc-display" id="calcDisplay" value="0" readonly aria-label="Calculator display">
-          <div class="calc-grid" id="calcKeys">
-            <button class="calc-key clear" data-key="C">AC</button>
-            <button class="calc-key" data-key="back">⌫</button>
-            <button class="calc-key op" data-key="%">%</button>
-            <button class="calc-key op" data-key="/">÷</button>
-            <button class="calc-key" data-key="7">7</button><button class="calc-key" data-key="8">8</button><button class="calc-key" data-key="9">9</button><button class="calc-key op" data-key="*">×</button>
-            <button class="calc-key" data-key="4">4</button><button class="calc-key" data-key="5">5</button><button class="calc-key" data-key="6">6</button><button class="calc-key op" data-key="-">−</button>
-            <button class="calc-key" data-key="1">1</button><button class="calc-key" data-key="2">2</button><button class="calc-key" data-key="3">3</button><button class="calc-key op" data-key="+">+</button>
-            <button class="calc-key" data-key="C">C</button><button class="calc-key" data-key="0">0</button><button class="calc-key" data-key=".">.</button><button class="calc-key equal" data-key="=">=</button>
-          </div>
-        </div>
-      </section>
-
-      <section class="page" id="page-notes">
-        <div class="section-head"><div><h2>My Notes</h2><p>Your ideas, saved locally on this device.</p></div></div>
-        <div class="panel">
-          <h2>Create a note</h2>
-          <p>Notes stay in this browser on this device. They are not automatically synced online.</p>
-          <label class="field-label" for="noteTitle">NOTE TITLE</label>
-          <input class="field" id="noteTitle" maxlength="100" placeholder="e.g. Science revision">
-          <label class="field-label" for="noteBody">YOUR NOTE</label>
-          <textarea class="field" id="noteBody" maxlength="12000" placeholder="Write your thoughts or study notes here..."></textarea>
-          <button class="btn primary" id="saveNote">＋ Save note</button>
-        </div>
-        <div class="section-head"><div><h2>Saved notes</h2><p id="noteSub">Your saved notes appear here.</p></div></div>
-        <div class="note-list" id="noteList"></div>
-      </section>
-
-      <section class="page" id="page-study">
-        <div class="section-head"><div><h2>Study Centre</h2><p>Class 10 Science · Quick practice</p></div></div>
-        <div class="panel">
-          <div class="eyebrow">KNOWLEDGE CHECK</div>
-          <div id="quizArea"></div>
-        </div>
-      </section>
-
-      <section class="page" id="page-game">
-        <div class="section-head"><div><h2>Mini Game</h2><p>A quick number guessing challenge.</p></div></div>
-        <div class="panel" style="max-width:560px">
-          <div class="tool-icon i-orange">✳</div>
-          <h2 style="margin-top:18px">Guess the number</h2>
-          <p>I'm thinking of a number from 1 to 100. Can you find it?</p>
-          <div class="row">
-            <input class="field" id="guessInput" type="number" min="1" max="100" placeholder="Enter 1–100">
-            <button class="btn primary" id="guessBtn">Guess</button>
-          </div>
-          <p id="gameMessage" aria-live="polite">Make your first guess to begin.</p>
-          <p class="muted" id="guessCount">Attempts: 0</p>
-          <button class="btn" id="newGame">↻ New game</button>
-        </div>
-      </section>
-
-      <section class="page" id="page-ai">
-        <div class="section-head"><div><h2>AI Assistant</h2><p>A chat-style demo inside your workspace.</p></div></div>
-        <div class="panel">
-          <div class="eyebrow">ASSISTANT DEMO</div>
-          <h2>What can I help you with?</h2>
-          <p>This version uses simple local demo replies. It is not connected to a real AI model yet.</p>
-          <div class="chat-box" id="chatBox" aria-live="polite">
-            <div class="chat-msg ai">Hello! 👋 I'm the My Utility demo assistant. Try asking about the tools on this website.</div>
-          </div>
-          <form id="chatForm" class="row">
-            <input class="field" id="chatInput" maxlength="1000" placeholder="Type a message..." autocomplete="off" required>
-            <button class="btn primary" type="submit">Send ↗</button>
-          </form>
-          <p class="muted">For real AI answers, a compatible AI service must be connected. Never put a private API key in public website code.</p>
-        </div>
-      </section>
-
-      <footer class="footer">
-        <span>© <span id="year"></span> My Utility</span>
-        <span>Simple tools. Clear mind. Better focus.</span>
-      </footer>
-    </main>
+<header class="topbar">
+  <a class="brand" href="#home">
+    <span class="logo">✦</span>
+    <span>MY UTILITY<small>YOUR DIGITAL SPACE</small></span>
+  </a>
+  <div class="top-actions">
+    <button class="icon-btn" onclick="toggleTheme()" aria-label="Change theme">☀️ / 🌙</button>
+    <a class="btn primary" href="#study">Start Learning ↗</a>
   </div>
+</header>
+
+<main>
+<section class="hero" id="home">
+  <div class="hero-content">
+    <span class="eyebrow">✦ YOUR ALL-IN-ONE DASHBOARD</span>
+    <h1>One Space.<br><span class="gradient-text">Endless Possibilities.</span></h1>
+    <p>Your personal digital hub for smart calculations, Class 10 revision,
+    study notes, sample papers and quick games. Everything in one place.</p>
+    <div class="hero-actions">
+      <a class="btn primary" href="#tools">Explore Dashboard →</a>
+      <a class="btn" href="#study">Open Study Centre</a>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stat"><div class="stat-icon">⚡</div><strong>All-in-One</strong><span>Your everyday toolkit</span></div>
+  <div class="stat"><div class="stat-icon">📚</div><strong>Class 10</strong><span>Study and revision centre</span></div>
+  <div class="stat"><div class="stat-icon">🧠</div><strong>Practice</strong><span>Learn through quizzes</span></div>
+  <div class="stat"><div class="stat-icon">🎯</div><strong>Your Pace</strong><span>Study whenever you want</span></div>
+</section>
+
+<section class="section" id="tools">
+  <div class="section-head">
+    <div><h2>Explore Your Universe</h2><p>Choose a tool and get started.</p></div>
+    <span class="pill">✦ MY UTILITY V4</span>
+  </div>
+  <div class="tools-grid">
+    <a class="tool-card" href="#calculator" style="--glow:#5488ff">
+      <div class="big-icon">🧮</div><h3>Scientific Calculator</h3>
+      <p>Trigonometry, logarithms, powers and more.</p>
+    </a>
+    <a class="tool-card" href="#study" style="--glow:#a05dff">
+      <div class="big-icon">🎓</div><h3>Class 10 Study Centre</h3>
+      <p>Subject-wise MCQs, practice and revision.</p>
+    </a>
+    <a class="tool-card" href="#notes" style="--glow:#24d6c8">
+      <div class="big-icon">🖼️</div><h3>Photo Notes Library</h3>
+      <p>Organise your chapter notes and images.</p>
+    </a>
+    <a class="tool-card" href="#papers" style="--glow:#ffb44d">
+      <div class="big-icon">📄</div><h3>Board Sample Papers</h3>
+      <p>Keep three paper sets for every subject.</p>
+    </a>
+    <a class="tool-card" href="#game" style="--glow:#ff5f9e">
+      <div class="big-icon">🎮</div><h3>Mini Game Zone</h3>
+      <p>A fresh memory challenge every round.</p>
+    </a>
+    <a class="tool-card" href="#quick" style="--glow:#55b7ff">
+      <div class="big-icon">🚀</div><h3>Quick Workspace</h3>
+      <p>Save a quick note in your current session.</p>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="calculator">
+  <div class="section-head"><div><h2>Scientific Calculator</h2><p>Trigonometry uses degrees by default.</p></div></div>
+  <div class="panel">
+    <input id="calcScreen" class="calc-screen" value="0" aria-label="Calculator display" inputmode="decimal">
+    <div class="calc-grid" id="calcButtons"></div>
+    <p class="note">Functions: sin, cos, tan, log (base 10), ln, √, square, π and brackets. Use × or ÷ as shown.</p>
+  </div>
+</section>
+
+<section class="section" id="study">
+  <div class="section-head"><div><h2>Class 10 Practice Centre</h2><p>Choose a subject and test what you know.</p></div></div>
+  <div class="panel">
+    <div class="row">
+      <div style="flex:1;min-width:150px">
+        <label for="subject">Choose subject</label>
+        <select class="field" id="subject" onchange="newQuestion()">
+          <option>Science</option><option>Mathematics</option><option>Social Science</option>
+          <option>English</option><option>Hindi</option><option>Information Technology</option>
+        </select>
+      </div>
+      <div style="flex:1;min-width:150px">
+        <label for="chapter">Choose chapter/topic</label>
+        <select class="field" id="chapter" onchange="newQuestion()">
+          <option value="all">All available questions</option>
+        </select>
+      </div>
+    </div>
+    <div class="row">
+      <span class="pill" id="quizCount">Question 1</span>
+      <span class="pill" id="quizScore">Score: 0</span>
+    </div>
+    <div class="question" id="questionText">Ready to practise?</div>
+    <div class="answers" id="answers"></div>
+    <div class="row" style="margin-top:16px">
+      <button class="btn primary" onclick="newQuestion()">Next Question →</button>
+      <button class="btn" onclick="resetQuiz()">Reset Score</button>
+    </div>
+    <div class="result" id="quizFeedback" aria-live="polite">Choose an answer to begin.</div>
+    <p class="note">This starter version contains sample questions, not the complete official CBSE question bank.</p>
+  </div>
+</section>
+
+<section class="section" id="notes">
+  <div class="section-head"><div><h2>Photo Notes Library</h2><p>Add your own notes photos and organise them by subject and chapter.</p></div></div>
+  <div class="panel">
+    <div class="row">
+      <div style="flex:1;min-width:145px">
+        <label for="noteSubject">Subject</label>
+        <select id="noteSubject" class="field" onchange="refreshChapters()">
+          <option>Science</option><option>Mathematics</option><option>Social Science</option>
+          <option>English</option><option>Hindi</option><option>Information Technology</option>
+        </select>
+      </div>
+      <div style="flex:1;min-width:145px">
+        <label for="chapterName">Chapter name</label>
+        <input id="chapterName" class="field" placeholder="e.g. Life Processes">
+      </div>
+    </div>
+    <label for="noteFiles">Select note photos</label>
+    <input id="noteFiles" class="field" type="file" accept="image/*" multiple>
+    <button class="btn primary" onclick="addPhotos()">Add Photos to Library</button>
+    <p class="note">Photos are stored in this browser on this device. Clearing browser data may remove them. This is not cloud storage.</p>
+    <div id="notesLibrary"></div>
+  </div>
+</section>
+
+<section class="section" id="papers">
+  <div class="section-head"><div><h2>Board Sample Papers</h2><p>Set 1, Set 2 and Set 3 for each subject.</p></div></div>
+  <div class="panel">
+    <div class="row">
+      <div style="flex:1;min-width:160px">
+        <label for="paperSubject">Choose subject</label>
+        <select id="paperSubject" class="field" onchange="renderPapers()">
+          <option>Science</option><option>Mathematics</option><option>Social Science</option>
+          <option>English</option><option>Hindi</option><option>Information Technology</option>
+        </select>
+      </div>
+    </div>
+    <div class="paper-grid" id="paperGrid"></div>
+    <p class="note">Add your own PDFs to the repository's <b>sample-papers</b> folder. Use filenames shown on each set card. Only files you upload will open; these are placeholders, not official papers.</p>
+  </div>
+</section>
+
+<section class="section" id="game">
+  <div class="section-head"><div><h2>Memory Match Arena</h2><p>Find all matching pairs. Every round shuffles the cards.</p></div></div>
+  <div class="panel">
+    <div class="row">
+      <span class="pill" id="gameMoves">Moves: 0</span>
+      <span class="pill" id="gameMatches">Pairs: 0 / 6</span>
+      <button class="btn primary" onclick="startGame()">New Challenge ↻</button>
+    </div>
+    <div class="game-board" id="gameBoard"></div>
+    <div class="result" id="gameMessage">Tap a card to reveal its symbol.</div>
+  </div>
+</section>
+
+<section class="section" id="quick">
+  <div class="section-head"><div><h2>Quick Workspace</h2><p>Keep a quick note while you work.</p></div></div>
+  <div class="panel">
+    <label for="quickNote">Your note</label>
+    <textarea id="quickNote" class="field" rows="5" placeholder="Write a reminder or a study goal..."></textarea>
+    <div class="row">
+      <button class="btn primary" onclick="saveQuickNote()">Save Note</button>
+      <button class="btn" onclick="clearQuickNote()">Clear</button>
+    </div>
+    <p class="note">This note stays in the current browser session unless you copy it elsewhere.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div style="font-weight:800;letter-spacing:2px;margin-bottom:8px">✦ MY UTILITY</div>
+  Built for learning, exploring and everyday productivity.<br>
+  <span id="year"></span> · Your space, your tools.
+</footer>
 </div>
-<div class="toast" id="toast" role="status"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
 const $ = id => document.getElementById(id);
-let toastTimer;
+$("year").textContent = new Date().getFullYear();
+
 function toast(message){
   const el=$("toast");
   el.textContent=message;
   el.classList.add("show");
-  clearTimeout(toastTimer);
-  toastTimer=setTimeout(()=>el.classList.remove("show"),2400);
+  clearTimeout(window.toastTimer);
+  window.toastTimer=setTimeout(()=>el.classList.remove("show"),2600);
 }
-function go(page){
-  document.querySelectorAll(".page").forEach(el=>el.classList.toggle("active",el.id==="page-"+page));
-  document.querySelectorAll(".nav-btn").forEach(el=>el.classList.toggle("active",el.dataset.page===page));
-  window.scrollTo({top:0,behavior:"smooth"});
-}
-document.querySelectorAll("[data-go]").forEach(btn=>btn.addEventListener("click",()=>go(btn.dataset.go)));
-document.querySelectorAll(".nav-btn").forEach(btn=>btn.addEventListener("click",()=>go(btn.dataset.page)));
-$("year").textContent=new Date().getFullYear();
 
-let accent=0;
-$("themeBtn").addEventListener("click",()=>{
-  accent=(accent+1)%3;
-  const colors=[["#5798FF","#9A7BFF"],["#32C9B2","#5798FF"],["#F2A65A","#E879F9"]];
-  document.documentElement.style.setProperty("--blue",colors[accent][0]);
-  document.documentElement.style.setProperty("--purple",colors[accent][1]);
-  toast("Accent colour updated");
+function toggleTheme(){
+  document.body.classList.toggle("light");
+  localStorage.setItem("mu-theme",document.body.classList.contains("light")?"light":"dark");
+}
+if(localStorage.getItem("mu-theme")==="light")document.body.classList.add("light");
+
+/* SCIENTIFIC CALCULATOR */
+const calcKeys=[
+ ["AC","operator"],["⌫","operator"],["(","operator"],[")","operator"],
+ ["sin","operator"],["cos","operator"],["tan","operator"],["÷","operator"],
+ ["7",""],["8",""],["9",""],["×","operator"],
+ ["4",""],["5",""],["6",""],["−","operator"],
+ ["1",""],["2",""],["3",""],["+","operator"],
+ ["π","operator"],["0",""],[".",""],["=","equals"],
+ ["√","operator"],["x²","operator"],["log","operator"],["ln","operator"]
+];
+const calcGrid=$("calcButtons");
+calcKeys.forEach(([key,cls])=>{
+ const b=document.createElement("button");
+ b.textContent=key;b.className=cls;
+ b.onclick=()=>calcPress(key);
+ calcGrid.appendChild(b);
 });
-
-/* Calculator: only accepts digits and calculator operators. */
-let calcExpr="",calcDone=false;
-function renderCalc(){ $("calcDisplay").value=calcExpr||"0"; }
+function calcPress(key){
+ const s=$("calcScreen");
+ if(key==="AC"){s.value="0";return}
+ if(key==="⌫"){s.value=s.value.length>1?s.value.slice(0,-1):"0";return}
+ if(key==="="){calculate();return}
+ if(key==="√"){s.value+="sqrt(";return}
+ if(key==="x²"){s.value="("+s.value+")^2";return}
+ if(["sin","cos","tan","log","ln"].includes(key)){s.value+=key+"(";return}
+ if(key==="π"){s.value+="pi";return}
+ if(key==="×"){s.value+="*";return}
+ if(key==="÷"){s.value+="/";return}
+ if(key==="−"){s.value+="-";return}
+ if(s.value==="0" && /[0-9.]/.test(key))s.value=key;
+ else s.value+=key;
+}
 function calculate(){
-  if(!calcExpr)return;
-  if(!/^[0-9+\-*/%.() ]+$/.test(calcExpr)){toast("Invalid calculation");return}
-  try{
-    const result=Function('"use strict"; return ('+calcExpr+')')();
-    if(typeof result!=="number"||!Number.isFinite(result))throw Error();
-    calcExpr=String(Number(result.toPrecision(12)));
-    calcDone=true;renderCalc();
-  }catch(e){calcExpr="";renderCalc();toast("Check your calculation")}
+ const s=$("calcScreen");
+ try{
+   let exp=s.value.toLowerCase().replace(/π/g,"pi").replace(/\s/g,"");
+   if(!/^[0-9+\-*/().,^a-z]*$/.test(exp))throw Error();
+   exp=exp.replace(/\bpi\b/g,"Math.PI")
+    .replace(/\bsqrt\(/g,"Math.sqrt(")
+    .replace(/\bsin\(/g,"Math.sin(Math.PI/180*(")
+    .replace(/\bcos\(/g,"Math.cos(Math.PI/180*(")
+    .replace(/\btan\(/g,"Math.tan(Math.PI/180*(")
+    .replace(/\blog\(/g,"Math.log10(")
+    .replace(/\bln\(/g,"Math.log(")
+    .replace(/\^/g,"**");
+   // Balance the extra opening bracket added by degree-mode trig functions.
+   exp=exp.replace(/Math\.(sin|cos|tan)\(Math\.PI\/180\*\(([^()]*)\)/g,
+     "Math.$1(Math.PI/180*($2))");
+   if(!/^[0-9+\-*/().,*a-z]*$/.test(exp))throw Error();
+   const result=Function('"use strict";return ('+exp+')')();
+   if(typeof result!=="number"||!Number.isFinite(result))throw Error();
+   s.value=String(Number(result.toPrecision(12)));
+ }catch(e){toast("Invalid expression. Check your brackets and numbers.");}
 }
-$("calcKeys").addEventListener("click",e=>{
-  const key=e.target.closest("[data-key]")?.dataset.key;
-  if(!key)return;
-  if(key==="C"){calcExpr="";calcDone=false;renderCalc();return}
-  if(key==="back"){calcExpr=calcExpr.slice(0,-1);calcDone=false;renderCalc();return}
-  if(key==="="){calculate();return}
-  if(calcDone&&!"+-*/%".includes(key)){calcExpr="";calcDone=false}
-  if(key==="." ){
-    const last=calcExpr.split(/[+\-*/%]/).pop();
-    if(last.includes("."))return;
-  }
-  calcExpr+=key;renderCalc();
-});
+$("calcScreen").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();calculate()}});
 
-/* Notes: browser localStorage only. */
-const NOTES_KEY="myUtilityProfessionalNotes";
-let notes=[];
-try{notes=JSON.parse(localStorage.getItem(NOTES_KEY)||"[]");if(!Array.isArray(notes))notes=[]}catch(e){notes=[]}
-function persistNotes(){
-  try{localStorage.setItem(NOTES_KEY,JSON.stringify(notes));return true}
-  catch(e){toast("Browser storage unavailable. Notes could not be saved.");return false}
+/* CLASS 10 PRACTICE QUESTIONS */
+const questionBank={
+ Science:[
+  {c:"Chemical Reactions",q:"Which gas is generally released when a metal reacts with a dilute acid?",o:["Oxygen","Hydrogen","Nitrogen","Carbon dioxide"],a:1},
+  {c:"Chemical Reactions",q:"A reaction in which heat is released is called:",o:["Endothermic","Neutral only","Exothermic","Photolytic"],a:2},
+  {c:"Life Processes",q:"Which pigment helps plants absorb light for photosynthesis?",o:["Haemoglobin","Chlorophyll","Melanin","Insulin"],a:1},
+  {c:"Life Processes",q:"Which blood vessels usually carry blood away from the heart?",o:["Veins","Arteries","Capillaries","Alveoli"],a:1},
+  {c:"Electricity",q:"The SI unit of electric current is:",o:["Volt","Ohm","Ampere","Watt"],a:2},
+  {c:"Electricity",q:"According to Ohm's law, at constant temperature:",o:["V=IR","I=VR","R=VI","V=I/R"],a:0},
+  {c:"Light",q:"Which mirror is commonly used as a rear-view mirror?",o:["Plane","Concave","Convex","Cylindrical"],a:2},
+  {c:"Environment",q:"Organisms that make their own food are called:",o:["Consumers","Producers","Decomposers","Parasites"],a:1},
+  {c:"Heredity",q:"The basic unit of inheritance is the:",o:["Tissue","Organ","Gene","Cell wall"],a:2},
+  {c:"Reproduction",q:"Which organism reproduces by budding?",o:["Hydra","Human","Mango tree only","Earthworm"],a:0}
+ ],
+ Mathematics:[
+  {c:"Real Numbers",q:"The HCF of 12 and 18 is:",o:["2","3","6","9"],a:2},
+  {c:"Polynomials",q:"The degree of 3x² + 2x + 1 is:",o:["1","2","3","0"],a:1},
+  {c:"Linear Equations",q:"The graph of a linear equation in two variables is generally a:",o:["Circle","Straight line","Triangle","Parabola"],a:1},
+  {c:"Trigonometry",q:"The value of sin 30° is:",o:["0","1","1/2","√3/2"],a:2},
+  {c:"Trigonometry",q:"The value of tan 45° is:",o:["0","1","√3","Undefined"],a:1},
+  {c:"Statistics",q:"The mean of 2, 4 and 6 is:",o:["3","4","5","6"],a:1},
+  {c:"Probability",q:"The probability of an impossible event is:",o:["0","1","1/2","2"],a:0},
+  {c:"Circles",q:"A tangent to a circle is perpendicular to the radius at the:",o:["Centre","Point of contact","Any point","Diameter end only"],a:1}
+ ],
+ "Social Science":[
+  {c:"Power Sharing",q:"Power sharing is desirable because it:",o:["Increases conflict","Reduces conflict","Ends elections","Removes diversity"],a:1},
+  {c:"Democracy",q:"In a democracy, the final decision-making power should rest with:",o:["The military","Elected representatives","One family","Foreign rulers"],a:1},
+  {c:"Money and Credit",q:"Which institution issues currency notes in India, except the one-rupee note?",o:["SBI","RBI","SEBI","NITI Aayog"],a:1},
+  {c:"Money and Credit",q:"Collateral is an asset used as:",o:["A gift","Security for a loan","A tax","A salary"],a:1},
+  {c:"Resources",q:"Which of these is a renewable resource?",o:["Coal","Petroleum","Solar energy","Natural gas"],a:2},
+  {c:"Print Culture",q:"The printing press in Europe is associated with:",o:["James Watt","Johannes Gutenberg","Isaac Newton","Marco Polo"],a:1}
+ ],
+ English:[
+  {c:"Grammar",q:"Choose the correct form: She ___ to school every day.",o:["go","goes","going","gone"],a:1},
+  {c:"Grammar",q:"The past tense of 'write' is:",o:["Writed","Written","Wrote","Writing"],a:2},
+  {c:"Grammar",q:"Choose the correct article: He is ___ honest person.",o:["a","an","the","no article"],a:1}
+ ],
+ Hindi:[
+  {c:"व्याकरण",q:"'सूर्य' का एक पर्यायवाची शब्द कौन-सा है?",o:["रवि","निशा","पवन","धरती"],a:0},
+  {c:"व्याकरण",q:"'दिन' का विलोम शब्द है:",o:["सुबह","रात","प्रकाश","समय"],a:1}
+ ],
+ "Information Technology":[
+  {c:"DBMS",q:"DBMS का पूरा नाम क्या है?",o:["Data Backup Main System","Database Management System","Digital Base Machine Setup","Data Binary Memory Service"],a:1},
+  {c:"DBMS",q:"A database table is made up of:",o:["Rows and columns","Only pictures","Slides","Audio files only"],a:0},
+  {c:"Spreadsheets",q:"A spreadsheet formula generally begins with:",o:["#","=","@","&"],a:1}
+ ]
+};
+let currentQuestion=null,quizScore=0,quizNumber=0,answered=false,usedQuestions={};
+function fillChapters(){
+ const subj=$("subject").value,sel=$("chapter");
+ const old=sel.value;
+ const chapters=[...new Set((questionBank[subj]||[]).map(q=>q.c))];
+ sel.innerHTML='<option value="all">All available questions</option>';
+ chapters.forEach(c=>{const o=document.createElement("option");o.value=c;o.textContent=c;sel.appendChild(o)});
+ if(chapters.includes(old))sel.value=old;
+}
+$("subject").addEventListener("change",fillChapters);
+function newQuestion(){
+ fillChapters();
+ const subj=$("subject").value,chapter=$("chapter").value;
+ let list=(questionBank[subj]||[]).filter(q=>chapter==="all"||q.c===chapter);
+ if(!list.length){$("questionText").textContent="More questions coming soon!";$("answers").innerHTML="";return}
+ const key=subj+"|"+chapter;
+ if(!usedQuestions[key])usedQuestions[key]=[];
+ let remaining=list.filter(q=>!usedQuestions[key].includes(q.q));
+ if(!remaining.length){usedQuestions[key]=[];remaining=list}
+ currentQuestion=remaining[Math.floor(Math.random()*remaining.length)];
+ usedQuestions[key].push(currentQuestion.q);
+ answered=false;quizNumber++;
+ $("quizCount").textContent="Question "+quizNumber;
+ $("quizScore").textContent="Score: "+quizScore;
+ $("questionText").textContent=currentQuestion.q;
+ $("quizFeedback").textContent="Choose the correct answer.";
+ const box=$("answers");box.innerHTML="";
+ currentQuestion.o.forEach((answer,i)=>{
+  const b=document.createElement("button");b.className="answer";
+  b.textContent=String.fromCharCode(65+i)+". "+answer;
+  b.onclick=()=>checkAnswer(i,b);box.appendChild(b);
+ });
+}
+function checkAnswer(i,button){
+ if(answered)return;answered=true;
+ const buttons=[...$("answers").children];
+ buttons.forEach((b,n)=>{b.disabled=true;if(n===currentQuestion.a)b.classList.add("correct")});
+ if(i===currentQuestion.a){quizScore++;$("quizFeedback").textContent="Correct! Great work. ✨"}
+ else{button.classList.add("wrong");$("quizFeedback").textContent="Not quite. Correct answer: "+currentQuestion.o[currentQuestion.a]}
+ $("quizScore").textContent="Score: "+quizScore;
+}
+function resetQuiz(){quizScore=0;quizNumber=0;usedQuestions={};newQuestion();toast("Practice score reset.")}
+fillChapters();newQuestion();
+
+/* PHOTO NOTES LIBRARY */
+let noteData=[];
+function addPhotos(){
+ const subject=$("noteSubject").value;
+ const chapter=$("chapterName").value.trim();
+ const files=[...$("noteFiles").files];
+ if(!chapter){toast("Enter a chapter name first.");return}
+ if(!files.length){toast("Select one or more note photos.");return}
+ const imageFiles=files.filter(f=>f.type.startsWith("image/"));
+ if(!imageFiles.length){toast("Please select image files.");return}
+ imageFiles.forEach(file=>{
+  const reader=new FileReader();
+  reader.onload=()=>{
+   noteData.push({subject,chapter,name:file.name,src:reader.result});
+   renderNotes();
+  };
+  reader.readAsDataURL(file);
+ });
+ $("noteFiles").value="";
+ toast("Adding your note photos...");
+}
+function refreshChapters(){
+ const s=$("noteSubject").value;
+ const chapters=[...new Set(noteData.filter(n=>n.subject===s).map(n=>n.chapter))];
+ const container=$("notesLibrary");
+ if(chapters.length)container.dataset.currentSubject=s;
 }
 function renderNotes(){
-  $("noteCount").textContent=notes.length;
-  $("noteSub").textContent=notes.length+" saved note"+(notes.length===1?"":"s");
-  const list=$("noteList");list.replaceChildren();
-  if(!notes.length){list.innerHTML='<div class="empty" style="grid-column:1/-1">No notes yet. Create your first note above.</div>';return}
-  notes.forEach(note=>{
-    const card=document.createElement("article");card.className="note";
-    const title=document.createElement("h3");title.textContent=note.title;
-    const date=document.createElement("small");date.textContent=note.date;
-    const body=document.createElement("p");body.textContent=note.body;
-    const actions=document.createElement("div");actions.className="note-actions";
-    const edit=document.createElement("button");edit.className="btn small";edit.textContent="Edit";
-    edit.addEventListener("click",()=>{
-      $("noteTitle").value=note.title;$("noteBody").value=note.body;
-      notes=notes.filter(n=>n.id!==note.id);persistNotes();renderNotes();go("notes");
-      $("noteTitle").focus();
-    });
-    const del=document.createElement("button");del.className="btn small";del.textContent="Delete";
-    del.addEventListener("click",()=>{
-      if(confirm("Delete this note?")){notes=notes.filter(n=>n.id!==note.id);persistNotes();renderNotes();toast("Note deleted")}
-    });
-    actions.append(edit,del);card.append(title,date,body,actions);list.append(card);
+ const container=$("notesLibrary"),subject=$("noteSubject").value;
+ const relevant=noteData.filter(n=>n.subject===subject);
+ container.innerHTML="";
+ if(!relevant.length){
+  container.innerHTML='<div class="result">No photos yet for this subject. Add your first chapter notes above.</div>';return;
+ }
+ const grouped={};
+ relevant.forEach(n=>(grouped[n.chapter]??=[]).push(n));
+ Object.entries(grouped).forEach(([chapter,items])=>{
+  const group=document.createElement("div");group.className="chapter-list";
+  const title=document.createElement("div");title.className="chapter";
+  title.innerHTML="<strong>"+escapeHTML(chapter)+"</strong><span class='pill'>"+items.length+" photo(s)</span>";
+  group.appendChild(title);
+  const grid=document.createElement("div");grid.className="photo-grid";
+  items.forEach(item=>{
+   const card=document.createElement("div");
+   const img=document.createElement("img");img.src=item.src;img.alt=item.name;
+   img.loading="lazy";img.title=item.name;
+   const name=document.createElement("div");name.className="note";name.textContent=item.name;
+   const del=document.createElement("button");del.className="btn";del.textContent="Remove";
+   del.onclick=()=>{noteData=noteData.filter(n=>n!==item);renderNotes()};
+   card.append(img,name,del);grid.appendChild(card);
   });
+  group.appendChild(grid);container.appendChild(group);
+ });
 }
-$("saveNote").addEventListener("click",()=>{
-  const title=$("noteTitle").value.trim(),body=$("noteBody").value.trim();
-  if(!title||!body){toast("Enter both a title and note");return}
-  notes.unshift({id:Date.now(),title,body,date:new Date().toLocaleString()});
-  if(persistNotes()){
-    $("noteTitle").value="";$("noteBody").value="";renderNotes();toast("Note saved on this device");
-  }
-});
-renderNotes();
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+$("noteSubject").addEventListener("change",renderNotes);
 
-/* Class 10 Science quiz. */
-const questions=[
- {q:"Which part of a cell contains genetic information?",o:["Cell wall","Nucleus","Vacuole","Cytoplasm"],a:1,e:"The nucleus contains chromosomes made of DNA, which carries genetic information."},
- {q:"Which gas is released during photosynthesis?",o:["Carbon dioxide","Nitrogen","Oxygen","Hydrogen"],a:2,e:"Plants use carbon dioxide and water to make food, releasing oxygen."},
- {q:"What is the SI unit of electric current?",o:["Volt","Ohm","Watt","Ampere"],a:3,e:"Electric current is measured in amperes (A)."},
- {q:"Which lens is used to correct myopia?",o:["Concave lens","Convex lens","Bifocal lens only","Cylindrical lens only"],a:0,e:"A concave lens diverges light so the image forms on the retina."},
- {q:"What is the functional unit of the kidney?",o:["Neuron","Alveolus","Nephron","Villus"],a:2,e:"Nephrons filter blood and help form urine."},
- {q:"Which substance is produced when an acid reacts with a metal?",o:["Oxygen","Hydrogen","Nitrogen","Chlorine"],a:1,e:"Many acids react with metals to produce a salt and hydrogen gas."}
-];
-let qIndex=0,score=0,answered=false;
-function renderQuiz(){
-  const q=questions[qIndex];
-  $("quizArea").innerHTML="";
-  const progress=document.createElement("p");progress.className="muted";
-  progress.textContent="QUESTION "+(qIndex+1)+" OF "+questions.length+" · SCORE "+score;
-  const question=document.createElement("div");question.className="quiz-question";question.textContent=q.q;
-  $("quizArea").append(progress,question);
-  q.o.forEach((option,i)=>{
-    const b=document.createElement("button");b.className="choice";b.textContent=String.fromCharCode(65+i)+". "+option;
-    b.addEventListener("click",()=>{
-      if(answered)return;answered=true;
-      const good=i===q.a;
-      if(good)score++;
-      const feedback=document.createElement("div");feedback.className="feedback "+(good?"good":"bad");
-      feedback.textContent=(good?"Correct! ":"Not quite. Correct answer: "+q.o[q.a]+". ")+q.e;
-      $("quizArea").append(feedback);
-      const next=document.createElement("button");next.className="btn primary";next.style.marginTop="14px";
-      next.textContent=qIndex===questions.length-1?"See result":"Next question →";
-      next.addEventListener("click",()=>{
-        if(qIndex<questions.length-1){qIndex++;answered=false;renderQuiz()}
-        else{
-          $("quizArea").innerHTML="";
-          const h=document.createElement("h2");h.textContent="Practice complete!";
-          const p=document.createElement("p");p.className="muted";p.textContent="Your score: "+score+" / "+questions.length;
-          const b=document.createElement("button");b.className="btn primary";b.textContent="Try again";
-          b.addEventListener("click",()=>{qIndex=0;score=0;answered=false;renderQuiz()});
-          $("quizArea").append(h,p,b);
-        }
-      });
-      $("quizArea").append(next);
-    });
-    $("quizArea").append(b);
-  });
+/* SAMPLE PAPERS */
+const paperSubjects=["Science","Mathematics","Social Science","English","Hindi","Information Technology"];
+const paperFiles={
+ "Science":"science","Mathematics":"mathematics","Social Science":"social-science",
+ "English":"english","Hindi":"hindi","Information Technology":"information-technology"
+};
+function renderPapers(){
+ const subject=$("paperSubject").value,slug=paperFiles[subject],grid=$("paperGrid");
+ grid.innerHTML="";
+ [1,2,3].forEach(n=>{
+  const filename=slug+"-set-"+n+".pdf";
+  const card=document.createElement("div");card.className="paper";
+  const h=document.createElement("h4");h.textContent=subject+" · Set "+n;
+  const p=document.createElement("p");p.textContent=filename;
+  const a=document.createElement("a");a.className="btn primary";a.textContent="Open PDF ↗";
+  a.href="sample-papers/"+filename;a.target="_blank";a.rel="noopener";
+  a.onerror=()=>{};
+  card.append(h,p,a);grid.appendChild(card);
+ });
 }
-renderQuiz();
+renderPapers();
 
-/* Number guessing game. */
-let secret=Math.floor(Math.random()*100)+1,attempts=0,gameOver=false;
-function resetGame(){
-  secret=Math.floor(Math.random()*100)+1;attempts=0;gameOver=false;
-  $("guessInput").value="";$("gameMessage").textContent="Make your first guess to begin.";
-  $("guessCount").textContent="Attempts: 0";
+/* MEMORY MATCH GAME */
+const symbols=["🚀","🌍","⚡","🧠","🎯","💎","🪐","🔥","🎧","🌈","🧩","⭐"];
+let deck=[],first=null,lock=false,moves=0,matches=0;
+function shuffle(arr){
+ for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]]}
+ return arr;
 }
-function makeGuess(){
-  if(gameOver){toast("Start a new game first");return}
-  const n=Number($("guessInput").value);
-  if(!Number.isInteger(n)||n<1||n>100){toast("Enter a whole number from 1 to 100");return}
-  attempts++;
-  $("guessCount").textContent="Attempts: "+attempts;
-  if(n===secret){$("gameMessage").textContent="Correct! You found the number in "+attempts+" attempts. 🎉";gameOver=true}
-  else $("gameMessage").textContent=n<secret?"Too low — try a higher number.":"Too high — try a lower number.";
+function startGame(){
+ const picked=shuffle([...symbols]).slice(0,6);
+ deck=shuffle([...picked,...picked].map((s,i)=>({id:i,s,open:false,matched:false})));
+ first=null;lock=false;moves=0;matches=0;
+ $("gameMoves").textContent="Moves: 0";
+ $("gameMatches").textContent="Pairs: 0 / 6";
+ $("gameMessage").textContent="New challenge ready. Find the matching pairs!";
+ renderGame();
 }
-$("guessBtn").addEventListener("click",makeGuess);
-$("guessInput").addEventListener("keydown",e=>{if(e.key==="Enter")makeGuess()});
-$("newGame").addEventListener("click",resetGame);
+function renderGame(){
+ const board=$("gameBoard");board.innerHTML="";
+ deck.forEach(card=>{
+  const b=document.createElement("button");
+  b.className="game-cell"+(card.open?" revealed":"")+(card.matched?" matched":"");
+  b.textContent=(card.open||card.matched)?card.s:"?";
+  b.setAttribute("aria-label",(card.open||card.matched)?card.s:"Hidden card");
+  b.onclick=()=>flipCard(card.id);board.appendChild(b);
+ });
+}
+function flipCard(id){
+ if(lock)return;
+ const card=deck.find(c=>c.id===id);
+ if(!card||card.open||card.matched)return;
+ card.open=true;renderGame();
+ if(!first){first=card;return}
+ moves++;$("gameMoves").textContent="Moves: "+moves;
+ if(first.s===card.s){
+  first.matched=true;card.matched=true;first=null;matches++;
+  $("gameMatches").textContent="Pairs: "+matches+" / 6";
+  if(matches===6)$("gameMessage").textContent="🏆 You won in "+moves+" moves! Start a new challenge to play again.";
+  else $("gameMessage").textContent="Match found! Keep going.";
+  renderGame();
+ }else{
+  const oldFirst=first;first=null;lock=true;
+  $("gameMessage").textContent="Not a match. Try remembering their positions.";
+  setTimeout(()=>{
+   oldFirst.open=false;card.open=false;lock=false;renderGame();
+  },750);
+ }
+}
+startGame();
 
-/* Local assistant demo, not a real AI connection. */
-function addChat(text,type){
-  const msg=document.createElement("div");msg.className="chat-msg "+type;msg.textContent=text;
-  $("chatBox").append(msg);$("chatBox").scrollTop=$("chatBox").scrollHeight;
+/* QUICK NOTE */
+function saveQuickNote(){
+ const value=$("quickNote").value.trim();
+ if(!value){toast("Write a note before saving.");return}
+ toast("Note kept in this session. Copy it if you need permanent storage.");
 }
-$("chatForm").addEventListener("submit",e=>{
-  e.preventDefault();
-  const input=$("chatInput"),text=input.value.trim();if(!text)return;
-  addChat(text,"user");input.value="";
-  const t=text.toLowerCase();
-  let answer;
-  if(t.includes("hello")||t.includes("hi"))answer="Hello! 👋 Welcome to My Utility. What would you like to explore?";
-  else if(t.includes("calculator"))answer="Open Calculator from the sidebar. Use the keypad to enter an expression and press = to calculate.";
-  else if(t.includes("note"))answer="Open My Notes, enter a title and some text, then select Save note. Notes are stored in this browser.";
-  else if(t.includes("study")||t.includes("science"))answer="Visit Study Centre to practise Class 10 Science multiple-choice questions and read explanations.";
-  else if(t.includes("game"))answer="Open Mini Game and guess a number from 1 to 100. I'll tell you whether your guess is too high or too low.";
-  else if(t.includes("who are you")||t.includes("your name"))answer="I'm the My Utility demo assistant. This is a simple built-in demo, not a real AI model.";
-  else if(t.includes("time")||t.includes("date"))answer="Today's date on your device is "+new Date().toLocaleDateString()+".";
-  else answer="I received your message, but this demo has limited built-in replies. To answer general questions, My Utility needs a connection to a real AI service.";
-  setTimeout(()=>addChat(answer,"ai"),180);
-});
+function clearQuickNote(){$("quickNote").value="";toast("Text cleared.")}
+
 </script>
 </body>
 </html>
