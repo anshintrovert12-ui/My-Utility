@@ -3,164 +3,448 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Utility | All-in-One Tools</title>
+<meta name="theme-color" content="#080D18">
+<meta name="description" content="My Utility — your personal productivity workspace.">
+<title>My Utility — Workspace</title>
+
 <style>
+:root{
+  --bg:#080D18;
+  --panel:#101827;
+  --panel2:#141F32;
+  --line:#25334B;
+  --text:#F3F6FC;
+  --muted:#91A0B8;
+  --blue:#5798FF;
+  --purple:#9A7BFF;
+  --green:#43D6A1;
+  --radius:20px;
+}
 *{box-sizing:border-box}
-body{margin:0;background:#080d18;color:#edf3ff;font-family:Arial,sans-serif}
-header{padding:22px 16px;background:#101a2b;border-bottom:1px solid #263550}
-header h1{margin:0;color:#69c9ff}
-header p{color:#aab8d0;margin-bottom:0}
-nav{display:flex;gap:8px;overflow-x:auto;padding:12px;background:#0c1422;position:sticky;top:0}
-button{border:0;border-radius:10px;padding:11px 14px;background:#1769aa;color:white;font-weight:bold;cursor:pointer}
-nav button{white-space:nowrap}
-main{max-width:1000px;margin:auto;padding:18px}
-section{display:none}
-section.active{display:block}
-h2{color:#69c9ff}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-.card{background:#111c2e;border:1px solid #263954;border-radius:16px;padding:18px;margin-bottom:14px}
-input,textarea{width:100%;padding:12px;margin:7px 0 12px;background:#080f1d;color:white;border:1px solid #344762;border-radius:9px;font-size:16px}
-textarea{min-height:130px;resize:vertical}
-.result{color:#8ee6b0;overflow-wrap:anywhere}
-footer{text-align:center;color:#9aabc4;padding:25px}
-a{color:#69c9ff}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:
+    radial-gradient(ellipse at 75% -10%,#182B50 0,transparent 42%),
+    var(--bg);
+  color:var(--text);
+  font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
+  min-height:100vh;
+}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible{
+  outline:2px solid var(--blue);outline-offset:3px
+}
+.app{max-width:1440px;margin:auto;padding:24px}
+.topbar{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:18px;margin-bottom:30px;flex-wrap:wrap
+}
+.brand{display:flex;align-items:center;gap:12px}
+.logo{
+  width:46px;height:46px;border-radius:15px;
+  display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--blue),var(--purple));
+  color:white;font-size:23px;font-weight:900;
+  box-shadow:0 8px 30px #5798ff30
+}
+.brand h1{font-size:20px;margin:0;letter-spacing:-.5px}
+.brand p{margin:4px 0 0;color:var(--muted);font-size:12px}
+.top-actions{display:flex;align-items:center;gap:10px}
+.status{
+  border:1px solid var(--line);border-radius:30px;
+  padding:9px 13px;color:#B8C8DC;font-size:12px
+}
+.status:before{
+  content:"";display:inline-block;width:7px;height:7px;
+  border-radius:50%;background:var(--green);margin-right:8px
+}
+.icon-btn,.btn{
+  border:1px solid var(--line);border-radius:12px;
+  color:var(--text);background:#172237;padding:11px 15px;
+  transition:.2s
+}
+.icon-btn:hover,.btn:hover{transform:translateY(-2px);border-color:#5B86C8}
+.btn.primary{
+  background:linear-gradient(135deg,#4288F5,#7365E9);
+  border-color:transparent;font-weight:700
+}
+.btn.small{padding:8px 12px;font-size:13px}
+.layout{display:grid;grid-template-columns:235px minmax(0,1fr);gap:24px}
+.sidebar{
+  background:#0D1422;border:1px solid var(--line);
+  border-radius:var(--radius);padding:15px;
+  align-self:start;position:sticky;top:16px
+}
+.side-label{
+  color:#70829F;font-size:10px;letter-spacing:1.7px;
+  font-weight:800;margin:10px 10px 12px
+}
+.nav-btn{
+  width:100%;display:flex;align-items:center;gap:12px;
+  border:1px solid transparent;background:transparent;
+  color:#AAB7CC;text-align:left;padding:12px;
+  border-radius:12px;margin:3px 0;font-size:14px;
+  transition:.2s
+}
+.nav-btn .nav-icon{width:23px;text-align:center;font-size:17px}
+.nav-btn:hover{background:#151F31;color:white}
+.nav-btn.active{
+  color:white;background:linear-gradient(100deg,#254C83,#1B2944);
+  border-color:#36588B
+}
+.sidebar-bottom{
+  border-top:1px solid var(--line);margin-top:20px;
+  padding:16px 8px 5px;color:var(--muted);font-size:12px;line-height:1.7
+}
+.content{min-width:0}
+.hero{
+  position:relative;overflow:hidden;
+  background:linear-gradient(120deg,#172B49,#171B36 72%,#252044);
+  border:1px solid #2B4164;border-radius:25px;
+  padding:clamp(25px,5vw,48px);margin-bottom:22px
+}
+.hero:after{
+  content:"";position:absolute;width:240px;height:240px;
+  right:-70px;top:-100px;border-radius:50%;
+  border:1px solid #8EB9FF20;
+  box-shadow:0 0 0 28px #8EB9FF08,0 0 0 60px #8EB9FF05
+}
+.eyebrow{
+  color:#8DBBFF;font-size:11px;letter-spacing:2px;
+  font-weight:800;text-transform:uppercase
+}
+.hero h2{
+  font-size:clamp(27px,4vw,42px);line-height:1.13;
+  letter-spacing:-1.3px;margin:15px 0 12px;max-width:600px
+}
+.hero h2 span{
+  background:linear-gradient(90deg,#8BC5FF,#B7A4FF);
+  -webkit-background-clip:text;background-clip:text;color:transparent
+}
+.hero p{color:#B3C1D6;line-height:1.8;max-width:540px;margin:0}
+.hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:23px}
+.stats{
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:14px;margin-bottom:30px
+}
+.stat,.card,.panel{
+  background:linear-gradient(145deg,#111C2D,#0F1726);
+  border:1px solid var(--line);border-radius:var(--radius)
+}
+.stat{padding:18px}
+.stat-top{display:flex;justify-content:space-between;gap:8px}
+.stat-icon{
+  width:38px;height:38px;display:grid;place-items:center;
+  background:#263958;border-radius:12px;font-size:18px
+}
+.stat h3{font-size:25px;margin:18px 0 4px}
+.stat p{margin:0;color:var(--muted);font-size:12px}
+.section-head{
+  display:flex;align-items:end;justify-content:space-between;
+  gap:12px;margin:29px 0 15px;flex-wrap:wrap
+}
+.section-head h2{font-size:19px;letter-spacing:-.4px;margin:0}
+.section-head p{font-size:12px;color:var(--muted);margin:6px 0 0}
+.tools-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.card{padding:21px;transition:transform .22s,border-color .22s;min-width:0}
+.card:hover{transform:translateY(-3px);border-color:#3C5880}
+.card-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.tool-icon{
+  width:45px;height:45px;border-radius:14px;
+  display:grid;place-items:center;font-size:21px
+}
+.i-blue{background:#1B3659}
+.i-purple{background:#30264D}
+.i-green{background:#153B36}
+.i-orange{background:#403020}
+.tag{font-size:10px;color:#A6B9D4;background:#1B283D;padding:6px 9px;border-radius:20px}
+.card h3{font-size:17px;margin:18px 0 7px}
+.card p{font-size:13px;line-height:1.7;color:var(--muted);margin:0 0 18px}
+.card-foot{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.arrow{color:#8EB8FF;font-size:13px;font-weight:700}
+.page{display:none;animation:appear .25s ease}
+.page.active{display:block}
+@keyframes appear{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.panel{padding:clamp(18px,3vw,28px);margin-bottom:18px}
+.panel h2{font-size:23px;margin:0 0 8px}
+.panel>p{color:var(--muted);font-size:13px;line-height:1.7}
+.field{
+  width:100%;border:1px solid var(--line);background:#0B1321;
+  color:var(--text);border-radius:12px;padding:13px 14px;
+  margin:7px 0 13px;min-width:0
+}
+textarea.field{min-height:140px;resize:vertical;line-height:1.6}
+.field-label{display:block;color:#B7C5D8;font-size:12px;font-weight:700;margin-top:10px}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.row .field{flex:1}
+.note-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.note{
+  padding:16px;background:#0C1524;border:1px solid var(--line);
+  border-radius:15px;min-width:0
+}
+.note h3{font-size:15px;margin:0 0 9px;overflow-wrap:anywhere}
+.note p{color:#A8B7CB;font-size:13px;line-height:1.65;white-space:pre-wrap;overflow-wrap:anywhere}
+.note small{color:#7185A3}
+.note-actions{display:flex;gap:8px;flex-wrap:wrap}
+.calc{max-width:440px}
+.calc-display{
+  width:100%;padding:22px 15px;background:#09111D;
+  color:white;border:1px solid var(--line);border-radius:15px;
+  text-align:right;font-size:29px;margin:12px 0 15px
+}
+.calc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+.calc-key{
+  border:1px solid var(--line);background:#172338;color:white;
+  border-radius:12px;padding:17px 5px;font-size:17px
+}
+.calc-key:hover{background:#273A58}
+.calc-key.op{color:#9FC7FF;background:#1B2B44}
+.calc-key.equal{background:linear-gradient(135deg,#4288F5,#7365E9)}
+.calc-key.clear{color:#FF9C9C}
+.quiz-question{font-size:18px;line-height:1.6;margin:22px 0}
+.choice{
+  display:block;width:100%;text-align:left;padding:14px;
+  border:1px solid var(--line);border-radius:12px;
+  background:#0B1423;color:white;margin:9px 0
+}
+.choice:hover{border-color:var(--blue);background:#14233A}
+.feedback{padding:13px;border-radius:12px;margin-top:12px;font-size:13px;line-height:1.6}
+.feedback.good{background:#14382F;color:#9DF0CC}
+.feedback.bad{background:#412329;color:#FFB5B5}
+.chat-box{
+  height:300px;overflow:auto;border:1px solid var(--line);
+  border-radius:14px;background:#0A1220;padding:14px;margin:15px 0
+}
+.chat-msg{max-width:90%;padding:12px 14px;border-radius:14px;margin:9px 0;font-size:13px;line-height:1.7;white-space:pre-wrap;overflow-wrap:anywhere}
+.chat-msg.user{background:#203E69;margin-left:auto}
+.chat-msg.ai{background:#192438;color:#D7E3F5}
+.muted{color:var(--muted)}
+.empty{padding:22px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:14px;font-size:13px}
+.footer{border-top:1px solid var(--line);padding:20px 0;margin-top:35px;color:#7486A1;font-size:11px;display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.toast{
+  position:fixed;bottom:22px;left:50%;transform:translate(-50%,20px);
+  background:#1B2C43;border:1px solid #38577D;color:white;
+  padding:12px 18px;border-radius:12px;opacity:0;pointer-events:none;
+  transition:.25s;z-index:10;font-size:13px;max-width:90vw;text-align:center
+}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media(max-width:800px){
+  .app{padding:15px}
+  .layout{grid-template-columns:1fr;gap:15px}
+  .sidebar{position:static;padding:10px;overflow:visible}
+  .side-label,.sidebar-bottom{display:none}
+  .sidebar nav{display:flex;overflow-x:auto;gap:5px}
+  .nav-btn{width:auto;white-space:nowrap;flex-shrink:0;margin:0;padding:10px}
+  .nav-btn .nav-icon{width:auto}
+  .stats{gap:9px}
+  .stat{padding:13px}
+  .stat h3{font-size:21px}
+}
+@media(max-width:500px){
+  .app{padding:11px}
+  .tools-grid,.note-list{grid-template-columns:1fr}
+  .stats{grid-template-columns:1fr}
+  .stat{display:flex;align-items:center;gap:14px}
+  .stat h3{margin:0 0 4px}
+  .stat p{font-size:11px}
+  .stat-info{flex:1}
+  .hero{padding:24px 20px}
+  .hero h2{font-size:29px}
+  .brand h1{font-size:18px}
+  .status{display:none}
+  .card{padding:18px}
+}
 </style>
 </head>
+
 <body>
-<header>
-<h1>⚡ My Utility</h1>
-<p>Your everyday tools, all in one place.</p>
-</header>
+<div class="app">
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">M</div>
+      <div>
+        <h1>My Utility<span style="color:#7EAFFF">.</span></h1>
+        <p>Your personal workspace</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <span class="status">Workspace ready</span>
+      <button class="icon-btn" id="themeBtn" title="Change accent">◈</button>
+    </div>
+  </header>
 
-<nav>
-<button onclick="show('home')">Home</button>
-<button onclick="show('calculator')">Calculator</button>
-<button onclick="show('notes')">Notes</button>
-<button onclick="show('study')">Study</button>
-<button onclick="show('games')">Mini Game</button>
-<button onclick="show('assistant')">AI Demo</button>
-</nav>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="side-label">WORKSPACE</div>
+      <nav id="navigation">
+        <button class="nav-btn active" data-page="home"><span class="nav-icon">⌂</span>Overview</button>
+        <button class="nav-btn" data-page="calculator"><span class="nav-icon">＋</span>Calculator</button>
+        <button class="nav-btn" data-page="notes"><span class="nav-icon">▤</span>My Notes</button>
+        <button class="nav-btn" data-page="study"><span class="nav-icon">◇</span>Study Centre</button>
+        <button class="nav-btn" data-page="game"><span class="nav-icon">✳</span>Mini Game</button>
+        <button class="nav-btn" data-page="ai"><span class="nav-icon">✦</span>AI Assistant</button>
+      </nav>
+      <div class="sidebar-bottom">
+        <strong style="color:#CFD9E9">MY UTILITY</strong><br>
+        Built for your everyday productivity.<br>
+        <span style="color:#6682AB">Version 2.0 · Free workspace</span>
+      </div>
+    </aside>
 
-<main>
-<section id="home" class="active">
-<div class="card">
-<h2>Welcome to My Utility 👋</h2>
-<p>A simple hub for useful everyday tools.</p>
-</div>
-<div class="grid">
-<div class="card"><h3>🧮 Calculator</h3><p>Calculate basic maths.</p><button onclick="show('calculator')">Open</button></div>
-<div class="card"><h3>📝 Notes</h3><p>Write and save notes on this device.</p><button onclick="show('notes')">Open</button></div>
-<div class="card"><h3>📚 Study Centre</h3><p>Revise Class 10 science basics.</p><button onclick="show('study')">Open</button></div>
-<div class="card"><h3>🎮 Mini Game</h3><p>Try the number guessing game.</p><button onclick="show('games')">Play</button></div>
-</div>
-</section>
+    <main class="content">
+      <section class="page active" id="page-home">
+        <div class="hero">
+          <div class="eyebrow">YOUR DIGITAL WORKSPACE</div>
+          <h2>Make space for <span>better work.</span></h2>
+          <p>One simple place for calculations, notes, study sessions and everyday tools. Less clutter. More focus.</p>
+          <div class="hero-actions">
+            <button class="btn primary" data-go="study">Start studying ↗</button>
+            <button class="btn" data-go="notes">Open my notes</button>
+          </div>
+        </div>
 
-<section id="calculator">
-<div class="card">
-<h2>🧮 Calculator</h2>
-<label>First number</label><input id="a" type="number" placeholder="Enter first number">
-<label>Second number</label><input id="b" type="number" placeholder="Enter second number">
-<div class="grid">
-<button onclick="calc('+')">Add +</button>
-<button onclick="calc('-')">Subtract −</button>
-<button onclick="calc('*')">Multiply ×</button>
-<button onclick="calc('/')">Divide ÷</button>
-</div>
-<h3 id="calcResult" class="result">Result appears here</h3>
-</div>
-</section>
+        <div class="stats">
+          <div class="stat">
+            <div class="stat-icon">▤</div>
+            <div class="stat-info"><h3 id="noteCount">0</h3><p>Saved notes on this device</p></div>
+          </div>
+          <div class="stat">
+            <div class="stat-icon">◇</div>
+            <div class="stat-info"><h3>Class 10</h3><p>Study workspace</p></div>
+          </div>
+          <div class="stat">
+            <div class="stat-icon">✦</div>
+            <div class="stat-info"><h3>6</h3><p>Workspace sections</p></div>
+          </div>
+        </div>
 
-<section id="notes">
-<div class="card">
-<h2>📝 My Notes</h2>
-<textarea id="noteText" placeholder="Write your notes here..."></textarea>
-<button onclick="saveNote()">Save Notes</button>
-<button onclick="loadNote()">Load Notes</button>
-<p id="noteStatus" class="result"></p>
-<p><small>Notes are saved in this browser on this device.</small></p>
-</div>
-</section>
+        <div class="section-head">
+          <div><h2>Your tools</h2><p>Everything you need, right here.</p></div>
+        </div>
 
-<section id="study">
-<div class="card">
-<h2>📚 Class 10 Science</h2>
-<h3>Life Processes</h3>
-<p><b>Nutrition:</b> The process by which organisms obtain and use food.</p>
-<p><b>Respiration:</b> The process of releasing energy from food.</p>
-<p><b>Transportation:</b> Movement of materials inside an organism.</p>
-<p><b>Excretion:</b> Removal of metabolic wastes from the body.</p>
-<hr>
-<h3>Quick Quiz</h3>
-<p>Which organ pumps blood around the human body?</p>
-<button onclick="quiz('wrong')">Lungs</button>
-<button onclick="quiz('right')">Heart</button>
-<button onclick="quiz('wrong')">Stomach</button>
-<p id="quizResult" class="result"></p>
-</div>
-</section>
+        <div class="tools-grid">
+          <article class="card">
+            <div class="card-head"><div class="tool-icon i-blue">＋</div><span class="tag">QUICK TOOL</span></div>
+            <h3>Smart Calculator</h3><p>Handle everyday calculations with a clean, easy-to-use keypad.</p>
+            <div class="card-foot"><button class="btn small" data-go="calculator">Open calculator</button><span class="arrow">01 ↗</span></div>
+          </article>
+          <article class="card">
+            <div class="card-head"><div class="tool-icon i-purple">▤</div><span class="tag">PERSONAL</span></div>
+            <h3>My Notes</h3><p>Write down ideas, save reminders and keep your notes on this device.</p>
+            <div class="card-foot"><button class="btn small" data-go="notes">Open notes</button><span class="arrow">02 ↗</span></div>
+          </article>
+          <article class="card">
+            <div class="card-head"><div class="tool-icon i-green">◇</div><span class="tag">LEARNING</span></div>
+            <h3>Study Centre</h3><p>Practise Class 10 science questions and check your answers instantly.</p>
+            <div class="card-foot"><button class="btn small" data-go="study">Start practice</button><span class="arrow">03 ↗</span></div>
+          </article>
+          <article class="card">
+            <div class="card-head"><div class="tool-icon i-orange">✳</div><span class="tag">TAKE A BREAK</span></div>
+            <h3>Mini Game</h3><p>A quick number challenge to give your brain a short break.</p>
+            <div class="card-foot"><button class="btn small" data-go="game">Play now</button><span class="arrow">04 ↗</span></div>
+          </article>
+          <article class="card">
+            <div class="card-head"><div class="tool-icon i-purple">✦</div><span class="tag">CHAT</span></div>
+            <h3>AI Assistant Demo</h3><p>Try a simple local demo. Real AI responses require an AI service connection.</p>
+            <div class="card-foot"><button class="btn small" data-go="ai">Open assistant</button><span class="arrow">05 ↗</span></div>
+          </article>
+        </div>
+      </section>
 
-<section id="games">
-<div class="card">
-<h2>🎮 Number Guessing Game</h2>
-<p>Guess a number from 1 to 10.</p>
-<input id="guess" type="number" min="1" max="10" placeholder="Your guess">
-<button onclick="playGame()">Check Guess</button>
-<p id="gameResult" class="result"></p>
-<button onclick="resetGame()">New Number</button>
-</div>
-</section>
+      <section class="page" id="page-calculator">
+        <div class="section-head"><div><h2>Calculator</h2><p>Simple calculations, without the clutter.</p></div></div>
+        <div class="panel calc">
+          <div class="eyebrow">QUICK CALCULATOR</div>
+          <input class="calc-display" id="calcDisplay" value="0" readonly aria-label="Calculator display">
+          <div class="calc-grid" id="calcKeys">
+            <button class="calc-key clear" data-key="C">AC</button>
+            <button class="calc-key" data-key="back">⌫</button>
+            <button class="calc-key op" data-key="%">%</button>
+            <button class="calc-key op" data-key="/">÷</button>
+            <button class="calc-key" data-key="7">7</button><button class="calc-key" data-key="8">8</button><button class="calc-key" data-key="9">9</button><button class="calc-key op" data-key="*">×</button>
+            <button class="calc-key" data-key="4">4</button><button class="calc-key" data-key="5">5</button><button class="calc-key" data-key="6">6</button><button class="calc-key op" data-key="-">−</button>
+            <button class="calc-key" data-key="1">1</button><button class="calc-key" data-key="2">2</button><button class="calc-key" data-key="3">3</button><button class="calc-key op" data-key="+">+</button>
+            <button class="calc-key" data-key="C">C</button><button class="calc-key" data-key="0">0</button><button class="calc-key" data-key=".">.</button><button class="calc-key equal" data-key="=">=</button>
+          </div>
+        </div>
+      </section>
 
-<section id="assistant">
-<div class="card">
-<h2>🤖 AI Demo</h2>
-<p>This is a simple offline demo, not a real AI model.</p>
-<input id="question" placeholder="Try: hello, time, or date">
-<button onclick="askDemo()">Ask</button>
-<p id="answer" class="result"></p>
-</div>
-</section>
-</main>
+      <section class="page" id="page-notes">
+        <div class="section-head"><div><h2>My Notes</h2><p>Your ideas, saved locally on this device.</p></div></div>
+        <div class="panel">
+          <h2>Create a note</h2>
+          <p>Notes stay in this browser on this device. They are not automatically synced online.</p>
+          <label class="field-label" for="noteTitle">NOTE TITLE</label>
+          <input class="field" id="noteTitle" maxlength="100" placeholder="e.g. Science revision">
+          <label class="field-label" for="noteBody">YOUR NOTE</label>
+          <textarea class="field" id="noteBody" maxlength="12000" placeholder="Write your thoughts or study notes here..."></textarea>
+          <button class="btn primary" id="saveNote">＋ Save note</button>
+        </div>
+        <div class="section-head"><div><h2>Saved notes</h2><p id="noteSub">Your saved notes appear here.</p></div></div>
+        <div class="note-list" id="noteList"></div>
+      </section>
 
-<footer>My Utility · Simple tools, one place.</footer>
+      <section class="page" id="page-study">
+        <div class="section-head"><div><h2>Study Centre</h2><p>Class 10 Science · Quick practice</p></div></div>
+        <div class="panel">
+          <div class="eyebrow">KNOWLEDGE CHECK</div>
+          <div id="quizArea"></div>
+        </div>
+      </section>
+
+      <section class="page" id="page-game">
+        <div class="section-head"><div><h2>Mini Game</h2><p>A quick number guessing challenge.</p></div></div>
+        <div class="panel" style="max-width:560px">
+          <div class="tool-icon i-orange">✳</div>
+          <h2 style="margin-top:18px">Guess the number</h2>
+          <p>I'm thinking of a number from 1 to 100. Can you find it?</p>
+          <div class="row">
+            <input class="field" id="guessInput" type="number" min="1" max="100" placeholder="Enter 1–100">
+            <button class="btn primary" id="guessBtn">Guess</button>
+          </div>
+          <p id="gameMessage" aria-live="polite">Make your first guess to begin.</p>
+          <p class="muted" id="guessCount">Attempts: 0</p>
+          <button class="btn" id="newGame">↻ New game</button>
+        </div>
+      </section>
+
+      <section class="page" id="page-ai">
+        <div class="section-head"><div><h2>AI Assistant</h2><p>A chat-style demo inside your workspace.</p></div></div>
+        <div class="panel">
+          <div class="eyebrow">ASSISTANT DEMO</div>
+          <h2>What can I help you with?</h2>
+          <p>This version uses simple local demo replies. It is not connected to a real AI model yet.</p>
+          <div class="chat-box" id="chatBox" aria-live="polite">
+            <div class="chat-msg ai">Hello! 👋 I'm the My Utility demo assistant. Try asking about the tools on this website.</div>
+          </div>
+          <form id="chatForm" class="row">
+            <input class="field" id="chatInput" maxlength="1000" placeholder="Type a message..." autocomplete="off" required>
+            <button class="btn primary" type="submit">Send ↗</button>
+          </form>
+          <p class="muted">For real AI answers, a compatible AI service must be connected. Never put a private API key in public website code.</p>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>© <span id="year"></span> My Utility</span>
+        <span>Simple tools. Clear mind. Better focus.</span>
+      </footer>
+    </main>
+  </div>
+</div>
+<div class="toast" id="toast" role="status"></div>
 
 <script>
-function show(id){
-document.querySelectorAll('main section').forEach(s=>s.classList.remove('active'));
-document.getElementById(id).classList.add('active');
-window.scrollTo({top:0,behavior:'smooth'});
+const $ = id => document.getElementById(id);
+let toastTimer;
+function toast(message){
+  const el=$("toast");
+  el.textContent=message;
+  el.classList.add("show");
+  clearTimeout(toastTimer);
+  toastTimer=setTimeout(()=>el.classList.remove("show"),2400);
 }
-function calc(op){
-const a=Number(document.getElementById('a').value);
-const b=Number(document.getElementById('b').value);
-if(document.getElementById('a').value===''||document.getElementById('b').value===''){
-document.getElementById('calcResult').textContent='Enter both numbers first.';return;
-}
-if(op==='/'&&b===0){document.getElementById('calcResult').textContent='Cannot divide by zero.';return;}
-let r=op==='+'?a+b:op==='-'?a-b:op==='*'?a*b:a/b;
-document.getElementById('calcResult').textContent='Result: '+r;
-}
-function saveNote(){
-try{localStorage.setItem('myUtilityNotes',document.getElementById('noteText').value);document.getElementById('noteStatus').textContent='Notes saved!';}
-catch(e){document.getElementById('noteStatus').textContent='Saving is unavailable in this browser.';}
-}
-function loadNote(){
-try{document.getElementById('noteText').value=localStorage.getItem('myUtilityNotes')||'';document.getElementById('noteStatus').textContent='Notes loaded.';}
-catch(e){document.getElementById('noteStatus').textContent='Loading is unavailable in this browser.';}
-}
-function quiz(answer){
-document.getElementById('quizResult').textContent=answer==='right'?'Correct! The heart pumps blood.':'Try again!';
-}
-let secret=Math.floor(Math.random()*10)+1;
-function playGame(){
-const v=Number(document.getElementById('guess').value);
-document.getElementById('gameResult').textContent=!v||v<1||v>10?'Enter a number from 1 to 10.':v===secret?'Correct! You guessed it!':v<secret?'Too low. Try again!':'Too high. Try again!';
-}
-function resetGame(){secret=Math.floor(Math.random()*10)+1;document.getElementById('guess').value='';document.getElementById('gameResult').textContent='New number ready!';}
-function askDemo(){
-const q=document.getElementById('question').value.toLowerCase();
-let answer=q.includes('hello')?'Hello! Welcome to My Utility.':q.includes('time')?'Current time: '+new Date().toLocaleTimeString():q.includes('date')?'Today is '+new Date().toLocaleDateString():'This demo only responds to hello, time, or date. It is not a real AI.';
-document.getElementById('answer').textContent=answer;
-}
-</script>
-</body>
-</html>
+function go(page){
+  document.querySelectorAll(".page").forEach(el=>el.classList.toggle("active",el.id==="p
