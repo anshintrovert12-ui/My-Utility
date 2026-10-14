@@ -411,94 +411,89 @@ function populateFlashChapters() {
 $("flashSubject").addEventListener("change", populateFlashChapters);
 
 /* Add real question/answer objects here as the chapter decks are written. */
+
 const flashcardBank = {
   "Science::Chemical Reactions and Equations": [
-    {q:"1. What is a chemical reaction?",a:"A process in which one or more substances form new substances."},
-    {q:"2. What are reactants?",a:"The substances that take part in a chemical reaction."},
-    {q:"3. What are products?",a:"The new substances formed in a chemical reaction."},
+    {q:"1. What is a chemical reaction?",a:"A process in which substances form new substances."},
+    {q:"2. What are reactants?",a:"The starting substances in a chemical reaction."},
+    {q:"3. What are products?",a:"The new substances formed during a reaction."},
     {q:"4. What is a chemical equation?",a:"A symbolic representation of a chemical reaction."},
-    {q:"5. What is a word equation?",a:"A reaction represented using the names of substances."},
+    {q:"5. What is a word equation?",a:"A reaction represented using substance names."},
     {q:"6. What is a balanced equation?",a:"An equation with equal numbers of each type of atom on both sides."},
     {q:"7. Why must equations be balanced?",a:"To obey the law of conservation of mass."},
-    {q:"8. What is the law of conservation of mass?",a:"Mass is neither created nor destroyed in a chemical reaction."},
-    {q:"9. What is a skeletal equation?",a:"A chemical equation that has not yet been balanced."},
-    {q:"10. What does (s) mean in an equation?",a:"The substance is in the solid state."},
-    {q:"11. What does (l) mean?",a:"The substance is in the liquid state."},
-    {q:"12. What does (g) mean?",a:"The substance is in the gaseous state."},
-    {q:"13. What does (aq) mean?",a:"The substance is dissolved in water as an aqueous solution."},
-    {q:"14. What does an arrow mean in an equation?",a:"It indicates the direction from reactants to products."},
-    {q:"15. What does Δ above an arrow indicate?",a:"Heat is supplied to the reaction."},
-    {q:"16. What is a combination reaction?",a:"Two or more reactants combine to form a single product."},
-    {q:"17. Give an example of a combination reaction.",a:"CaO + H₂O → Ca(OH)₂."},
+    {q:"8. What is conservation of mass?",a:"Mass is neither created nor destroyed in a chemical reaction."},
+    {q:"9. What is a skeletal equation?",a:"A chemical equation that has not been balanced."},
+    {q:"10. What does (s) mean?",a:"Solid state."},
+    {q:"11. What does (l) mean?",a:"Liquid state."},
+    {q:"12. What does (g) mean?",a:"Gaseous state."},
+    {q:"13. What does (aq) mean?",a:"A substance dissolved in water."},
+    {q:"14. What does an arrow indicate?",a:"The direction from reactants to products."},
+    {q:"15. What does Δ above an arrow mean?",a:"Heat is supplied."},
+    {q:"16. What is a combination reaction?",a:"Two or more reactants form a single product."},
+    {q:"17. Give a combination reaction example.",a:"CaO + H₂O → Ca(OH)₂."},
     {q:"18. What happens when quicklime reacts with water?",a:"Calcium hydroxide forms and heat is released."},
     {q:"19. What is quicklime?",a:"Calcium oxide (CaO)."},
     {q:"20. What is slaked lime?",a:"Calcium hydroxide, Ca(OH)₂."},
-    {q:"21. What is an exothermic reaction?",a:"A reaction that releases energy, usually as heat."},
-    {q:"22. Give an example of an exothermic reaction.",a:"Burning fuels or respiration."},
-    {q:"23. What is respiration in terms of energy?",a:"An exothermic process that releases energy from food."},
-    {q:"24. What is a decomposition reaction?",a:"One compound breaks down into two or more simpler substances."},
+    {q:"21. What is an exothermic reaction?",a:"A reaction that releases energy."},
+    {q:"22. Give an exothermic reaction example.",a:"Burning fuels or respiration."},
+    {q:"23. Why is respiration exothermic?",a:"It releases energy from food."},
+    {q:"24. What is a decomposition reaction?",a:"One compound breaks into simpler substances."},
     {q:"25. What is thermal decomposition?",a:"Decomposition caused by heating."},
-    {q:"26. What happens when lead nitrate is heated?",a:"It forms lead oxide, nitrogen dioxide and oxygen."},
-    {q:"27. What is the colour of lead nitrate?",a:"Lead nitrate is a white solid."},
-    {q:"28. What brown gas forms when lead nitrate is heated?",a:"Nitrogen dioxide (NO₂)."},
-    {q:"29. What is electrolytic decomposition?",a:"Decomposition caused by passing electricity through a substance."},
-    {q:"30. What happens when water undergoes electrolysis?",a:"Water decomposes into hydrogen and oxygen."},
+    {q:"26. What forms when lead nitrate is heated?",a:"Lead oxide, nitrogen dioxide and oxygen."},
+    {q:"27. What is the colour of lead nitrate?",a:"White."},
+    {q:"28. Which brown gas forms on heating lead nitrate?",a:"Nitrogen dioxide (NO₂)."},
+    {q:"29. What is electrolytic decomposition?",a:"Decomposition caused by electricity."},
+    {q:"30. What happens during electrolysis of water?",a:"Water decomposes into hydrogen and oxygen."},
     {q:"31. What is photochemical decomposition?",a:"Decomposition caused by light."},
-    {q:"32. What happens when silver chloride is exposed to sunlight?",a:"It decomposes into silver and chlorine."},
+    {q:"32. What happens to silver chloride in sunlight?",a:"It decomposes into silver and chlorine."},
     {q:"33. What colour change occurs in silver chloride?",a:"White silver chloride turns grey."},
-    {q:"34. What is an endothermic reaction?",a:"A reaction that absorbs energy from its surroundings."},
+    {q:"34. What is an endothermic reaction?",a:"A reaction that absorbs energy."},
     {q:"35. What is a displacement reaction?",a:"A more reactive element displaces a less reactive element."},
-    {q:"36. What happens when iron is placed in copper sulphate solution?",a:"Iron displaces copper and forms iron sulphate."},
+    {q:"36. What happens when iron is placed in copper sulphate?",a:"Iron displaces copper, forming iron sulphate."},
     {q:"37. What is the colour of copper sulphate solution?",a:"Blue."},
-    {q:"38. What colour is iron sulphate solution?",a:"Pale green."},
-    {q:"39. What forms on an iron nail in copper sulphate solution?",a:"A reddish-brown deposit of copper."},
+    {q:"38. What is the colour of iron sulphate solution?",a:"Pale green."},
+    {q:"39. What forms on an iron nail in copper sulphate?",a:"A reddish-brown copper deposit."},
     {q:"40. Why does iron displace copper?",a:"Iron is more reactive than copper."},
     {q:"41. What is a double displacement reaction?",a:"Two compounds exchange ions to form new compounds."},
     {q:"42. What is a precipitation reaction?",a:"A reaction in which an insoluble solid forms."},
-    {q:"43. What happens when sodium sulphate reacts with barium chloride?",a:"White barium sulphate precipitate forms."},
+    {q:"43. What forms when sodium sulphate reacts with barium chloride?",a:"A white barium sulphate precipitate."},
     {q:"44. What is the formula of barium sulphate?",a:"BaSO₄."},
     {q:"45. What is oxidation?",a:"Gain of oxygen or loss of hydrogen."},
     {q:"46. What is reduction?",a:"Loss of oxygen or gain of hydrogen."},
-    {q:"47. What is a redox reaction?",a:"A reaction in which oxidation and reduction occur together."},
-    {q:"48. In CuO + H₂ → Cu + H₂O, what is reduced?",a:"Copper oxide loses oxygen and becomes copper."},
-    {q:"49. In CuO + H₂ → Cu + H₂O, what is oxidised?",a:"Hydrogen gains oxygen and becomes water."},
-    {q:"50. What is corrosion?",a:"The gradual deterioration of a metal due to its surroundings."},
-    {q:"51. What is rust?",a:"A reddish-brown substance formed when iron corrodes."},
-    {q:"52. What conditions are needed for iron to rust?",a:"Both oxygen and moisture are needed."},
-    {q:"53. How can rusting be prevented?",a:"By painting, oiling, greasing or galvanising iron."},
-    {q:"54. What is galvanisation?",a:"Coating iron or steel with a protective layer of zinc."},
-    {q:"55. What is rancidity?",a:"Oxidation of fats and oils that causes unpleasant smell and taste."},
-    {q:"56. How can rancidity be prevented?",a:"Use airtight packaging, refrigeration or antioxidants."},
-    {q:"57. Why are chips packets filled with nitrogen?",a:"Nitrogen helps prevent oxidation of oils and fats."},
-    {q:"58. What is a balanced equation for magnesium burning?",a:"2Mg + O₂ → 2MgO."},
-    {q:"59. What is the observation when magnesium burns?",a:"It burns with a dazzling white flame and forms white magnesium oxide."},
-    {q:"60. What is the balanced equation for water formation?",a:"2H₂ + O₂ → 2H₂O."},
+    {q:"47. What is a redox reaction?",a:"Oxidation and reduction occur together."},
+    {q:"48. In CuO + H₂ → Cu + H₂O, what is reduced?",a:"CuO loses oxygen and becomes copper."},
+    {q:"49. In CuO + H₂ → Cu + H₂O, what is oxidised?",a:"Hydrogen gains oxygen and forms water."},
+    {q:"50. What is corrosion?",a:"Gradual deterioration of a metal due to its surroundings."},
+    {q:"51. What is rust?",a:"A reddish-brown product of iron corrosion."},
+    {q:"52. What conditions are needed for rusting?",a:"Oxygen and moisture."},
+    {q:"53. How can rusting be prevented?",a:"Painting, oiling, greasing or galvanising."},
+    {q:"54. What is galvanisation?",a:"Coating iron or steel with zinc."},
+    {q:"55. What is rancidity?",a:"Oxidation of fats and oils causing unpleasant smell and taste."},
+    {q:"56. How can rancidity be prevented?",a:"Airtight packaging, refrigeration or antioxidants."},
+    {q:"57. Why are chips packets filled with nitrogen?",a:"To help prevent oxidation of oils and fats."},
+    {q:"58. Give the balanced equation for burning magnesium.",a:"2Mg + O₂ → 2MgO."},
+    {q:"59. What happens when magnesium burns?",a:"It burns with a dazzling white flame, forming white MgO."},
+    {q:"60. Give the balanced equation for water formation.",a:"2H₂ + O₂ → 2H₂O."},
     {q:"61. Balance: H₂ + Cl₂ → HCl.",a:"H₂ + Cl₂ → 2HCl."},
     {q:"62. Balance: Fe + O₂ → Fe₂O₃.",a:"4Fe + 3O₂ → 2Fe₂O₃."},
     {q:"63. Balance: Zn + HCl → ZnCl₂ + H₂.",a:"Zn + 2HCl → ZnCl₂ + H₂."},
     {q:"64. Balance: Na + H₂O → NaOH + H₂.",a:"2Na + 2H₂O → 2NaOH + H₂."},
     {q:"65. Balance: Al + O₂ → Al₂O₃.",a:"4Al + 3O₂ → 2Al₂O₃."},
-    {q:"66. What is the balanced equation for calcium carbonate heating?",a:"CaCO₃ → CaO + CO₂."},
-    {q:"67. What is the balanced equation for silver chloride decomposition?",a:"2AgCl → 2Ag + Cl₂ (in sunlight)."},
-    {q:"68. What is the balanced equation for iron and copper sulphate?",a:"Fe + CuSO₄ → FeSO₄ + Cu."},
-    {q:"69. What is the balanced equation for lead nitrate heating?",a:"2Pb(NO₃)₂ → 2PbO + 4NO₂ + O₂ (on heating)."},
-    {q:"70. What are the four main signs of a chemical reaction?",a:"Change in state, colour change, gas formation or temperature change; a precipitate may also form."}
+    {q:"66. Give the equation for heating calcium carbonate.",a:"CaCO₃ → CaO + CO₂."},
+    {q:"67. Give the equation for silver chloride decomposition.",a:"2AgCl → 2Ag + Cl₂ (sunlight)."},
+    {q:"68. Give the equation for iron and copper sulphate.",a:"Fe + CuSO₄ → FeSO₄ + Cu."},
+    {q:"69. Give the equation for heating lead nitrate.",a:"2Pb(NO₃)₂ → 2PbO + 4NO₂ + O₂."},
+    {q:"70. Name common signs of a chemical reaction.",a:"Colour or state change, gas formation, temperature change or precipitate formation."}
   ]
 };
-function loadFlashDeck() {
-  const key = chapterKey($("flashSubject").value, $("flashChapter").value);
-  flashDeck = flashcardBank[key] || [];
-  currentFlash = 0;
-  showFlash();
-}
-$("flashChapter").addEventListener("change", loadFlashDeck);
+
 let currentFlash = 0;
 let flashDeck = [];
 
 function loadFlashcards() {
   const subject = $("flashSubject").value;
   const chapter = $("flashChapter").value;
-  const key = `${subject}::${chapter}`;
+  const key = chapterKey(subject, chapter);
 
   flashDeck = (flashcardBank[key] || []).map(card => ({
     front: card.q,
@@ -509,58 +504,81 @@ function loadFlashcards() {
   showFlash();
 }
 
+function showFlash() {
+  const card = flashDeck[currentFlash];
+
+  $("flashAnswer").classList.add("hidden");
+  $("revealAnswer").disabled = !card;
+  $("nextFlash").disabled = !card;
+  $("markKnown").disabled = !card;
+  $("markReview").disabled = !card;
+
+  if (!card) {
+    $("flashQuestion").textContent =
+      "No flashcards have been added for this chapter yet.";
+    $("flashAnswer").textContent = "";
+    $("flashCount").textContent = "0 cards";
+    $("flashNotice").textContent =
+      "Cards for this chapter have not been added yet.";
+    return;
+  }
+
+  $("flashQuestion").textContent = card.front;
+  $("flashAnswer").textContent = card.back;
+  $("flashCount").textContent =
+    `Card ${currentFlash + 1} of ${flashDeck.length}`;
+  $("flashNotice").textContent =
+    "Tap Reveal answer, then mark your result.";
+}
+
+function rateFlash(rating) {
+  const key = chapterKey(
+    $("flashSubject").value,
+    $("flashChapter").value
+  );
+
+  if (!data.flashProgress) data.flashProgress = {};
+  const progress = data.flashProgress[key] || { known: 0, review: 0 };
+
+  progress[rating] = (progress[rating] || 0) + 1;
+  data.flashProgress[key] = progress;
+
+  saveData();
+
+  showToast(
+    rating === "known" ? "Marked as known." : "Added to review count."
+  );
+
+  if (flashDeck.length) {
+    currentFlash = (currentFlash + 1) % flashDeck.length;
+    showFlash();
+  }
+}
+
 $("flashSubject").addEventListener("change", () => {
   populateFlashChapters();
   loadFlashcards();
 });
 
 $("flashChapter").addEventListener("change", loadFlashcards);
-$("markKnown").addEventListener("click", () => {
-  if (!flashDeck.length) return;
-  currentFlash = (currentFlash + 1) % flashDeck.length;
-  showFlash();
-});
 
-$("markReview").addEventListener("click", () => {
-  if (!flashDeck.length) return;
-  currentFlash = (currentFlash + 1) % flashDeck.length;
-  showFlash();
-});
-
-loadFlashcards();
-function showFlash() {
-  const card = flashDeck[currentFlash];
-  $("flashAnswer").classList.add("hidden");
-  $("revealAnswer").disabled = !card;
-  $("nextFlash").disabled = !card;
-  $("markKnown").disabled = !card;
-  $("markReview").disabled = !card;
-  if (!card) {
-    $("flashQuestion").textContent = "No flashcards have been added for this chapter yet.";
-    $("flashAnswer").textContent = "";
-    $("flashCount").textContent = "0 cards";
-    $("flashNotice").textContent = "The flashcard viewer is ready. Original chapter cards still need to be added.";
-    return;
+$("revealAnswer").addEventListener("click", () => {
+  if (flashDeck.length) {
+    $("flashAnswer").classList.toggle("hidden");
   }
-  $("flashQuestion").textContent = card.front;
-  $("flashAnswer").textContent = card.back;
-  $("flashCount").textContent = `Card ${currentFlash+1} of ${flashDeck.length}`;
-  $("flashNotice").textContent = "Tap Reveal answer, then mark your result.";
-}
-$("revealAnswer").addEventListener("click", () => $("flashAnswer").classList.toggle("hidden"));
-$("nextFlash").addEventListener("click", () => { currentFlash = (currentFlash+1)%flashDeck.length; showFlash(); });
-function rateFlash(rating) {
-  const key = chapterKey($("flashSubject").value, $("flashChapter").value);
-  const progress = data.flashProgress[key] || {known:0,review:0};
-  progress[rating] = (progress[rating] || 0) + 1;
-  data.flashProgress[key] = progress;
-  saveData();
-  showToast(rating === "known" ? "Marked as known." : "Added to review count.");
-  if (flashDeck.length) { currentFlash=(currentFlash+1)%flashDeck.length; showFlash(); }
-}
+});
+
+$("nextFlash").addEventListener("click", () => {
+  if (!flashDeck.length) return;
+  currentFlash = (currentFlash + 1) % flashDeck.length;
+  showFlash();
+});
+
 $("markKnown").addEventListener("click", () => rateFlash("known"));
 $("markReview").addEventListener("click", () => rateFlash("review"));
 
+loadFlashcards();
+    
 /* Notes with browser-local auto-save */
 function renderNotes() {
   const list = $("notesList");
