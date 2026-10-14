@@ -1,927 +1,352 @@
-
-"use strict";
-
-const $ = (id) => document.getElementById(id);
-const KEY = "myUtilityDataV1";
-
-const defaults = {
-  settings: {
-    theme: "dark",
-    accent: "#718cff",
-    background: "aurora",
-    layout: "comfortable",
-    animations: true,
-    contrast: false,
-    reading: false,
-    reduceMotion: false,
-    fontSize: 16,
-    language: "en",
-    goal: 30,
-    welcome: "A better way to learn every day.",
-    welcomeSub: "Learn at your own pace. Explore new ideas. Make every study session count."
-  },
-  notes: [],
-  completed: [],
-  bookmarks: [],
-  difficult: [],
-  flashProgress: {},
-  dailyMinutes: {},
-  lastActivity: null,
-  customNotes: ""
+// LocalStorage Keys Schema
+const KEYS = {
+  SETTINGS: 'class10hub_settings_v1',
+  NOTES: 'class10hub_notes_v1',
+  PROGRESS: 'class10hub_chapter_progress_v1',
+  HISTORY: 'class10hub_mock_test_history_v1',
+  SCHEMA: 'class10hub_schema_version'
 };
 
-function clone(value) {
-  return JSON.parse(JSON.stringify(value));
-}
-
-function loadData() {
-  try {
-    const saved = JSON.parse(localStorage.getItem(KEY));
-    if (!saved || typeof saved !== "object") return clone(defaults);
-    return {
-      ...clone(defaults),
-      ...saved,
-      settings: { ...defaults.settings, ...(saved.settings || {}) },
-      notes: Array.isArray(saved.notes) ? saved.notes : [],
-      completed: Array.isArray(saved.completed) ? saved.completed : [],
-      bookmarks: Array.isArray(saved.bookmarks) ? saved.bookmarks : [],
-      difficult: Array.isArray(saved.difficult) ? saved.difficult : [],
-      flashProgress: saved.flashProgress || {},
-      dailyMinutes: saved.dailyMinutes || {}
-    };
-  } catch {
-    return clone(defaults);
-  }
-}
-
-let data = loadData();
-let activeSubject = "";
-let activeChapter = "";
-let currentFlash = 0;
-let flashDeck = [];
-let currentNoteId = null;
-let timerSeconds = 0;
-let timerInterval = null;
-let timerRunning = false;
-let gameScore = 0;
-let gameQuestion = 0;
-let currentGame = "";
-let toastTimer;
-
-function saveData() {
-  try {
-    localStorage.setItem(KEY, JSON.stringify(data));
-    updateDashboard();
-    return true;
-  } catch (error) {
-    showToast("Could not save data. Export a backup or clear browser storage.");
-    return false;
-  }
-}
-
-function showToast(message) {
-  const toast = $("toast");
-  if (!toast) return;
-  toast.textContent = message;
-  toast.classList.add("show");
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => toast.classList.remove("show"), 2800);
-}
-
-function todayKey() {
-  const d = new Date();
-  return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
-}
-
-function escapeHTML(value) {
-  return String(value ?? "").replace(/[&<>"']/g, c => ({
-    "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;"
-  })[c]);
-}
-
-function applySettings() {
-  const s = data.settings;
-  document.body.classList.toggle("light", s.theme === "light");
-  document.body.classList.toggle("background-plain", s.background === "plain");
-  document.body.classList.toggle("background-midnight", s.background === "midnight");
-  document.body.classList.toggle("layout-compact", s.layout === "compact");
-  document.body.classList.toggle("layout-spacious", s.layout === "spacious");
-  document.body.classList.toggle("no-animations", !s.animations || s.reduceMotion);
-  document.body.classList.toggle("no-animations", !s.animations || s.reduceMotion);
-  document.body.classList.toggle("high-contrast", !!s.contrast);
-  document.body.classList.toggle("reading-mode", !!s.reading);
-  document.documentElement.style.setProperty("--accent", s.accent);
-  document.documentElement.style.setProperty("--font-size", `${s.fontSize}px`);
-
-  $("themeSelect").value = s.theme;
-  $("accentSelect").value = s.accent;
-  $("backgroundSelect").value = s.background;
-  $("layoutSelect").value = s.layout;
-  $("animationsToggle").checked = s.animations;
-  $("contrastToggle").checked = s.contrast;
-  $("readingToggle").checked = s.reading;
-  $("motionToggle").checked = s.reduceMotion;
-  $("fontSize").value = s.fontSize;
-  $("fontSizeLabel").textContent = `${s.fontSize}px`;
-  $("languageSelect").value = s.language;
-  $("goalSelect").value = String(s.goal);
-  $("welcomeInput").value = s.welcome;
-  $("welcomeSubInput").value = s.welcomeSub;
-  $("welcomeTitle").innerHTML = escapeHTML(s.welcome).replace(
-    /learn every day\./i, '<span class="gradient-text">learn every day.</span>'
-  );
-  $("welcomeSubtitle").textContent = s.welcomeSub;
-  document.documentElement.lang = s.language === "hi" ? "hi" : "en";
-}
-
-function openSidebar() {
-  $("sidebar").classList.add("show");
-  $("overlay").classList.add("show");
-}
-function closeSidebar() {
-  $("sidebar").classList.remove("show");
-  $("overlay").classList.remove("show");
-}
-
-function goPage(page) {
-  const target = $("page-" + page);
-  if (!target) return;
-  document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
-  target.classList.add("active");
-  document.querySelectorAll(".nav-item").forEach(b =>
-    b.classList.toggle("active", b.dataset.page === page)
-  );
-  closeSidebar();
-  window.scrollTo({ top: 0, behavior: data.settings.animations && !data.settings.reduceMotion ? "smooth" : "auto" });
-  if (page === "progress") renderProgress();
-  if (page === "notes") renderNotes();
-}
-
-$("menuButton").addEventListener("click", openSidebar);
-$("closeSidebar").addEventListener("click", closeSidebar);
-$("overlay").addEventListener("click", closeSidebar);
-document.addEventListener("keydown", e => {
-  if (e.key === "Escape") closeSidebar();
-});
-document.querySelectorAll("[data-page]").forEach(b =>
-  b.addEventListener("click", () => goPage(b.dataset.page))
-);
-document.querySelectorAll("[data-go]").forEach(b =>
-  b.addEventListener("click", () => goPage(b.dataset.go))
-);
-$("themeQuick").addEventListener("click", () => {
-  data.settings.theme = data.settings.theme === "dark" ? "light" : "dark";
-  applySettings(); saveData();
-});
-
-function updateClock() {
-  const now = new Date();
-  $("clock").textContent = now.toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"});
-  $("networkStatus").textContent = navigator.onLine ? "You're online" : "Offline mode";
-}
-window.addEventListener("online", updateClock);
-window.addEventListener("offline", updateClock);
-setInterval(updateClock, 30000);
-updateClock();
-
-/* Settings */
-$("themeSelect").addEventListener("change", e => {
-  data.settings.theme = e.target.value; applySettings(); saveData();
-});
-$("accentSelect").addEventListener("input", e => {
-  data.settings.accent = e.target.value; applySettings(); saveData();
-});
-$("backgroundSelect").addEventListener("change", e => {
-  data.settings.background = e.target.value; applySettings(); saveData();
-});
-$("layoutSelect").addEventListener("change", e => {
-  data.settings.layout = e.target.value; applySettings(); saveData();
-});
-$("animationsToggle").addEventListener("change", e => {
-  data.settings.animations = e.target.checked; applySettings(); saveData();
-});
-$("contrastToggle").addEventListener("change", e => {
-  data.settings.contrast = e.target.checked; applySettings(); saveData();
-});
-$("readingToggle").addEventListener("change", e => {
-  data.settings.reading = e.target.checked; applySettings(); saveData();
-});
-$("motionToggle").addEventListener("change", e => {
-  data.settings.reduceMotion = e.target.checked; applySettings(); saveData();
-});
-$("fontSize").addEventListener("input", e => {
-  data.settings.fontSize = Number(e.target.value);
-  $("fontSizeLabel").textContent = `${e.target.value}px`;
-  applySettings(); saveData();
-});
-$("languageSelect").addEventListener("change", e => {
-  data.settings.language = e.target.value; applySettings(); saveData();
-  showToast(e.target.value === "hi"
-    ? "Language preference saved. Some content remains in English."
-    : "Language preference saved.");
-});
-$("goalSelect").addEventListener("change", e => {
-  data.settings.goal = Number(e.target.value); saveData();
-});
-$("saveStudySettings").addEventListener("click", () => {
-  data.settings.welcome = $("welcomeInput").value.trim() || defaults.settings.welcome;
-  data.settings.welcomeSub = $("welcomeSubInput").value.trim() || defaults.settings.welcomeSub;
-  data.settings.goal = Number($("goalSelect").value);
-  applySettings(); saveData(); showToast("Study preferences saved.");
-});
-document.querySelectorAll("[data-settings]").forEach(button => {
-  button.addEventListener("click", () => {
-    document.querySelectorAll("[data-settings]").forEach(b => b.classList.remove("active"));
-    document.querySelectorAll(".settings-page").forEach(p => p.classList.remove("active"));
-    button.classList.add("active");
-    $("settings-" + button.dataset.settings).classList.add("active");
-  });
-});
-
-/* Subjects and chapter navigation */
-const subjects = [
-  {name:"Science",icon:"⚛",chapters:[
-    "Chemical Reactions and Equations","Acids, Bases and Salts","Metals and Non-metals",
-    "Carbon and its Compounds","Life Processes","Control and Coordination",
-    "How Do Organisms Reproduce?","Heredity","Light – Reflection and Refraction",
-    "The Human Eye and the Colourful World","Electricity","Magnetic Effects of Electric Current",
-    "Our Environment"
-  ]},
-  {name:"Mathematics Standard",icon:"∑",chapters:[
-    "Real Numbers","Polynomials","Pair of Linear Equations in Two Variables",
-    "Quadratic Equations","Arithmetic Progressions","Triangles","Coordinate Geometry",
-    "Introduction to Trigonometry","Some Applications of Trigonometry","Circles",
-    "Areas Related to Circles","Surface Areas and Volumes","Statistics","Probability"
-  ]},
-  {name:"English",icon:"Aa",chapters:[
-    "A Letter to God","Nelson Mandela: Long Walk to Freedom","Two Stories about Flying",
-    "From the Diary of Anne Frank","Glimpses of India","Mijbil the Otter",
-    "Madam Rides the Bus","The Sermon at Benares","The Proposal",
-    "Dust of Snow","Fire and Ice","A Tiger in the Zoo","How to Tell Wild Animals",
-    "The Ball Poem","Amanda!","The Trees","Fog","The Tale of Custard the Dragon","For Anne Gregory"
-  ]},
-  {name:"Hindi Course B",icon:"अ",chapters:[
-    "बड़े भाई साहब","डायरी का एक पन्ना","तताँरा-वामीरो कथा","तीसरी कसम के शिल्पकार शैलेंद्र",
-    "गिरगिट","अब कहाँ दूसरे के दुख से दुखी होने वाले","पतझर में टूटी पत्तियाँ",
-    "कारतूस","साखी","पद","दोहे","मनुष्यता","पर्वत प्रदेश में पावस",
-    "तोप","कर चले हम फ़िदा","आत्मत्राण","हरिहर काका","टोपी शुक्ला"
-  ]},
-  {name:"Social Science",icon:"◎",chapters:[
-    "The Rise of Nationalism in Europe","Nationalism in India","The Making of a Global World",
-    "The Age of Industrialisation","Print Culture and the Modern World",
-    "Resources and Development","Forest and Wildlife Resources","Water Resources",
-    "Agriculture","Minerals and Energy Resources","Manufacturing Industries",
-    "Lifelines of National Economy","Power Sharing","Federalism","Gender, Religion and Caste",
-    "Political Parties","Outcomes of Democracy","Development","Sectors of the Indian Economy",
-    "Money and Credit","Globalisation and the Indian Economy","Consumer Rights"
-  ]},
-  {name:"IT / Computer",icon:"⌘",chapters:[
-    "Introduction to Database Management System","Starting with LibreOffice Base",
-    "Tables and Data Types","Queries","Forms","Reports","Database Relationships",
-    "Digital Documentation","Electronic Spreadsheet","Employability Skills"
-  ]}
-];
-
-function chapterKey(subject, chapter) { return `${subject}::${chapter}`; }
-function hasItem(list, value) { return list.includes(value); }
-function toggleItem(listName, key) {
-  const list = data[listName];
-  data[listName] = hasItem(list, key) ? list.filter(x => x !== key) : [...list, key];
-  saveData();
-}
-
-function renderSubjects(query = "") {
-  const grid = $("subjectGrid");
-  const q = query.toLowerCase().trim();
-  const filtered = subjects.filter(s =>
-    s.name.toLowerCase().includes(q) ||
-    s.chapters.some(c => c.toLowerCase().includes(q))
-  );
-  grid.innerHTML = filtered.length ? filtered.map(s => `
-    <button class="subject-card" data-subject="${escapeHTML(s.name)}">
-      <div class="subject-symbol">${s.icon}</div>
-      <b>${escapeHTML(s.name)}</b>
-      <small>${s.chapters.length} chapter titles</small>
-    </button>`).join("") : '<div class="empty-state">No matching subjects or chapters.</div>';
-  grid.querySelectorAll("[data-subject]").forEach(b =>
-    b.addEventListener("click", () => openSubject(b.dataset.subject))
-  );
-}
-
-function openSubject(name) {
-  activeSubject = name;
-  const subject = subjects.find(s => s.name === name);
-  if (!subject) return;
-  $("chapterTitle").textContent = name;
-  $("chapterArea").classList.remove("hidden");
-  $("chapterReader").classList.add("hidden");
-  $("chapterList").innerHTML = subject.chapters.map((chapter, i) => {
-    const key = chapterKey(name, chapter);
-    const completed = hasItem(data.completed, key);
-    const bookmarked = hasItem(data.bookmarks, key);
-    const difficult = hasItem(data.difficult, key);
-    return `<div class="chapter-btn">
-      <button class="chapter-open" data-chapter="${escapeHTML(chapter)}" style="flex:1;text-align:left;background:none;border:0;color:inherit;padding:0">
-        <b>${i+1}. ${escapeHTML(chapter)}</b>
-        <span class="chapter-meta">${completed ? "Completed" : "Not completed yet"}${difficult ? " · Difficult topic" : ""}</span>
-      </button>
-      <div class="reader-actions" style="margin:0">
-        <button class="glass-button chapter-bookmark" data-key="${escapeHTML(key)}" aria-label="Bookmark chapter">${bookmarked ? "★" : "☆"}</button>
-        <button class="glass-button chapter-difficult" data-key="${escapeHTML(key)}" aria-label="Mark difficult">${difficult ? "!" : "?"}</button>
-      </div>
-    </div>`;
-  }).join("");
-  $("chapterList").querySelectorAll(".chapter-open").forEach(b =>
-    b.addEventListener("click", () => openChapter(name, b.dataset.chapter))
-  );
-  $("chapterList").querySelectorAll(".chapter-bookmark").forEach(b =>
-    b.addEventListener("click", () => { toggleItem("bookmarks", b.dataset.key); openSubject(name); })
-  );
-  $("chapterList").querySelectorAll(".chapter-difficult").forEach(b =>
-    b.addEventListener("click", () => { toggleItem("difficult", b.dataset.key); openSubject(name); })
-  );
-  $("chapterArea").scrollIntoView({behavior:"smooth",block:"start"});
-}
-
-function openChapter(subject, chapter) {
-  activeSubject = subject;
-  activeChapter = chapter;
-  const key = chapterKey(subject, chapter);
-  data.lastActivity = {subject, chapter};
-  saveData();
-  $("chapterReader").classList.remove("hidden");
-  $("chapterReader").innerHTML = `
-    <div class="eyebrow">YOUR LEARNING SPACE</div>
-    <h2>${escapeHTML(chapter)}</h2>
-    <p class="muted">${escapeHTML(subject)}</p>
-    <div class="reader-copy">
-      <p>This is the chapter workspace for <b>${escapeHTML(chapter)}</b>.</p>
-      <p>Original chapter notes, diagrams and revision material can be added here. The chapter title is a navigation entry, not a claim that complete textbook notes are already available.</p>
-    </div>
-    <div class="reader-actions">
-      <button class="primary-button" id="markComplete">${hasItem(data.completed,key) ? "✓ Completed" : "Mark as completed"}</button>
-      <button class="glass-button" id="readerBookmark">${hasItem(data.bookmarks,key) ? "★ Bookmarked" : "☆ Bookmark"}</button>
-      <button class="glass-button" id="readerDifficult">${hasItem(data.difficult,key) ? "Remove difficult mark" : "Mark difficult"}</button>
-      <button class="glass-button" id="chapterFlashcards">Practise flashcards →</button>
-    </div>`;
-  $("markComplete").addEventListener("click", () => {
-    if (!hasItem(data.completed,key)) data.completed.push(key);
-    else data.completed = data.completed.filter(x => x !== key);
-    saveData(); openChapter(subject,chapter); showToast("Chapter progress updated.");
-  });
-  $("readerBookmark").addEventListener("click", () => {
-    toggleItem("bookmarks",key); openChapter(subject,chapter);
-  });
-  $("readerDifficult").addEventListener("click", () => {
-    toggleItem("difficult",key); openChapter(subject,chapter);
-  });
-  $("chapterFlashcards").addEventListener("click", () => {
-    goPage("flashcards");
-    $("flashSubject").value = subject;
-    populateFlashChapters();
-    $("flashChapter").value = chapter;
-    loadFlashDeck();
-  });
-  $("chapterReader").scrollIntoView({behavior:"smooth",block:"start"});
-}
-
-$("librarySearch").addEventListener("input", e => {
-  renderSubjects(e.target.value);
-  $("chapterArea").classList.add("hidden");
-  $("chapterReader").classList.add("hidden");
-});
-$("backSubjects").addEventListener("click", () => {
-  $("chapterArea").classList.add("hidden");
-  $("chapterReader").classList.add("hidden");
-  renderSubjects($("librarySearch").value);
-});
-
-function populateFlashSubjects() {
-  $("flashSubject").innerHTML = subjects.map(s =>
-    `<option value="${escapeHTML(s.name)}">${escapeHTML(s.name)}</option>`
-  ).join("");
-  populateFlashChapters();
-}
-function populateFlashChapters() {
-  const subject = subjects.find(s => s.name === $("flashSubject").value) || subjects[0];
-  $("flashChapter").innerHTML = subject.chapters.map(c =>
-    `<option value="${escapeHTML(c)}">${escapeHTML(c)}</option>`
-  ).join("");
-}
-$("flashSubject").addEventListener("change", populateFlashChapters);
-
-/* Add real question/answer objects here as the chapter decks are written. */
-
-const flashcardBank = {
-  "Science::Chemical Reactions and Equations": [
-    {q:"1. What is a chemical reaction?",a:"A process in which substances form new substances."},
-    {q:"2. What are reactants?",a:"The starting substances in a chemical reaction."},
-    {q:"3. What are products?",a:"The new substances formed during a reaction."},
-    {q:"4. What is a chemical equation?",a:"A symbolic representation of a chemical reaction."},
-    {q:"5. What is a word equation?",a:"A reaction represented using substance names."},
-    {q:"6. What is a balanced equation?",a:"An equation with equal numbers of each type of atom on both sides."},
-    {q:"7. Why must equations be balanced?",a:"To obey the law of conservation of mass."},
-    {q:"8. What is conservation of mass?",a:"Mass is neither created nor destroyed in a chemical reaction."},
-    {q:"9. What is a skeletal equation?",a:"A chemical equation that has not been balanced."},
-    {q:"10. What does (s) mean?",a:"Solid state."},
-    {q:"11. What does (l) mean?",a:"Liquid state."},
-    {q:"12. What does (g) mean?",a:"Gaseous state."},
-    {q:"13. What does (aq) mean?",a:"A substance dissolved in water."},
-    {q:"14. What does an arrow indicate?",a:"The direction from reactants to products."},
-    {q:"15. What does Δ above an arrow mean?",a:"Heat is supplied."},
-    {q:"16. What is a combination reaction?",a:"Two or more reactants form a single product."},
-    {q:"17. Give a combination reaction example.",a:"CaO + H₂O → Ca(OH)₂."},
-    {q:"18. What happens when quicklime reacts with water?",a:"Calcium hydroxide forms and heat is released."},
-    {q:"19. What is quicklime?",a:"Calcium oxide (CaO)."},
-    {q:"20. What is slaked lime?",a:"Calcium hydroxide, Ca(OH)₂."},
-    {q:"21. What is an exothermic reaction?",a:"A reaction that releases energy."},
-    {q:"22. Give an exothermic reaction example.",a:"Burning fuels or respiration."},
-    {q:"23. Why is respiration exothermic?",a:"It releases energy from food."},
-    {q:"24. What is a decomposition reaction?",a:"One compound breaks into simpler substances."},
-    {q:"25. What is thermal decomposition?",a:"Decomposition caused by heating."},
-    {q:"26. What forms when lead nitrate is heated?",a:"Lead oxide, nitrogen dioxide and oxygen."},
-    {q:"27. What is the colour of lead nitrate?",a:"White."},
-    {q:"28. Which brown gas forms on heating lead nitrate?",a:"Nitrogen dioxide (NO₂)."},
-    {q:"29. What is electrolytic decomposition?",a:"Decomposition caused by electricity."},
-    {q:"30. What happens during electrolysis of water?",a:"Water decomposes into hydrogen and oxygen."},
-    {q:"31. What is photochemical decomposition?",a:"Decomposition caused by light."},
-    {q:"32. What happens to silver chloride in sunlight?",a:"It decomposes into silver and chlorine."},
-    {q:"33. What colour change occurs in silver chloride?",a:"White silver chloride turns grey."},
-    {q:"34. What is an endothermic reaction?",a:"A reaction that absorbs energy."},
-    {q:"35. What is a displacement reaction?",a:"A more reactive element displaces a less reactive element."},
-    {q:"36. What happens when iron is placed in copper sulphate?",a:"Iron displaces copper, forming iron sulphate."},
-    {q:"37. What is the colour of copper sulphate solution?",a:"Blue."},
-    {q:"38. What is the colour of iron sulphate solution?",a:"Pale green."},
-    {q:"39. What forms on an iron nail in copper sulphate?",a:"A reddish-brown copper deposit."},
-    {q:"40. Why does iron displace copper?",a:"Iron is more reactive than copper."},
-    {q:"41. What is a double displacement reaction?",a:"Two compounds exchange ions to form new compounds."},
-    {q:"42. What is a precipitation reaction?",a:"A reaction in which an insoluble solid forms."},
-    {q:"43. What forms when sodium sulphate reacts with barium chloride?",a:"A white barium sulphate precipitate."},
-    {q:"44. What is the formula of barium sulphate?",a:"BaSO₄."},
-    {q:"45. What is oxidation?",a:"Gain of oxygen or loss of hydrogen."},
-    {q:"46. What is reduction?",a:"Loss of oxygen or gain of hydrogen."},
-    {q:"47. What is a redox reaction?",a:"Oxidation and reduction occur together."},
-    {q:"48. In CuO + H₂ → Cu + H₂O, what is reduced?",a:"CuO loses oxygen and becomes copper."},
-    {q:"49. In CuO + H₂ → Cu + H₂O, what is oxidised?",a:"Hydrogen gains oxygen and forms water."},
-    {q:"50. What is corrosion?",a:"Gradual deterioration of a metal due to its surroundings."},
-    {q:"51. What is rust?",a:"A reddish-brown product of iron corrosion."},
-    {q:"52. What conditions are needed for rusting?",a:"Oxygen and moisture."},
-    {q:"53. How can rusting be prevented?",a:"Painting, oiling, greasing or galvanising."},
-    {q:"54. What is galvanisation?",a:"Coating iron or steel with zinc."},
-    {q:"55. What is rancidity?",a:"Oxidation of fats and oils causing unpleasant smell and taste."},
-    {q:"56. How can rancidity be prevented?",a:"Airtight packaging, refrigeration or antioxidants."},
-    {q:"57. Why are chips packets filled with nitrogen?",a:"To help prevent oxidation of oils and fats."},
-    {q:"58. Give the balanced equation for burning magnesium.",a:"2Mg + O₂ → 2MgO."},
-    {q:"59. What happens when magnesium burns?",a:"It burns with a dazzling white flame, forming white MgO."},
-    {q:"60. Give the balanced equation for water formation.",a:"2H₂ + O₂ → 2H₂O."},
-    {q:"61. Balance: H₂ + Cl₂ → HCl.",a:"H₂ + Cl₂ → 2HCl."},
-    {q:"62. Balance: Fe + O₂ → Fe₂O₃.",a:"4Fe + 3O₂ → 2Fe₂O₃."},
-    {q:"63. Balance: Zn + HCl → ZnCl₂ + H₂.",a:"Zn + 2HCl → ZnCl₂ + H₂."},
-    {q:"64. Balance: Na + H₂O → NaOH + H₂.",a:"2Na + 2H₂O → 2NaOH + H₂."},
-    {q:"65. Balance: Al + O₂ → Al₂O₃.",a:"4Al + 3O₂ → 2Al₂O₃."},
-    {q:"66. Give the equation for heating calcium carbonate.",a:"CaCO₃ → CaO + CO₂."},
-    {q:"67. Give the equation for silver chloride decomposition.",a:"2AgCl → 2Ag + Cl₂ (sunlight)."},
-    {q:"68. Give the equation for iron and copper sulphate.",a:"Fe + CuSO₄ → FeSO₄ + Cu."},
-    {q:"69. Give the equation for heating lead nitrate.",a:"2Pb(NO₃)₂ → 2PbO + 4NO₂ + O₂."},
-    {q:"70. Name common signs of a chemical reaction.",a:"Colour or state change, gas formation, temperature change or precipitate formation."}
+// Inbuilt Educational Syllabus & Question Bank Data
+const SYLLABUS_DATA = {
+  Science: [
+    {
+      id: 'sci_1',
+      title: 'Chemical Reactions & Equations',
+      overview: 'Study of reactants, products, balancing chemical equations, combination, decomposition, displacement, and redox reactions.',
+      notes: 'Key Concept: Law of Conservation of Mass states that mass can neither be created nor destroyed in a chemical reaction. Always balance chemical equations.',
+      qna: [
+        { q: 'Why should a magnesium ribbon be cleaned before burning in air?', a: 'To remove the protective layer of basic magnesium carbonate from its surface.' },
+        { q: 'What is a redox reaction?', a: 'A reaction where oxidation (gain of oxygen) and reduction (loss of oxygen) occur simultaneously.' }
+      ]
+    },
+    {
+      id: 'sci_2',
+      title: 'Light - Reflection and Refraction',
+      overview: 'Laws of reflection, spherical mirrors, mirror formula, magnification, refraction laws, and lens formula.',
+      notes: 'Mirror Formula: 1/f = 1/v + 1/u. Convex mirror always forms a virtual, erect, and diminished image.',
+      qna: [
+        { q: 'Define 1 Dioptre of power of a lens.', a: '1 Dioptre is the power of a lens whose focal length is 1 metre.' }
+      ]
+    }
+  ],
+  Mathematics: [
+    {
+      id: 'math_1',
+      title: 'Real Numbers',
+      overview: 'Fundamental Theorem of Arithmetic, proving irrationality of numbers, decimal expansions.',
+      notes: 'Fundamental Theorem: Every composite number can be expressed as a product of primes uniquely.',
+      qna: [
+        { q: 'State Fundamental Theorem of Arithmetic.', a: 'Every composite number can be factorized uniquely into prime factors.' }
+      ]
+    }
+  ],
+  'Social Science': [
+    {
+      id: 'sst_1',
+      title: 'Power Sharing (Civics)',
+      overview: 'Belgiums ethnic composition, Sri Lankan majoritarianism, and forms of power sharing.',
+      notes: 'Power sharing is the very spirit of democracy. It prevents power concentration.',
+      qna: [
+        { q: 'What is Community Government in Belgium?', a: 'A government elected by people belonging to one language community, responsible for cultural/language issues.' }
+      ]
+    }
   ]
 };
 
-let currentFlash = 0;
-let flashDeck = [];
-
-function loadFlashcards() {
-  const subject = $("flashSubject").value;
-  const chapter = $("flashChapter").value;
-  const key = chapterKey(subject, chapter);
-
-  flashDeck = (flashcardBank[key] || []).map(card => ({
-    front: card.q,
-    back: card.a
-  }));
-
-  currentFlash = 0;
-  showFlash();
-}
-
-function showFlash() {
-  const card = flashDeck[currentFlash];
-
-  $("flashAnswer").classList.add("hidden");
-  $("revealAnswer").disabled = !card;
-  $("nextFlash").disabled = !card;
-  $("markKnown").disabled = !card;
-  $("markReview").disabled = !card;
-
-  if (!card) {
-    $("flashQuestion").textContent =
-      "No flashcards have been added for this chapter yet.";
-    $("flashAnswer").textContent = "";
-    $("flashCount").textContent = "0 cards";
-    $("flashNotice").textContent =
-      "Cards for this chapter have not been added yet.";
-    return;
-  }
-
-  $("flashQuestion").textContent = card.front;
-  $("flashAnswer").textContent = card.back;
-  $("flashCount").textContent =
-    `Card ${currentFlash + 1} of ${flashDeck.length}`;
-  $("flashNotice").textContent =
-    "Tap Reveal answer, then mark your result.";
-}
-
-function rateFlash(rating) {
-  const key = chapterKey(
-    $("flashSubject").value,
-    $("flashChapter").value
-  );
-
-  if (!data.flashProgress) data.flashProgress = {};
-  const progress = data.flashProgress[key] || { known: 0, review: 0 };
-
-  progress[rating] = (progress[rating] || 0) + 1;
-  data.flashProgress[key] = progress;
-
-  saveData();
-
-  showToast(
-    rating === "known" ? "Marked as known." : "Added to review count."
-  );
-
-  if (flashDeck.length) {
-    currentFlash = (currentFlash + 1) % flashDeck.length;
-    showFlash();
-  }
-}
-
-$("flashSubject").addEventListener("change", () => {
-  populateFlashChapters();
-  loadFlashcards();
-});
-
-$("flashChapter").addEventListener("change", loadFlashcards);
-
-$("revealAnswer").addEventListener("click", () => {
-  if (flashDeck.length) {
-    $("flashAnswer").classList.toggle("hidden");
-  }
-});
-
-$("nextFlash").addEventListener("click", () => {
-  if (!flashDeck.length) return;
-  currentFlash = (currentFlash + 1) % flashDeck.length;
-  showFlash();
-});
-
-$("markKnown").addEventListener("click", () => rateFlash("known"));
-$("markReview").addEventListener("click", () => rateFlash("review"));
-
-loadFlashcards();
-    
-/* Notes with browser-local auto-save */
-function renderNotes() {
-  const list = $("notesList");
-  if (!data.notes.length) {
-    list.innerHTML = '<div class="empty-state">No saved notes yet. Start writing in your notebook above.</div>';
-    return;
-  }
-  list.innerHTML = data.notes.slice().reverse().map(n => `
-    <article class="note-card">
-      <h3>${escapeHTML(n.title || "Untitled note")}</h3>
-      <p>${escapeHTML((n.text || "").slice(0,250))}${(n.text || "").length>250 ? "…" : ""}</p>
-      <small class="muted">${escapeHTML(n.updated || "")}</small><br>
-      <button class="glass-button edit-note" data-id="${escapeHTML(n.id)}">Open</button>
-      <button class="danger-button delete-note" data-id="${escapeHTML(n.id)}">Delete</button>
-    </article>`).join("");
-  list.querySelectorAll(".edit-note").forEach(b => b.addEventListener("click", () => {
-    const n = data.notes.find(x => x.id === b.dataset.id);
-    if (!n) return;
-    currentNoteId = n.id; $("noteTitle").value = n.title; $("noteText").value = n.text;
-    $("saveStatus").textContent = "Editing saved note";
-    window.scrollTo({top:0,behavior:"smooth"});
-  }));
-  list.querySelectorAll(".delete-note").forEach(b => b.addEventListener("click", () => {
-    if (!confirm("Delete this note?")) return;
-    data.notes = data.notes.filter(n => n.id !== b.dataset.id);
-    if (currentNoteId === b.dataset.id) clearNoteEditor();
-    saveData(); renderNotes(); showToast("Note deleted.");
-  }));
-}
-function clearNoteEditor() {
-  currentNoteId = null; $("noteTitle").value = ""; $("noteText").value = "";
-  $("saveStatus").textContent = "New note";
-}
-function saveCurrentNote() {
-  const title = $("noteTitle").value.trim() || "Untitled note";
-  const text = $("noteText").value;
-  if (!text.trim() && !title.trim()) return;
-  const id = currentNoteId || `note-${Date.now()}-${Math.random().toString(36).slice(2,7)}`;
-  const note = {id,title,text,updated:new Date().toLocaleString()};
-  const idx = data.notes.findIndex(n => n.id === id);
-  if (idx >= 0) data.notes[idx] = note; else data.notes.push(note);
-  currentNoteId = id;
-  saveData(); renderNotes();
-  $("saveStatus").textContent = "Saved on this device";
-}
-let noteSaveTimeout;
-$("noteTitle").addEventListener("input", () => {
-  clearTimeout(noteSaveTimeout);
-  noteSaveTimeout = setTimeout(saveCurrentNote,500);
-});
-$("noteText").addEventListener("input", () => {
-  $("saveStatus").textContent = "Saving…";
-  clearTimeout(noteSaveTimeout);
-  noteSaveTimeout = setTimeout(saveCurrentNote,500);
-});
-$("saveNote").addEventListener("click", () => {
-  saveCurrentNote(); showToast("Note saved on this device.");
-});
-$("newNote").addEventListener("click", () => { clearNoteEditor(); });
-$("continueButton").addEventListener("click", () => {
-  if (!data.lastActivity) { goPage("library"); return; }
-  goPage("library");
-  $("librarySearch").value = "";
-  renderSubjects();
-  openSubject(data.lastActivity.subject);
-  openChapter(data.lastActivity.subject,data.lastActivity.chapter);
-});
-
-/* Study timer */
-function updateTimerDisplay() {
-  const h = String(Math.floor(timerSeconds/3600)).padStart(2,"0");
-  const m = String(Math.floor((timerSeconds%3600)/60)).padStart(2,"0");
-  const s = String(timerSeconds%60).padStart(2,"0");
-  $("timerDisplay").textContent = `${h}:${m}:${s}`;
-}
-function startTimer() {
-  if (timerRunning) return;
-  timerRunning = true;
-  timerInterval = setInterval(() => {
-    timerSeconds++;
-    updateTimerDisplay();
-  },1000);
-}
-function pauseTimer() {
-  if (!timerRunning) return;
-  clearInterval(timerInterval); timerRunning = false;
-  const minutes = Math.floor(timerSeconds/60);
-  if (minutes > 0) {
-    const key = todayKey();
-    data.dailyMinutes[key] = (data.dailyMinutes[key] || 0) + minutes;
-    timerSeconds %= 60;
-    saveData();
-  }
-  updateTimerDisplay();
-}
-$("timerStart").addEventListener("click",startTimer);
-$("timerPause").addEventListener("click",() => { pauseTimer(); showToast("Timer paused."); });
-$("timerReset").addEventListener("click",() => {
-  pauseTimer(); timerSeconds=0; updateTimerDisplay(); showToast("Timer reset.");
-});
-
-/* Calculator: allow only arithmetic characters and use a restricted parser */
-function calculateExpression(expression) {
-  const s = expression.replace(/\s+/g,"");
-  if (!s || s.length>100 || !/^[0-9.+\-*/()%]+$/.test(s)) throw new Error("Use numbers and + - * / % ( ) only.");
-  let i=0;
-  function expressionRule() {
-    let value=term();
-    while (s[i] === "+" || s[i] === "-") {
-      const op=s[i++], rhs=term();
-      value=op==="+" ? value+rhs : value-rhs;
-    }
-    return value;
-  }
-  function term() {
-    let value=factor();
-    while (["*","/","%"].includes(s[i])) {
-      const op=s[i++], rhs=factor();
-      if ((op==="/" || op==="%") && rhs===0) throw new Error("Cannot divide by zero.");
-      value=op==="*" ? value*rhs : op==="/" ? value/rhs : value%rhs;
-    }
-    return value;
-  }
-  function factor() {
-    if (s[i]==="+") { i++; return factor(); }
-    if (s[i]==="-") { i++; return -factor(); }
-    if (s[i]==="(") {
-      i++; const value=expressionRule();
-      if (s[i++]!==")") throw new Error("Check your brackets.");
-      return value;
-        }const match=s.slice(i).match(/^(?:\d+\.?\d*|\.\d+)/);
-    if (!match) throw new Error("Check the expression.");
-    i+=match[0].length;
-    return Number(match[0]);
-  }
-  const result=expressionRule();
-  if (i!==s.length || !Number.isFinite(result)) throw new Error("Invalid expression.");
-  return Number(result.toPrecision(12));
-}
-$("calculate").addEventListener("click",() => {
-  try { $("calcResult").textContent = `Result: ${calculateExpression($("calcDisplay").value)}`; }
-  catch(e) { $("calcResult").textContent = e.message; }
-});
-$("clearCalc").addEventListener("click",() => { $("calcDisplay").value=""; $("calcResult").textContent="Your result appears here."; });
-
-/* Word counter */
-function updateWordCounter() {
-  const text=$("wordInput").value;
-  const trimmed=text.trim();
-  $("wordCount").textContent=trimmed ? trimmed.split(/\s+/).length : 0;
-  $("charCount").textContent=text.length;
-  $("sentenceCount").textContent=(text.match(/[.!?]+(?=\s|$)/g)||[]).length;
-}
-$("wordInput").addEventListener("input",updateWordCounter);
-
-/* Progress dashboard */
-function updateDashboard() {
-  const today=data.dailyMinutes[todayKey()]||0;
-  $("goalMinutes").textContent=today;
-  const goal=Math.max(1,Number(data.settings.goal)||30);
-  $("goalBar").style.width=`${Math.min(100,today/goal*100)}%`;
-  $("goalText").textContent=`Your daily target: ${goal} minutes`;
-  $("continueText").textContent=data.lastActivity
-    ? `${data.lastActivity.subject} — ${data.lastActivity.chapter}`
-    : "Your recent chapter will appear here as you study.";
-  if ($("completedCount")) $("completedCount").textContent=data.completed.length;
-  if ($("bookmarkCount")) $("bookmarkCount").textContent=data.bookmarks.length;
-  if ($("difficultCount")) $("difficultCount").textContent=data.difficult.length;
-  if ($("knownCount")) $("knownCount").textContent=Object.values(data.flashProgress).reduce((sum,p)=>sum+(p.known||0),0);
-}
-function renderProgress() {
-  updateDashboard();
-  const rows=[
-    ["Completed chapters",data.completed],
-    ["Bookmarked chapters",data.bookmarks],
-    ["Difficult topics",data.difficult]
-  ];
-  $("progressDetails").innerHTML=rows.map(([label,items])=>`
-    <div class="help-item"><b>${label} (${items.length})</b>
-    ${items.length ? `<p class="muted">${items.map(escapeHTML).join("<br>")}</p>` : '<p class="muted">Nothing here yet.</p>'}</div>`
-  ).join("");
-}
-
-/* Backup & restore */
-$("exportBackup").addEventListener("click",() => {
-  const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
-  const url=URL.createObjectURL(blob);
-  const a=document.createElement("a");
-  a.href=url; a.download=`my-utility-backup-${todayKey()}.json`; a.click();
-  URL.revokeObjectURL(url);
-  showToast("Backup downloaded.");
-});
-$("importBackup").addEventListener("click",() => $("backupFile").click());
-$("backupFile").addEventListener("change",async e => {
-  const file=e.target.files[0]; if(!file) return;
-  try {
-    if(file.size>5*1024*1024) throw new Error("Backup file is too large.");
-    const imported=JSON.parse(await file.text());
-    if(!imported || typeof imported!=="object" || !imported.settings || !Array.isArray(imported.notes)) {
-      throw new Error("This does not look like a My Utility backup.");
-    }
-    if(!confirm("Restore this backup? Current saved data will be replaced.")) return;
-    data={
-      ...clone(defaults),...imported,
-      settings:{...defaults.settings,...imported.settings},
-      notes:Array.isArray(imported.notes)?imported.notes:[],
-      completed:Array.isArray(imported.completed)?imported.completed:[],
-      bookmarks:Array.isArray(imported.bookmarks)?imported.bookmarks:[],
-      difficult:Array.isArray(imported.difficult)?imported.difficult:[],
-      flashProgress:imported.flashProgress||{},
-      dailyMinutes:imported.dailyMinutes||{}
-    };
-    saveData(); applySettings(); renderNotes(); renderSubjects(); renderProgress();
-    showToast("Backup restored.");
-  } catch(err) { showToast(err.message || "Could not restore backup."); }
-  finally { e.target.value=""; }
-});
-$("clearData").addEventListener("click",() => {
-  if(!confirm("Delete all notes and study progress saved by My Utility? This cannot be undone without a backup.")) return;
-  data.notes=[];data.completed=[];data.bookmarks=[];data.difficult=[];
-  data.flashProgress={};data.dailyMinutes={};data.lastActivity=null;
-  saveData();renderNotes();renderProgress();showToast("Saved notes and progress cleared.");
-});
-$("resetSettings").addEventListener("click",() => {
-  if(!confirm("Reset all website preferences to their defaults? Your notes will be kept.")) return;
-  data.settings=clone(defaults.settings);applySettings();saveData();
-  showToast("Settings reset. Your notes are safe.");
-});
-$("installGuide").addEventListener("click",() => {
-  alert("Open your published GitHub Pages site in Chrome → browser menu → Add to Home screen or Install app, if available.");
-});
-
-/* Quick search across chapters and notes */
-document.addEventListener("keydown",e => {
-  if((e.ctrlKey||e.metaKey) && e.key.toLowerCase()==="k") {
-    e.preventDefault();
-    const query=prompt("Search subjects, chapters and saved notes:");
-    if(!query) return;
-    const q=query.toLowerCase();
-    const matches=[];
-    subjects.forEach(s=>{
-      if(s.name.toLowerCase().includes(q)) matches.push(`Subject: ${s.name}`);
-      s.chapters.filter(c=>c.toLowerCase().includes(q)).forEach(c=>matches.push(`${s.name}: ${c}`));
-    });
-    data.notes.filter(n=>(n.title+" "+n.text).toLowerCase().includes(q))
-      .forEach(n=>matches.push(`Note: ${n.title||"Untitled note"}`));
-    alert(matches.length ? matches.slice(0,30).join("\n") : "No matches found.");
-  }
-});
-
-/* Small standalone games */
-const games = {
-  quiz:{title:"Quiz Challenge",questions:[
-    {q:"Which planet is known as the Red Planet?",a:["Earth","Mars","Venus"],correct:1},
-    {q:"What is the chemical formula of water?",a:["CO₂","O₂","H₂O"],correct:2},
-    {q:"How many sides does a triangle have?",a:["Three","Four","Five"],correct:0}
-  ]},
-  truefalse:{title:"True or False",questions:[
-    {q:"The Earth revolves around the Sun.",a:["True","False"],correct:0},
-    {q:"A square has three sides.",a:["True","False"],correct:1},
-    {q:"Plants need light for photosynthesis.",a:["True","False"],correct:0}
-  ]},
-  memory:{title:"Quick Recall",questions:[
-    {q:"What is the basic unit of life?",a:["Cell","Tissue","Organ"],correct:0},
-    {q:"What is 12 × 12?",a:["124","144","132"],correct:1}
-  ]},
-  math:{title:"Number Challenge",questions:[]},
-  word:{title:"Word Scramble",questions:[]}
-};
-const wordRounds=[
-  {scramble:"NATELP",answer:"PLANET",hint:"A celestial body orbiting a star."},
-  {scramble:"CILEL",answer:"CELL",hint:"The basic unit of life."},
-  {scramble:"RTEWA",answer:"WATER",hint:"H₂O in everyday language."}
+const FLASHCARDS = [
+  { subject: 'Science', q: 'What is the speed of light in vacuum?', a: '3 × 10^8 m/s' },
+  { subject: 'Science', q: 'Formulas for Power of Lens?', a: 'P = 1 / f (in metres)' },
+  { subject: 'Mathematics', q: 'Quadratic Formula for ax² + bx + c = 0?', a: 'x = [-b ± √(b² - 4ac)] / 2a' },
+  { subject: 'Social Science', q: 'In which year did Sri Lanka gain independence?', a: '1948' }
 ];
-function startGame(type) {
-  currentGame=type;gameScore=0;gameQuestion=0;
-  $("gameArea").classList.remove("hidden");
-  $("gameTitle").textContent=games[type]?.title||"Challenge";
-  renderGame();
-  $("gameArea").scrollIntoView({behavior:"smooth",block:"start"});
-}
-function renderGame() {
-  const area=$("gameContent");
-  if(currentGame==="word") {
-    const round=wordRounds[gameQuestion%wordRounds.length];
-    area.innerHTML=`<p class="muted">Unscramble this word: <b>${round.scramble}</b></p>
-      <p>${round.hint}</p><input id="wordGuess" placeholder="Your answer" class="calculator-display">
-      <button class="primary-button" id="submitWord">Check answer</button><p id="gameFeedback" class="muted"></p>`;
-    $("submitWord").addEventListener("click",()=>{
-      const ok=$("wordGuess").value.trim().toUpperCase()===round.answer;
-      $("gameFeedback").textContent=ok?"Correct! Well done.":`Answer: ${round.answer}`;
-      if(ok) gameScore++;
-      $("submitWord").textContent="Next word";
-      $("submitWord").onclick=()=>{gameQuestion++;renderGame();};
-    });
-    return;
-  }
-  if(currentGame==="math") {
-    const a=2+Math.floor(Math.random()*18),b=2+Math.floor(Math.random()*12);
-    const answer=a*b;
-    area.innerHTML=`<p>What is <b>${a} × ${b}</b>?</p><input id="mathGuess" inputmode="numeric" class="calculator-display" placeholder="Your answer"><button class="primary-button" id="mathCheck">Check</button><p id="gameFeedback" class="muted"></p>`;
-    $("mathCheck").addEventListener("click",()=>{
-      const ok=Number($("mathGuess").value)===answer;
-      $("gameFeedback").textContent=ok?"Correct!":`The answer is ${answer}.`;
-      if(ok) gameScore++;
-      $("mathCheck").textContent="New question";
-      $("mathCheck").onclick=()=>renderGame();
-    });
-    return;
-    }
-  const pack=games[currentGame];
-  if(!pack) return;
-  if(gameQuestion>=pack.questions.length) {
-    area.innerHTML=`<h3>Challenge complete!</h3><p>Your score: ${gameScore} / ${pack.questions.length}</p><button class="primary-button" id="restartGame">Play again</button>`;
-    $("restartGame").addEventListener("click",()=>startGame(currentGame));
-    return;
-  }
-  const q=pack.questions[gameQuestion];
-  area.innerHTML=`<div class="eyebrow">QUESTION ${gameQuestion+1} OF ${pack.questions.length}</div><h3>${q.q}</h3>
-    <div class="grid-two">${q.a.map((a,i)=>`<button class="chapter-btn game-answer" data-answer="${i}">${a}</button>`).join("")}</div>
-    <p id="gameFeedback" class="muted"></p>`;
-  area.querySelectorAll(".game-answer").forEach(b=>b.addEventListener("click",()=>{
-    const correct=Number(b.dataset.answer)===q.correct;
-    if(correct) gameScore++;
-    area.querySelectorAll(".game-answer").forEach(x=>x.disabled=true);
-    $("gameFeedback").textContent=correct?"Correct!":"Not quite. Correct answer: "+q.a[q.correct];
-    const next=document.createElement("button");
-    next.className="primary-button";next.textContent="Next question →";
-    next.addEventListener("click",()=>{gameQuestion++;renderGame();});
-    area.appendChild(next);
-  }));
-}
-document.querySelectorAll("[data-game]").forEach(b =>
-  b.addEventListener("click",()=>startGame(b.dataset.game))
-);
-$("closeGame").addEventListener("click",()=>$("gameArea").classList.add("hidden"));
 
-/* Initial render */
-applySettings();
-renderSubjects();
-populateFlashSubjects();
-loadFlashDeck();
-renderNotes();
-renderProgress();
-updateDashboard();
-updateTimerDisplay();
+// App State
+let state = {
+  completedChapters: JSON.parse(localStorage.getItem(KEYS.PROGRESS)) || [],
+  notes: JSON.parse(localStorage.getItem(KEYS.NOTES)) || [],
+  history: JSON.parse(localStorage.getItem(KEYS.HISTORY)) || [],
+  currentFlashcardIndex: 0
+};
+
+// DOM Initialization
+document.addEventListener('DOMContentLoaded', () => {
+  initUI();
+  renderSubjects();
+  renderFlashcard();
+  renderNotes();
+  updateProgressUI();
+});
+
+function initUI() {
+  // Sidebar Toggle
+  const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebar-overlay');
+  
+  document.getElementById('hamburger-btn').addEventListener('click', () => {
+    sidebar.classList.add('open');
+    overlay.classList.add('active');
+  });
+
+  document.getElementById('close-sidebar').addEventListener('click', closeSidebar);
+  overlay.addEventListener('click', closeSidebar);
+
+  function closeSidebar() {
+    sidebar.classList.remove('open');
+    overlay.classList.remove('active');
+  }
+
+  // Dark/Light Theme Toggle
+  const themeBtn = document.getElementById('theme-toggle-btn');
+  themeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+  });
+
+  // Navigation Tabs Switching
+  const tabs = document.querySelectorAll('.tab-btn');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      
+      const target = tab.getAttribute('data-section');
+      document.querySelectorAll('.content-section').forEach(sec => sec.classList.add('hidden'));
+      document.getElementById(target).classList.remove('hidden');
+    });
+  });
+
+  // Note Modal Trigger
+  document.getElementById('create-note-btn').addEventListener('click', () => {
+    document.getElementById('note-modal').classList.remove('hidden');
+  });
+
+  document.getElementById('close-note-modal').addEventListener('click', () => {
+    document.getElementById('note-modal').classList.add('hidden');
+  });
+
+  // Save Note Event
+  document.getElementById('save-note-btn').addEventListener('click', saveNote);
+
+  // Live Character and Word Counter
+  const noteText = document.getElementById('note-text-input');
+  noteText.addEventListener('input', () => {
+    const chars = noteText.value.length;
+    const words = noteText.value.trim() ? noteText.value.trim().split(/\s+/).length : 0;
+    document.getElementById('note-char-count').innerText = `${chars} / 1000 characters`;
+    document.getElementById('note-word-count').innerText = `${words} words`;
+  });
+
+  // Flashcards Flipping & Nav
+  const flashcardEl = document.getElementById('flashcard');
+  flashcardEl.addEventListener('click', () => flashcardEl.classList.toggle('flipped'));
+
+  document.getElementById('next-card-btn').addEventListener('click', () => {
+    state.currentFlashcardIndex = (state.currentFlashcardIndex + 1) % FLASHCARDS.length;
+    renderFlashcard();
+  });
+
+  document.getElementById('prev-card-btn').addEventListener('click', () => {
+    state.currentFlashcardIndex = (state.currentFlashcardIndex - 1 + FLASHCARDS.length) % FLASHCARDS.length;
+    renderFlashcard();
+  });
+
+  // Reset Data Buttons
+  document.getElementById('reset-progress-btn').addEventListener('click', () => {
+    if (confirm('Are you sure you want to reset all chapter progress?')) {
+      state.completedChapters = [];
+      localStorage.setItem(KEYS.PROGRESS, JSON.stringify([]));
+      updateProgressUI();
+      alert('Chapter progress has been reset.');
+    }
+  });
+
+  document.getElementById('reset-all-btn').addEventListener('click', () => {
+    if (confirm('WARNING: This will delete ALL saved notes, progress, and history! Continue?')) {
+      localStorage.clear();
+      location.reload();
+    }
+  });
+}
+
+// Render Subject Grid
+function renderSubjects() {
+  const container = document.getElementById('subjects-grid');
+  container.innerHTML = '';
+
+  Object.keys(SYLLABUS_DATA).forEach(subject => {
+    const card = document.createElement('div');
+    card.className = 'glass-card';
+    card.innerHTML = `
+      <h3><i class="fas fa-book"></i> ${subject}</h3>
+      <p>${SYLLABUS_DATA[subject].length} CBSE Chapters Available</p>
+      <button class="btn btn-primary mt-15 full-width">Explore Chapters</button>
+    `;
+    card.addEventListener('click', () => showChapters(subject));
+    container.appendChild(card);
+  });
+}
+
+function showChapters(subject) {
+  document.getElementById('subjects-grid').classList.add('hidden');
+  const chapterView = document.getElementById('chapter-view');
+  chapterView.classList.remove('hidden');
+  document.getElementById('current-subject-title').innerText = subject;
+
+  const listContainer = document.getElementById('chapters-list');
+  listContainer.innerHTML = '';
+
+  SYLLABUS_DATA[subject].forEach(ch => {
+    const isDone = state.completedChapters.includes(ch.id);
+    const item = document.createElement('div');
+    item.className = 'glass-panel mb-10';
+    item.style.display = 'flex';
+    item.style.justifyContent = 'space-between';
+    item.style.alignItems = 'center';
+
+    item.innerHTML = `
+      <div>
+        <h4>${ch.title} ${isDone ? '✅' : ''}</h4>
+        <p><small>${ch.overview}</small></p>
+      </div>
+      <button class="btn btn-secondary">Read Notes</button>
+    `;
+    item.querySelector('button').addEventListener('click', () => showChapterContent(ch));
+    listContainer.appendChild(item);
+  });
+
+  document.getElementById('back-to-subjects').onclick = () => {
+    chapterView.classList.add('hidden');
+    document.getElementById('subjects-grid').classList.remove('hidden');
+  };
+}
+
+function showChapterContent(chapter) {
+  document.getElementById('chapter-view').classList.add('hidden');
+  const contentView = document.getElementById('chapter-content-view');
+  contentView.classList.remove('hidden');
+
+  document.getElementById('chapter-content-title').innerText = chapter.title;
+  
+  let qnaHTML = chapter.qna.map(item => `
+    <div style="margin-top: 10px; background: rgba(255,255,255,0.03); padding: 10px; border-radius: 6px;">
+      <strong>Q: ${item.q}</strong>
+      <p style="margin-top: 5px;">A: ${item.a}</p>
+    </div>
+  `).join('');
+
+  document.getElementById('chapter-body-text').innerHTML = `
+    <p><strong>Overview:</strong> ${chapter.overview}</p>
+    <hr style="margin: 15px 0;">
+    <h4>Detailed Chapter Notes:</h4>
+    <p>${chapter.notes}</p>
+    <hr style="margin: 15px 0;">
+    <h4>Important Q&A:</h4>
+    ${qnaHTML}
+  `;
+
+  const completeBtn = document.getElementById('mark-chapter-complete-btn');
+  completeBtn.onclick = () => {
+    if (!state.completedChapters.includes(chapter.id)) {
+      state.completedChapters.push(chapter.id);
+      localStorage.setItem(KEYS.PROGRESS, JSON.stringify(state.completedChapters));
+      alert('Chapter marked as Completed!');
+      updateProgressUI();
+    }
+  };
+
+  document.getElementById('back-to-chapters').onclick = () => {
+    contentView.classList.add('hidden');
+    document.getElementById('chapter-view').classList.remove('hidden');
+  };
+}
+
+// Flashcard Renderer
+function renderFlashcard() {
+  const card = FLASHCARDS[state.currentFlashcardIndex];
+  document.getElementById('flashcard').classList.remove('flipped');
+  document.getElementById('flashcard-tag').innerText = card.subject;
+  document.getElementById('flashcard-question').innerText = card.q;
+  document.getElementById('flashcard-answer').innerText = card.a;
+  document.getElementById('card-counter').innerText = `${state.currentFlashcardIndex + 1} / ${FLASHCARDS.length}`;
+}
+
+// Notes Section Functions
+function saveNote() {
+  const title = document.getElementById('note-title-input').value.trim();
+  const subject = document.getElementById('note-subject-input').value;
+  const content = document.getElementById('note-text-input').value.trim();
+
+  if (!title || !content) {
+    alert('Please provide both title and note content.');
+    return;
+  }
+
+  const newNote = {
+    id: 'note_' + Date.now(),
+    title,
+    subject,
+    content,
+    date: new Date().toLocaleDateString()
+  };
+
+  state.notes.unshift(newNote);
+  localStorage.setItem(KEYS.NOTES, JSON.stringify(state.notes));
+  
+  document.getElementById('note-title-input').value = '';
+  document.getElementById('note-text-input').value = '';
+  document.getElementById('note-modal').classList.add('hidden');
+  renderNotes();
+}
+
+function renderNotes() {
+  const grid = document.getElementById('notes-grid');
+  grid.innerHTML = '';
+
+  if (state.notes.length === 0) {
+    grid.innerHTML = '<p>No personal notes saved yet. Click "Create Note" to add one.</p>';
+    return;
+  }
+
+  state.notes.forEach(note => {
+    const card = document.createElement('div');
+    card.className = 'glass-card';
+    card.innerHTML = `
+      <small style="color: var(--accent-color)">${note.subject} • ${note.date}</small>
+      <h3 style="margin: 5px 0;">${note.title}</h3>
+      <p style="font-size: 0.9rem; color: var(--text-muted);">${note.content}</p>
+      <div style="margin-top: 15px; display: flex; gap: 10px;">
+        <button class="btn btn-secondary export-btn"><i class="fas fa-download"></i> TXT</button>
+        <button class="btn btn-danger delete-btn"><i class="fas fa-trash"></i></button>
+      </div>
+    `;
+
+    card.querySelector('.delete-btn').onclick = () => {
+      if (confirm('Delete this note?')) {
+        state.notes = state.notes.filter(n => n.id !== note.id);
+        localStorage.setItem(KEYS.NOTES, JSON.stringify(state.notes));
+        renderNotes();
+      }
+    };
+
+    card.querySelector('.export-btn').onclick = () => {
+      const blob = new Blob([`${note.title}\nSubject: ${note.subject}\nDate: ${note.date}\n\n${note.content}`], { type: 'text/plain' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = `${note.title.replace(/\s+/g, '_')}.txt`;
+      a.click();
+    };
+
+    grid.appendChild(card);
+  });
+}
+
+// Progress Analytics
+function updateProgressUI() {
+  let totalChapters = 0;
+  Object.keys(SYLLABUS_DATA).forEach(sub => totalChapters += SYLLABUS_DATA[sub].length);
+  const doneCount = state.completedChapters.length;
+
+  document.getElementById('completed-chapters-count').innerText = `${doneCount} / ${totalChapters}`;
+  const pct = totalChapters > 0 ? Math.round((doneCount / totalChapters) * 100) : 0;
+  document.getElementById('overall-progress-percentage').innerText = `${pct}%`;
+    }
