@@ -521,3 +521,280 @@ $("continueButton").addEventListener("click", () => {
 });
 
 /* Study timer */
+function updateTimerDisplay() {
+  const h = String(Math.floor(timerSeconds/3600)).padStart(2,"0");
+  const m = String(Math.floor((timerSeconds%3600)/60)).padStart(2,"0");
+  const s = String(timerSeconds%60).padStart(2,"0");
+  $("timerDisplay").textContent = `${h}:${m}:${s}`;
+}
+function startTimer() {
+  if (timerRunning) return;
+  timerRunning = true;
+  timerInterval = setInterval(() => {
+    timerSeconds++;
+    updateTimerDisplay();
+  },1000);
+}
+function pauseTimer() {
+  if (!timerRunning) return;
+  clearInterval(timerInterval); timerRunning = false;
+  const minutes = Math.floor(timerSeconds/60);
+  if (minutes > 0) {
+    const key = todayKey();
+    data.dailyMinutes[key] = (data.dailyMinutes[key] || 0) + minutes;
+    timerSeconds %= 60;
+    saveData();
+  }
+  updateTimerDisplay();
+}
+$("timerStart").addEventListener("click",startTimer);
+$("timerPause").addEventListener("click",() => { pauseTimer(); showToast("Timer paused."); });
+$("timerReset").addEventListener("click",() => {
+  pauseTimer(); timerSeconds=0; updateTimerDisplay(); showToast("Timer reset.");
+});
+
+/* Calculator: allow only arithmetic characters and use a restricted parser */
+function calculateExpression(expression) {
+  const s = expression.replace(/\s+/g,"");
+  if (!s || s.length>100 || !/^[0-9.+\-*/()%]+$/.test(s)) throw new Error("Use numbers and + - * / % ( ) only.");
+  let i=0;
+  function expressionRule() {
+    let value=term();
+    while (s[i] === "+" || s[i] === "-") {
+      const op=s[i++], rhs=term();
+      value=op==="+" ? value+rhs : value-rhs;
+    }
+    return value;
+  }
+  function term() {
+    let value=factor();
+    while (["*","/","%"].includes(s[i])) {
+      const op=s[i++], rhs=factor();
+      if ((op==="/" || op==="%") && rhs===0) throw new Error("Cannot divide by zero.");
+      value=op==="*" ? value*rhs : op==="/" ? value/rhs : value%rhs;
+    }
+    return value;
+  }
+  function factor() {
+    if (s[i]==="+") { i++; return factor(); }
+    if (s[i]==="-") { i++; return -factor(); }
+    if (s[i]==="(") {
+      i++; const value=expressionRule();
+      if (s[i++]!==")") throw new Error("Check your brackets.");
+      return value;
+        }const match=s.slice(i).match(/^(?:\d+\.?\d*|\.\d+)/);
+    if (!match) throw new Error("Check the expression.");
+    i+=match[0].length;
+    return Number(match[0]);
+  }
+  const result=expressionRule();
+  if (i!==s.length || !Number.isFinite(result)) throw new Error("Invalid expression.");
+  return Number(result.toPrecision(12));
+}
+$("calculate").addEventListener("click",() => {
+  try { $("calcResult").textContent = `Result: ${calculateExpression($("calcDisplay").value)}`; }
+  catch(e) { $("calcResult").textContent = e.message; }
+});
+$("clearCalc").addEventListener("click",() => { $("calcDisplay").value=""; $("calcResult").textContent="Your result appears here."; });
+
+/* Word counter */
+function updateWordCounter() {
+  const text=$("wordInput").value;
+  const trimmed=text.trim();
+  $("wordCount").textContent=trimmed ? trimmed.split(/\s+/).length : 0;
+  $("charCount").textContent=text.length;
+  $("sentenceCount").textContent=(text.match(/[.!?]+(?=\s|$)/g)||[]).length;
+}
+$("wordInput").addEventListener("input",updateWordCounter);
+
+/* Progress dashboard */
+function updateDashboard() {
+  const today=data.dailyMinutes[todayKey()]||0;
+  $("goalMinutes").textContent=today;
+  const goal=Math.max(1,Number(data.settings.goal)||30);
+  $("goalBar").style.width=`${Math.min(100,today/goal*100)}%`;
+  $("goalText").textContent=`Your daily target: ${goal} minutes`;
+  $("continueText").textContent=data.lastActivity
+    ? `${data.lastActivity.subject} — ${data.lastActivity.chapter}`
+    : "Your recent chapter will appear here as you study.";
+  if ($("completedCount")) $("completedCount").textContent=data.completed.length;
+  if ($("bookmarkCount")) $("bookmarkCount").textContent=data.bookmarks.length;
+  if ($("difficultCount")) $("difficultCount").textContent=data.difficult.length;
+  if ($("knownCount")) $("knownCount").textContent=Object.values(data.flashProgress).reduce((sum,p)=>sum+(p.known||0),0);
+}
+function renderProgress() {
+  updateDashboard();
+  const rows=[
+    ["Completed chapters",data.completed],
+    ["Bookmarked chapters",data.bookmarks],
+    ["Difficult topics",data.difficult]
+  ];
+  $("progressDetails").innerHTML=rows.map(([label,items])=>`
+    <div class="help-item"><b>${label} (${items.length})</b>
+    ${items.length ? `<p class="muted">${items.map(escapeHTML).join("<br>")}</p>` : '<p class="muted">Nothing here yet.</p>'}</div>`
+  ).join("");
+}
+
+/* Backup & restore */
+$("exportBackup").addEventListener("click",() => {
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url; a.download=`my-utility-backup-${todayKey()}.json`; a.click();
+  URL.revokeObjectURL(url);
+  showToast("Backup downloaded.");
+});
+$("importBackup").addEventListener("click",() => $("backupFile").click());
+$("backupFile").addEventListener("change",async e => {
+  const file=e.target.files[0]; if(!file) return;
+  try {
+    if(file.size>5*1024*1024) throw new Error("Backup file is too large.");
+    const imported=JSON.parse(await file.text());
+    if(!imported || typeof imported!=="object" || !imported.settings || !Array.isArray(imported.notes)) {
+      throw new Error("This does not look like a My Utility backup.");
+    }
+    if(!confirm("Restore this backup? Current saved data will be replaced.")) return;
+    data={
+      ...clone(defaults),...imported,
+      settings:{...defaults.settings,...imported.settings},
+      notes:Array.isArray(imported.notes)?imported.notes:[],
+      completed:Array.isArray(imported.completed)?imported.completed:[],
+      bookmarks:Array.isArray(imported.bookmarks)?imported.bookmarks:[],
+      difficult:Array.isArray(imported.difficult)?imported.difficult:[],
+      flashProgress:imported.flashProgress||{},
+      dailyMinutes:imported.dailyMinutes||{}
+    };
+    saveData(); applySettings(); renderNotes(); renderSubjects(); renderProgress();
+    showToast("Backup restored.");
+  } catch(err) { showToast(err.message || "Could not restore backup."); }
+  finally { e.target.value=""; }
+});
+$("clearData").addEventListener("click",() => {
+  if(!confirm("Delete all notes and study progress saved by My Utility? This cannot be undone without a backup.")) return;
+  data.notes=[];data.completed=[];data.bookmarks=[];data.difficult=[];
+  data.flashProgress={};data.dailyMinutes={};data.lastActivity=null;
+  saveData();renderNotes();renderProgress();showToast("Saved notes and progress cleared.");
+});
+$("resetSettings").addEventListener("click",() => {
+  if(!confirm("Reset all website preferences to their defaults? Your notes will be kept.")) return;
+  data.settings=clone(defaults.settings);applySettings();saveData();
+  showToast("Settings reset. Your notes are safe.");
+});
+$("installGuide").addEventListener("click",() => {
+  alert("Open your published GitHub Pages site in Chrome → browser menu → Add to Home screen or Install app, if available.");
+});
+
+/* Quick search across chapters and notes */
+document.addEventListener("keydown",e => {
+  if((e.ctrlKey||e.metaKey) && e.key.toLowerCase()==="k") {
+    e.preventDefault();
+    const query=prompt("Search subjects, chapters and saved notes:");
+    if(!query) return;
+    const q=query.toLowerCase();
+    const matches=[];
+    subjects.forEach(s=>{
+      if(s.name.toLowerCase().includes(q)) matches.push(`Subject: ${s.name}`);
+      s.chapters.filter(c=>c.toLowerCase().includes(q)).forEach(c=>matches.push(`${s.name}: ${c}`));
+    });
+    data.notes.filter(n=>(n.title+" "+n.text).toLowerCase().includes(q))
+      .forEach(n=>matches.push(`Note: ${n.title||"Untitled note"}`));
+    alert(matches.length ? matches.slice(0,30).join("\n") : "No matches found.");
+  }
+});
+
+/* Small standalone games */
+const games = {
+  quiz:{title:"Quiz Challenge",questions:[
+    {q:"Which planet is known as the Red Planet?",a:["Earth","Mars","Venus"],correct:1},
+    {q:"What is the chemical formula of water?",a:["CO₂","O₂","H₂O"],correct:2},
+    {q:"How many sides does a triangle have?",a:["Three","Four","Five"],correct:0}
+  ]},
+  truefalse:{title:"True or False",questions:[
+    {q:"The Earth revolves around the Sun.",a:["True","False"],correct:0},
+    {q:"A square has three sides.",a:["True","False"],correct:1},
+    {q:"Plants need light for photosynthesis.",a:["True","False"],correct:0}
+  ]},
+  memory:{title:"Quick Recall",questions:[
+    {q:"What is the basic unit of life?",a:["Cell","Tissue","Organ"],correct:0},
+    {q:"What is 12 × 12?",a:["124","144","132"],correct:1}
+  ]},
+  math:{title:"Number Challenge",questions:[]},
+  word:{title:"Word Scramble",questions:[]}
+};
+const wordRounds=[
+  {scramble:"NATELP",answer:"PLANET",hint:"A celestial body orbiting a star."},
+  {scramble:"CILEL",answer:"CELL",hint:"The basic unit of life."},
+  {scramble:"RTEWA",answer:"WATER",hint:"H₂O in everyday language."}
+];
+function startGame(type) {
+  currentGame=type;gameScore=0;gameQuestion=0;
+  $("gameArea").classList.remove("hidden");
+  $("gameTitle").textContent=games[type]?.title||"Challenge";
+  renderGame();
+  $("gameArea").scrollIntoView({behavior:"smooth",block:"start"});
+}
+function renderGame() {
+  const area=$("gameContent");
+  if(currentGame==="word") {
+    const round=wordRounds[gameQuestion%wordRounds.length];
+    area.innerHTML=`<p class="muted">Unscramble this word: <b>${round.scramble}</b></p>
+      <p>${round.hint}</p><input id="wordGuess" placeholder="Your answer" class="calculator-display">
+      <button class="primary-button" id="submitWord">Check answer</button><p id="gameFeedback" class="muted"></p>`;
+    $("submitWord").addEventListener("click",()=>{
+      const ok=$("wordGuess").value.trim().toUpperCase()===round.answer;
+      $("gameFeedback").textContent=ok?"Correct! Well done.":`Answer: ${round.answer}`;
+      if(ok) gameScore++;
+      $("submitWord").textContent="Next word";
+      $("submitWord").onclick=()=>{gameQuestion++;renderGame();};
+    });
+    return;
+  }
+  if(currentGame==="math") {
+    const a=2+Math.floor(Math.random()*18),b=2+Math.floor(Math.random()*12);
+    const answer=a*b;
+    area.innerHTML=`<p>What is <b>${a} × ${b}</b>?</p><input id="mathGuess" inputmode="numeric" class="calculator-display" placeholder="Your answer"><button class="primary-button" id="mathCheck">Check</button><p id="gameFeedback" class="muted"></p>`;
+    $("mathCheck").addEventListener("click",()=>{
+      const ok=Number($("mathGuess").value)===answer;
+      $("gameFeedback").textContent=ok?"Correct!":`The answer is ${answer}.`;
+      if(ok) gameScore++;
+      $("mathCheck").textContent="New question";
+      $("mathCheck").onclick=()=>renderGame();
+    });
+    return;
+    }
+  const pack=games[currentGame];
+  if(!pack) return;
+  if(gameQuestion>=pack.questions.length) {
+    area.innerHTML=`<h3>Challenge complete!</h3><p>Your score: ${gameScore} / ${pack.questions.length}</p><button class="primary-button" id="restartGame">Play again</button>`;
+    $("restartGame").addEventListener("click",()=>startGame(currentGame));
+    return;
+  }
+  const q=pack.questions[gameQuestion];
+  area.innerHTML=`<div class="eyebrow">QUESTION ${gameQuestion+1} OF ${pack.questions.length}</div><h3>${q.q}</h3>
+    <div class="grid-two">${q.a.map((a,i)=>`<button class="chapter-btn game-answer" data-answer="${i}">${a}</button>`).join("")}</div>
+    <p id="gameFeedback" class="muted"></p>`;
+  area.querySelectorAll(".game-answer").forEach(b=>b.addEventListener("click",()=>{
+    const correct=Number(b.dataset.answer)===q.correct;
+    if(correct) gameScore++;
+    area.querySelectorAll(".game-answer").forEach(x=>x.disabled=true);
+    $("gameFeedback").textContent=correct?"Correct!":"Not quite. Correct answer: "+q.a[q.correct];
+    const next=document.createElement("button");
+    next.className="primary-button";next.textContent="Next question →";
+    next.addEventListener("click",()=>{gameQuestion++;renderGame();});
+    area.appendChild(next);
+  }));
+}
+document.querySelectorAll("[data-game]").forEach(b =>
+  b.addEventListener("click",()=>startGame(b.dataset.game))
+);
+$("closeGame").addEventListener("click",()=>$("gameArea").classList.add("hidden"));
+
+/* Initial render */
+applySettings();
+renderSubjects();
+populateFlashSubjects();
+loadFlashDeck();
+renderNotes();
+renderProgress();
+updateDashboard();
+updateTimerDisplay();
