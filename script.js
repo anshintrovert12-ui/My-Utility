@@ -349,4 +349,4 @@ function updateProgressUI() {
   document.getElementById('completed-chapters-count').innerText = `${doneCount} / ${totalChapters}`;
   const pct = totalChapters > 0 ? Math.round((doneCount / totalChapters) * 100) : 0;
   document.getElementById('overall-progress-percentage').innerText = `${pct}%`;
-    }
+}
