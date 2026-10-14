@@ -470,4 +470,54 @@ function renderNotes() {
   list.querySelectorAll(".edit-note").forEach(b => b.addEventListener("click", () => {
     const n = data.notes.find(x => x.id === b.dataset.id);
     if (!n) return;
-    currentNoteId = n.id; $("noteTitle").value = n.title
+    currentNoteId = n.id; $("noteTitle").value = n.title; $("noteText").value = n.text;
+    $("saveStatus").textContent = "Editing saved note";
+    window.scrollTo({top:0,behavior:"smooth"});
+  }));
+  list.querySelectorAll(".delete-note").forEach(b => b.addEventListener("click", () => {
+    if (!confirm("Delete this note?")) return;
+    data.notes = data.notes.filter(n => n.id !== b.dataset.id);
+    if (currentNoteId === b.dataset.id) clearNoteEditor();
+    saveData(); renderNotes(); showToast("Note deleted.");
+  }));
+}
+function clearNoteEditor() {
+  currentNoteId = null; $("noteTitle").value = ""; $("noteText").value = "";
+  $("saveStatus").textContent = "New note";
+}
+function saveCurrentNote() {
+  const title = $("noteTitle").value.trim() || "Untitled note";
+  const text = $("noteText").value;
+  if (!text.trim() && !title.trim()) return;
+  const id = currentNoteId || `note-${Date.now()}-${Math.random().toString(36).slice(2,7)}`;
+  const note = {id,title,text,updated:new Date().toLocaleString()};
+  const idx = data.notes.findIndex(n => n.id === id);
+  if (idx >= 0) data.notes[idx] = note; else data.notes.push(note);
+  currentNoteId = id;
+  saveData(); renderNotes();
+  $("saveStatus").textContent = "Saved on this device";
+}
+let noteSaveTimeout;
+$("noteTitle").addEventListener("input", () => {
+  clearTimeout(noteSaveTimeout);
+  noteSaveTimeout = setTimeout(saveCurrentNote,500);
+});
+$("noteText").addEventListener("input", () => {
+  $("saveStatus").textContent = "Saving…";
+  clearTimeout(noteSaveTimeout);
+  noteSaveTimeout = setTimeout(saveCurrentNote,500);
+});
+$("saveNote").addEventListener("click", () => {
+  saveCurrentNote(); showToast("Note saved on this device.");
+});
+$("newNote").addEventListener("click", () => { clearNoteEditor(); });
+$("continueButton").addEventListener("click", () => {
+  if (!data.lastActivity) { goPage("library"); return; }
+  goPage("library");
+  $("librarySearch").value = "";
+  renderSubjects();
+  openSubject(data.lastActivity.subject);
+  openChapter(data.lastActivity.subject,data.lastActivity.chapter);
+});
+
+/* Study timer */
