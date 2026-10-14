@@ -1,357 +1,239 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Class 10 Hub — CBSE Learning Portal</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- FontAwesome Icons for UI -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080d18">
+<title>My Utility | Class 10</title>
+<link rel="stylesheet" href="style.css">
+<script src="script.js" defer></script>
 </head>
-<body class="dark-mode">
+<body>
 
-  <!-- Header -->
-  <header class="main-header">
-    <button id="hamburger-btn" class="icon-btn" aria-label="Open Sidebar Menu">
-      <i class="fas fa-bars"></i>
-    </button>
-    <h1 class="brand-title"><i class="fas fa-graduation-cap"></i> Class 10 Hub</h1>
-    <button id="theme-toggle-btn" class="icon-btn" aria-label="Toggle Dark/Light Theme">
-      <i class="fas fa-sun"></i>
-    </button>
-  </header>
+<header class="topbar">
+  <button class="icon-btn" id="menuBtn" aria-label="Open menu">☰</button>
+  <a class="brand" href="#home">
+    <span class="logo">M</span>
+    <span>My Utility<small>CLASS 10 WORKSPACE</small></span>
+  </a>
+  <div class="top-actions">
+    <button class="icon-btn" id="themeBtn" aria-label="Toggle theme">☼</button>
+    <button class="icon-btn" id="settingsBtn" aria-label="Settings">⚙</button>
+  </div>
+</header>
 
-  <!-- Sidebar Overlay & Menu -->
-  <div id="sidebar-overlay" class="overlay"></div>
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-header">
-      <h2><i class="fas fa-cog"></i> Settings & Info</h2>
-      <button id="close-sidebar" class="icon-btn"><i class="fas fa-times"></i></button>
-    </div>
-    <div class="sidebar-content">
-      <div class="setting-item">
-        <label><i class="fas fa-adjust"></i> Theme Mode</label>
-        <button id="sidebar-theme-toggle" class="btn btn-secondary">Switch Mode</button>
-      </div>
+<div class="layout">
+<aside class="sidebar" id="sidebar">
+  <p class="side-label">WORKSPACE</p>
+  <nav>
+    <button class="nav active" data-page="home">⌂ Overview</button>
+    <button class="nav" data-page="subjects">▤ Subject Library</button>
+    <button class="nav" data-page="flashcards">▣ Flashcards</button>
+    <button class="nav" data-page="quiz">✓ Quiz Centre</button>
+    <button class="nav" data-page="notes">✎ My Notes</button>
+    <button class="nav" data-page="calculator">＋ Calculator</button>
+    <button class="nav" data-page="games">◇ Mini Games</button>
+    <button class="nav" data-page="settings">⚙ Settings</button>
+  </nav>
+  <div class="side-bottom">🟢 Free Study Workspace<br><small>Made for Class 10</small></div>
+</aside>
 
-      <div class="setting-item">
-        <label><i class="fas fa-text-height"></i> Text Size</label>
-        <select id="text-size-select">
-          <option value="small">Small</option>
-          <option value="normal" selected>Normal</option>
-          <option value="large">Large</option>
-        </select>
-      </div>
+<main class="main">
 
-      <div class="setting-item">
-        <label><i class="fas fa-palette"></i> Accent Color</label>
-        <div class="color-picker-group">
-          <button class="color-dot default" data-color="#8b5cf6"></button>
-          <button class="color-dot blue" data-color="#3b82f6"></button>
-          <button class="color-dot green" data-color="#10b981"></button>
-          <button class="color-dot pink" data-color="#ec4899"></button>
-        </div>
-      </div>
+<!-- OVERVIEW -->
+<section class="page active" id="page-home">
+  <p class="eyebrow">YOUR PERSONAL STUDY SPACE</p>
+  <h1>Learn better. <span class="gradient">Every day.</span></h1>
+  <p class="muted">Your Class 10 study tools, all in one place.</p>
 
-      <div class="setting-item">
-        <label><i class="fas fa-volume-up"></i> Sound Effects</label>
-        <input type="checkbox" id="sound-toggle" checked>
-      </div>
-
-      <hr>
-
-      <button id="help-btn" class="sidebar-btn"><i class="fas fa-question-circle"></i> Help & Instructions</button>
-      <button id="about-btn" class="sidebar-btn"><i class="fas fa-info-circle"></i> About Website</button>
-      <button id="developer-btn" class="sidebar-btn"><i class="fas fa-code"></i> Developer Information</button>
-      
-      <hr>
-
-      <button id="reset-all-btn" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Reset All Data</button>
-    </div>
-  </aside>
-
-  <!-- Main Container -->
-  <main class="app-container">
-    
-    <!-- Navigation Tabs / Section Switcher -->
-    <nav class="nav-tabs">
-      <button class="tab-btn active" data-section="subject-library"><i class="fas fa-book"></i> Subjects</button>
-      <button class="tab-btn" data-section="notes-section"><i class="fas fa-sticky-note"></i> My Notes</button>
-      <button class="tab-btn" data-section="flashcards-section"><i class="fas fa-clone"></i> Flashcards</button>
-      <button class="tab-btn" data-section="quiz-section"><i class="fas fa-tasks"></i> Chapter Quizzes</button>
-      <button class="tab-btn" data-section="mock-tests-section"><i class="fas fa-file-alt"></i> Mock Tests</button>
-      <button class="tab-btn" data-section="mini-games-section"><i class="fas fa-gamepad"></i> Mini Games</button>
-      <button class="tab-btn" data-section="progress-section"><i class="fas fa-chart-line"></i> Progress</button>
-    </nav>
-
-    <!-- 1. SUBJECT LIBRARY SECTION -->
-    <section id="subject-library" class="content-section active">
-      <div class="section-header">
-        <h2><i class="fas fa-book-open"></i> CBSE Class 10 Subject Library</h2>
-        <p>Select a subject to view chapters, detailed study notes, and formulas.</p>
-      </div>
-      
-      <div id="subjects-grid" class="cards-grid">
-        <!-- Injected dynamically by script.js -->
-      </div>
-
-      <div id="chapter-view" class="sub-view hidden">
-        <button id="back-to-subjects" class="btn btn-secondary mb-15"><i class="fas fa-arrow-left"></i> Back to Subjects</button>
-        <h2 id="current-subject-title"></h2>
-        <div id="chapters-list" class="chapters-grid"></div>
-      </div>
-
-      <div id="chapter-content-view" class="sub-view hidden">
-        <button id="back-to-chapters" class="btn btn-secondary mb-15"><i class="fas fa-arrow-left"></i> Back to Chapters</button>
-        <div class="content-box glass-panel">
-          <div class="content-box-header">
-            <h2 id="chapter-content-title"></h2>
-            <button id="mark-chapter-complete-btn" class="btn btn-outline"><i class="far fa-check-circle"></i> Mark as Completed</button>
-          </div>
-          <div id="chapter-body-text" class="content-body"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 2. NOTES SECTION -->
-    <section id="notes-section" class="content-section hidden">
-      <div class="section-header">
-        <h2><i class="fas fa-edit"></i> Personal Study Notes</h2>
-        <p>Create, save, edit versions, and export notes locally (Max 1,000 characters per note).</p>
-      </div>
-
-      <div class="notes-controls glass-panel mb-20">
-        <input type="text" id="search-notes" placeholder="Search notes by title or content...">
-        <select id="filter-notes-subject">
-          <option value="ALL">All Subjects</option>
-          <option value="Science">Science</option>
-          <option value="Mathematics">Mathematics</option>
-          <option value="Social Science">Social Science</option>
-          <option value="English">English</option>
-          <option value="Hindi">Hindi</option>
-          <option value="Information Technology">IT</option>
-        </select>
-        <button id="create-note-btn" class="btn btn-primary"><i class="fas fa-plus"></i> Create Note</button>
-      </div>
-
-      <div id="notes-grid" class="cards-grid">
-        <!-- Injected dynamically -->
-      </div>
-    </section>
-
-    <!-- 3. FLASHCARDS SECTION -->
-    <section id="flashcards-section" class="content-section hidden">
-      <div class="section-header">
-        <h2><i class="fas fa-lightbulb"></i> Rapid Flashcards</h2>
-        <p>Click card to flip and test your quick recall.</p>
-      </div>
-
-      <div class="filter-bar glass-panel mb-20">
-        <select id="flashcard-subject-select">
-          <option value="ALL">All Subjects</option>
-          <option value="Science">Science</option>
-          <option value="Mathematics">Mathematics</option>
-          <option value="Social Science">Social Science</option>
-        </select>
-        <button id="shuffle-flashcards-btn" class="btn btn-secondary"><i class="fas fa-random"></i> Shuffle Cards</button>
-      </div>
-
-      <div class="flashcard-container">
-        <div id="flashcard" class="flashcard">
-          <div class="flashcard-inner">
-            <div class="flashcard-front">
-              <span class="card-tag" id="flashcard-tag">Science</span>
-              <p id="flashcard-question">Loading Flashcard...</p>
-              <small class="hint-text"><i class="fas fa-hand-pointer"></i> Click to reveal answer</small>
-            </div>
-            <div class="flashcard-back">
-              <p id="flashcard-answer">Answer appears here.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="flashcard-nav mt-20">
-        <button id="prev-card-btn" class="btn btn-secondary"><i class="fas fa-chevron-left"></i> Previous</button>
-        <span id="card-counter">1 / 10</span>
-        <button id="next-card-btn" class="btn btn-secondary">Next <i class="fas fa-chevron-right"></i></button>
-      </div>
-    </section>
-
-    <!-- 4. QUIZ SECTION -->
-    <section id="quiz-section" class="content-section hidden">
-      <div class="section-header">
-        <h2><i class="fas fa-stopwatch"></i> Timed Chapter Quizzes</h2>
-        <p>20-minute timed practice tests for CBSE chapter mastery.</p>
-      </div>
-
-      <div id="quiz-selection-panel" class="glass-panel">
-        <label>Select Subject & Chapter for Quiz:</label>
-        <select id="quiz-subject-select" class="full-width mb-15">
-          <option value="Science">Science - Chemical Reactions & Equations</option>
-          <option value="Mathematics">Mathematics - Real Numbers</option>
-          <option value="Social Science">Social Science - Power Sharing</option>
-        </select>
-        <button id="start-quiz-btn" class="btn btn-primary"><i class="fas fa-play"></i> Start Quiz (20 Mins)</button>
-      </div>
-
-      <div id="quiz-active-panel" class="glass-panel hidden">
-        <div class="quiz-timer-bar">
-          <span id="quiz-title-display">Chapter Quiz</span>
-          <span class="timer-badge"><i class="fas fa-clock"></i> <span id="quiz-timer">20:00</span></span>
-        </div>
-        <hr>
-        <div id="quiz-questions-wrapper">
-          <!-- Active quiz question injected here -->
-        </div>
-        <button id="submit-quiz-btn" class="btn btn-success mt-20"><i class="fas fa-check"></i> Submit Quiz</button>
-      </div>
-
-      <div id="quiz-result-panel" class="glass-panel hidden text-center">
-        <h2><i class="fas fa-trophy"></i> Quiz Results</h2>
-        <div class="score-circle">
-          <span id="quiz-final-score">0 / 20</span>
-          <small id="quiz-percentage">0%</small>
-        </div>
-        <p id="quiz-feedback"></p>
-        <button id="retry-quiz-btn" class="btn btn-primary mt-15"><i class="fas fa-redo"></i> Try Another Quiz</button>
-      </div>
-    </section>
-
-    <!-- 5. MOCK TESTS SECTION -->
-    <section id="mock-tests-section" class="content-section hidden">
-      <div class="section-header">
-        <h2><i class="fas fa-file-signature"></i> Full CBSE Mock Examinations</h2>
-        <p>Simulate real exam experience with full syllabus tests.</p>
-      </div>
-
-      <div id="mock-select-panel" class="cards-grid">
-        <div class="glass-card">
-          <h3><i class="fas fa-flask"></i> Science Full Mock Test</h3>
-          <p>50 Questions | 90 Minutes | Board Pattern</p>
-          <button class="btn btn-primary start-mock-btn" data-type="Science">Start Test</button>
-        </div>
-        <div class="glass-card">
-          <h3><i class="fas fa-calculator"></i> Mathematics Full Mock</h3>
-          <p>50 Questions | 90 Minutes | Board Pattern</p>
-          <button class="btn btn-primary start-mock-btn" data-type="Mathematics">Start Test</button>
-        </div>
-        <div class="glass-card">
-          <h3><i class="fas fa-layer-group"></i> All Subjects Combined Mock</h3>
-          <p>100 Questions | 180 Minutes | Full Syllabus</p>
-          <button class="btn btn-primary start-mock-btn" data-type="Full">Start Grand Test</button>
-        </div>
-      </div>
-
-      <div id="mock-active-panel" class="glass-panel hidden">
-        <div class="quiz-timer-bar">
-          <h3 id="mock-exam-title">Mock Examination</h3>
-          <span class="timer-badge warning"><i class="fas fa-stopwatch"></i> <span id="mock-timer">180:00</span></span>
-        </div>
-        <div id="mock-question-card" class="mt-20"></div>
-        <div class="mock-nav-controls mt-20">
-          <button id="mock-prev-btn" class="btn btn-secondary">Previous</button>
-          <button id="mock-next-btn" class="btn btn-secondary">Next</button>
-          <button id="mock-submit-btn" class="btn btn-danger float-right">Finish & Submit</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- 6. MINI GAMES SECTION -->
-    <section id="mini-games-section" class="content-section hidden">
-      <div class="section-header">
-        <h2><i class="fas fa-gamepad"></i> Educational Mini Break Games</h2>
-        <p>Relax your mind with quick brain training games.</p>
-      </div>
-
-      <div class="games-nav mb-20">
-        <button class="game-select-btn active" data-game="memory">Memory Match</button>
-        <button class="game-select-btn" data-game="tictactoe">Tic-Tac-Toe</button>
-        <button class="game-select-btn" data-game="wordsearch">Word Search</button>
-      </div>
-
-      <div id="game-board-container" class="glass-panel text-center">
-        <!-- Active Game rendered here dynamically -->
-      </div>
-    </section>
-
-    <!-- 7. STUDY PROGRESS DASHBOARD -->
-    <section id="progress-section" class="content-section hidden">
-      <div class="section-header">
-        <h2><i class="fas fa-chart-pie"></i> Study Progress & Analytics</h2>
-        <p>Track your board preparation metrics locally.</p>
-      </div>
-
-      <div class="stats-overview">
-        <div class="stat-card glass-panel">
-          <i class="fas fa-check-circle stat-icon"></i>
-          <div>
-            <h3 id="completed-chapters-count">0 / 30</h3>
-            <span>Chapters Completed</span>
-          </div>
-        </div>
-        <div class="stat-card glass-panel">
-          <i class="fas fa-percentage stat-icon"></i>
-          <div>
-            <h3 id="overall-progress-percentage">0%</h3>
-            <span>Syllabus Covered</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="glass-panel mt-20">
-        <h3><i class="fas fa-history"></i> Submitted Mock Test History</h3>
-        <div class="table-responsive mt-15">
-          <table class="data-table">
-            <thead>
-              <tr>
-                <th>Date</th>
-                <th>Test Title</th>
-                <th>Score</th>
-                <th>Percentage</th>
-              </tr>
-            </thead>
-            <tbody id="mock-history-table-body">
-              <tr><td colspan="4" class="text-center">No tests submitted yet.</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <button id="reset-progress-btn" class="btn btn-warning mt-20"><i class="fas fa-redo"></i> Reset Chapter Progress Only</button>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- Note Modal (Create/Edit) -->
-  <div id="note-modal" class="modal-overlay hidden">
-    <div class="modal-content glass-panel">
-      <div class="modal-header">
-        <h3 id="note-modal-title">Create Study Note</h3>
-        <button id="close-note-modal" class="icon-btn"><i class="fas fa-times"></i></button>
-      </div>
-      <div class="modal-body">
-        <input type="text" id="note-title-input" placeholder="Note Title..." class="full-width mb-10">
-        <select id="note-subject-input" class="full-width mb-10">
-          <option value="Science">Science</option>
-          <option value="Mathematics">Mathematics</option>
-          <option value="Social Science">Social Science</option>
-          <option value="English">English</option>
-          <option value="Hindi">Hindi</option>
-          <option value="Information Technology">Information Technology</option>
-        </select>
-        <textarea id="note-text-input" maxlength="1000" rows="6" placeholder="Write your notes here (Max 1000 characters)..." class="full-width"></textarea>
-        <div class="char-count-bar">
-          <span id="note-char-count">0 / 1000 characters</span> | 
-          <span id="note-word-count">0 words</span>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button id="save-note-btn" class="btn btn-success"><i class="fas fa-save"></i> Save Note</button>
-      </div>
-    </div>
+  <div class="hero">
+    <span class="pill">✦ STUDY MODE ON</span>
+    <h2>Small steps.<br>Strong results.</h2>
+    <p>Revise concepts, practise questions and organise your notes.</p>
+    <button class="primary" data-go="subjects">Explore subjects →</button>
   </div>
 
-  <script src="script.js"></script>
+  <div class="stats">
+    <div class="stat"><span>📚</span><strong>5</strong><small>Subjects</small></div>
+    <div class="stat"><span>📝</span><strong id="noteCount">0</strong><small>Saved notes</small></div>
+    <div class="stat"><span>🎯</span><strong id="quizCount">0</strong><small>Quizzes completed</small></div>
+  </div>
+
+  <h2 class="section-title">Your study tools</h2>
+  <div class="cards">
+    <button class="card" data-go="subjects"><span>📚</span><h3>Subject Library</h3><p>Explore chapters and revision notes.</p><b>Open library →</b></button>
+    <button class="card" data-go="flashcards"><span>🗂️</span><h3>Flashcards</h3><p>Remember important definitions.</p><b>Start revising →</b></button>
+    <button class="card" data-go="quiz"><span>🎯</span><h3>Quiz Centre</h3><p>Test yourself with built-in MCQs.</p><b>Take a quiz →</b></button>
+    <button class="card" data-go="notes"><span>📝</span><h3>My Notes</h3><p>Write and save personal notes.</p><b>Open notes →</b></button>
+    <button class="card" data-go="calculator"><span>🧮</span><h3>Calculator</h3><p>Calculate answers quickly.</p><b>Calculate →</b></button>
+    <button class="card" data-go="games"><span>🎮</span><h3>Mini Games</h3><p>Enjoy short learning activities.</p><b>Play now →</b></button>
+  </div>
+</section>
+
+<!-- SUBJECT LIBRARY -->
+<section class="page" id="page-subjects">
+  <p class="eyebrow">NCERT STUDY SPACE</p>
+  <h1>Subject Library</h1>
+  <p class="muted">Choose a subject to explore its built-in study material.</p>
+  <input class="field search" id="subjectSearch" placeholder="Search subjects..." aria-label="Search subjects">
+  <div class="subject-grid" id="subjectGrid"></div>
+  <div class="panel" id="subjectContent">
+    <h3>Select a subject</h3>
+    <p class="muted">Your revision material will appear here.</p>
+  </div>
+</section>
+
+<!-- FLASHCARDS -->
+<section class="page" id="page-flashcards">
+  <p class="eyebrow">ACTIVE RECALL</p>
+  <h1>Flashcards</h1>
+  <p class="muted">Think of the answer, then flip the card.</p>
+  <select class="field" id="flashSubject" aria-label="Choose flashcard subject"></select>
+  <button class="flashcard" id="flashCard">
+    <small id="flashLabel">QUESTION</small>
+    <h2 id="flashQuestion">Loading...</h2>
+    <p id="flashHint">Tap to reveal answer</p>
+  </button>
+  <div class="button-row center">
+    <button class="secondary" id="flashPrev">← Previous</button>
+    <button class="primary" id="flashFlip">Flip card ↻</button>
+    <button class="secondary" id="flashNext">Next →</button>
+  </div>
+  <p class="muted center" id="flashProgress"></p>
+</section>
+
+<!-- QUIZ -->
+<section class="page" id="page-quiz">
+  <p class="eyebrow">PRACTISE AND IMPROVE</p>
+  <h1>Quiz Centre</h1>
+  <p class="muted">Multiple-choice questions included in the website code.</p>
+  <select class="field" id="quizSubject" aria-label="Choose quiz subject"></select>
+  <div class="panel quiz-panel" id="quizPanel"></div>
+</section>
+
+<!-- NOTES -->
+<section class="page" id="page-notes">
+  <p class="eyebrow">YOUR PERSONAL LIBRARY</p>
+  <h1>My Notes</h1>
+  <p class="muted">Your notes are saved in this browser on this device.</p>
+  <div class="panel">
+    <label for="noteTitle">Note title</label>
+    <input class="field" id="noteTitle" maxlength="100" placeholder="Enter note title">
+    <label for="noteBody">Your notes</label>
+    <textarea class="field" id="noteBody" rows="6" placeholder="Write your notes here..."></textarea>
+    <div class="button-row">
+      <button class="primary" id="saveNote">Save note</button>
+      <button class="secondary" id="cancelEdit" hidden>Cancel edit</button>
+    </div>
+    <p id="noteStatus" class="muted" role="status"></p>
+  </div>
+  <h2 class="section-title">Saved notes</h2>
+  <div id="notesList" class="notes-list"></div>
+</section>
+
+<!-- CALCULATOR -->
+<section class="page" id="page-calculator">
+  <p class="eyebrow">QUICK MATHS</p>
+  <h1>Smart Calculator</h1>
+  <p class="muted">A simple calculator for school calculations.</p>
+  <div class="calculator">
+    <div class="calc-screen">
+      <small id="calcExpression"></small>
+      <output id="calcDisplay" aria-live="polite">0</output>
+    </div>
+    <div class="calc-grid">
+      <button class="calc-key utility" data-key="AC">AC</button>
+      <button class="calc-key utility" data-key="DEL">⌫</button>
+      <button class="calc-key utility" data-key="%">%</button>
+      <button class="calc-key operator" data-key="/">÷</button>
+      <button class="calc-key" data-key="7">7</button>
+      <button class="calc-key" data-key="8">8</button>
+      <button class="calc-key" data-key="9">9</button>
+      <button class="calc-key operator" data-key="*">×</button>
+      <button class="calc-key" data-key="4">4</button>
+      <button class="calc-key" data-key="5">5</button>
+      <button class="calc-key" data-key="6">6</button>
+      <button class="calc-key operator" data-key="-">−</button>
+      <button class="calc-key" data-key="1">1</button>
+      <button class="calc-key" data-key="2">2</button>
+      <button class="calc-key" data-key="3">3</button>
+      <button class="calc-key operator" data-key="+">+</button>
+      <button class="calc-key" data-key="SIGN">±</button>
+      <button class="calc-key" data-key="0">0</button>
+      <button class="calc-key" data-key=".">.</button>
+      <button class="calc-key equals" data-key="=">=</button>
+    </div>
+  </div>
+</section>
+
+<!-- MINI GAMES -->
+<section class="page" id="page-games">
+  <p class="eyebrow">LEARN THROUGH PLAY</p>
+  <h1>Mini Games</h1>
+  <p class="muted">Short activities for a refreshing study break.</p>
+
+  <div class="panel">
+    <h2>🔢 Number Guess</h2>
+    <p class="muted">Guess the secret number between 1 and 20.</p>
+    <form id="guessForm" class="button-row">
+      <input class="field guess-input" type="number" id="guessInput" min="1" max="20" required placeholder="1–20">
+      <button class="primary">Guess</button>
+      <button type="button" class="secondary" id="newGame">New game</button>
+    </form>
+    <p id="guessResult" class="muted" role="status">I have picked a number. Can you find it?</p>
+  </div>
+
+  <div class="panel">
+    <h2>✅ True or False</h2>
+    <h3 id="tfQuestion">The chemical symbol for oxygen is O.</h3>
+    <div class="button-row">
+      <button class="secondary" data-answer="true">True</button>
+      <button class="secondary" data-answer="false">False</button>
+      <button class="primary" id="nextTF">Next question →</button>
+    </div>
+    <p id="tfResult" class="muted" role="status">Choose your answer.</p>
+  </div>
+</section>
+
+<!-- SETTINGS -->
+<section class="page" id="page-settings">
+  <p class="eyebrow">PERSONALISE YOUR WORKSPACE</p>
+  <h1>Settings</h1>
+  <div class="panel settings-list">
+    <div class="setting">
+      <div><strong>Appearance</strong><p class="muted">Dark or light mode.</p></div>
+      <button class="secondary" id="themeBtn2">Toggle theme</button>
+    </div>
+    <div class="setting">
+      <div><strong>Text size</strong><p class="muted">Make reading more comfortable.</p></div>
+      <select class="field compact" id="textSize">
+        <option value="normal">Normal</option>
+        <option value="large">Large</option>
+        <option value="larger">Extra large</option>
+      </select>
+    </div>
+    <div class="setting">
+      <div><strong>Reset preferences</strong><p class="muted">Restore default theme and text size.</p></div>
+      <button class="secondary" id="resetPrefs">Reset preferences</button>
+    </div>
+    <div class="setting">
+      <div><strong>Reset all data</strong><p class="muted">Delete saved notes and quiz history.</p></div>
+      <button class="danger" id="resetData">Reset all data</button>
+    </div>
+    <div class="setting">
+      <div><strong>About My Utility</strong><p class="muted">Version 1.0 · Free Class 10 workspace.</p></div>
+      <span class="pill">₹0</span>
+    </div>
+  </div>
+  <p class="muted">No paid API or subscription is required. This is a browser-based study project.</p>
+</section>
+
+<footer class="footer">
+  <span>© <span id="year"></span> My Utility</span>
+  <span>Built for learning · Free to use</span>
+</footer>
+</main>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 </body>
-  </html>
-          
+        </html>
