@@ -492,6 +492,42 @@ function loadFlashDeck() {
   showFlash();
 }
 $("flashChapter").addEventListener("change", loadFlashDeck);
+let currentFlash = 0;
+let flashDeck = [];
+
+function loadFlashcards() {
+  const subject = $("flashSubject").value;
+  const chapter = $("flashChapter").value;
+  const key = `${subject}::${chapter}`;
+
+  flashDeck = (flashcardBank[key] || []).map(card => ({
+    front: card.q,
+    back: card.a
+  }));
+
+  currentFlash = 0;
+  showFlash();
+}
+
+$("flashSubject").addEventListener("change", () => {
+  populateFlashChapters();
+  loadFlashcards();
+});
+
+$("flashChapter").addEventListener("change", loadFlashcards);
+$("markKnown").addEventListener("click", () => {
+  if (!flashDeck.length) return;
+  currentFlash = (currentFlash + 1) % flashDeck.length;
+  showFlash();
+});
+
+$("markReview").addEventListener("click", () => {
+  if (!flashDeck.length) return;
+  currentFlash = (currentFlash + 1) % flashDeck.length;
+  showFlash();
+});
+
+loadFlashcards();
 function showFlash() {
   const card = flashDeck[currentFlash];
   $("flashAnswer").classList.add("hidden");
