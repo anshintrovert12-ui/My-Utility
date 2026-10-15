@@ -3566,3 +3566,326 @@ Object.assign(window.CONTENT.Mathematics.chapters, {
 console.log("Part 15 loaded: Mathematics — Probability");
 
          
+/* =========================================================
+   CLASS 10 HUB — CONTENT.JS
+   GEOGRAPHY PART 1 OF 3
+   Chapters:
+   1. Resources and Development
+   2. Forest and Wildlife Resources
+   3. Water Resources
+
+   Per chapter:
+   20 Very Short + 10 Short + 5 Long Answers
+   30 Flashcards + 20 MCQs
+   ========================================================= */
+
+Object.assign(window.CONTENT["Social Science"].chapters, {
+
+/* =========================================================
+   CHAPTER 1: RESOURCES AND DEVELOPMENT
+   ========================================================= */
+
+"Resources and Development": {
+questions: [
+{type:"very-short",q:"1. What is a resource?",a:"Anything available in the environment that can satisfy human needs, provided it is technologically accessible, economically feasible and culturally acceptable, is called a resource."},
+{type:"very-short",q:"2. What are biotic resources?",a:"Resources obtained from the biosphere and having life, such as plants, animals and human beings, are called biotic resources."},
+{type:"very-short",q:"3. What are abiotic resources?",a:"Resources made up of non-living things, such as rocks, minerals and metals, are called abiotic resources."},
+{type:"very-short",q:"4. What are renewable resources?",a:"Resources that can be replenished naturally over a relatively short period, such as sunlight, wind and flowing water, are renewable resources."},
+{type:"very-short",q:"5. What are non-renewable resources?",a:"Resources that take millions of years to form and cannot be replaced quickly, such as coal and petroleum, are non-renewable resources."},
+{type:"very-short",q:"6. What are potential resources?",a:"Resources found in a region but not fully utilised because their quantity, availability or technology has not yet been fully developed are called potential resources."},
+{type:"very-short",q:"7. What are developed resources?",a:"Resources whose quantity and quality have been surveyed and whose use has been determined according to available technology and feasibility are developed resources."},
+{type:"very-short",q:"8. What are stock resources?",a:"Stock refers to materials in the environment that could satisfy human needs but cannot be used because suitable technology is not available."},
+{type:"very-short",q:"9. What are reserves?",a:"Reserves are a part of stock that can be used with existing technology but are being saved for future use."},
+{type:"very-short",q:"10. What is resource planning?",a:"Resource planning is the systematic process of identifying resources, developing suitable planning structures and matching resource use with national development goals."},
+{type:"very-short",q:"11. What is sustainable development?",a:"Sustainable development means meeting present needs without compromising the ability of future generations to meet their own needs."},
+{type:"very-short",q:"12. What is soil?",a:"Soil is the uppermost loose layer of the Earth's crust that supports plant growth and contains mineral particles, organic matter, water and air."},
+{type:"very-short",q:"13. What is soil erosion?",a:"Soil erosion is the removal of the fertile top layer of soil by agents such as running water, wind and human activities."},
+{type:"very-short",q:"14. What is land degradation?",a:"Land degradation is the decline in the quality and productive capacity of land due to processes such as erosion, deforestation, overgrazing and pollution."},
+{type:"very-short",q:"15. What is alluvial soil?",a:"Alluvial soil is soil deposited by rivers and is widely found in the northern plains and river valleys of India."},
+{type:"very-short",q:"16. What is black soil also called?",a:"Black soil is also known as regur soil. It is especially suitable for growing cotton because it retains moisture."},
+{type:"very-short",q:"17. Which soil is common in areas of high rainfall and high temperature?",a:"Laterite soil commonly develops in areas with high temperature and heavy rainfall, where intense leaching occurs."},
+{type:"very-short",q:"18. What is contour ploughing?",a:"Contour ploughing means ploughing along contour lines on slopes to slow water flow and reduce soil erosion."},
+{type:"very-short",q:"19. What is strip cropping?",a:"Strip cropping involves growing crops in alternate strips to reduce the speed of wind and water and help prevent soil erosion."},
+{type:"very-short",q:"20. What is shelterbelt planting?",a:"Shelterbelts are rows of trees planted to reduce wind speed and protect soil from wind erosion."},
+
+{type:"short",q:"21. Explain the three main stages of resource planning in India.",a:"Resource planning involves three main stages. First, resources are identified and inventoried through surveying, mapping and estimating their quantity and quality. Second, suitable planning structures, technology, skills and institutions are developed to use them effectively. Third, resource development plans are coordinated with wider national development plans so that resources support balanced and sustainable progress."},
+{type:"short",q:"22. Why is resource planning essential in India?",a:"India has an uneven distribution of resources: some regions are rich in certain minerals or water, while others face shortages. Unplanned exploitation can cause environmental damage, depletion and unequal development. Resource planning helps use resources carefully, reduce regional inequalities, protect the environment and ensure that future generations also have access to them."},
+{type:"short",q:"23. Distinguish between renewable and non-renewable resources.",a:"Renewable resources can be replenished naturally, such as solar energy, wind and flowing water, although careless use can still damage them. Non-renewable resources, such as coal and petroleum, form over very long geological periods and are available in limited quantities. Therefore, non-renewable resources require careful conservation and efficient use."},
+{type:"short",q:"24. Explain the importance of sustainable development.",a:"Sustainable development balances economic progress, social well-being and environmental protection. It encourages efficient resource use, reduces pollution and protects ecosystems. It also ensures that present development does not exhaust resources or create environmental problems that prevent future generations from meeting their needs."},
+{type:"short",q:"25. Mention major causes of land degradation in India.",a:"Major causes include deforestation, overgrazing, mining and quarrying, over-irrigation and improper waste disposal. In some regions, excessive irrigation causes waterlogging and increases soil salinity and alkalinity. Industrial effluents and untreated wastes also reduce land quality and its productive capacity."},
+{type:"short",q:"26. How can land degradation be controlled?",a:"Land degradation can be controlled through afforestation, regulated grazing, proper management of wastelands and restoration of mined areas. In dry regions, shelterbelts and stabilisation of sand dunes help control wind erosion. Proper irrigation and drainage, along with treatment of industrial wastes, can reduce waterlogging, salinity and pollution."},
+{type:"short",q:"27. State the main features of alluvial soil.",a:"Alluvial soil is mainly found in the northern plains and river valleys, and it is also deposited along eastern coastal deltas. It contains varying proportions of sand, silt and clay and is generally fertile. Newer alluvium is called khadar, while older alluvium is called bangar. It supports crops such as rice, wheat, sugarcane and pulses."},
+{type:"short",q:"28. Why is black soil suitable for cotton cultivation?",a:"Black soil has a fine texture and a high capacity to retain moisture. It develops deep cracks during hot weather, which can help aerate the soil. It is generally rich in lime, iron, magnesium and alumina, although its nutrient composition varies. Its moisture-retaining ability makes it particularly suitable for cotton cultivation."},
+{type:"short",q:"29. Explain soil erosion and give methods to prevent it.",a:"Soil erosion is the removal of the fertile topsoil by water, wind or human activities. It reduces soil fertility and agricultural productivity. It can be prevented through contour ploughing, terrace farming on slopes, strip cropping, planting shelterbelts, afforestation and controlling overgrazing. Maintaining vegetation cover is especially important."},
+{type:"short",q:"30. What is the difference between khadar and bangar?",a:"Khadar is newer alluvial soil deposited by rivers during relatively recent floods. It is generally renewed more frequently and is often finer and more fertile. Bangar is older alluvial soil found on higher terraces, beyond the reach of regular floods. It often contains calcareous deposits known as kankar."},
+
+{type:"long",q:"31. Explain the classification of resources with suitable examples.",a:"Resources can be classified in several ways. On the basis of origin, biotic resources include plants, animals and human beings, while abiotic resources include rocks, minerals and metals. On the basis of exhaustibility, renewable resources include solar energy and wind, whereas non-renewable resources include coal and petroleum. On the basis of ownership, resources may be individual, community-owned, national or international. Private agricultural land is an individual resource; village grazing grounds are community resources; forests, rivers and minerals within national territory are generally national resources; and resources beyond national jurisdiction may be governed by international agreements. On the basis of development status, resources may be potential, developed, stock or reserves. This classification helps us understand their availability, use and conservation needs."},
+{type:"long",q:"32. Explain why resource planning is important and describe its main stages.",a:"Resources are essential for development, but they are unevenly distributed across India. Some regions possess abundant minerals or water, while others experience shortages. Unplanned use can lead to depletion, environmental damage and regional inequalities. Resource planning helps ensure balanced and sustainable development. Its first stage is identifying and inventorying resources through surveys, mapping and estimates of quantity and quality. The second stage is developing appropriate planning structures, technology, skills and institutions for resource development. The third stage is coordinating resource-development plans with national development plans. These stages help use resources efficiently while protecting the environment and considering the needs of future generations."},
+{type:"long",q:"33. Describe the major types of soil found in India and their characteristics.",a:"India has several major soil types. Alluvial soil occurs mainly in the northern plains, river valleys and coastal deltas; it is generally fertile and supports crops such as rice and wheat. Black soil, also called regur, is common in parts of the Deccan Plateau and retains moisture, making it suitable for cotton. Red and yellow soils develop over crystalline igneous rocks and obtain their colour mainly from iron compounds; they often need manure and fertilisers for improved productivity. Laterite soil forms under high temperature and heavy rainfall due to intense leaching and may require fertilisation for cultivation. Arid soils are found in dry regions and are often sandy and saline, with low humus. Forest and mountain soils vary with altitude and climate and may be loamy on valley slopes but coarse on higher slopes. Soil fertility depends on its composition, climate, vegetation and land management."},
+{type:"long",q:"34. Discuss the causes of soil erosion and explain methods of soil conservation.",a:"Soil erosion occurs when the fertile top layer is removed by running water, wind or human activities. Deforestation exposes soil to rain and wind. Overgrazing removes protective vegetation, while mining, construction and improper farming disturb the soil. Running water may create gullies and ravines, while wind erosion is common in dry regions. Soil conservation includes contour ploughing, which slows runoff on slopes; terrace farming, which creates level surfaces on hills; and strip cropping, which reduces the force of wind and water. Planting shelterbelts reduces wind speed, while afforestation and controlled grazing maintain vegetation cover. Check dams and proper drainage can also reduce runoff and erosion. These methods protect soil fertility and support long-term agricultural productivity."},
+{type:"long",q:"35. What is land degradation? Explain its causes and measures to control it in India.",a:"Land degradation is the decline in the quality and productive capacity of land. Its causes vary by region. Deforestation and overgrazing expose soil to erosion. Mining and quarrying damage land surfaces, while over-irrigation can cause waterlogging and increase salinity or alkalinity. Industrial wastes and untreated effluents contaminate land. Measures to control degradation include planting trees, regulating grazing, restoring mined land, treating industrial wastes and managing irrigation carefully. In dry regions, shelterbelts and stabilisation of sand dunes help prevent wind erosion. Proper drainage can reduce waterlogging, while afforestation and watershed management help conserve soil and water. These measures improve land quality and support sustainable development."}
+],
+
+flashcards:[
+{q:"What is a resource?",a:"Anything usable to satisfy human needs that is technologically accessible, economically feasible and culturally acceptable."},
+{q:"Biotic resources?",a:"Resources associated with living organisms."},
+{q:"Abiotic resources?",a:"Resources made up of non-living things."},
+{q:"Renewable resource example?",a:"Solar energy or wind energy."},
+{q:"Non-renewable resource example?",a:"Coal or petroleum."},
+{q:"What is resource planning?",a:"Systematic identification and planned use of resources."},
+{q:"What is sustainable development?",a:"Meeting present needs without compromising future generations."},
+{q:"What is soil erosion?",a:"Removal of fertile topsoil."},
+{q:"What is land degradation?",a:"Decline in land quality and productivity."},
+{q:"What is alluvial soil?",a:"River-deposited soil, widespread in the northern plains."},
+{q:"Another name for black soil?",a:"Regur soil."},
+{q:"Which soil is suitable for cotton?",a:"Black soil."},
+{q:"What is khadar?",a:"Newer alluvial soil."},
+{q:"What is bangar?",a:"Older alluvial soil."},
+{q:"What is contour ploughing?",a:"Ploughing along contour lines to reduce runoff."},
+{q:"What is strip cropping?",a:"Growing crops in alternate strips to reduce erosion."},
+{q:"What are shelterbelts?",a:"Rows of trees that reduce wind speed."},
+{q:"What causes laterite soil formation?",a:"High temperature, heavy rainfall and intense leaching."},
+{q:"What causes wind erosion?",a:"Wind removing loose, exposed soil."},
+{q:"What is a stock resource?",a:"A resource whose use is limited by unavailable technology."},
+{q:"What are reserves?",a:"Part of stock usable with current technology but saved for future use."},
+{q:"What is a developed resource?",a:"A surveyed resource whose use has been assessed."},
+{q:"Give one cause of land degradation.",a:"Deforestation, overgrazing, mining or pollution."},
+{q:"How can soil erosion be reduced?",a:"Afforestation, contour ploughing and terrace farming."},
+{q:"What is red soil colour associated with?",a:"Iron compounds."},
+{q:"What is arid soil commonly like?",a:"Often sandy, saline and low in humus."},
+{q:"What is resource conservation?",a:"Careful use and protection of resources."},
+{q:"What is community-owned land?",a:"Land used collectively by a community."},
+{q:"Why is resource distribution important?",a:"It affects regional development and planning."},
+{q:"Why protect soil?",a:"Soil supports plant growth and agricultural production."}
+],
+
+mcqs:[
+{question:"1. Which is a biotic resource?",options:["Iron ore","Rock","Plant","Air"],answer:2,explanation:"Plants are living organisms."},
+{question:"2. Which is a non-renewable resource?",options:["Sunlight","Wind","Coal","Flowing water"],answer:2,explanation:"Coal takes millions of years to form."},
+{question:"3. Which soil is commonly suitable for cotton?",options:["Black soil","Arid soil","Mountain soil","Laterite soil"],answer:0,explanation:"Black soil retains moisture and is suitable for cotton."},
+{question:"4. Newer alluvial soil is called:",options:["Bangar","Khadar","Regur","Laterite"],answer:1,explanation:"Khadar is newer alluvium."},
+{question:"5. Older alluvial soil is called:",options:["Khadar","Bangar","Arid soil","Red soil"],answer:1,explanation:"Bangar is older alluvium."},
+{question:"6. Which method helps reduce erosion on hill slopes?",options:["Terrace farming","Deforestation","Overgrazing","Mining"],answer:0,explanation:"Terraces slow runoff on slopes."},
+{question:"7. Which soil forms under intense leaching?",options:["Laterite","Black","Alluvial","Arid"],answer:0,explanation:"Heavy rainfall and high temperatures promote laterite soil formation."},
+{question:"8. Which is an example of an abiotic resource?",options:["Forest animal","Human being","Copper","Crop"],answer:2,explanation:"Copper is non-living."},
+{question:"9. Resource planning helps to:",options:["Waste resources","Promote balanced development","Increase erosion","Ignore regional needs"],answer:1,explanation:"Planning supports careful and balanced resource use."},
+{question:"10. Soil erosion means:",options:["Soil formation","Removal of topsoil","Adding manure","Planting trees"],answer:1,explanation:"Erosion removes fertile topsoil."},
+{question:"11. Shelterbelts mainly reduce:",options:["Wind speed","Sunlight","Soil nutrients","Rainfall"],answer:0,explanation:"Rows of trees reduce wind speed."},
+{question:"12. Which can cause land degradation?",options:["Afforestation","Controlled grazing","Overgrazing","Contour ploughing"],answer:2,explanation:"Overgrazing removes protective vegetation."},
+{question:"13. Sustainable development considers:",options:["Only present needs","Only profit","Present and future needs","Only industrial growth"],answer:2,explanation:"It protects the ability of future generations to meet their needs."},
+{question:"14. Black soil is also known as:",options:["Bangar","Regur","Khadar","Laterite"],answer:1,explanation:"Regur is another name for black soil."},
+{question:"15. What is the first stage of resource planning?",options:["Exporting resources","Identifying and inventorying resources","Ignoring surveys","Building factories only"],answer:1,explanation:"Identification and inventory form the first stage."},
+{question:"16. Which is a renewable resource?",options:["Petroleum","Coal","Solar energy","Natural gas"],answer:2,explanation:"Solar energy is continuously supplied by the Sun."},
+{question:"17. Which is a method of soil conservation?",options:["Strip cropping","Uncontrolled mining","Deforestation","Overgrazing"],answer:0,explanation:"Strip cropping reduces the force of wind and water."},
+{question:"18. Which soil is deposited by rivers?",options:["Alluvial","Laterite","Black only","Arid only"],answer:0,explanation:"Rivers deposit alluvial soil."},
+{question:"19. Excessive irrigation may contribute to:",options:["Waterlogging and salinity","Less soil moisture everywhere","Formation of coal","Wind speed"],answer:0,explanation:"Poorly managed irrigation can cause waterlogging and salinity."},
+{question:"20. Which resource category includes resources whose use is restricted by lack of technology?",options:["Stock","Developed","Individual","Community"],answer:0,explanation:"Stock includes resources that cannot currently be used because suitable technology is unavailable."}
+]
+},
+/* =========================================================
+   CHAPTER 2: FOREST AND WILDLIFE RESOURCES
+   ========================================================= */
+
+"Forest and Wildlife Resources": {
+questions:[
+{type:"very-short",q:"1. What is biodiversity?",a:"Biodiversity is the variety of living organisms, including plants, animals and microorganisms, found in a region or on Earth."},
+{type:"very-short",q:"2. What is flora?",a:"Flora refers to the plant life of a particular region."},
+{type:"very-short",q:"3. What is fauna?",a:"Fauna refers to the animal life of a particular region."},
+{type:"very-short",q:"4. What are endangered species?",a:"Endangered species are species whose populations have declined so greatly that they face a high risk of extinction."},
+{type:"very-short",q:"5. What are vulnerable species?",a:"Vulnerable species are species that face a high risk of becoming endangered if the threats affecting them continue."},
+{type:"very-short",q:"6. What are extinct species?",a:"Extinct species are species that no longer exist anywhere on Earth."},
+{type:"very-short",q:"7. What are endemic species?",a:"Endemic species are species naturally restricted to a particular geographical region and not naturally found elsewhere."},
+{type:"very-short",q:"8. What are normal species?",a:"Normal species have populations considered sufficient for their survival under current conditions."},
+{type:"very-short",q:"9. What is deforestation?",a:"Deforestation is the clearing or removal of forest cover, often to make land available for other uses."},
+{type:"very-short",q:"10. What is poaching?",a:"Poaching is the illegal hunting, capturing or killing of wild animals."},
+{type:"very-short",q:"11. What is a wildlife sanctuary?",a:"A wildlife sanctuary is a protected area established to conserve wild animals and their habitats."},
+{type:"very-short",q:"12. What is a national park?",a:"A national park is a protected area managed to conserve ecosystems, wildlife and natural landscapes under specific legal rules."},
+{type:"very-short",q:"13. What is a biosphere reserve?",a:"A biosphere reserve is a large protected area intended to conserve biodiversity while supporting compatible research and sustainable activities."},
+{type:"very-short",q:"14. What is the Red Data Book?",a:"The Red Data Book records information about threatened species of plants and animals."},
+{type:"very-short",q:"15. What is the main aim of Project Tiger?",a:"Project Tiger was launched in India in 1973 to protect tigers and conserve their habitats."},
+{type:"very-short",q:"16. What are reserved forests?",a:"Reserved forests receive a high degree of legal protection, and activities within them are strictly regulated."},
+{type:"very-short",q:"17. What are protected forests?",a:"Protected forests are forest areas legally protected from further depletion, although some regulated uses may be permitted."},
+{type:"very-short",q:"18. What are unclassed forests?",a:"Unclassed forests are forests and wastelands recorded as forests but not classified as reserved or protected forests; ownership may vary."},
+{type:"very-short",q:"19. What is community conservation?",a:"Community conservation involves local people participating in the protection and sustainable management of forests and wildlife."},
+{type:"very-short",q:"20. What is the Chipko Movement known for?",a:"The Chipko Movement is known for community action to protect trees from being cut, particularly in the Himalayan region."},
+
+{type:"short",q:"21. Why is biodiversity important?",a:"Biodiversity maintains ecological balance and supports food chains, pollination, soil formation and nutrient cycling. Forests provide habitat, absorb carbon dioxide and help regulate water cycles. Biodiversity also supplies food, medicines, fuel and livelihoods. Losing species can weaken ecosystems and reduce their ability to recover from environmental changes."},
+{type:"short",q:"22. Explain the main causes of depletion of forests and wildlife.",a:"Forests and wildlife have been threatened by agricultural expansion, commercial forestry, mining, dams, roads and industrial development. Hunting and poaching have reduced many animal populations. Overgrazing, forest fires and the destruction or fragmentation of habitats also contribute. These pressures reduce breeding areas, disturb food chains and may push species towards extinction."},
+{type:"short",q:"23. Distinguish between endangered and vulnerable species.",a:"Endangered species face a very high risk of extinction in the near future if serious threats continue. Vulnerable species face a high risk of becoming endangered but may have a better chance of recovery if threats are reduced. Both categories require conservation, habitat protection and careful monitoring."},
+{type:"short",q:"24. How do forests help maintain ecological balance?",a:"Forests provide habitats for wildlife and preserve biodiversity. Trees absorb carbon dioxide, release oxygen through photosynthesis and influence local climate. Forests protect soil from erosion, help water infiltrate into the ground and regulate the flow of rivers. They also provide food, fuel, medicines and livelihoods to many communities."},
+{type:"short",q:"25. What are the differences between reserved, protected and unclassed forests?",a:"Reserved forests receive the highest level of legal protection among these categories, with activities closely controlled. Protected forests also receive legal protection, but certain regulated uses may be permitted. Unclassed forests are not placed in either of these two categories and may be managed by government, communities or private owners, depending on the location and legal status."},
+{type:"short",q:"26. Explain the role of local communities in forest conservation.",a:"Local communities often depend on forests for fuel, fodder, food and livelihoods, so their participation is essential for long-term protection. Community-led rules can regulate grazing and tree cutting, prevent illegal hunting and restore damaged forests. The Bishnoi community is well known for protecting trees and wildlife, while the Chipko Movement demonstrated the power of collective action to protect forests."},
+{type:"short",q:"27. What is Joint Forest Management?",a:"Joint Forest Management, or JFM, is an approach in which local communities and forest departments work together to protect and manage forests. Communities help prevent illegal cutting, fires and overuse, while benefits from forest protection may be shared under agreed arrangements. Participation can improve conservation because local people have knowledge of the area and a direct interest in its future."},
+{type:"short",q:"28. How does poaching affect wildlife?",a:"Poaching removes animals faster than their populations may be able to recover. It can reduce breeding populations, disrupt food chains and push already threatened species closer to extinction. Illegal wildlife trade also encourages organised exploitation. Strong enforcement, habitat protection, community participation and public awareness are important to reduce poaching."},
+{type:"short",q:"29. Why should forest conservation involve local people?",a:"Local people possess traditional knowledge of forests and often depend on forest resources for daily life. If conservation rules exclude them without considering their needs, conflicts may arise and protection may become difficult. Involving communities can create shared responsibility, support sustainable use and improve monitoring against fires, illegal logging and poaching."},
+{type:"short",q:"30. Mention measures to conserve forests and wildlife.",a:"Measures include establishing and effectively managing protected areas, restoring degraded habitats, preventing poaching and illegal trade, planting native trees and controlling forest fires. Sustainable use of forest resources, wildlife corridors, environmental education and participation of local communities also support conservation. Development projects should assess ecological impacts and avoid unnecessary habitat destruction."},
+
+{type:"long",q:"31. Explain the importance of forests and wildlife and why their conservation is necessary.",a:"Forests and wildlife are essential components of biodiversity and ecological balance. Forests provide habitats for countless species and help maintain food chains and nutrient cycles. Trees absorb carbon dioxide, influence rainfall and local climate, protect soil from erosion and help regulate the water cycle. Forests also provide timber, fuel, fodder, medicines and livelihoods to many people, especially forest-dependent communities. Wildlife contributes to pollination, seed dispersal and the balance of ecosystems. However, habitat destruction, commercial exploitation, hunting, poaching, mining and large development projects have reduced many populations. Extinction is irreversible and may disturb entire ecosystems. Conservation is therefore necessary to protect species, maintain ecological processes and preserve resources for future generations. Effective conservation requires protected areas, law enforcement, habitat restoration, sustainable use and the meaningful participation of local communities."},
+{type:"long",q:"32. Describe the major causes of forest and wildlife depletion in India.",a:"Forest and wildlife depletion in India has several interconnected causes. Agricultural expansion has converted forest land into cultivated fields. Commercial forestry and the demand for timber, paper and fuel have placed pressure on forests. Mining, dams, roads, railways and industrial projects have cleared land and fragmented habitats. Hunting and poaching for animal products or illegal trade have reduced many wildlife populations. Overgrazing, forest fires and unsustainable collection of forest produce can further damage ecosystems. When habitats become smaller or separated, animals may lose access to food, water and breeding grounds. These pressures can reduce biodiversity and threaten species with extinction. Conservation requires careful land-use planning, strict action against illegal hunting, habitat protection and the involvement of people who live near forests."},
+{type:"long",q:"33. Explain the different categories of species according to their conservation status.",a:"Species may be grouped according to population size, distribution and risk of extinction. Normal species have populations considered sufficient for survival under current conditions. Endangered species face a very high risk of extinction, while vulnerable species face a high risk of becoming endangered if threats continue. Rare species have small populations and may become threatened if conditions worsen. Endemic species are naturally restricted to a particular geographical area, so damage to that area can place them at special risk. Extinct species no longer exist anywhere on Earth. These categories help identify conservation priorities, but the status of a species may change as new information becomes available. Protecting habitats, reducing poaching, restoring populations and monitoring species are important steps in preventing further losses."},
+{type:"long",q:"34. Discuss the role of communities and movements in forest and wildlife conservation.",a:"Communities have played an important role in protecting India's forests and wildlife. The Bishnoi community of Rajasthan is widely known for its respect for trees and wildlife. The Chipko Movement in the Himalayan region became a symbol of community resistance to tree felling, with villagers using collective action to protect forests. In several areas, communities have developed rules for controlling grazing, cutting and hunting. Joint Forest Management encourages cooperation between local people and forest departments in protecting and restoring forests. Sacred groves also preserve patches of natural vegetation because local traditions protect them from destruction. These examples show that conservation becomes more effective when local knowledge, community rights and ecological needs are considered together. Government protection is important, but long-term success also depends on public participation, fair sharing of benefits and sustainable use."},
+{type:"long",q:"35. Explain the main strategies for conserving forests and wildlife in India.",a:"Forest and wildlife conservation requires a combination of legal, ecological and community measures. National parks, wildlife sanctuaries and biosphere reserves protect habitats and restrict harmful activities. Species-focused programmes, such as Project Tiger, aim to protect threatened animals and the ecosystems they depend on. Laws against poaching and illegal wildlife trade need effective enforcement. Degraded forests can be restored through the planting of suitable native species and the control of invasive plants. Wildlife corridors help animals move between habitats, while responsible development planning can reduce fragmentation. Forest fires, overgrazing and illegal logging must be controlled. Local communities should participate in decisions and benefit fairly from conservation. Education and scientific monitoring help people understand changing threats and measure progress. Together, these approaches protect biodiversity while supporting sustainable livelihoods."}
+],
+
+flashcards:[
+{q:"What is biodiversity?",a:"Variety of living organisms."},
+{q:"What is flora?",a:"Plant life of a region."},
+{q:"What is fauna?",a:"Animal life of a region."},
+{q:"What is an endangered species?",a:"A species facing a very high risk of extinction."},
+{q:"What is a vulnerable species?",a:"A species at high risk of becoming endangered."},
+{q:"What is an endemic species?",a:"A species naturally restricted to a particular region."},
+{q:"What is an extinct species?",a:"A species that no longer exists anywhere."},
+{q:"What is poaching?",a:"Illegal hunting, capturing or killing of wildlife."},
+{q:"What is deforestation?",a:"Removal of forest cover."},
+{q:"What is a wildlife sanctuary?",a:"A protected area for wildlife and habitats."},
+{q:"What is a national park?",a:"A legally protected natural area."},
+{q:"What is a biosphere reserve?",a:"A large area for biodiversity conservation and compatible activities."},
+{q:"What is the Red Data Book?",a:"A record of threatened plant and animal species."},
+{q:"When was Project Tiger launched in India?",a:"1973."},
+{q:"What is the Chipko Movement associated with?",a:"Community action to protect trees."},
+{q:"What are reserved forests?",a:"Forests with a high degree of legal protection."},
+{q:"What are protected forests?",a:"Forests legally protected from further depletion."},
+{q:"What are unclassed forests?",a:"Forests not classified as reserved or protected."},
+{q:"What is Joint Forest Management?",a:"Cooperation between communities and forest departments."},
+{q:"Name a community known for protecting wildlife in Rajasthan.",a:"The Bishnoi community."},
+{q:"Why are forests important for soil?",a:"Tree roots bind soil and reduce erosion."},
+{q:"How do forests influence the water cycle?",a:"They help infiltration, evapotranspiration and runoff regulation."},
+{q:"What is habitat fragmentation?",a:"Breaking a large habitat into smaller separated areas."},
+{q:"Give one cause of wildlife depletion.",a:"Habitat loss or poaching."},
+{q:"Why are wildlife corridors useful?",a:"They allow animals to move between separated habitats."},
+{q:"What is a sacred grove?",a:"A patch of vegetation protected by local traditions."},
+{q:"How can communities help forests?",a:"By monitoring, restoring and sustainably managing forest resources."},
+{q:"What does Project Tiger aim to protect?",a:"Tigers and their habitats."},
+{q:"Why is poaching harmful?",a:"It reduces populations and can threaten species with extinction."},
+{q:"Name one method of forest conservation.",a:"Afforestation, habitat restoration or protected areas."}
+],
+
+mcqs:[
+{question:"1. Flora refers to:",options:["Animal life","Plant life","Minerals","Climate"],answer:1,explanation:"Flora means the plant life of a region."},
+{question:"2. Fauna refers to:",options:["Animal life","Plant life","Soil","Rocks"],answer:0,explanation:"Fauna means the animal life of a region."},
+{question:"3. Project Tiger was launched in India in:",options:["1952","1973","1985","1992"],answer:1,explanation:"Project Tiger began in 1973."},
+{question:"4. Illegal hunting of wildlife is called:",options:["Afforestation","Poaching","Terracing","Irrigation"],answer:1,explanation:"Poaching is illegal hunting or capturing of wildlife."},
+{question:"5. A species restricted naturally to one region is:",options:["Extinct","Endemic","Normal","Domestic"],answer:1,explanation:"Endemic species are naturally restricted to a particular region."},
+{question:"6. Which movement became known for protecting trees?",options:["Chipko Movement","Green Revolution","White Revolution","Quit India Movement"],answer:0,explanation:"The Chipko Movement opposed tree felling through community action."},
+{question:"7. The Red Data Book contains information about:",options:["Roads","Threatened species","Minerals only","Rainfall"],answer:1,explanation:"It records information about threatened species."},
+{question:"8. Which is a protected area for wildlife?",options:["Wildlife sanctuary","Industrial estate","Mining site","Shopping centre"],answer:0,explanation:"Wildlife sanctuaries are established to protect wildlife and habitats."},
+{question:"9. Biodiversity means:",options:["Only forests","Variety of life","Only mammals","Only crops"],answer:1,explanation:"Biodiversity includes the variety of living organisms."},
+{question:"10. Which is a major cause of habitat loss?",options:["Unplanned deforestation","Tree planting","Wildlife monitoring","Habitat restoration"],answer:0,explanation:"Deforestation removes and fragments habitats."},
+{question:"11. Joint Forest Management involves cooperation between:",options:["Tourists only","Communities and forest departments","Factories only","Traders only"],answer:1,explanation:"JFM encourages shared forest protection and management."},
+{question:"12. Which community is widely known for protecting wildlife in Rajasthan?",options:["Bishnoi","Maasai only","Inuit","Sami"],answer:0,explanation:"The Bishnoi community is known for protecting trees and wildlife."},
+{question:"13. Which category faces a very high risk of extinction?",options:["Endangered","Normal","Domestic","Cultivated"],answer:0,explanation:"Endangered species face a very high risk of extinction."},
+{question:"14. National parks primarily aim to conserve:",options:["Natural ecosystems and wildlife","Factories","Shopping districts","Mining production"],answer:0,explanation:"National parks protect ecosystems, wildlife and landscapes."},
+{question:"15. Habitat fragmentation means:",options:["Connecting forests","Dividing habitat into smaller separated areas","Planting trees","Increasing rainfall"],answer:1,explanation:"Fragmentation separates a habitat into smaller patches."},
+{question:"16. Which action can help conserve forests?",options:["Uncontrolled logging","Restoring degraded habitats","Increasing poaching","Burning forests"],answer:1,explanation:"Restoration improves damaged forest habitats."},
+{question:"17. Which is an example of community conservation?",options:["Locally agreed rules to protect forests","Illegal hunting","Unregulated mining","Destroying sacred groves"],answer:0,explanation:"Community rules can regulate resource use and protect habitats."},
+{question:"18. Wildlife corridors help animals to:",options:["Move between habitats","Lose breeding areas","Increase pollution","Avoid all vegetation"],answer:0,explanation:"Corridors connect separated habitats."},
+{question:"19. Which is a cause of wildlife depletion?",options:["Poaching","Habitat restoration","Protected areas","Wildlife monitoring"],answer:0,explanation:"Poaching removes animals from wild populations."},
+{question:"20. Sacred groves are often protected because of:",options:["Local cultural and religious traditions","Mining licences","Industrial expansion","Road construction"],answer:0,explanation:"Local traditions may protect sacred patches of vegetation."}
+]
+},
+
+/* =========================================================
+   CHAPTER 3: WATER RESOURCES
+   ========================================================= */
+
+"Water Resources": {
+questions:[
+{type:"very-short",q:"1. Why is water considered a renewable resource?",a:"Water is renewed through the natural water cycle, including evaporation, condensation and precipitation, although usable freshwater can still become scarce."},
+{type:"very-short",q:"2. What is water scarcity?",a:"Water scarcity occurs when available usable water is insufficient to meet the needs of people, agriculture, industry and ecosystems."},
+{type:"very-short",q:"3. What is a multipurpose river project?",a:"It is a river-valley project designed to serve several purposes, such as irrigation, electricity generation, flood control and water supply."},
+{type:"very-short",q:"4. What is a dam?",a:"A dam is a barrier built across a river or stream to store water or regulate its flow."},
+{type:"very-short",q:"5. What is irrigation?",a:"Irrigation is the artificial supply of water to crops when rainfall is insufficient."},
+{type:"very-short",q:"6. What is rainwater harvesting?",a:"Rainwater harvesting is the collection and storage of rainwater for later use or for recharging groundwater."},
+{type:"very-short",q:"7. What is groundwater?",a:"Groundwater is water stored below the Earth's surface in soil pores and rock formations."},
+{type:"very-short",q:"8. What is a watershed?",a:"A watershed is an area of land from which water drains into a common river, lake or other water body."},
+{type:"very-short",q:"9. Name one traditional method of rainwater harvesting in Rajasthan.",a:"Tankas are underground tanks used to store rainwater, especially in arid parts of Rajasthan."},
+{type:"very-short",q:"10. What is a check dam?",a:"A check dam is a small barrier built across a drainage channel to slow runoff, reduce erosion and help water seep into the ground."},
+{type:"very-short",q:"11. What is water conservation?",a:"Water conservation means protecting water sources and using water efficiently to reduce waste and ensure future availability."},
+{type:"very-short",q:"12. What is hydroelectricity?",a:"Hydroelectricity is electricity generated by using the energy of flowing or falling water."},
+{type:"very-short",q:"13. What is a reservoir?",a:"A reservoir is a natural or artificial place where water is stored."},
+{type:"very-short",q:"14. What is groundwater recharge?",a:"Groundwater recharge is the process through which water infiltrates into the ground and replenishes underground water stores."},
+{type:"very-short",q:"15. What is drip irrigation?",a:"Drip irrigation supplies water slowly and directly near plant roots, reducing losses through evaporation and runoff."},
+{type:"very-short",q:"16. What is a water divide?",a:"A water divide is an elevated area that separates drainage basins."},
+{type:"very-short",q:"17. What is the main purpose of a check dam?",a:"Its main purpose is to slow surface runoff, reduce erosion and encourage groundwater recharge."},
+{type:"very-short",q:"18. What is an example of a multipurpose project in India?",a:"The Bhakra-Nangal project is an example of a multipurpose river project."},
+{type:"very-short",q:"19. What is rooftop rainwater harvesting?",a:"It is the collection of rain falling on rooftops and directing it into storage tanks or recharge structures."},
+{type:"very-short",q:"20. Why is freshwater limited?",a:"Most of Earth's water is saline, and only a small proportion is freshwater; much of that freshwater is locked in ice or stored underground."},
+
+{type:"short",q:"21. Explain the main causes of water scarcity.",a:"Water scarcity may result from population growth, urbanisation, industrialisation and rising agricultural demand. Unequal distribution of rainfall and seasonal droughts create regional shortages. Over-extraction of groundwater, pollution of rivers and lakes, and inefficient irrigation reduce the amount of usable water. Poor management and unequal access can worsen scarcity even in regions with significant water resources."},
+{type:"short",q:"22. Why are multipurpose river projects constructed?",a:"Multipurpose river projects store and regulate water for irrigation, drinking and industrial supply. They may generate hydroelectricity, help control floods, support navigation and provide opportunities for recreation and fisheries. However, their benefits depend on planning and management, and they may also cause displacement, ecological changes and conflicts over water sharing."},
+{type:"short",q:"23. Mention the disadvantages of large dams.",a:"Large dams may submerge forests, farmland and settlements, forcing people to relocate. Reservoirs can disturb river ecosystems, block fish movement and change the natural flow of sediment. They may create conflicts over water distribution and can reduce downstream sediment supply. Poorly planned projects may also cause social and environmental costs that need careful assessment."},
+{type:"short",q:"24. Explain rooftop rainwater harvesting.",a:"In rooftop rainwater harvesting, rainwater falling on a roof is collected through gutters and pipes. It may be filtered and stored in a tank for later use, or directed into a recharge pit or well to replenish groundwater. The system reduces runoff, helps conserve water and can provide a useful supplementary supply during dry periods. Storage and filtration must be maintained properly."},
+{type:"short",q:"25. How does water pollution contribute to water scarcity?",a:"Pollution makes water unsafe or unsuitable for drinking, irrigation and industrial use. Sewage, industrial effluents, fertilisers and pesticides can contaminate rivers, lakes and groundwater. Even where water is physically present, treatment may be costly or unavailable. Preventing pollution and treating wastewater increase the amount of water that can be safely used."},
+{type:"short",q:"26. Why is groundwater overuse a serious problem?",a:"When groundwater is pumped out faster than it is recharged, the water table falls. Wells may dry up, pumping costs can rise and nearby users may face shortages. Excessive extraction can also contribute to land subsidence in some areas and, near coasts, seawater intrusion. Efficient irrigation, recharge structures and regulated extraction can help address the problem."},
+{type:"short",q:"27. Describe traditional rainwater harvesting in Rajasthan.",a:"In arid parts of Rajasthan, traditional systems include tankas, which are underground tanks that store rainwater, often collected from rooftops or courtyards. Johads and other local structures can capture runoff and help recharge groundwater. These methods reflect local knowledge of scarce rainfall and can support households during dry periods when they are properly maintained."},
+{type:"short",q:"28. How can agriculture conserve water?",a:"Farmers can use drip or sprinkler irrigation where suitable, repair leaking channels and schedule watering according to crop needs. Mulching reduces evaporation, while rainwater harvesting and watershed management help store seasonal water. Choosing crops suited to local climate and improving soil organic matter can also reduce unnecessary water demand."},
+{type:"short",q:"29. Explain the role of watershed management.",a:"Watershed management coordinates the conservation of soil and water across an entire drainage area. Measures such as contour bunding, check dams, vegetation restoration and rainwater harvesting slow runoff and encourage infiltration. These actions can reduce erosion, improve groundwater recharge and support agriculture and local water supplies. Community participation is important for maintaining structures and distributing benefits fairly."},
+{type:"short",q:"30. Suggest measures to conserve water at home and in the community.",a:"At home, people can repair leaks, close taps when not needed, use water-efficient fixtures and reuse suitable greywater for plants. Communities can harvest rainwater, protect ponds and wetlands, repair distribution systems and treat sewage. Schools and local organisations can promote awareness, while farmers and industries can adopt efficient technologies to reduce waste."},
+
+{type:"long",q:"31. Explain the causes of water scarcity and discuss its effects on people and the environment.",a:"Water scarcity occurs when the supply of usable water cannot meet demand. Population growth increases the need for drinking water, sanitation and food production. Urbanisation and industrialisation raise demand, while intensive irrigation may consume large quantities of freshwater. Rainfall is unevenly distributed, and droughts can create seasonal shortages. Groundwater over-extraction lowers water tables, while sewage, industrial waste and agricultural chemicals pollute water sources. Scarcity affects household health, sanitation, agriculture and industrial activity. Farmers may experience crop losses, and communities may spend more time and money obtaining water. Rivers, wetlands and other ecosystems can also suffer when too much water is withdrawn. Solutions include rainwater harvesting, groundwater recharge, wastewater treatment, efficient irrigation, pollution prevention and fair management of water resources."},
+{type:"long",q:"32. Describe the advantages and disadvantages of multipurpose river projects.",a:"Multipurpose river projects are designed to provide several benefits from a single river system. Reservoirs can store water for irrigation and drinking supplies, generate hydroelectricity and help regulate floods. Projects may also support industrial water needs, fisheries, navigation and recreation. However, large reservoirs can submerge forests, agricultural land and settlements. Displacement may affect livelihoods and cultural connections to land. Dams can alter river flow, trap sediment and disturb aquatic habitats. Water distribution between states or regions may also lead to disputes. The benefits and costs depend on location, design, rehabilitation arrangements and environmental management. Proper impact assessments, fair rehabilitation of affected people, careful release of water and protection of river ecosystems are necessary for responsible planning."},
+{type:"long",q:"33. Explain rainwater harvesting and describe its importance with examples.",a:"Rainwater harvesting is the collection and storage of rainwater or its use to recharge groundwater. In rooftop systems, gutters carry water from the roof into a storage tank or recharge structure. In rural areas, ponds, johads, check dams and other local structures capture runoff and slow its movement. In Rajasthan, tankas have traditionally stored rainwater for household use, particularly in dry areas. Rainwater harvesting reduces dependence on distant supplies and deep groundwater, limits surface runoff and may reduce soil erosion. It can improve groundwater availability when recharge structures are properly designed. Stored water should be filtered and treated appropriately before drinking. Regular cleaning of roofs, gutters and tanks is essential to maintain water quality. Local rainfall, geology and community needs should guide the choice of system."},
+{type:"long",q:"34. Discuss the environmental and social problems caused by large dams.",a:"Large dams can provide irrigation, electricity and regulated water supplies, but they can also create serious environmental and social challenges. Reservoirs may submerge forests, farmland, villages and wildlife habitats. People displaced by reservoirs may lose homes, agricultural land and traditional livelihoods, so rehabilitation must be fair and effective. Dams can change the timing and quantity of downstream flow, trap sediment and interfere with fish migration. Changes in sediment transport can affect riverbanks, floodplains and deltas. Reservoir construction may also alter local ecosystems and create conflicts over how water and electricity benefits are shared. These concerns do not mean every dam has the same impact; effects depend on the river, location and design. Careful environmental assessment, consultation with affected communities, transparent water-sharing rules and monitoring are important to reduce harm."},
+{type:"long",q:"35. Explain the importance of water conservation and describe practical methods to conserve water.",a:"Water conservation is essential because usable freshwater is limited, unevenly distributed and increasingly demanded by households, agriculture and industries. Conservation helps maintain water supplies during dry periods, protects ecosystems and reduces pressure on rivers and aquifers. At home, people can repair leaks, avoid unnecessary running water and reuse suitable water for cleaning or gardening. Rooftop rainwater harvesting can store rain or recharge groundwater. Farmers can adopt drip or sprinkler irrigation where appropriate, improve irrigation scheduling and grow crops suited to local conditions. Communities can restore ponds and wetlands, construct check dams where suitable and protect catchment vegetation. Industries and towns should treat wastewater so that it can be safely reused. Preventing pollution is equally important because contaminated water is less available for use. Successful conservation requires planning, public participation, maintenance and fair distribution."}
+],
+
+flashcards:[
+{q:"What is water scarcity?",a:"Insufficient usable water to meet demand."},
+{q:"What is a multipurpose river project?",a:"A project designed for several purposes such as irrigation and electricity generation."},
+{q:"What is a dam?",a:"A barrier that stores or regulates river water."},
+{q:"What is irrigation?",a:"Artificial supply of water to crops."},
+{q:"What is rainwater harvesting?",a:"Collecting rainwater for storage or groundwater recharge."},
+{q:"What is groundwater?",a:"Water stored beneath Earth's surface."},
+{q:"What is a watershed?",a:"Land draining water into a common water body."},
+{q:"What is a reservoir?",a:"A natural or artificial water-storage area."},
+{q:"What is hydroelectricity?",a:"Electricity generated from moving or falling water."},
+{q:"What are tankas?",a:"Underground rainwater-storage tanks traditionally used in Rajasthan."},
+{q:"What is a check dam?",a:"A small barrier that slows runoff and helps recharge groundwater."},
+{q:"What is drip irrigation?",a:"Water delivered slowly near plant roots."},
+{q:"What is groundwater recharge?",a:"Water entering the ground and replenishing underground stores."},
+{q:"Give one cause of water scarcity.",a:"Over-extraction, pollution or high demand."},
+{q:"Give one benefit of dams.",a:"Water storage or hydroelectricity generation."},
+{q:"Give one disadvantage of large dams.",a:"Displacement or habitat loss."},
+{q:"How does pollution affect water supply?",a:"It makes water unsafe or unsuitable for use."},
+{q:"Why conserve groundwater?",a:"To prevent falling water tables and future shortages."},
+{q:"How can homes save water?",a:"Repair leaks and avoid unnecessary water use."},
+{q:"How can farmers save water?",a:"Use efficient irrigation and suitable crops."},
+{q:"What does watershed management conserve?",a:"Soil and water across a drainage area."},
+{q:"What is rooftop harvesting?",a:"Collecting rain from roofs into tanks or recharge systems."},
+{q:"Name one traditional runoff-harvesting structure.",a:"Johad."},
+{q:"Why are wetlands important?",a:"They support biodiversity and help regulate water."},
+{q:"What is water pollution?",a:"Contamination that reduces water quality."},
+{q:"What can untreated sewage do?",a:"Contaminate water and spread disease."},
+{q:"Why are forests important for water?",a:"They support infiltration, reduce erosion and influence runoff."},
+{q:"What is a water table?",a:"The upper level of the saturated zone underground."},
+{q:"What is a water divide?",a:"An elevated area separating drainage basins."},
+{q:"What is water conservation?",a:"Protecting water sources and using water efficiently."}
+],
+
+mcqs:[
+{question:"1. Which process renews water naturally?",options:["Water cycle","Mining","Deforestation","Combustion"],answer:0,explanation:"Evaporation, condensation and precipitation renew water through the water cycle."},
+{question:"2. A multipurpose river project may provide:",options:["Only roads","Irrigation and electricity","Only minerals","Only timber"],answer:1,explanation:"Such projects are designed to serve several purposes."},
+{question:"3. Rainwater harvesting means:",options:["Wasting rainwater","Collecting and storing rainwater","Polluting rivers","Removing forests"],answer:1,explanation:"Rainwater is collected for use or groundwater recharge."},
+{question:"4. Tankas are traditionally associated with:",options:["Rajasthan","Assam","Kerala","Punjab only"],answer:0,explanation:"Tankas are underground water-storage tanks used in arid Rajasthan."},
+{question:"5. Hydroelectricity uses energy from:",options:["Coal only","Moving or falling water","Petroleum only","Wood only"],answer:1,explanation:"Hydroelectricity uses the energy of moving or falling water."},
+{question:"6. Which is a cause of water scarcity?",options:["Efficient use","Groundwater over-extraction","Wastewater treatment","Rainwater harvesting"],answer:1,explanation:"Pumping groundwater faster than recharge can cause scarcity."},
+{question:"7. Drip irrigation delivers water:",options:["Directly near plant roots","Only to roads","Into the sea","Only onto rooftops"],answer:0,explanation:"Drip systems supply water close to the roots."},
+{question:"8. A watershed is:",options:["A drainage area","A mountain mineral","A type of crop","A factory"],answer:0,explanation:"A watershed drains into a common water body."},
+{question:"9. Which can reduce surface runoff and encourage recharge?",options:["Check dam","Deforestation","Uncontrolled paving","Dumping waste"],answer:0,explanation:"Check dams slow runoff and may increase infiltration."},
+{question:"10. Which is a possible disadvantage of large dams?",options:["Habitat submergence","Guaranteed zero impact","No water storage","No electricity"],answer:0,explanation:"Reservoirs may submerge habitats and settlements."},
+{question:"11. What can make freshwater unsafe to use?",options:["Pollution","Rainwater collection","Leak repair","Efficient irrigation"],answer:0,explanation:"Pollution can make water unsuitable for drinking and other uses."},
+{question:"12. Groundwater recharge occurs when water:",options:["Infiltrates into the ground","Evaporates completely","Is burned","Is pumped out only"],answer:0,explanation:"Infiltration replenishes underground water stores."},
+{question:"13. Which is a method of water conservation?",options:["Repairing leaks","Leaving taps running","Dumping sewage","Over-irrigating fields"],answer:0,explanation:"Repairing leaks prevents unnecessary water loss."},
+{question:"14. Which structure stores rooftop rainwater underground?",options:["Tanka","Railway track","Mine shaft only","Chimney"],answer:0,explanation:"A tanka is an underground water-storage tank."},
+{question:"15. Excessive groundwater pumping can cause:",options:["A falling water table","Unlimited water","More rainfall everywhere","No environmental effect"],answer:0,explanation:"Extraction faster than recharge lowers groundwater levels."},
+{question:"16. Which activity helps reduce water demand in farming?",options:["Efficient irrigation","Flooding fields unnecessarily","Ignoring leaks","Growing water-intensive crops everywhere"],answer:0,explanation:"Efficient irrigation reduces avoidable water use."},
+{question:"17. A dam is built mainly to:",options:["Store or regulate water","Create desert soil","Stop all evaporation","Produce rainfall directly"],answer:0,explanation:"Dams store water and regulate river flow."},
+{question:"18. Which practice can improve local groundwater recharge?",options:["Rainwater harvesting","Paving every open area","Dumping plastic","Removing all vegetation"],answer:0,explanation:"Recharge structures help water infiltrate into the ground."},
+{question:"19. Which is a common source of water pollution?",options:["Untreated sewage","Leak repair","Watershed restoration","Rainwater storage"],answer:0,explanation:"Untreated sewage contaminates water sources."},
+{question:"20. Why is water conservation important?",options:["Freshwater is limited and unevenly distributed","Water never runs out","Pollution improves water","Only industries need water"],answer:0,explanation:"Conservation helps meet present needs while protecting future supplies."}
+]
+}
+
+});
+
+console.log("Geography Part 1 loaded: Resources and Development, Forest and Wildlife Resources, Water Resources");
