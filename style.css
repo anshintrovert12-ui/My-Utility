@@ -896,3 +896,130 @@ body.text-large {
     transition-duration: 0.01ms !important;
   }
      }
+
+/* =========================================
+   CLASS 10 HUB — THEME & HEADER IMPROVEMENTS
+   ========================================= */
+
+/* Keep the theme colours controlled by CSS variables */
+html {
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+}
+
+body.light-mode {
+  color-scheme: light;
+}
+
+/* Smooth, consistent theme transitions */
+body,
+.topbar,
+.sidebar,
+#app,
+footer,
+.feature-card,
+.question-card,
+.quiz-question,
+.mock-question,
+.note-card,
+.chapter-card,
+.subject-card,
+.flashcard-item,
+.settings-card,
+.game-card,
+.selector-card,
+.progress-card,
+.study-card,
+input,
+select,
+textarea,
+.icon-btn,
+.secondary-btn {
+  transition:
+    background-color 0.25s ease,
+    color 0.25s ease,
+    border-color 0.25s ease;
+}
+
+/* Better header appearance */
+.topbar {
+  min-height: 76px;
+  padding: 10px 18px;
+  gap: 12px;
+}
+
+.brand {
+  min-width: 0;
+  line-height: 1.2;
+}
+
+.brand > div,
+.brand > span {
+  min-width: 0;
+}
+
+#themeBtn {
+  margin-left: auto;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  font-size: 1.25rem;
+  border-color: var(--border);
+  background: var(--surface);
+  color: var(--text);
+}
+
+#themeBtn:hover {
+  background: var(--surface-2);
+  transform: rotate(8deg);
+}
+
+/* Better light-mode contrast */
+body.light-mode .topbar {
+  background: rgba(255, 255, 255, 0.96);
+  border-bottom-color: rgba(48, 68, 110, 0.16);
+}
+
+body.light-mode .sidebar {
+  background: var(--bg);
+}
+
+body.light-mode .icon-btn {
+  background: var(--surface);
+  color: var(--text);
+}
+
+body.light-mode .feature-card {
+  background: linear-gradient(145deg, #ffffff, #f0f4fc);
+}
+
+body.light-mode .option-btn {
+  background: var(--surface-2);
+  color: var(--text);
+}
+
+body.light-mode input,
+body.light-mode select,
+body.light-mode textarea {
+  background: #ffffff;
+  color: #1b2740;
+}
+
+/* Mobile and tablet header spacing */
+@media (max-width: 760px) {
+  .topbar {
+    min-height: 64px;
+    padding: 8px 12px;
+    gap: 10px;
+  }
+
+  #themeBtn {
+    width: 42px;
+    height: 42px;
+  }
+}
+
