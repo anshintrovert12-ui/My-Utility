@@ -4,754 +4,194 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#080d18">
-  <meta name="description" content="Class 10 Hub — your free Class 10 study workspace.">
+  <meta name="description" content="Class 10 Hub — your free NCERT study workspace.">
   <title>Class 10 Hub</title>
   <link rel="stylesheet" href="style.css">
+  <script src="content.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
-
 <body>
   <div class="app-shell">
 
-    <!-- TOP BAR -->
-    <header class="topbar">
-      <button
-        id="menuBtn"
-        class="icon-btn"
-        type="button"
-        aria-label="Open navigation menu"
-        aria-controls="sidebar"
-      >☰</button>
-
-      <a href="#home" class="brand" aria-label="Class 10 Hub home">
+    <aside class="sidebar" id="sidebar">
+      <a href="#home" class="brand" data-page="home">
         <span class="brand-logo">10</span>
-        <span class="brand-text">
-          <strong>Class 10 Hub</strong>
-          <small>Your study workspace</small>
-        </span>
+        <span>Class 10 Hub<small>YOUR STUDY SPACE</small></span>
       </a>
 
-      <div class="topbar-actions">
-        <button
-          id="themeBtn"
-          class="icon-btn"
-          type="button"
-          aria-label="Toggle theme"
-          title="Toggle dark and light mode"
-        >◐</button>
-      </div>
-    </header>
-
-    <!-- SIDEBAR OVERLAY -->
-    <div id="overlay" class="overlay"></div>
-
-    <!-- SIDEBAR -->
-    <aside id="sidebar" class="sidebar" aria-label="Main navigation">
-      <div class="sidebar-heading">
-        <span>STUDY SPACE</span>
-      </div>
-
-      <nav class="sidebar-nav">
-        <button class="nav-link active" type="button" data-page="home">
-          <span>⌂</span><span>Overview</span>
-        </button>
-
-        <button class="nav-link" type="button" data-page="subjects">
-          <span>▤</span><span>Subject Library</span>
-        </button>
-
-        <button class="nav-link" type="button" data-page="questions">
-          <span>☷</span><span>Questions &amp; Answers</span>
-        </button>
-
-        <button class="nav-link" type="button" data-page="flashcards">
-          <span>▣</span><span>Flashcards</span>
-        </button>
-
-        <button class="nav-link" type="button" data-page="quiz">
-          <span>✓</span><span>Chapter Quiz</span>
-        </button>
-
-        <button class="nav-link" type="button" data-page="mock">
-          <span>▦</span><span>Mock Tests</span>
-        </button>
-
-        <button class="nav-link" type="button" data-page="notes">
-          <span>✎</span><span>My Notes</span>
-        </button>
-
-        <button class="nav-link" type="button" data-page="games">
-          <span>♧</span><span>Mini Games</span>
-        </button>
-
-        <button class="nav-link" type="button" data-page="infographics">
-          <span>▧</span><span>Infographics</span>
-        </button>
-
-        <button class="nav-link" type="button" data-page="settings">
-          <span>⚙</span><span>Settings</span>
-        </button>
+      <nav class="side-nav" aria-label="Main navigation">
+        <button class="nav-item active" data-page="home">⌂ <span>Dashboard</span></button>
+        <button class="nav-item" data-page="subjects">▤ <span>Subject Library</span></button>
+        <button class="nav-item" data-page="flashcards">▧ <span>Flashcards</span></button>
+        <button class="nav-item" data-page="quiz">◉ <span>Chapter Quiz</span></button>
+        <button class="nav-item" data-page="mock">◎ <span>80 MCQ Mock Test</span></button>
+        <button class="nav-item" data-page="infographics">▣ <span>Infographic Notes</span></button>
+        <button class="nav-item" data-page="notes">✎ <span>My Notes</span></button>
+        <button class="nav-item" data-page="bookmarks">☆ <span>Bookmarks</span></button>
+        <button class="nav-item" data-page="games">♟ <span>Mini Games</span></button>
+        <button class="nav-item" data-page="progress">▥ <span>My Progress</span></button>
       </nav>
 
-      <div class="sidebar-footer">
-        <div class="sidebar-status">
-          <span class="status-dot"></span>
-          <span>Free Study Workspace</span>
+      <div class="sidebar-bottom">
+        <div class="developer-mini">
+          <span class="developer-avatar">M</span>
+          <div><strong>Developer</strong><small>Mishra</small></div>
         </div>
-        <small>Class 10 Hub · Version 1.0</small>
+        <button class="nav-item" data-page="settings">⚙ <span>Settings</span></button>
+        <button class="nav-item" data-page="about">ⓘ <span>About & Help</span></button>
       </div>
     </aside>
 
-    <!-- MAIN CONTENT -->
-    <main id="mainContent" class="main-content">
+    <div class="main-column">
+      <header class="topbar">
+        <button id="menuToggle" class="icon-btn" aria-label="Toggle menu"
+          aria-expanded="false">☰</button>
+        <div class="topbar-title">
+          <strong id="pageTitle">Dashboard</strong>
+          <small>Learn smarter. Grow every day.</small>
+        </div>
+        <div class="top-actions">
+          <button id="themeToggle" class="icon-btn" aria-label="Toggle theme">◐</button>
+          <button class="icon-btn" data-page="settings" aria-label="Settings">⚙</button>
+        </div>
+      </header>
 
-      <!-- HOME PAGE -->
-      <section id="page-home" class="page active">
-        <div class="welcome-section">
-          <div class="welcome-content">
-            <span class="eyebrow">YOUR LEARNING SPACE</span>
-            <h1>Welcome to Class 10 Hub</h1>
-            <p>
-              Learn chapter by chapter, practise questions,
-              revise with flashcards and track your progress.
-            </p>
+      <main id="mainContent">
 
-            <div class="welcome-actions">
-              <button class="btn btn-primary" type="button" data-go="subjects">
-                Explore Subjects
-              </button>
-              <button class="btn btn-secondary" type="button" data-go="notes">
-                Open My Notes
-              </button>
+        <section class="page active" id="page-home">
+          <div class="welcome-banner">
+            <div class="welcome-copy">
+              <span class="eyebrow">YOUR PERSONAL LEARNING SPACE</span>
+              <h1>Welcome to <span>Class 10 Hub.</span></h1>
+              <p>Everything you need to study, revise and prepare for exams — in one place.</p>
+              <button class="primary-btn" data-page="subjects">Explore subjects →</button>
             </div>
+            <div class="welcome-art" aria-hidden="true">10<span>HUB</span></div>
           </div>
 
-          <div class="welcome-visual" aria-hidden="true">
-            <div class="study-orbit orbit-one"></div>
-            <div class="study-orbit orbit-two"></div>
-            <div class="study-symbol">10</div>
-          </div>
-        </div>
-
-        <div class="section-heading">
-          <div>
-            <span class="eyebrow">YOUR WORKSPACE</span>
-            <h2>Study Overview</h2>
-          </div>
-        </div>
-
-        <div class="stats-grid">
-          <article class="stat-card">
-            <span class="stat-icon">▤</span>
-            <div>
-              <p>Subjects</p>
-              <h3 id="subjectCount">5</h3>
-            </div>
-          </article>
-
-          <article class="stat-card">
-            <span class="stat-icon">✎</span>
-            <div>
-              <p>Saved Notes</p>
-              <h3 id="notesCount">0</h3>
-            </div>
-          </article>
-
-          <article class="stat-card">
-            <span class="stat-icon">✓</span>
-            <div>
-              <p>Completed Activities</p>
-              <h3 id="progressLabel">0</h3>
-            </div>
-          </article>
-        </div>
-
-        <section class="panel progress-panel">
           <div class="section-heading">
-            <div>
-              <h2>Your Progress</h2>
-              <p>Keep revising regularly.</p>
-            </div>
-            <span id="progressDetail">Ready to begin</span>
+            <div><h2>Your workspace</h2><p>Pick up where you left off.</p></div>
           </div>
 
-          <div class="progress-track">
-            <div id="progressFill" class="progress-fill" style="width: 0%"></div>
+          <div class="stats-grid">
+            <article class="stat-card"><span>Completed chapters</span><strong id="statChapters">0</strong><small>Your learning progress</small></article>
+            <article class="stat-card"><span>Quiz attempts</span><strong id="statQuizzes">0</strong><small>Keep practising</small></article>
+            <article class="stat-card"><span>Saved notes</span><strong id="statNotes">0</strong><small>Your personal notes</small></article>
+            <article class="stat-card"><span>Bookmarks</span><strong id="statBookmarks">0</strong><small>Important questions</small></article>
+          </div>
+
+          <div class="section-heading"><div><h2>Study tools</h2><p>Your learning toolkit.</p></div></div>
+          <div class="card-grid">
+            <button class="feature-card" data-page="subjects"><span class="feature-icon blue">▤</span><h3>Subject Library</h3><p>Explore subjects, chapters and exam-ready answers.</p><span class="card-link">Open library →</span></button>
+            <button class="feature-card" data-page="flashcards"><span class="feature-icon purple">▧</span><h3>Flashcards</h3><p>Revise important facts and definitions.</p><span class="card-link">Start revision →</span></button>
+            <button class="feature-card" data-page="quiz"><span class="feature-icon green">◉</span><h3>Chapter Quiz</h3><p>Practise MCQs and check your score.</p><span class="card-link">Start quiz →</span></button>
+            <button class="feature-card" data-page="infographics"><span class="feature-icon orange">▣</span><h3>Infographic Notes</h3><p>Visual, structured chapter revision notes.</p><span class="card-link">View infographics →</span></button>
+            <button class="feature-card" data-page="notes"><span class="feature-icon pink">✎</span><h3>My Notes</h3><p>Write and save your own revision notes.</p><span class="card-link">Open notes →</span></button>
+            <button class="feature-card" data-page="games"><span class="feature-icon blue">♟</span><h3>7 Mini Games</h3><p>Learn through quick educational activities.</p><span class="card-link">Play & learn →</span></button>
+          </div>
+
+          <div class="section-heading"><div><h2>Festival appearances</h2><p>Optional festive themes for your workspace.</p></div></div>
+          <div class="festival-grid">
+            <article class="festival-card diwali-card"><div><h3>Diwali Appearance</h3><p>Festive lights and fireworks.</p></div><button class="secondary-btn" data-festival="diwali">Turn on</button></article>
+            <article class="festival-card christmas-card"><div><h3>Christmas Appearance</h3><p>Winter lights and evergreen style.</p></div><button class="secondary-btn" data-festival="christmas">Turn on</button></article>
           </div>
         </section>
 
-        <div class="section-heading">
-          <div>
-            <h2>Quick Access</h2>
-            <p>Continue with your preferred activity.</p>
+        <section class="page" id="page-subjects">
+          <div class="page-intro"><span class="eyebrow">LEARN & REVISE</span><h1>Subject Library</h1><p>Choose a subject, then select a chapter.</p></div>
+          <div id="subjectGrid" class="card-grid"></div>
+          <div id="chapterArea" class="content-panel hidden">
+            <button class="secondary-btn" id="backSubjects">← All subjects</button>
+            <h2 id="chapterHeading">Chapters</h2>
+            <div id="chapterList" class="chapter-list"></div>
           </div>
-        </div>
-
-        <div class="feature-grid">
-          <button class="feature-card" type="button" data-go="subjects">
-            <span class="feature-icon">📚</span>
-            <h3>Subject Library</h3>
-            <p>Explore subjects and chapters.</p>
-            <span class="feature-link">Explore →</span>
-          </button>
-
-          <button class="feature-card" type="button" data-go="questions">
-            <span class="feature-icon">📝</span>
-            <h3>Question Bank</h3>
-            <p>Practise exam-style questions and answers.</p>
-            <span class="feature-link">Practise →</span>
-          </button>
-
-          <button class="feature-card" type="button" data-go="flashcards">
-            <span class="feature-icon">🗂️</span>
-            <h3>Flashcards</h3>
-            <p>Revise important concepts.</p>
-            <span class="feature-link">Revise →</span>
-          </button>
-
-          <button class="feature-card" type="button" data-go="quiz">
-            <span class="feature-icon">🎯</span>
-            <h3>Chapter Quiz</h3>
-            <p>Test your understanding.</p>
-            <span class="feature-link">Start quiz →</span>
-          </button>
-
-          <button class="feature-card" type="button" data-go="mock">
-            <span class="feature-icon">📋</span>
-            <h3>Mock Tests</h3>
-            <p>Practise subject-wise tests.</p>
-            <span class="feature-link">Take a test →</span>
-          </button>
-
-          <button class="feature-card" type="button" data-go="notes">
-            <span class="feature-icon">📒</span>
-            <h3>My Notes</h3>
-            <p>Write and save your revision notes.</p>
-            <span class="feature-link">Open notes →</span>
-          </button>
-        </div>
-      </section>
-
-      <!-- SUBJECT LIBRARY -->
-      <section id="page-subjects" class="page">
-        <div class="page-heading">
-          <span class="eyebrow">LEARN BY SUBJECT</span>
-          <h1>Subject Library</h1>
-          <p>Choose a subject and select a chapter to study.</p>
-        </div>
-
-        <div class="subject-grid" id="subjectGrid">
-          <button class="subject-card" type="button" data-subject="Science">
-            <span class="subject-icon">🔬</span>
-            <h3>Science</h3>
-            <p>Concepts, definitions and diagrams</p>
-            <span class="feature-link">Open subject →</span>
-          </button>
-
-          <button class="subject-card" type="button" data-subject="Mathematics">
-            <span class="subject-icon">📐</span>
-            <h3>Mathematics</h3>
-            <p>Formulas and problem practice</p>
-            <span class="feature-link">Open subject →</span>
-          </button>
-
-          <button class="subject-card" type="button" data-subject="Social Science">
-            <span class="subject-icon">🌍</span>
-            <h3>Social Science</h3>
-            <p>History, Geography, Civics and Economics</p>
-            <span class="feature-link">Open subject →</span>
-          </button>
-
-          <button class="subject-card" type="button" data-subject="English">
-            <span class="subject-icon">📖</span>
-            <h3>English</h3>
-            <p>Literature, reading and writing</p>
-            <span class="feature-link">Open subject →</span>
-          </button>
-
-          <button class="subject-card" type="button" data-subject="Hindi">
-            <span class="subject-icon">अ</span>
-            <h3>Hindi</h3>
-            <p>Literature, grammar and writing</p>
-            <span class="feature-link">Open subject →</span>
-          </button>
-        </div>
-
-        <section class="panel">
-          <div class="section-heading">
-            <div>
-              <h2>Chapter Selection</h2>
-              <p>Select a subject and chapter.</p>
-            </div>
-          </div>
-
-          <div class="form-grid">
-            <label class="field">
-              <span>Subject</span>
-              <select id="subjectSelect">
-                <option value="">Select subject</option>
-                <option value="Science">Science</option>
-                <option value="Mathematics">Mathematics</option>
-                <option value="Social Science">Social Science</option>
-                <option value="English">English</option>
-                <option value="Hindi">Hindi</option>
-              </select>
-            </label>
-
-            <label class="field">
-              <span>Chapter</span>
-              <select id="chapterSelect">
-                <option value="">Select a subject first</option>
-              </select>
-            </label>
-          </div>
-
-          <div class="button-row">
-            <button id="openChapterBtn" class="btn btn-primary" type="button">
-              Open Chapter
-            </button>
-          </div>
-
-          <div id="chapterContent" class="content-area"></div>
+          <div id="chapterDetail" class="content-panel hidden"></div>
         </section>
-      </section>
 
-      <!-- QUESTIONS AND ANSWERS -->
-      <section id="page-questions" class="page">
-        <div class="page-heading">
-          <span class="eyebrow">EXAM PREPARATION</span>
-          <h1>Questions &amp; Answers</h1>
-          <p>Review chapter-wise questions and exam-ready answers.</p>
-        </div>
+        <section class="page" id="page-flashcards">
+          <div class="page-intro"><span class="eyebrow">ACTIVE RECALL</span><h1>Flashcards</h1><p>Choose a subject and chapter to revise.</p></div>
+          <div class="toolbar"><select id="flashSubject" aria-label="Flashcard subject"></select><select id="flashChapter" aria-label="Flashcard chapter"></select></div>
+          <div id="flashcardBox" class="flashcard-box"><p>Select a subject and chapter to begin.</p></div>
+          <div class="button-row"><button class="secondary-btn" id="flashPrev">← Previous</button><button class="primary-btn" id="flashFlip">Reveal answer</button><button class="secondary-btn" id="flashNext">Next →</button></div>
+          <p id="flashCount" class="muted center"></p>
+        </section>
 
-        <div class="panel">
-          <div class="form-grid">
-            <label class="field">
-              <span>Subject</span>
-              <select id="questionSubject">
-                <option value="">Select subject</option>
-                <option value="Science">Science</option>
-                <option value="Mathematics">Mathematics</option>
-                <option value="Social Science">Social Science</option>
-                <option value="English">English</option>
-                <option value="Hindi">Hindi</option>
-              </select>
-            </label>
+        <section class="page" id="page-quiz">
+          <div class="page-intro"><span class="eyebrow">TEST YOUR KNOWLEDGE</span><h1>Chapter Quiz</h1><p>Timed practice. Answers appear after submission.</p></div>
+          <div class="toolbar"><select id="quizSubject" aria-label="Quiz subject"></select><select id="quizChapter" aria-label="Quiz chapter"></select><button class="primary-btn" id="startQuiz">Start quiz</button></div>
+          <div id="quizArea" class="content-panel"><p>Select a subject and chapter to start.</p></div>
+        </section>
 
-            <label class="field">
-              <span>Chapter</span>
-              <select id="questionChapter">
-                <option value="">Select chapter</option>
-              </select>
-            </label>
+        <section class="page" id="page-mock">
+          <div class="page-intro"><span class="eyebrow">EXAM PRACTICE</span><h1>Subject Mock Test</h1><p>Full mock test format: exactly 80 MCQs per subject.</p></div>
+          <div class="toolbar"><select id="mockSubject" aria-label="Mock test subject"></select><button class="primary-btn" id="startMock">Start 80-question test</button></div>
+          <div id="mockArea" class="content-panel"><p>Choose a subject to begin your mock test.</p></div>
+        </section>
+
+        <section class="page" id="page-infographics">
+          <div class="page-intro"><span class="eyebrow">VISUAL REVISION</span><h1>Infographic Notes</h1><p>Choose a subject and chapter to open visual revision notes.</p></div>
+          <div class="toolbar"><select id="infoSubject" aria-label="Infographic subject"></select><select id="infoChapter" aria-label="Infographic chapter"></select><button class="primary-btn" id="openInfo">Open notes</button></div>
+          <div id="infoScreen" class="content-panel infographic-screen"><p>Your infographic will appear here.</p></div>
+          <div class="button-row"><button id="infoPrev" class="secondary-btn">← Previous</button><button id="infoNext" class="secondary-btn">Next →</button></div>
+        </section>
+
+        <section class="page" id="page-notes">
+          <div class="page-intro"><span class="eyebrow">YOUR PERSONAL SPACE</span><h1>My Notes</h1><p>Your notes are saved on this device.</p></div>
+          <div class="content-panel">
+            <label for="noteTitle">Note title</label><input id="noteTitle" placeholder="e.g. Chemical reactions revision">
+            <label for="noteBody">Your notes</label><textarea id="noteBody" rows="7" placeholder="Write your revision notes here..."></textarea>
+            <button id="saveNote" class="primary-btn">Save note</button>
           </div>
+          <div id="notesList" class="card-grid"></div>
+        </section>
 
-          <div class="button-row">
-            <button id="loadQuestionsBtn" class="btn btn-primary" type="button">
-              Load Questions
-            </button>
+        <section class="page" id="page-bookmarks">
+          <div class="page-intro"><span class="eyebrow">SAVED FOR LATER</span><h1>Bookmarks</h1><p>Your saved important questions and topics.</p></div>
+          <div id="bookmarksList" class="content-panel"><p>No bookmarks yet.</p></div>
+        </section>
+
+        <section class="page" id="page-games">
+          <div class="page-intro"><span class="eyebrow">LEARN BY PLAYING</span><h1>Mini Games</h1><p>Seven lightweight educational activities.</p></div>
+          <div id="gamesGrid" class="card-grid"></div>
+          <div id="gameArea" class="content-panel hidden"></div>
+        </section>
+
+        <section class="page" id="page-progress">
+          <div class="page-intro"><span class="eyebrow">YOUR JOURNEY</span><h1>My Progress</h1><p>Review your completed chapters and quiz performance.</p></div>
+          <div id="progressArea" class="stats-grid"></div>
+          <div class="content-panel"><h2>Recent quiz attempts</h2><div id="historyList"></div></div>
+        </section>
+
+        <section class="page" id="page-settings">
+          <div class="page-intro"><span class="eyebrow">MAKE IT YOURS</span><h1>Settings</h1><p>Personalise your study experience.</p></div>
+          <div class="content-panel settings-list">
+            <label for="themeSelect">Appearance</label><select id="themeSelect"><option value="system">Use device setting</option><option value="dark">Dark mode</option><option value="light">Light mode</option></select>
+            <label for="textSize">Text size</label><select id="textSize"><option value="normal">Normal</option><option value="large">Large</option><option value="xlarge">Extra large</option></select>
+            <label for="motionSelect">Animations</label><select id="motionSelect"><option value="on">On</option><option value="off">Reduce animations</option></select>
+            <label for="diwaliSetting">Diwali Appearance</label><select id="diwaliSetting"><option value="off">Off</option><option value="on">On</option></select>
+            <label for="christmasSetting">Christmas Appearance</label><select id="christmasSetting"><option value="off">Off</option><option value="on">On</option></select>
+            <button id="exportData" class="secondary-btn">Export my data</button>
+            <button id="resetData" class="danger-btn">Reset all saved data</button>
           </div>
+        </section>
 
-          <label class="field">
-            <span>Search questions</span>
-            <input
-              id="questionSearch"
-              type="search"
-              placeholder="Search a question or keyword..."
-            >
-          </label>
-
-          <div class="filter-row" id="questionFilters">
-            <button class="filter-btn active" type="button" data-filter="all">All</button>
-            <button class="filter-btn" type="button" data-filter="very-short">Very Short</button>
-            <button class="filter-btn" type="button" data-filter="short">Short</button>
-            <button class="filter-btn" type="button" data-filter="long">Long</button>
+        <section class="page" id="page-about">
+          <div class="page-intro"><span class="eyebrow">ABOUT THIS PROJECT</span><h1>About Class 10 Hub</h1><p>A student-focused learning workspace.</p></div>
+          <div class="content-panel">
+            <h2>Our purpose</h2><p>Class 10 Hub brings chapter revision, questions, quizzes, flashcards and personal notes together in one workspace.</p>
+            <h2>Developer</h2><div class="developer-profile"><div class="developer-avatar large">M</div><div><h3>Mishra</h3><p>From Public School</p><p>Class 10th</p></div></div>
+            <h2>Help</h2><p>Choose a subject, open a chapter and use the available study tools. Your personal notes and progress are saved locally in your browser.</p>
+            <h2>Privacy</h2><p>This static website is designed to store personal notes and progress on your device. Avoid saving sensitive personal information. Clearing browser data may remove locally saved information.</p>
+            <p class="muted">Version 1.0 · Free learning workspace</p>
           </div>
+        </section>
 
-          <div id="questionsList" class="content-area" aria-live="polite">
-            <p>Select a subject and chapter to view questions.</p>
-          </div>
-        </div>
-      </section>
+      </main>
 
-      <!-- FLASHCARDS -->
-      <section id="page-flashcards" class="page">
-        <div class="page-heading">
-          <span class="eyebrow">ACTIVE RECALL</span>
-          <h1>Flashcards</h1>
-          <p>Reveal answers and revise important concepts.</p>
-        </div>
-
-        <div class="panel">
-          <div class="form-grid">
-            <label class="field">
-              <span>Subject</span>
-              <select id="flashcardSubject">
-                <option value="">Select subject</option>
-                <option value="Science">Science</option>
-                <option value="Mathematics">Mathematics</option>
-                <option value="Social Science">Social Science</option>
-                <option value="English">English</option>
-                <option value="Hindi">Hindi</option>
-              </select>
-            </label>
-
-            <label class="field">
-              <span>Chapter</span>
-              <select id="flashcardChapter">
-                <option value="">Select chapter</option>
-              </select>
-            </label>
-          </div>
-
-          <div class="button-row">
-            <button id="loadFlashcardsBtn" class="btn btn-primary" type="button">
-              Load Flashcards
-            </button>
-          </div>
-
-          <div id="flashcardArea" class="flashcard-area">
-            <div class="flashcard">
-              <p>Select a chapter to begin revising.</p>
-            </div>
-          </div>
-
-          <div class="button-row">
-            <button id="prevFlashcardBtn" class="btn btn-secondary" type="button">
-              Previous
-            </button>
-            <button id="flipFlashcardBtn" class="btn btn-primary" type="button">
-              Reveal Answer
-            </button>
-            <button id="nextFlashcardBtn" class="btn btn-secondary" type="button">
-              Next
-            </button>
-          </div>
-
-          <p id="flashcardCounter" class="muted-text">No flashcards loaded</p>
-        </div>
-      </section>
-
-      <!-- CHAPTER QUIZ -->
-      <section id="page-quiz" class="page">
-        <div class="page-heading">
-          <span class="eyebrow">TEST YOURSELF</span>
-          <h1>Chapter Quiz</h1>
-          <p>Practise multiple-choice questions from your chapters.</p>
-        </div>
-
-        <div class="panel">
-          <div class="form-grid">
-            <label class="field">
-              <span>Subject</span>
-              <select id="quizSubject">
-                <option value="">Select subject</option>
-                <option value="Science">Science</option>
-                <option value="Mathematics">Mathematics</option>
-                <option value="Social Science">Social Science</option>
-                <option value="English">English</option>
-                <option value="Hindi">Hindi</option>
-              </select>
-            </label>
-
-            <label class="field">
-              <span>Chapter</span>
-              <select id="quizChapter">
-                <option value="">Select chapter</option>
-              </select>
-            </label>
-          </div>
-
-          <div class="button-row">
-            <button id="startQuizBtn" class="btn btn-primary" type="button">
-              Start Quiz
-            </button>
-          </div>
-
-          <div id="quizArea" class="content-area" aria-live="polite">
-            <p>Choose a subject and chapter to begin.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- MOCK TEST -->
-      <section id="page-mock" class="page">
-        <div class="page-heading">
-          <span class="eyebrow">EXAM SIMULATION</span>
-          <h1>Mock Tests</h1>
-          <p>Practise a subject-wide test using the questions available in your study bank.</p>
-        </div>
-
-        <div class="panel">
-          <label class="field">
-            <span>Select Subject</span>
-            <select id="mockSubject">
-              <option value="">Select subject</option>
-              <option value="Science">Science</option>
-              <option value="Mathematics">Mathematics</option>
-              <option value="Social Science">Social Science</option>
-              <option value="English">English</option>
-              <option value="Hindi">Hindi</option>
-            </select>
-          </label>
-
-          <p class="muted-text">
-            A full-length mock test should contain exactly 80 MCQs when
-            80 suitable questions are available in the built-in question bank.
-          </p>
-
-          <div class="button-row">
-            <button id="startMockBtn" class="btn btn-primary" type="button">
-              Start Mock Test
-            </button>
-          </div>
-
-          <div id="mockArea" class="content-area" aria-live="polite">
-            <p>Select a subject to prepare your mock test.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- MY NOTES -->
-      <section id="page-notes" class="page">
-        <div class="page-heading">
-          <span class="eyebrow">PERSONAL REVISION</span>
-          <h1>My Notes</h1>
-          <p>Create and save your own study notes on this device.</p>
-        </div>
-
-        <div class="panel">
-          <label class="field">
-            <span>Note title</span>
-            <input
-              id="noteTitle"
-              type="text"
-              maxlength="120"
-              placeholder="Enter a title..."
-            >
-          </label>
-
-          <label class="field">
-            <span>Note content</span>
-            <textarea
-              id="noteContent"
-              rows="7"
-              placeholder="Write your notes here..."
-            ></textarea>
-          </label>
-
-          <div class="button-row">
-            <button id="saveNoteBtn" class="btn btn-primary" type="button">
-              Save Note
-            </button>
-            <button id="clearNoteBtn" class="btn btn-secondary" type="button">
-              Clear Editor
-            </button>
-          </div>
-
-          <div class="section-heading">
-            <div>
-              <h2>Saved Notes</h2>
-              <p>Your locally saved notes appear here.</p>
-            </div>
-          </div>
-
-          <div id="notesList" class="content-area" aria-live="polite">
-            <p>No notes saved yet.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- MINI GAMES -->
-      <section id="page-games" class="page">
-        <div class="page-heading">
-          <span class="eyebrow">LEARN THROUGH PLAY</span>
-          <h1>Mini Games</h1>
-          <p>Use short learning activities to revise concepts.</p>
-        </div>
-
-        <div class="feature-grid">
-          <article class="feature-card">
-            <span class="feature-icon">🧠</span>
-            <h3>Recall Challenge</h3>
-            <p>Try to remember a concept before revealing its answer.</p>
-            <button id="recallStartBtn" class="btn btn-primary" type="button">
-              Start Recall
-            </button>
-          </article>
-
-          <article class="feature-card">
-            <span class="feature-icon">🔤</span>
-            <h3>Word Scramble</h3>
-            <p>Practise subject vocabulary through scrambled words.</p>
-            <button id="scrambleStartBtn" class="btn btn-primary" type="button">
-              Start Scramble
-            </button>
-          </article>
-        </div>
-
-        <div class="panel">
-          <div id="recallArea" class="content-area">
-            <p>Your recall activity will appear here.</p>
-          </div>
-
-          <div id="scrambleArea" class="content-area">
-            <p>Your word scramble will appear here.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- INFOGRAPHICS -->
-      <section id="page-infographics" class="page">
-        <div class="page-heading">
-          <span class="eyebrow">VISUAL REVISION</span>
-          <h1>Infographics</h1>
-          <p>Browse study diagrams and visual revision material.</p>
-        </div>
-
-        <div class="panel">
-          <label class="field">
-            <span>Filter by subject</span>
-            <select id="infographicSubject">
-              <option value="">All Subjects</option>
-              <option value="Science">Science</option>
-              <option value="Mathematics">Mathematics</option>
-              <option value="Social Science">Social Science</option>
-              <option value="English">English</option>
-              <option value="Hindi">Hindi</option>
-            </select>
-          </label>
-
-          <div id="infographicGallery" class="infographic-grid">
-            <p>Available visual study material will appear here.</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- SETTINGS -->
-      <section id="page-settings" class="page">
-        <div class="page-heading">
-          <span class="eyebrow">MAKE IT YOURS</span>
-          <h1>Settings</h1>
-          <p>Personalise your study workspace.</p>
-        </div>
-
-        <div class="settings-list">
-
-          <!-- DARK / LIGHT MODE -->
-          <section class="panel setting-panel">
-            <div class="setting-row">
-              <div>
-                <h3>Appearance Mode</h3>
-                <p>Choose your preferred interface theme.</p>
-              </div>
-
-              <div class="button-row">
-                <button id="darkMode" class="btn btn-secondary" type="button">
-                  Dark
-                </button>
-                <button id="lightMode" class="btn btn-secondary" type="button">
-                  Light
-                </button>
-              </div>
-            </div>
-
-            <div class="setting-row">
-              <div>
-                <h3>Quick Theme Toggle</h3>
-                <p>Switch between dark and light appearance.</p>
-              </div>
-              <button id="settingsThemeBtn" class="btn btn-secondary" type="button">
-                Toggle Theme
-              </button>
-            </div>
-          </section>
-
-          <!-- SEASONAL THEMES -->
-          <section class="panel setting-panel">
-            <div class="setting-row">
-              <div>
-                <h3>🎉 Seasonal Appearance</h3>
-                <p>Choose a festive look for Class 10 Hub.</p>
-              </div>
-
-              <select id="seasonalThemeSelect" aria-label="Seasonal appearance">
-                <option value="normal">Normal Appearance</option>
-                <option value="diwali">🪔 Diwali Appearance</option>
-                <option value="christmas">❄️ Christmas Appearance</option>
-              </select>
-            </div>
-
-            <p class="muted-text">
-              Diwali uses festive golden effects. Christmas uses icy colours
-              and falling snow. Your study content remains unchanged.
-            </p>
-          </section>
-
-          <!-- TEXT SIZE -->
-          <section class="panel setting-panel">
-            <div class="setting-row">
-              <div>
-                <h3>Text Size</h3>
-                <p>Adjust text for comfortable reading.</p>
-              </div>
-
-              <select id="textSize" aria-label="Text size">
-                <option value="small">Small</option>
-                <option value="medium" selected>Medium</option>
-                <option value="large">Large</option>
-              </select>
-            </div>
-          </section>
-
-          <!-- DATA -->
-          <section class="panel setting-panel">
-            <div class="setting-row">
-              <div>
-                <h3>Reset Saved Data</h3>
-                <p>
-                  Reset locally saved progress and settings.
-                  This may remove saved notes and other local data.
-                </p>
-              </div>
-
-              <button id="resetData" class="btn btn-danger" type="button">
-                Reset Data
-              </button>
-            </div>
-
-            <button id="resetProgressBtn" class="btn btn-secondary" type="button">
-              Reset Progress
-            </button>
-          </section>
-
-          <!-- ABOUT -->
-          <section class="panel setting-panel">
-            <h3>About Class 10 Hub</h3>
-            <p>
-              A free study workspace for Class 10 revision, questions,
-              flashcards, quizzes, notes and practice activities.
-            </p>
-            <p class="muted-text">
-              Designed for personal study. No paid API is required for
-              the built-in study content.
-            </p>
-          </section>
-
-        </div>
-      </section>
-
-      <!-- FOOTER -->
-      <footer class="app-footer">
-        <p>Class 10 Hub</p>
-        <p>Learn · Practise · Revise</p>
-        <small>Free study workspace</small>
-      </footer>
-
-    </main>
+      <footer class="footer"><span>Class 10 Hub</span><span>Learn • Practise • Progress</span></footer>
+    </div>
   </div>
-
-  <!-- Study data must load before the app script. -->
-  <script src="content.js"></script>
-  <script src="script.js"></script>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
 </body>
-      </html>
+  </html>
+
