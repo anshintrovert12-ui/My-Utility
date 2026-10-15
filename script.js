@@ -253,7 +253,6 @@ function closeMenu() {
       if (go) navigate(go.dataset.go);
     });
 
-    
 $("menuBtn")?.addEventListener("click", () => {
   const sidebar = $("sidebar");
   const opening = !sidebar?.classList.contains("open");
@@ -266,7 +265,8 @@ $("menuBtn")?.addEventListener("click", () => {
   } else {
     closeMenu();
   }
-});
+});    
+
      
     $("overlay")?.addEventListener("click", closeMenu);
     document.addEventListener("keydown", (event) => {
@@ -1427,25 +1427,3 @@ function applyTheme(theme) {
     setupThemeToggle();
   }
 })();
-
-/* Fix: Close sidebar and remove dark overlay */
-(() => {
-  const sidebar = document.getElementById("sidebar");
-  const overlay = document.getElementById("sidebarOverlay");
-
-  if (!sidebar || !overlay) return;
-
-  function closeSidebar() {
-    sidebar.classList.remove("open");
-    overlay.classList.remove("open");
-  }
-
-  overlay.addEventListener("click", closeSidebar);
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key === "Escape") {
-      closeSidebar();
-    }
-  });
-})();
-
