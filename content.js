@@ -3578,7 +3578,8 @@ console.log("Part 15 loaded: Mathematics — Probability");
    20 Very Short + 10 Short + 5 Long Answers
    30 Flashcards + 20 MCQs
    ========================================================= */
-
+window.CONTENT["Social Science"] =
+  window.CONTENT["Social Science"] || { chapters: {} };
 Object.assign(window.CONTENT["Social Science"].chapters, {
 
 /* =========================================================
