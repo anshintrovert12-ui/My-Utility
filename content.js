@@ -4324,3 +4324,2757 @@ mcqs: [
 console.log(
   "Geography Part 3 loaded: Manufacturing Industries and Lifelines of National Economy"
 );
+/* =====================================================
+   CLASS 10 HUB — HISTORY PART 1 OF 2
+   Chapters 1 and 2
+   Format matched to the existing content.js structure
+   ===================================================== */
+
+Object.assign(window.CONTENT["Social Science"].chapters, {
+
+/* =====================================================
+   CHAPTER 1: THE RISE OF NATIONALISM IN EUROPE
+   ===================================================== */
+
+"The Rise of Nationalism in Europe": {
+questions: [
+
+/* 20 VERY SHORT QUESTIONS */
+{type:"very-short",q:"1. What is nationalism?",a:"Nationalism is a feeling of shared identity, unity and belonging among people who consider themselves a nation."},
+{type:"very-short",q:"2. When did the French Revolution begin?",a:"The French Revolution began in 1789."},
+{type:"very-short",q:"3. What was the Napoleonic Code?",a:"The Napoleonic Code was the Civil Code introduced by Napoleon in 1804. It established equality before the law and protected the right to property."},
+{type:"very-short",q:"4. What is a nation-state?",a:"A nation-state is a state in which most citizens share a common national identity and political belonging."},
+{type:"very-short",q:"5. Who was Giuseppe Mazzini?",a:"Giuseppe Mazzini was an Italian revolutionary who supported the unification of Italy as an independent republic."},
+{type:"very-short",q:"6. What was the Congress of Vienna?",a:"The Congress of Vienna was a meeting of European powers held in 1815 to restore conservative monarchies and redraw boundaries after Napoleon's defeat."},
+{type:"very-short",q:"7. Who was Duke Metternich?",a:"Duke Metternich was the Austrian Chancellor who played a leading role in the Congress of Vienna."},
+{type:"very-short",q:"8. What was the Zollverein?",a:"The Zollverein was a customs union formed in 1834 under Prussian leadership to remove tariff barriers among many German states."},
+{type:"very-short",q:"9. What was liberalism?",a:"Liberalism was an ideology that supported individual freedom, equality before the law and representative government."},
+{type:"very-short",q:"10. What was conservatism?",a:"Conservatism supported traditional institutions such as monarchy, the Church and established social hierarchies."},
+{type:"very-short",q:"11. Who was Otto von Bismarck?",a:"Otto von Bismarck was the Prussian chief minister who led German unification through wars and diplomacy."},
+{type:"very-short",q:"12. Who was Count Camillo de Cavour?",a:"Cavour was the chief minister of Sardinia-Piedmont who helped lead Italian unification."},
+{type:"very-short",q:"13. Who was Giuseppe Garibaldi?",a:"Garibaldi was an Italian revolutionary who led volunteer fighters known as the Red Shirts."},
+{type:"very-short",q:"14. What was the Frankfurt Parliament?",a:"The Frankfurt Parliament was an elected assembly that met in 1848 to propose a constitution for a united Germany."},
+{type:"very-short",q:"15. What did Germania represent?",a:"Germania was the female allegory of the German nation and symbolised German unity."},
+{type:"very-short",q:"16. What did Marianne represent?",a:"Marianne was the female allegory of the French nation and represented liberty and the republic."},
+{type:"very-short",q:"17. When was Germany unified?",a:"Germany was unified in 1871 under Prussian leadership."},
+{type:"very-short",q:"18. When was Italy proclaimed a kingdom?",a:"The Kingdom of Italy was proclaimed in 1861 under Victor Emmanuel II."},
+{type:"very-short",q:"19. What was Romanticism?",a:"Romanticism was a cultural movement that emphasised emotion, folk traditions, language and national feeling."},
+{type:"very-short",q:"20. Where are the Balkans located?",a:"The Balkans are a region in southeastern Europe containing diverse ethnic and national groups."},
+
+/* 10 SHORT QUESTIONS */
+{type:"short",q:"21. How did the French Revolution promote nationalism?",a:"The French Revolution declared that sovereignty belonged to the people rather than the monarch. It introduced ideas of equal citizenship and a common national identity. The tricolour flag replaced the royal standard, national hymns and festivals were introduced, and a centralised administration promoted uniform laws. These changes helped people imagine themselves as members of one nation."},
+{type:"short",q:"22. Explain the main features of the Napoleonic Code.",a:"The Napoleonic Code of 1804 abolished privileges based on birth, established equality before the law and protected the right to property. It simplified administrative arrangements and removed some feudal restrictions. However, Napoleon restricted political freedom, introduced censorship and limited women's rights. His reforms modernised many areas but were also accompanied by authoritarian rule."},
+{type:"short",q:"23. What were the main decisions of the Congress of Vienna?",a:"The Congress of Vienna was held in 1815 after Napoleon's defeat. European leaders aimed to restore conservative monarchies and create a balance of power. The Bourbon dynasty was restored in France, and territories around France were strengthened to prevent future expansion. The settlement sought stability but ignored many nationalist and liberal aspirations."},
+{type:"short",q:"24. How did culture help the growth of nationalism in Europe?",a:"Romantic writers, poets, musicians and artists encouraged national feeling by celebrating folk songs, stories, language and historical traditions. Collecting folk tales helped preserve cultural heritage. The use of local languages strengthened the sense of a shared identity. Culture therefore helped people imagine themselves as part of one nation."},
+{type:"short",q:"25. Why was the Zollverein important?",a:"The Zollverein was formed in 1834 under Prussian leadership. It removed customs barriers among many German states and reduced the number of currencies. It encouraged trade and economic cooperation. These economic links strengthened the idea that the German states could form a united nation."},
+{type:"short",q:"26. What did the Frankfurt Parliament try to achieve?",a:"The Frankfurt Parliament met in 1848 after liberal and nationalist uprisings. Its elected representatives proposed a constitution for a united German nation. They offered the crown to the Prussian king, but he rejected it because he did not accept a crown from an elected assembly. The attempt at unification through liberal parliamentary action therefore failed."},
+{type:"short",q:"27. What role did Giuseppe Mazzini play in Italian unification?",a:"Giuseppe Mazzini believed that Italy should become a united and independent republic. He founded Young Italy to spread nationalist ideas among young people. His revolutionary efforts did not immediately achieve unification, but his ideas inspired many Italians and helped create a strong nationalist movement."},
+{type:"short",q:"28. Explain the role of Bismarck in German unification.",a:"Bismarck used Prussia's army, diplomacy and administrative strength to unite the German states. Prussia fought wars against Denmark, Austria and France. These victories increased Prussian influence and brought many German states together. In 1871, William I was proclaimed German Emperor at Versailles."},
+{type:"short",q:"29. How was Italy unified?",a:"Italian unification was led by Sardinia-Piedmont under King Victor Emmanuel II and Chief Minister Cavour. Cavour used diplomacy and war against Austria. Garibaldi and his volunteers captured Sicily and southern Italy and handed these territories to Victor Emmanuel II. Italy was proclaimed a kingdom in 1861, while Venetia and Rome joined later."},
+{type:"short",q:"30. Why did nationalism create tensions in the Balkans?",a:"The Balkans contained many ethnic groups with different historical and national claims. As the Ottoman Empire weakened, several groups sought independence. Nationalist movements competed for territory, and powerful European countries supported different sides. These rivalries increased tension and made the region a centre of conflict."},
+
+/* 5 LONG QUESTIONS */
+{type:"long",q:"31. Describe the measures introduced by French revolutionaries to create a collective national identity.",a:"French revolutionaries tried to transform the people from subjects of the monarchy into citizens of a nation. They introduced the ideas of la patrie, meaning the fatherland, and le citoyen, meaning the citizen, to emphasise equal rights under a constitution. The royal standard was replaced by the tricolour flag. The Estates General was elected by active citizens and renamed the National Assembly. New hymns were composed, oaths were taken and martyrs were commemorated in the name of the nation. A centralised administrative system introduced uniform laws, while internal customs duties were abolished. Regional dialects were discouraged and French was promoted as a common national language. These measures helped develop a shared political identity, although women and many poorer people did not receive equal political rights."},
+{type:"long",q:"32. Explain the impact of Napoleon's reforms on Europe.",a:"Napoleon introduced reforms that weakened feudal privileges and modernised administration in territories under French control. The Civil Code of 1804 established equality before the law, ended privileges based on birth and protected property rights. Guild restrictions were removed in some areas, and standardised laws supported trade and business. These reforms were welcomed by some merchants and peasants. However, Napoleon also imposed censorship, increased taxation, introduced forced conscription and restricted political freedom. Conquered territories were often required to supply resources to the French armies. As a result, Napoleon spread some revolutionary ideas but also created resentment against French rule."},
+{type:"long",q:"33. Describe the process of German unification.",a:"In the early nineteenth century, Germany consisted of many independent states. Nationalist liberals attempted to unite them through the Frankfurt Parliament of 1848, but their effort failed when the Prussian king rejected the crown offered by the elected assembly. Later, Prussia took the lead under Chief Minister Otto von Bismarck. Bismarck used the Prussian army, diplomacy and bureaucracy to achieve unification. Prussia fought wars against Denmark, Austria and France. These victories strengthened Prussian leadership and brought German states together. In January 1871, William I was proclaimed German Emperor at the Palace of Versailles. German unification established a powerful nation-state under Prussian dominance."},
+{type:"long",q:"34. Explain the process of Italian unification.",a:"Italy was divided into several states in the middle of the nineteenth century, and some regions were controlled by foreign powers. Giuseppe Mazzini promoted the idea of a united Italian republic, but his early revolutionary attempts failed. Sardinia-Piedmont later took the lead under King Victor Emmanuel II and Chief Minister Count Cavour. Cavour used diplomacy and an alliance with France to defeat Austrian forces in 1859. Giuseppe Garibaldi and his volunteer Red Shirts captured Sicily and southern Italy in 1860. Garibaldi handed these territories to Victor Emmanuel II. In 1861, Victor Emmanuel II was proclaimed king of united Italy. Venetia and Rome joined later, completing the process of unification."},
+{type:"long",q:"35. How did nationalism develop in Europe, and what were its limitations?",a:"Nationalism developed through revolutionary ideas, liberal political movements, cultural revival and opposition to foreign rule. The French Revolution popularised the principle that sovereignty belonged to the people. Romantic writers and musicians promoted shared languages, folk traditions and historical memories. Economic changes, including the Zollverein, encouraged cooperation among German states. In Italy and Germany, political leaders used diplomacy and military action to achieve unification. However, nationalism did not always promote equality. Many liberal movements excluded women from political rights, and conservative rulers sometimes used nationalism to strengthen their own power. In multi-ethnic empires, national demands could create conflict among communities. In the Balkans, competing claims and the decline of Ottoman control increased tensions. Nationalism could therefore unite people, but it could also create exclusion and rivalry."}
+],
+
+flashcards: [
+{q:"What is nationalism?",a:"A shared feeling of national identity and belonging."},
+{q:"When did the French Revolution begin?",a:"1789."},
+{q:"When was the Napoleonic Code introduced?",a:"1804."},
+{q:"Who was Metternich?",a:"The Austrian Chancellor who played a leading role at the Congress of Vienna."},
+{q:"When was the Congress of Vienna held?",a:"1815."},
+{q:"What was the Zollverein?",a:"A customs union formed in 1834 among many German states."},
+{q:"Who was Giuseppe Mazzini?",a:"An Italian revolutionary who supported a united republic."},
+{q:"Who was Otto von Bismarck?",a:"The Prussian chief minister who led German unification."},
+{q:"Who was Count Cavour?",a:"The chief minister of Sardinia-Piedmont."},
+{q:"Who was Giuseppe Garibaldi?",a:"An Italian revolutionary who led the Red Shirts."},
+{q:"What was the Frankfurt Parliament?",a:"An elected assembly that met in 1848 to propose a united Germany."},
+{q:"When was Germany unified?",a:"1871."},
+{q:"When was Italy proclaimed a kingdom?",a:"1861."},
+{q:"Who was Germania?",a:"The female allegory of the German nation."},
+{q:"Who was Marianne?",a:"The female allegory of the French nation."},
+{q:"What did liberalism support?",a:"Individual freedom, equality before the law and representative government."},
+{q:"What did conservatism support?",a:"Traditional institutions and social order."},
+{q:"What was Romanticism?",a:"A cultural movement emphasising emotion and folk traditions."},
+{q:"Where are the Balkans?",a:"In southeastern Europe."},
+{q:"What is a nation-state?",a:"A state associated with a shared national identity."},
+{q:"What was Young Italy?",a:"An organisation founded by Mazzini to promote Italian unification."},
+{q:"Who became German Emperor in 1871?",a:"William I of Prussia."},
+{q:"Which state led German unification?",a:"Prussia."},
+{q:"What did the Napoleonic Code protect?",a:"Equality before the law and the right to property."},
+{q:"What did the tricolour represent in revolutionary France?",a:"The nation and the new political order."},
+{q:"What was the purpose of the Congress of Vienna?",a:"To restore conservative monarchies and establish a balance of power."},
+{q:"Which three powers did Prussia fight during unification?",a:"Denmark, Austria and France."},
+{q:"What was a major limitation of nineteenth-century liberalism?",a:"Political rights were often restricted to property-owning men."},
+{q:"What did the Zollverein encourage?",a:"Trade and economic cooperation among German states."},
+{q:"Why did nationalist tensions grow in the Balkans?",a:"Different national groups and European powers competed over territory and influence."}
+],
+
+mcqs: [
+{question:"1. The French Revolution began in:",options:["1776","1789","1815","1848"],answer:1,explanation:"The French Revolution began in 1789."},
+{question:"2. The Napoleonic Code was introduced in:",options:["1791","1804","1815","1834"],answer:1,explanation:"The Civil Code was introduced in 1804."},
+{question:"3. The Congress of Vienna took place in:",options:["1789","1804","1815","1848"],answer:2,explanation:"European powers met in Vienna in 1815."},
+{question:"4. The leading Austrian statesman at the Congress of Vienna was:",options:["Bismarck","Metternich","Mazzini","Garibaldi"],answer:1,explanation:"Metternich played the leading role for Austria."},
+{question:"5. The Zollverein was a:",options:["Military alliance","Customs union","Religious group","Political party"],answer:1,explanation:"It removed tariff barriers among many German states."},
+{question:"6. The Zollverein was formed in:",options:["1815","1834","1848","1871"],answer:1,explanation:"It was formed in 1834 under Prussian leadership."},
+{question:"7. Who led German unification?",options:["Cavour","Mazzini","Bismarck","Garibaldi"],answer:2,explanation:"Bismarck led unification under Prussian leadership."},
+{question:"8. Germany was unified in:",options:["1848","1861","1871","1905"],answer:2,explanation:"German unification was proclaimed in 1871."},
+{question:"9. Who was the female allegory of France?",options:["Germania","Marianne","Britannia","Victoria"],answer:1,explanation:"Marianne represented the French nation."},
+{question:"10. Who was the female allegory of Germany?",options:["Marianne","Germania","Athena","Victoria"],answer:1,explanation:"Germania symbolised the German nation."},
+{question:"11. The Frankfurt Parliament met in:",options:["1815","1834","1848","1871"],answer:2,explanation:"It met during the revolutions of 1848."},
+{question:"12. The Frankfurt Parliament aimed to establish:",options:["A united Germany","A united Spain","A united Russia","A united Greece"],answer:0,explanation:"It proposed a constitution for a united Germany."},
+{question:"13. Who was Count Cavour?",options:["A German emperor","An Italian statesman","A French king","An Austrian general"],answer:1,explanation:"Cavour helped lead Italian unification."},
+{question:"14. Garibaldi's volunteers were known as:",options:["Blue Guards","Red Shirts","Green Army","White Coats"],answer:1,explanation:"Garibaldi led volunteer fighters known as the Red Shirts."},
+{question:"15. Italy was proclaimed a kingdom in:",options:["1815","1848","1861","1871"],answer:2,explanation:"The Kingdom of Italy was proclaimed in 1861."},
+{question:"16. Romanticism emphasised:",options:["Only industry","Emotion and folk culture","Colonial taxes","Military rule"],answer:1,explanation:"Romanticism encouraged cultural and national feeling."},
+{question:"17. Liberal nationalism generally supported:",options:["Absolute monarchy","Individual freedom and constitutional rule","Censorship","Feudal privilege"],answer:1,explanation:"Liberalism supported individual rights and constitutional government."},
+{question:"18. The Balkans are located in:",options:["Northern Europe","Southeastern Europe","South America","East Asia"],answer:1,explanation:"The Balkans form part of southeastern Europe."},
+{question:"19. Who was Giuseppe Mazzini?",options:["An Italian revolutionary","A French king","An Austrian emperor","A British general"],answer:0,explanation:"Mazzini supported a united and independent Italy."},
+{question:"20. William I was proclaimed German Emperor at:",options:["Vienna","Versailles","Rome","Madrid"],answer:1,explanation:"The proclamation took place at Versailles in January 1871."}
+]
+},
+   /* =====================================================
+   CHAPTER 2: NATIONALISM IN INDIA
+   ===================================================== */
+
+"Nationalism in India": {
+questions: [
+
+/* 20 VERY SHORT QUESTIONS */
+{type:"very-short",q:"1. What is satyagraha?",a:"Satyagraha is a method of non-violent resistance based on truth and moral force."},
+{type:"very-short",q:"2. When did Mahatma Gandhi return to India?",a:"Mahatma Gandhi returned to India from South Africa in 1915."},
+{type:"very-short",q:"3. What was the Rowlatt Act?",a:"The Rowlatt Act of 1919 allowed the colonial government to detain people without trial under certain circumstances."},
+{type:"very-short",q:"4. When did the Jallianwala Bagh massacre occur?",a:"It occurred on 13 April 1919 in Amritsar."},
+{type:"very-short",q:"5. When was the Non-Cooperation Movement launched?",a:"The Non-Cooperation Movement was launched in 1920."},
+{type:"very-short",q:"6. What was the Khilafat Movement?",a:"It was a movement seeking to protect the position of the Ottoman Caliph after the First World War."},
+{type:"very-short",q:"7. Why was the Non-Cooperation Movement withdrawn?",a:"Gandhi withdrew it in 1922 after the violent Chauri Chaura incident."},
+{type:"very-short",q:"8. What was the Simon Commission?",a:"It was a British commission appointed in 1927 to discuss constitutional reforms in India; it had no Indian members."},
+{type:"very-short",q:"9. What does Purna Swaraj mean?",a:"Purna Swaraj means complete independence."},
+{type:"very-short",q:"10. When was the Lahore Congress held?",a:"The Lahore Congress session was held in December 1929."},
+{type:"very-short",q:"11. What was the Dandi March?",a:"It was Gandhi's march in 1930 from Sabarmati Ashram to Dandi to break the British salt law."},
+{type:"very-short",q:"12. What was the Salt Law?",a:"The Salt Law gave the colonial government control over salt production and sale and imposed restrictions and taxation."},
+{type:"very-short",q:"13. When did the Civil Disobedience Movement begin?",a:"It began in 1930 with the Salt March and the breaking of the salt law."},
+{type:"very-short",q:"14. What was the Gandhi-Irwin Pact?",a:"It was an agreement signed in March 1931 between Mahatma Gandhi and Viceroy Irwin."},
+{type:"very-short",q:"15. Who was Baba Ramchandra?",a:"Baba Ramchandra was a leader of peasants in Awadh who campaigned against oppressive landlords."},
+{type:"very-short",q:"16. Who was Dr B. R. Ambedkar?",a:"B. R. Ambedkar was a social reformer and leader who campaigned against caste discrimination and for the rights of the Depressed Classes."},
+{type:"very-short",q:"17. What was the Poona Pact?",a:"The Poona Pact of 1932 provided reserved seats for the Depressed Classes within joint electorates."},
+{type:"very-short",q:"18. What did the charkha symbolise?",a:"The charkha symbolised self-reliance, khadi and the rejection of dependence on foreign cloth."},
+{type:"very-short",q:"19. What was the Inland Emigration Act?",a:"It restricted the movement of plantation workers, including their ability to leave plantations without permission."},
+{type:"very-short",q:"20. Why was salt chosen as a symbol of protest?",a:"Salt was used by rich and poor alike, so the salt tax and government monopoly represented colonial injustice affecting ordinary people."},
+
+/* 10 SHORT QUESTIONS */
+{type:"short",q:"21. Why did Gandhi choose satyagraha as a method of struggle?",a:"Gandhi believed that truth and non-violence could unite people and challenge injustice without hatred. Satyagraha relied on peaceful protest, moral pressure and willingness to accept suffering rather than use violence. Gandhi believed that a just cause could win support through disciplined non-violent action."},
+{type:"short",q:"22. Why was the Rowlatt Act opposed by Indians?",a:"The Rowlatt Act allowed detention without trial and restricted civil liberties. Indians considered it unjust because it continued repressive wartime measures during peacetime. Gandhi called for a nationwide hartal, and protests against the Act helped intensify opposition to colonial rule."},
+{type:"short",q:"23. What was the significance of the Jallianwala Bagh massacre?",a:"On 13 April 1919, a large crowd gathered at Jallianwala Bagh in Amritsar. Troops under General Dyer fired on the gathering. The massacre shocked the country, deepened distrust of British rule and became a major turning point in the growth of nationalist opposition."},
+{type:"short",q:"24. Why was the Non-Cooperation Movement launched?",a:"The movement was launched to oppose colonial injustice, including the Rowlatt Act, the Jallianwala Bagh massacre and the treatment of the Ottoman Caliph. Gandhi believed that refusing to cooperate with colonial institutions and goods could weaken British authority through peaceful mass action."},
+{type:"short",q:"25. Why did Gandhi withdraw the Non-Cooperation Movement?",a:"Gandhi withdrew the movement in February 1922 after the Chauri Chaura incident, where a crowd attacked and burnt a police station, killing policemen. He believed that the movement was becoming violent and that people needed further preparation in non-violent discipline."},
+{type:"short",q:"26. What were the main features of the Civil Disobedience Movement?",a:"The movement began with the Salt March in 1930. People broke the salt law, made salt, boycotted foreign cloth, picketed liquor shops and in some areas refused to pay taxes. Participants openly challenged selected colonial laws, making the movement a direct form of resistance."},
+{type:"short",q:"27. Why did rich peasants participate in the Civil Disobedience Movement?",a:"Rich peasant communities faced falling agricultural prices and found it difficult to pay land revenue. They supported the movement because they wanted revenue reductions. However, when their demands were not fully met, some became less willing to participate."},
+{type:"short",q:"28. How did women participate in the national movement?",a:"Women participated in marches, made salt, picketed foreign-cloth and liquor shops and supported nationalist activities. Their participation broadened the movement and challenged some traditional restrictions. However, women did not receive equal political representation, and their wider social demands were not always accepted."},
+{type:"short",q:"29. What was the importance of the Gandhi-Irwin Pact?",a:"The Gandhi-Irwin Pact was signed in March 1931. Gandhi agreed to suspend the Civil Disobedience Movement and attend the Second Round Table Conference. The government agreed to release many political prisoners not convicted of violence and permitted certain peaceful activities related to salt. The agreement temporarily opened the way for negotiations."},
+{type:"short",q:"30. How did symbols help create a sense of collective belonging in India?",a:"Symbols such as Bharat Mata, the national flag, patriotic songs and folk traditions helped people imagine India as a shared nation. The charkha represented self-reliance, while historical stories and cultural traditions challenged colonial claims. However, symbols did not mean the same thing to all communities, and some people felt excluded by particular imagery."},
+
+/* 5 LONG QUESTIONS */
+{type:"long",q:"31. Explain the impact of the First World War on India and the growth of nationalism.",a:"The First World War created serious economic and political hardships in India. Defence expenditure increased, and the colonial government raised taxes and introduced war loans. Prices rose sharply, making everyday goods more expensive for ordinary people. Villagers were recruited into the army, and forced recruitment created resentment in many areas. Crop failures and the influenza epidemic added to the suffering. Indians expected political concessions because they had supported the British war effort, but repressive measures such as the Rowlatt Act increased anger. The Jallianwala Bagh massacre further damaged trust in British rule. These conditions helped Gandhi and other leaders mobilise people from different regions and social groups into a broader nationalist movement."},
+{type:"long",q:"32. Describe the Non-Cooperation Movement and explain why it was withdrawn.",a:"The Non-Cooperation Movement was launched in 1920 under Gandhi's leadership, linking the Khilafat issue with the demand for swaraj. People were encouraged to surrender titles, boycott government schools, courts and councils, refuse foreign cloth and promote khadi. Students, teachers, lawyers, peasants and traders participated in different ways. In towns, foreign cloth was boycotted and imported goods were burnt. In rural areas, peasants sometimes challenged landlords and oppressive officials. Different groups interpreted swaraj according to their own needs, and participation was not always peaceful. In February 1922, a crowd at Chauri Chaura attacked and burnt a police station, causing the deaths of policemen. Gandhi believed the movement was becoming violent and withdrew it, stressing that non-violent discipline was essential."},
+{type:"long",q:"33. Explain the main events of the Civil Disobedience Movement.",a:"The Civil Disobedience Movement began with Gandhi's Salt March in March 1930. Gandhi and his followers travelled from Sabarmati Ashram to Dandi, where he broke the salt law by making salt. Salt was chosen because it was used by rich and poor alike and represented unjust colonial control. Across India, people broke salt laws, boycotted foreign cloth, picketed liquor shops and in some areas refused to pay taxes. Peasants challenged revenue demands, while forest communities resisted restrictions on forest use. The government arrested thousands of protesters, including Gandhi. The Gandhi-Irwin Pact of March 1931 temporarily suspended the movement, and Gandhi attended the Second Round Table Conference. When negotiations failed, the movement resumed. Government repression and differences among social groups weakened participation over time."},
+{type:"long",q:"34. Explain how different social groups participated in the Civil Disobedience Movement and what they expected.",a:"Rich peasant communities such as the Patidars of Gujarat and the Jats of Uttar Pradesh faced falling agricultural prices and high revenue demands. They supported the movement because they wanted reductions in land revenue. Poor peasants often wanted unpaid rent to landlords to be cancelled, but Congress did not always support no-rent campaigns because it feared alienating landlords. Business groups wanted protection against foreign imports and favourable economic policies; they supported the movement but sometimes became cautious when it continued for a long time. Industrial workers participated in some areas, although their demands were not uniformly taken up by Congress. Women joined processions, made salt and picketed shops, expanding the movement's social reach. These groups shared opposition to colonial rule, but their economic and social expectations were different and were not all fulfilled."},
+{type:"long",q:"35. Explain how symbols and collective identity contributed to Indian nationalism.",a:"Nationalist leaders used symbols and cultural activities to develop a sense of unity among Indians. The image of Bharat Mata presented the nation as a mother figure and encouraged devotion to the country. Bankim Chandra Chattopadhyay's song 'Vande Mataram' became an important nationalist song. The national flag, including the charkha in important designs, symbolised unity and self-reliance. Nationalists collected folk songs, legends and stories to show that Indian culture had a rich past. Historical accounts were used to challenge colonial claims that Indians were incapable of governing themselves. However, these symbols did not mean the same thing to every community. Some people felt excluded by particular religious or cultural imagery. National unity therefore had to deal with differences of caste, religion, class and region."}
+],
+
+flashcards: [
+{q:"What is satyagraha?",a:"Non-violent resistance based on truth."},
+{q:"When did Gandhi return to India?",a:"1915."},
+{q:"When was the Rowlatt Act passed?",a:"1919."},
+{q:"When did the Jallianwala Bagh massacre occur?",a:"13 April 1919."},
+{q:"Who ordered the firing at Jallianwala Bagh?",a:"General Dyer."},
+{q:"When was Non-Cooperation launched?",a:"1920."},
+{q:"Why was the Khilafat Movement started?",a:"To defend the position of the Ottoman Caliph after the First World War."},
+{q:"Why was Non-Cooperation withdrawn?",a:"Because of the Chauri Chaura incident in 1922."},
+{q:"What does Purna Swaraj mean?",a:"Complete independence."},
+{q:"When was the Lahore Congress session held?",a:"December 1929."},
+{q:"What was the Dandi March?",a:"Gandhi's march to break the salt law in 1930."},
+{q:"Where did Gandhi break the salt law?",a:"At Dandi in Gujarat."},
+{q:"When did the Civil Disobedience Movement begin?",a:"1930."},
+{q:"When was the Gandhi-Irwin Pact signed?",a:"March 1931."},
+{q:"Who was Baba Ramchandra?",a:"A peasant leader in Awadh."},
+{q:"Who was B. R. Ambedkar?",a:"A social reformer and leader who fought caste discrimination."},
+{q:"When was the Poona Pact signed?",a:"1932."},
+{q:"What did the charkha symbolise?",a:"Self-reliance and khadi."},
+{q:"What was the Salt Law?",a:"A colonial law controlling salt production and sale."},
+{q:"Why was salt important to the movement?",a:"It was used by everyone and represented colonial injustice."},
+{q:"What was the Simon Commission?",a:"A British commission appointed in 1927 without Indian members."},
+{q:"What was the purpose of the Non-Cooperation Movement?",a:"To weaken British rule by refusing cooperation."},
+{q:"What was the purpose of Civil Disobedience?",a:"To openly break selected unjust colonial laws."},
+{q:"What did Bharat Mata symbolise?",a:"India represented as a mother figure."},
+{q:"What did foreign-cloth boycotts promote?",a:"Swadeshi and the use of Indian-made cloth."},
+{q:"Who were the Patidars?",a:"A rich peasant community in Gujarat."},
+{q:"What did many rich peasants demand?",a:"Reductions in land revenue."},
+{q:"What was the Gandhi-Irwin Pact's purpose?",a:"To reach an agreement and temporarily suspend the Civil Disobedience Movement."},
+{q:"How did women contribute to the movement?",a:"They joined marches, made salt and picketed shops."},
+{q:"What was one limitation of nationalist unity?",a:"Different communities and social groups had different expectations and did not always feel equally represented."}
+],
+
+mcqs: [
+{question:"1. Gandhi returned to India from South Africa in:",options:["1915","1919","1922","1930"],answer:0,explanation:"Gandhi returned to India in 1915."},
+{question:"2. The Rowlatt Act was passed in:",options:["1905","1915","1919","1935"],answer:2,explanation:"The Rowlatt Act was passed in 1919."},
+{question:"3. The Jallianwala Bagh massacre took place in:",options:["Delhi","Amritsar","Lahore","Bombay"],answer:1,explanation:"The massacre occurred in Amritsar on 13 April 1919."},
+{question:"4. The Non-Cooperation Movement began in:",options:["1917","1920","1922","1930"],answer:1,explanation:"The movement was launched in 1920."},
+{question:"5. The Non-Cooperation Movement was withdrawn after:",options:["The Dandi March","The Chauri Chaura incident","The Lahore Session","The Poona Pact"],answer:1,explanation:"The Chauri Chaura incident occurred in 1922."},
+{question:"6. Purna Swaraj means:",options:["Dominion status","Complete independence","Separate electorates","Provincial rule"],answer:1,explanation:"Purna Swaraj means complete independence."},
+{question:"7. The Lahore Congress session took place in:",options:["1919","1922","1929","1935"],answer:2,explanation:"The session took place in December 1929."},
+{question:"8. Gandhi broke the salt law at:",options:["Dandi","Champaran","Amritsar","Chauri Chaura"],answer:0,explanation:"Gandhi broke the salt law at Dandi in 1930."},
+{question:"9. The Civil Disobedience Movement began in:",options:["1920","1922","1930","1942"],answer:2,explanation:"It began in 1930 with the Salt March."},
+{question:"10. The Gandhi-Irwin Pact was signed in:",options:["1928","1930","1931","1935"],answer:2,explanation:"The pact was signed in March 1931."},
+{question:"11. Who led peasants in Awadh?",options:["Baba Ramchandra","B. R. Ambedkar","C. R. Das","Lord Irwin"],answer:0,explanation:"Baba Ramchandra led peasant protests in Awadh."},
+{question:"12. The Poona Pact was signed in:",options:["1919","1922","1932","1942"],answer:2,explanation:"The Poona Pact was agreed in 1932."},
+{question:"13. Who campaigned against caste discrimination and for Dalit rights?",options:["B. R. Ambedkar","Otto von Bismarck","Lord Curzon","General Dyer"],answer:0,explanation:"Ambedkar was a leading campaigner for social equality."},
+{question:"14. The Khilafat Movement was concerned with the position of the:",options:["Russian Tsar","Ottoman Caliph","French king","German Emperor"],answer:1,explanation:"It sought to defend the Ottoman Caliph's position."},
+{question:"15. The Simon Commission was appointed in:",options:["1919","1927","1931","1942"],answer:1,explanation:"The British government appointed it in 1927."},
+{question:"16. The Simon Commission was opposed because:",options:["It had no Indian members","It supported independence","It ended all taxes","It abolished Parliament"],answer:0,explanation:"No Indian was included in the commission."},
+{question:"17. The Salt Law gave the colonial government control over:",options:["Cotton","Salt","Railways only","Coal only"],answer:1,explanation:"The law controlled salt production and sale."},
+{question:"18. The charkha symbolised:",options:["Self-reliance","Royal authority","Foreign trade","Military power"],answer:0,explanation:"The spinning wheel symbolised self-reliance and khadi."},
+{question:"19. The Inland Emigration Act restricted the movement of:",options:["Factory owners","Plantation workers","British officials","Lawyers"],answer:1,explanation:"Plantation workers faced restrictions on leaving plantations."},
+{question:"20. Civil Disobedience involved:",options:["Breaking selected colonial laws peacefully","Supporting all colonial taxes","Ending all public protests","Refusing all education"],answer:0,explanation:"People openly broke selected colonial laws to protest British rule."}
+]
+}
+
+});
+
+console.log("History Part 1 loaded: 2 chapters.");
+Object.assign(window.CONTENT["Social Science"].chapters, {
+
+  // =====================================================
+  // CHAPTER 3: THE MAKING OF A GLOBAL WORLD
+  // =====================================================
+
+  "The Making of a Global World": {
+
+    questions: [
+
+      // 20 VERY SHORT ANSWERS
+      {
+        type: "very-short",
+        q: "1. What is globalisation?",
+        a: "Globalisation is the process through which countries and people become increasingly connected through trade, migration, investment, technology and cultural exchange."
+      },
+      {
+        type: "very-short",
+        q: "2. What were the Silk Routes?",
+        a: "The Silk Routes were ancient trade routes connecting Asia with Europe and North Africa, carrying goods, people, religions and ideas."
+      },
+      {
+        type: "very-short",
+        q: "3. Name two goods traded along the Silk Routes.",
+        a: "Silk and spices were two important goods traded along the Silk Routes."
+      },
+      {
+        type: "very-short",
+        q: "4. What was the importance of food travels?",
+        a: "Food travels connected different societies and introduced people to new crops, tastes and agricultural practices."
+      },
+      {
+        type: "very-short",
+        q: "5. Which crop helped many Europeans survive during food shortages?",
+        a: "The potato became an important food crop for many Europeans."
+      },
+      {
+        type: "very-short",
+        q: "6. What was the Corn Law?",
+        a: "The Corn Laws were British laws restricting the import of corn and other food grains to protect domestic agricultural producers."
+      },
+      {
+        type: "very-short",
+        q: "7. When were the Corn Laws repealed in Britain?",
+        a: "The Corn Laws were repealed in 1846."
+      },
+      {
+        type: "very-short",
+        q: "8. What is meant by indentured labour?",
+        a: "Indentured labour was a system in which workers agreed to work for an employer for a fixed period under a contract."
+      },
+      {
+        type: "very-short",
+        q: "9. From which country did many indentured labourers travel to the Caribbean?",
+        a: "Many indentured labourers travelled from India to the Caribbean."
+      },
+      {
+        type: "very-short",
+        q: "10. What was the Great Depression?",
+        a: "The Great Depression was a severe worldwide economic crisis that began in 1929 and continued through much of the 1930s."
+      },
+      {
+        type: "very-short",
+        q: "11. In which year did the Great Depression begin?",
+        a: "The Great Depression began in 1929."
+      },
+      {
+        type: "very-short",
+        q: "12. What was the Bretton Woods Conference?",
+        a: "It was a 1944 international conference that established the framework for post-war international monetary cooperation."
+      },
+      {
+        type: "very-short",
+        q: "13. Name the two institutions established at Bretton Woods.",
+        a: "The International Monetary Fund (IMF) and the International Bank for Reconstruction and Development, commonly called the World Bank."
+      },
+      {
+        type: "very-short",
+        q: "14. What is tariff?",
+        a: "A tariff is a tax imposed on imported or exported goods, especially to regulate trade or protect domestic industries."
+      },
+      {
+        type: "very-short",
+        q: "15. What was the role of technology in global trade?",
+        a: "Technological improvements in transport and communication reduced the time and cost of moving goods and information."
+      },
+      {
+        type: "very-short",
+        q: "16. What is meant by a trade surplus?",
+        a: "A trade surplus occurs when the value of a country's exports is greater than the value of its imports."
+      },
+      {
+        type: "very-short",
+        q: "17. What is meant by a trade deficit?",
+        a: "A trade deficit occurs when the value of a country's imports is greater than the value of its exports."
+      },
+      {
+        type: "very-short",
+        q: "18. What was the Rinderpest?",
+        a: "Rinderpest was a highly contagious cattle disease that devastated cattle populations in Africa during the late nineteenth century."
+      },
+      {
+        type: "very-short",
+        q: "19. What is mass production?",
+        a: "Mass production is the manufacture of large quantities of standardised goods, often using machinery and assembly-line methods."
+      },
+      {
+        type: "very-short",
+        q: "20. What is meant by economic interdependence?",
+        a: "Economic interdependence means that countries depend on one another for goods, services, investment, technology or markets."
+      },
+
+      // 10 SHORT ANSWERS
+      {
+        type: "short",
+        q: "21. How did the Silk Routes connect the world?",
+        a: "The Silk Routes linked China, Central Asia, India, West Asia, Europe and North Africa. Merchants transported silk, spices, textiles and other goods across these routes. Travellers, religious teachers and migrants also carried beliefs, customs, knowledge and technologies. Therefore, the routes connected distant societies economically and culturally long before modern globalisation."
+      },
+      {
+        type: "short",
+        q: "22. Explain how food items travelled across continents.",
+        a: "Food items travelled through migration, trade, exploration and conquest. Crops such as potatoes, tomatoes, maize and chillies originated in the Americas and later spread to Europe, Asia and Africa. These crops changed local diets and farming practices. The spread of new foods sometimes improved food availability, although the benefits were not equally distributed among all communities."
+      },
+      {
+        type: "short",
+        q: "23. How did the discovery of America affect world trade?",
+        a: "European exploration and conquest connected the Americas more closely with Europe, Africa and Asia. Precious metals such as silver flowed from the Americas into international trade. American crops spread to other continents, while European settlers introduced new institutions and production systems. However, conquest also caused the displacement of Indigenous peoples and the exploitation of enslaved Africans."
+      },
+      {
+        type: "short",
+        q: "24. Why were the Corn Laws abolished?",
+        a: "Industrialists and urban consumers in Britain wanted cheaper food because high food prices increased the cost of living and wages. The Corn Laws restricted grain imports and protected British landowners. Their repeal in 1846 allowed more imported grain to enter Britain. This lowered food prices over time but exposed British farmers to competition from foreign producers."
+      },
+      {
+        type: "short",
+        q: "25. What was the importance of railways and steamships in the nineteenth century?",
+        a: "Railways transported raw materials and finished goods quickly between inland areas, ports and markets. Steamships made overseas transport faster and more reliable. Refrigerated ships later made it possible to transport perishable foods over long distances. These developments reduced transport costs, encouraged international trade and connected agricultural regions with industrial markets."
+      },
+      {
+        type: "short",
+        q: "26. Describe the condition of Indian indentured labourers.",
+        a: "Many Indian indentured labourers were recruited to work on plantations, mines and construction projects overseas. Recruiters sometimes misled workers about wages and working conditions. Labourers often faced long working hours, poor living conditions, strict discipline and restricted freedom. Despite these hardships, they built communities abroad and contributed to the development of new cultural traditions."
+      },
+      {
+        type: "short",
+        q: "27. How did the Great Depression affect farmers?",
+        a: "Agricultural prices fell sharply during the Great Depression, reducing farmers' incomes. Farmers who had borrowed money found it difficult to repay their debts. Many reduced production or sold assets, while falling demand made agricultural goods harder to sell. In countries dependent on agricultural exports, the crisis also reduced export earnings and increased economic hardship."
+      },
+      {
+        type: "short",
+        q: "28. What was the impact of the Great Depression on India?",
+        a: "India's agricultural exports and prices declined during the Great Depression. Peasants received less money for crops but still had to pay taxes and repay debts. The decline in agricultural prices created severe hardship for rural communities. Urban consumers sometimes benefited from lower prices, but producers and indebted farmers faced particularly difficult conditions."
+      },
+      {
+        type: "short",
+        q: "29. What were the main objectives of the Bretton Woods institutions?",
+        a: "The IMF was established to promote international monetary cooperation and help countries facing balance-of-payments difficulties. The World Bank was created to support reconstruction and development. Together, these institutions were intended to promote economic stability and cooperation after the Second World War and reduce the risk of a return to the instability of the inter-war period."
+      },
+      {
+        type: "short",
+        q: "30. How did the post-war period encourage economic growth?",
+        a: "After the Second World War, many countries expanded production, trade and investment. Governments adopted policies to support employment and economic recovery. The Bretton Woods system helped provide a framework for monetary cooperation. Improvements in technology, transport and communication also supported international trade, although growth and its benefits differed between countries."
+      },
+
+      // 5 LONG ANSWERS
+      {
+        type: "long",
+        q: "31. Explain how the world became interconnected before the nineteenth century.",
+        a: "The world became interconnected through trade, migration, religious travel, conquest and the movement of goods and ideas. These connections existed long before modern industries and global communication systems developed.\n\n1. The Silk Routes connected China, India, Central Asia, West Asia, Europe and North Africa. Merchants carried silk, spices, textiles and precious goods over long distances.\n\n2. These routes also transported religions and ideas. Buddhism spread from the Indian subcontinent to Central Asia and China, while other religious and cultural traditions travelled through commercial contacts.\n\n3. Food items moved between continents. Crops such as potatoes, maize, tomatoes and chillies, originally from the Americas, spread to other parts of the world after European voyages and conquests.\n\n4. The discovery and conquest of the Americas brought new territories into expanding international trade networks. Silver from the Americas became important in global commerce, including trade with Asia.\n\n5. Trade and travel also spread diseases. In some regions, diseases brought by outsiders caused devastating population losses, particularly among Indigenous American communities that had limited immunity to them.\n\nThus, early global connections involved economic exchange, cultural interaction, migration and sometimes conquest and exploitation. They laid foundations for the more extensive global connections that developed during the nineteenth and twentieth centuries."
+      },
+      {
+        type: "long",
+        q: "32. Describe the major changes in the world economy during the nineteenth century.",
+        a: "The nineteenth century witnessed major changes in the international economy. Industrialisation, new transport systems, migration and the expansion of trade connected distant regions more closely.\n\n1. **Growth of trade:** Industrial countries required raw materials and markets for manufactured goods. Agricultural regions supplied food and raw materials to industrial centres.\n\n2. **Changes in food production:** As Britain's population and industrial cities grew, the demand for food increased. Imports from other countries became increasingly important.\n\n3. **Abolition of the Corn Laws:** The repeal of the Corn Laws in 1846 allowed cheaper imported grain to enter Britain. British agriculture faced greater foreign competition, while consumers gained access to cheaper food over time.\n\n4. **Transport revolution:** Railways connected inland agricultural regions to ports. Steamships reduced travel time across oceans, while refrigeration made long-distance transport of meat and other perishable products possible.\n\n5. **Migration:** Millions of Europeans migrated to North America, Australia and other regions. They sought land, employment and better opportunities. Indian and Chinese workers also travelled overseas, including under indenture contracts.\n\n6. **Capital investment:** European investors financed railways, plantations, mines and other projects in different parts of the world.\n\nThese developments expanded international production and trade. However, the benefits were unequal, and many workers experienced poor conditions, colonial domination and exploitation."
+      },
+      {
+        type: "long",
+        q: "33. Explain the system of indentured labour and its effects on Indian workers.",
+        a: "Indentured labour was a system under which workers signed contracts agreeing to work for an employer for a fixed period. During the nineteenth century, large numbers of Indian workers were transported to plantations, mines and construction projects in colonies around the world.\n\n1. **Recruitment:** Labour recruiters approached people in villages and towns. Some workers were attracted by promises of regular employment, while others were misled about the destination, wages or nature of the work.\n\n2. **Reasons for migration:** Poverty, unemployment, debt, loss of traditional livelihoods and hopes of earning money encouraged many people to migrate. Conditions varied across regions and communities.\n\n3. **Destinations and work:** Indian indentured workers went to places such as Mauritius, the Caribbean, Fiji and other plantation economies. They worked in sugar plantations, mines and public works.\n\n4. **Working conditions:** Many workers faced long hours, low wages, strict supervision and poor living conditions. Leaving an employer or breaking a contract could result in punishment under the laws of the time.\n\n5. **Cultural effects:** Workers carried languages, religious practices, food traditions and music to their new homes. Over generations, these traditions mixed with local cultures and created distinctive communities.\n\n6. **End of the system:** Growing criticism of the harsh conditions and campaigns by reformers and Indian nationalists contributed to the end of indentured labour recruitment from India in the early twentieth century.\n\nThe system provided labour for colonial economies but frequently restricted workers' freedom and exposed them to exploitation. Its effects remain visible in the Indian-origin communities established across the world."
+      },
+      {
+        type: "long",
+        q: "34. Explain the causes and effects of the Great Depression of 1929.",
+        a: "The Great Depression was a major international economic crisis that began in 1929 and continued through much of the 1930s. It caused a sharp fall in production, trade, prices and employment.\n\n**Causes:**\n\n1. After the First World War, agricultural production increased in several regions. When demand failed to keep pace with supply, agricultural prices fell and farmers' incomes declined.\n\n2. During the 1920s, economic growth and investment were uneven. Many businesses and individuals depended on borrowing, making them vulnerable when confidence weakened.\n\n3. The US stock market crash of 1929 damaged confidence and contributed to a wider financial crisis. Banks and businesses failed, credit contracted and spending declined.\n\n4. Falling demand caused firms to reduce production and employment. Lower incomes further reduced demand, creating a cycle of economic decline.\n\n**Effects:**\n\n1. Industrial production fell and unemployment increased in many countries.\n\n2. International trade contracted as countries imported less and adopted policies that restricted trade.\n\n3. Agricultural prices fell sharply, leaving farmers with lower earnings and making debts more difficult to repay.\n\n4. Countries dependent on exporting primary products suffered because their export earnings declined.\n\n5. India experienced falling agricultural prices and export demand. Peasants faced hardship because debt repayments and revenue demands continued even as incomes fell.\n\nThe Great Depression demonstrated how closely connected economies could transmit a crisis across national borders. It encouraged governments to reconsider economic policy and the role of public intervention."
+      },
+      {
+        type: "long",
+        q: "35. Explain the Bretton Woods system and the development of the post-war world economy.",
+        a: "The Bretton Woods Conference was held in 1944 as Allied leaders planned the international economic order after the Second World War. Its purpose was to promote monetary stability and support reconstruction and development.\n\n1. **International Monetary Fund:** The IMF was created to encourage international monetary cooperation, support exchange-rate stability and assist countries experiencing balance-of-payments difficulties.\n\n2. **World Bank:** The International Bank for Reconstruction and Development, later commonly known as the World Bank, was established initially to help finance post-war reconstruction and subsequently development projects.\n\n3. **Stable monetary arrangements:** The Bretton Woods system established a framework for relatively stable exchange rates, with the US dollar linked to gold and other currencies linked to the dollar under the original arrangements.\n\n4. **Economic recovery:** In the post-war decades, industrial production, international trade and investment expanded. Governments in many countries adopted policies intended to support employment, economic growth and social welfare.\n\n5. **Role of the state:** Governments played an important role in economic planning, public services and managing demand. International cooperation helped countries address financial problems.\n\n6. **End of the original system:** The original fixed-exchange-rate arrangement came under pressure and the United States ended the dollar's convertibility into gold in 1971. The international monetary system subsequently changed.\n\nThe Bretton Woods institutions became important parts of international economic governance. The post-war system encouraged cooperation and growth, although access to resources and the benefits of development remained unequal."
+      }
+    ],
+
+    flashcards: [
+      {q:"What is globalisation?",a:"Increasing economic, social and cultural connections across countries."},
+      {q:"What were the Silk Routes?",a:"Ancient trade networks linking Asia, Europe and North Africa."},
+      {q:"Name two Silk Route products.",a:"Silk and spices."},
+      {q:"Which continent was the original home of potatoes?",a:"The Americas."},
+      {q:"What did the Corn Laws restrict?",a:"Imports of grain into Britain."},
+      {q:"When were the Corn Laws repealed?",a:"1846."},
+      {q:"What is indentured labour?",a:"Contract-based labour for a fixed period."},
+      {q:"Name one destination of Indian indentured workers.",a:"Mauritius, Fiji or the Caribbean."},
+      {q:"What was the Rinderpest?",a:"A contagious cattle disease."},
+      {q:"What did steamships improve?",a:"The speed and reliability of ocean transport."},
+      {q:"What did refrigerated ships allow?",a:"Long-distance transport of perishable food."},
+         {q:"When did the Great Depression begin?",a:"1929."},
+      {q:"Name one effect of the Great Depression.",a:"Falling prices, unemployment or reduced trade."},
+      {q:"How were Indian peasants affected by the Depression?",a:"Crop prices fell while debts and revenue demands continued."},
+      {q:"What is a tariff?",a:"A tax on imported or exported goods."},
+      {q:"What is a trade surplus?",a:"Exports are worth more than imports."},
+      {q:"What is a trade deficit?",a:"Imports are worth more than exports."},
+      {q:"When was the Bretton Woods Conference held?",a:"1944."},
+      {q:"What does IMF stand for?",a:"International Monetary Fund."},
+      {q:"What was the original purpose of the World Bank?",a:"Supporting post-war reconstruction and development."},
+      {q:"What is mass production?",a:"Manufacturing large quantities of standardised goods."},
+      {q:"Why were railways important?",a:"They connected inland regions with ports and markets."},
+      {q:"How did migration influence global connections?",a:"It moved workers, skills, cultures and traditions across borders."},
+      {q:"Why did Britain import food?",a:"To meet growing demand in its expanding population and industrial cities."},
+      {q:"What happened to many agricultural prices during the Depression?",a:"They fell sharply."},
+      {q:"What is economic interdependence?",a:"Countries depending on one another economically."},
+      {q:"What spread along trade routes besides goods?",a:"Religions, ideas, technologies and diseases."},
+      {q:"Why did workers migrate overseas?",a:"For employment, income and opportunities, though some faced coercion or deception."},
+      {q:"What changed in 1971 in the Bretton Woods system?",a:"The United States ended the dollar's convertibility into gold."},
+      {q:"What is one important lesson of the Great Depression?",a:"Economic crises can spread between interconnected countries."}
+    ],
+
+    mcqs: [
+      {
+        question:"1. The Silk Routes connected which regions?",
+        options:["Only Europe and America","Asia, Europe and North Africa","Only India and China","Only Africa and Australia"],
+        answer:1,
+        explanation:"The Silk Routes connected several regions of Asia, Europe and North Africa."
+      },
+      {
+        question:"2. Which of the following originated in the Americas?",
+        options:["Potato","Wheat","Rice","Barley"],
+        answer:0,
+        explanation:"Potatoes originated in the Americas and later spread to other continents."
+      },
+      {
+        question:"3. The Corn Laws were repealed in Britain in:",
+        options:["1815","1833","1846","1914"],
+        answer:2,
+        explanation:"Britain repealed the Corn Laws in 1846."
+      },
+      {
+        question:"4. Indentured labour involved:",
+        options:["Voluntary lifelong retirement","Work under a fixed-term contract","Only unpaid family work","Military service"],
+        answer:1,
+        explanation:"Indentured workers agreed to work for a specified period under a contract."
+      },
+      {
+        question:"5. The Great Depression began in:",
+        options:["1914","1919","1929","1945"],
+        answer:2,
+        explanation:"The worldwide economic crisis began in 1929."
+      },
+      {
+        question:"6. The Bretton Woods Conference took place in:",
+        options:["1919","1929","1944","1955"],
+        answer:2,
+        explanation:"The conference was held in 1944 during preparations for the post-war economic order."
+      },
+      {
+        question:"7. Which institution promotes international monetary cooperation?",
+        options:["IMF","WHO","UNESCO","ILO"],
+        answer:0,
+        explanation:"The International Monetary Fund promotes international monetary cooperation."
+      },
+      {
+        question:"8. The World Bank was initially concerned with:",
+        options:["Organising elections","Post-war reconstruction","Running schools directly","Controlling all trade"],
+        answer:1,
+        explanation:"The institution was established to help finance reconstruction and development."
+      },
+      {
+        question:"9. Rinderpest mainly affected:",
+        options:["Cattle","Fish","Wheat","Cotton plants"],
+        answer:0,
+        explanation:"Rinderpest was a devastating cattle disease."
+      },
+      {
+        question:"10. Refrigerated ships made it easier to transport:",
+        options:["Only coal","Perishable food","Only machinery","Printed books only"],
+        answer:1,
+        explanation:"Refrigeration enabled meat and other perishable foods to travel longer distances."
+      },
+      {
+        question:"11. A trade surplus occurs when:",
+        options:["Imports exceed exports","Exports exceed imports","No trade occurs","All imports are free"],
+        answer:1,
+        explanation:"A trade surplus means the value of exports is greater than the value of imports."
+      },
+      {
+        question:"12. A tariff is:",
+        options:["A tax on goods traded across borders","A type of railway","A labour contract","A crop disease"],
+        answer:0,
+        explanation:"Tariffs are taxes imposed on imported or exported goods."
+      },
+      {
+        question:"13. Which transport development improved inland trade in the nineteenth century?",
+        options:["Railways","Television","Air conditioning","Spacecraft"],
+        answer:0,
+        explanation:"Railways linked inland areas, ports and markets."
+      },
+      {
+        question:"14. One major effect of the Great Depression was:",
+        options:["A universal rise in wages","Falling trade and rising unemployment","The end of all farming","The immediate end of colonialism"],
+        answer:1,
+        explanation:"Production and international trade declined, while unemployment rose."
+      },
+      {
+        question:"15. Indian peasants during the Great Depression often faced:",
+        options:["Rising crop prices everywhere","Lower crop prices and continuing debts","No taxes or debts","Guaranteed profits"],
+        answer:1,
+        explanation:"Falling agricultural prices made debts and revenue demands harder to meet."
+      },
+      {
+        question:"16. The Corn Laws protected British:",
+        options:["Landowners and grain producers","Foreign shipbuilders only","Indian textile workers","American miners"],
+        answer:0,
+        explanation:"The laws restricted grain imports and protected domestic agricultural interests."
+      },
+      {
+        question:"17. Which was a major reason for overseas labour migration?",
+        options:["Search for employment","Avoiding all forms of travel","Ending international trade","Eliminating agriculture"],
+        answer:0,
+        explanation:"Many people migrated in search of work and income, though recruitment could be deceptive."
+      },
+      {
+        question:"18. Economic interdependence means:",
+        options:["Countries have no contact","Countries depend on each other economically","Every country produces everything","Trade has stopped"],
+        answer:1,
+        explanation:"Countries rely on other countries for products, markets, investment and services."
+      },
+      {
+        question:"19. Which development helped lower the cost of international transport?",
+        options:["Improved steamships","Slower sailing journeys","Closing ports","Banning railways"],
+        answer:0,
+        explanation:"Steamships made ocean transport faster and more reliable."
+      },
+      {
+        question:"20. The original Bretton Woods monetary arrangement changed significantly when the US ended dollar-gold convertibility in:",
+        options:["1846","1914","1944","1971"],
+        answer:3,
+        explanation:"The United States ended dollar convertibility into gold in 1971."
+      }
+    ]
+  },
+    
+   // =====================================================
+  // CHAPTER 4: THE AGE OF INDUSTRIALISATION
+  // =====================================================
+
+  "The Age of Industrialisation": {
+
+    questions: [
+
+      // 20 VERY SHORT ANSWERS
+      {
+        type:"very-short",
+        q:"1. What is industrialisation?",
+        a:"Industrialisation is the process in which production increasingly shifts towards factories, machinery and large-scale manufacturing."
+      },
+      {
+        type:"very-short",
+        q:"2. What is proto-industrialisation?",
+        a:"Proto-industrialisation refers to large-scale industrial production for international markets that existed before the establishment of modern factories."
+      },
+      {
+        type:"very-short",
+        q:"3. What was the putting-out system?",
+        a:"It was a system in which merchants supplied raw materials to rural families, who produced goods at home and returned them to the merchants."
+      },
+      {
+        type:"very-short",
+        q:"4. Why did merchants employ rural workers?",
+        a:"They could obtain more labour and avoid some restrictions imposed by urban craft guilds."
+      },
+      {
+        type:"very-short",
+        q:"5. What were guilds?",
+        a:"Guilds were associations of craft and trade workers that regulated production, training and competition."
+      },
+      {
+        type:"very-short",
+        q:"6. Which industry was among the earliest to be mechanised in Britain?",
+        a:"The cotton textile industry was among the earliest industries to be mechanised."
+      },
+      {
+        type:"very-short",
+        q:"7. Who invented the Spinning Jenny?",
+        a:"James Hargreaves invented the Spinning Jenny."
+      },
+      {
+        type:"very-short",
+        q:"8. What was the Spinning Jenny?",
+        a:"It was a machine that enabled a worker to spin several threads at the same time."
+      },
+      {
+        type:"very-short",
+        q:"9. What was the role of the steam engine?",
+        a:"The steam engine provided power for machinery and helped transform transport and industrial production."
+      },
+      {
+        type:"very-short",
+        q:"10. What was the main reason for seasonal employment in many factories?",
+        a:"Some industries had fluctuating demand, so employers hired workers only during busy periods."
+      },
+      {
+        type:"very-short",
+        q:"11. What were jobbers in Indian factories?",
+        a:"Jobbers were people who recruited workers for industrial employers."
+      },
+      {
+        type:"very-short",
+        q:"12. Name an important early industrial city in India.",
+        a:"Bombay, now Mumbai, became an important industrial city."
+      },
+      {
+        type:"very-short",
+        q:"13. When was the first cotton mill established in Bombay?",
+        a:"The first cotton mill in Bombay was established in 1854."
+      },
+      {
+        type:"very-short",
+        q:"14. Who was Dwarkanath Tagore?",
+        a:"Dwarkanath Tagore was a prominent Indian entrepreneur who invested in several businesses, including trade and industry."
+      },
+      {
+        type:"very-short",
+        q:"15. Who was Jamsetjee Jejeebhoy?",
+        a:"Jamsetjee Jejeebhoy was a prominent Bombay businessman involved in trade and commerce."
+      },
+      {
+        type:"very-short",
+        q:"16. What is a handloom?",
+        a:"A handloom is a device used to weave cloth by hand rather than by a powered industrial loom."
+      },
+      {
+        type:"very-short",
+        q:"17. What is a fly shuttle?",
+        a:"A fly shuttle is a weaving device that increases the speed of weaving and helps a weaver handle wider cloth."
+      },
+      {
+        type:"very-short",
+        q:"18. Why did British manufacturers advertise their products?",
+        a:"They advertised to attract customers, build brand recognition and distinguish their products from competitors."
+      },
+      {
+        type:"very-short",
+        q:"19. What was the impact of the First World War on Indian industries?",
+        a:"The war increased demand for Indian industrial goods because British imports declined and war-related production expanded."
+      },
+      {
+        type:"very-short",
+        q:"20. What is a factory system?",
+        a:"The factory system brings workers and machines together in a central workplace to produce goods on a large scale."
+      },
+
+      // 10 SHORT ANSWERS
+      {
+        type:"short",
+        q:"21. Explain the meaning of proto-industrialisation.",
+        a:"Proto-industrialisation was a stage of industrial production before factories became common. Merchants supplied raw materials to rural households, which produced textiles and other goods for distant markets. The merchants collected the finished products and sold them. This system connected rural families to international trade and allowed production to expand without large factories."
+      },
+      {
+        type:"short",
+        q:"22. Why did merchants move towards the countryside in Europe?",
+        a:"Urban craft guilds often controlled production, prices and the entry of new producers. Merchants who wanted to expand production faced restrictions in towns. Rural families were willing to work for additional income and were often outside guild control. Merchants therefore supplied raw materials to rural households and collected the finished goods for sale."
+      },
+      {
+        type:"short",
+        q:"23. Why did industrialists not immediately replace all workers with machines?",
+        a:"Machines were expensive to buy, maintain and repair. Labour could be cheaper in places where wages were low, and demand for goods sometimes varied by season. Many products also required skilled handwork, flexibility and careful finishing. Therefore, industrialists often continued to employ workers alongside machinery rather than mechanising every task."
+      },
+      {
+        type:"short",
+        q:"24. How did the Industrial Revolution affect workers?",
+        a:"Industrialisation created factory employment but also brought difficult working conditions. Workers often faced long working hours, low wages, unsafe workplaces and uncertain employment. Crowded industrial towns developed as people moved in search of work. Some workers experienced unemployment when demand fell or machines changed the skills required."
+      },
+      {
+        type:"short",
+        q:"25. What problems did handloom weavers face in India under British rule?",
+        a:"Indian handloom weavers faced competition from machine-made British textiles. Many lost access to markets, while the supply and price of raw cotton could fluctuate. Some weavers became dependent on merchants who controlled their access to raw materials and sales. However, certain handloom products survived because of their quality, designs and specialised skills."
+      },
+      {
+        type:"short",
+        q:"26. What role did jobbers play in Indian industries?",
+        a:"Jobbers recruited workers for factories and often helped new migrants find employment and accommodation. They could use their local contacts to connect employers with labourers. Over time, some jobbers gained influence over workers and expected favours or loyalty. This system helped factories obtain labour but could also create dependence and exploitation."
+      },
+      {
+        type:"short",
+        q:"27. How did Indian entrepreneurs contribute to industrial growth?",
+        a:"Indian entrepreneurs invested money in cotton mills, jute mills, trade and other businesses. They used commercial networks and accumulated capital to establish industrial enterprises. Some merchants expanded from traditional trade into manufacturing. Their activities helped develop Indian-owned industries, although colonial policies and competition created significant obstacles."
+      },
+      {
+        type:"short",
+        q:"28. How did advertisements help industrialists sell goods?",
+        a:"Advertisements informed customers about products and encouraged them to buy. Manufacturers used labels, posters, calendars and newspapers to build a recognisable brand. Images and messages associated products with quality, trust or particular lifestyles. Advertising became important as consumers encountered increasing numbers of competing manufactured goods."
+      },
+      {
+        type:"short",
+        q:"29. Why did Indian industrial production increase during the First World War?",
+        a:"British factories were occupied with wartime production, while shipping and imports were disrupted. This reduced the supply of some British manufactured goods in India. Indian factories received new orders for items such as cloth, jute products and other supplies needed during the war. Many factories expanded production and operated for longer periods."
+      },
+      {
+        type:"short",
+        q:"30. Why did handloom weaving survive despite the spread of mills?",
+        a:"Handloom weaving survived because it could produce distinctive designs, fine fabrics and specialised goods that machine production did not always match. Some consumers preferred particular traditional textiles. Weavers also adapted their methods and used improved devices such as the fly shuttle. Nevertheless, survival varied by region and product, and many weavers experienced hardship."
+      },
+
+      // 5 LONG ANSWERS
+      {
+        type:"long",
+        q:"31. Describe proto-industrialisation and explain how the putting-out system worked.",
+        a:"Proto-industrialisation was a phase of industrial production that developed before factories became widespread. In this period, merchants organised production in rural areas and sold goods in distant markets.\n\n1. **Demand for goods:** International trade expanded, creating demand for textiles and other manufactured products. Merchants wanted to increase the quantity of goods they could sell.\n\n2. **Urban restrictions:** Craft guilds in many towns controlled production, prices and entry into trades. These rules could limit merchants who wanted to expand manufacturing.\n\n3. **Rural labour:** Merchants turned to villages, where families were often willing to undertake extra work to supplement agricultural income.\n\n4. **Supply of materials:** Merchants bought raw materials, such as wool or cotton, and distributed them to rural households.\n\n5. **Household production:** Family members processed the raw materials and made goods at home. Production could be divided among different households or stages of work.\n\n6. **Collection and sale:** Merchants collected the finished products and sold them in domestic or international markets. Rural families generally did not control the wider marketing system.\n\nThis arrangement enabled merchants to expand production without establishing a large factory. It connected rural households with commercial networks and helped prepare the way for later industrial development."
+      },
+      {
+        type:"long",
+        q:"32. Explain the major features and effects of the Industrial Revolution in Britain.",
+        a:"The Industrial Revolution transformed production in Britain by increasing the use of machinery, factory organisation and new sources of power. Its development was gradual, and different industries changed at different rates.\n\n1. **Mechanisation:** Machines increasingly performed tasks that had previously been completed by hand. The cotton textile industry became an important centre of early mechanisation.\n\n2. **New inventions:** Devices such as the Spinning Jenny increased the amount of yarn that could be spun. Improvements in machinery changed the speed and scale of production.\n\n3. **Factory system:** Workers and machines were brought together in central workplaces. Employers could supervise production, coordinate tasks and manufacture goods in larger quantities.\n\n4. **Transport and power:** Steam power and improved transport helped factories produce and distribute goods. Railways and steamships later strengthened connections between industrial centres and markets.\n\n5. **Changing labour:** Factories created jobs for many people, including migrants from rural areas. However, workers often faced low wages, long hours, unsafe conditions and uncertain employment.\n\n6. **Urbanisation:** Industrial towns expanded as workers moved closer to factories. Rapid growth could produce overcrowding, poor housing and sanitation problems.\n\n7. **Expansion of markets:** Machine-made goods were sold in domestic and overseas markets. Industrial production also increased demand for raw materials and encouraged international trade.\n\nThe Industrial Revolution increased productive capacity and changed everyday life, work and trade. Its benefits were accompanied by serious social inequalities and difficult working conditions for many labourers."
+      },
+      {
+        type:"long",
+        q:"33. Explain the difficulties faced by Indian weavers and the survival of handloom production.",
+        a:"Indian weavers experienced major changes under colonial rule as machine-made textiles from Britain entered Indian markets. However, the decline of some traditional weaving activities did not mean that all handloom production disappeared.\n\n**Difficulties faced by weavers:**\n\n1. **Competition:** British textile mills produced large quantities of cloth at competitive prices. Imported cloth competed with Indian handwoven products in many markets.\n\n2. **Loss of markets:** Some Indian weavers lost customers and found it difficult to sell their products. Traditional textile-producing regions experienced different levels of decline.\n\n3. **Raw material problems:** Changes in the availability and price of raw cotton affected production costs. Export demand for raw cotton could make it harder for some weavers to obtain materials at affordable prices.\n\n4. **Dependence on merchants:** Weavers who depended on merchants for raw materials and orders could have limited bargaining power. Some were tied to systems of advances and repayment through finished goods.\n\n5. **Irregular earnings:** Falling demand and price competition made income uncertain. Many households had to combine weaving with other work.\n\n**Why handloom production survived:**\n\n1. Handlooms could produce fine fabrics, regional designs and specialised textiles for particular customers.\n\n2. Some consumers continued to value traditional craftsmanship and distinctive patterns.\n\n3. Weavers adapted their production methods and adopted devices such as the fly shuttle to improve productivity.\n\n4. Different textile markets had different requirements, so machine-made cloth did not replace every handloom product.\n\nHandloom weaving therefore survived in some regions and specialised markets, but its survival required adaptation. Many weavers continued to face economic insecurity and unequal competition."
+      },
+      {
+        type:"long",
+        q:"34. Describe the growth of modern industries in India during the nineteenth and early twentieth centuries.",
+        a:"Modern industry developed gradually in India under colonial rule. Cotton textiles, jute and other industries expanded in particular regions, while Indian entrepreneurs and workers played important roles in this growth.\n\n1. **Early cotton mills:** Bombay became a major centre of cotton textile manufacturing. The first cotton mill in Bombay was established in 1854, and the industry expanded over subsequent decades.\n\n2. **Jute industry:** Jute mills developed around Calcutta, benefiting from access to raw jute, transport links and export markets.\n\n3. **Entrepreneurs:** Indian businesspeople invested in mills, trade and other industrial enterprises. Commercial experience and access to capital helped some merchants enter manufacturing.\n\n4. **Labour migration:** Workers travelled from villages and smaller towns to industrial centres in search of employment. Jobbers and other intermediaries helped recruit workers for factories.\n\n5. **Colonial conditions:** Indian manufacturers faced competition from British goods and operated within a colonial economic system. Access to markets, finance and policy support was not always equal.\n\n6. **Effects of the First World War:** Wartime disruption reduced imports from Britain and increased demand for Indian industrial products. Factories received new orders and expanded output.\n\n7. **Continued changes:** Industrial growth created new employment and strengthened some Indian-owned businesses, but traditional producers faced competition and factory workers often experienced difficult conditions.\n\nModern industry thus grew through the interaction of investment, labour, technology, trade and changing political circumstances. Its development was important but uneven across regions and industries."
+      },
+      {
+        type:"long",
+        q:"35. Explain how advertisements and product labels helped manufacturers create markets.",
+        a:"As industrial production expanded, manufacturers had to persuade consumers to choose their goods from among competing products. Advertisements and labels became important tools for building markets and creating brand identity.\n\n1. **Product identification:** Labels displayed the name and identity of a manufacturer. They helped customers recognise a product and distinguish it from similar goods.\n\n2. **Building trust:** Manufacturers used labels and advertisements to suggest quality, reliability and consistency. A familiar brand could encourage customers to purchase the same product again.\n\n3. **Visual communication:** Posters, newspapers and calendars used pictures and short messages to attract attention. Images could communicate ideas even to customers with limited literacy.\n\n4. **Cultural references:** Some advertisements used religious figures, traditional imagery or symbols associated with prosperity and respectability. These images connected modern goods with familiar cultural ideas.\n\n5. **Expanding demand:** Advertising informed customers about products and encouraged consumption. It helped manufacturers reach people beyond their immediate local markets.\n\n6. **Competition:** As more goods became available, brands competed to attract buyers. Labels and advertising helped businesses distinguish their products from those of competitors.\n\nAdvertising was therefore not merely decorative. It became part of the commercial strategies through which industrialists developed customer loyalty, communicated product identity and expanded markets."
+      }
+    ],
+
+    flashcards: [
+      {q:"What is industrialisation?",a:"The growth of factory-based, machine-assisted production."},
+      {q:"What is proto-industrialisation?",a:"Production for wider markets before modern factories became widespread."},
+      {q:"What was the putting-out system?",a:"Merchants supplied materials to rural households and collected finished goods."},
+      {q:"What were guilds?",a:"Associations regulating crafts and trades."},
+      {q:"Who invented the Spinning Jenny?",a:"James Hargreaves."},
+      {q:"What did the Spinning Jenny do?",a:"It allowed several threads to be spun simultaneously."},
+      {q:"Name an early mechanised industry in Britain.",a:"Cotton textiles."},
+      {q:"What is a factory system?",a:"Workers and machines organised in a central workplace."},
+      {q:"Why did merchants employ rural households?",a:"To expand production beyond urban guild restrictions."},
+      {q:"What is a handloom?",a:"A manually operated weaving device."},
+      {q:"What does a fly shuttle improve?",a:"The speed and width of weaving."},
+      {q:"When was Bombay's first cotton mill established?",a:"1854."},
+      {q:"Name an important early Indian industrial city.",a:"Bombay, now Mumbai."},
+      {q:"What was a jobber?",a:"An intermediary who recruited factory workers."},
+        {q:"Name an industry that developed around Calcutta.",a:"Jute manufacturing."},
+      {q:"Why did workers migrate to industrial cities?",a:"To seek employment and income."},
+      {q:"Why were machines not adopted everywhere immediately?",a:"They could be expensive, and labour or skilled handwork could be more practical."},
+      {q:"What problem did British cloth create for Indian weavers?",a:"Competition from machine-made imports."},
+      {q:"Why did handloom weaving survive?",a:"Specialised designs, fine fabrics and traditional craftsmanship."},
+      {q:"What did industrial advertisements do?",a:"Attracted customers and built brand recognition."},
+      {q:"Name two forms of advertising.",a:"Posters and newspaper advertisements."},
+      {q:"What happened to Indian industry during the First World War?",a:"Demand for some Indian industrial goods increased."},
+      {q:"Why did merchants use labels?",a:"To identify products and build customer trust."},
+      {q:"What was one effect of industrialisation on towns?",a:"Rapid urban growth and pressure on housing and sanitation."},
+      {q:"What did steam power help transform?",a:"Industrial production and transport."},
+      {q:"Why was factory work often uncertain?",a:"Demand varied and employment could be seasonal."},
+      {q:"Who was Dwarkanath Tagore?",a:"An Indian entrepreneur who invested in trade and industry."},
+      {q:"What was one difficulty faced by factory workers?",a:"Long hours, low wages or unsafe conditions."},
+      {q:"How did the First World War affect British imports into India?",a:"Wartime disruption reduced the supply of some imported goods."},
+      {q:"Why did industrialists use calendars for advertising?",a:"They kept brand images visible in homes and workplaces."}
+    ],
+
+    mcqs: [
+      {
+        question:"1. Proto-industrialisation refers to:",
+        options:["Production before modern factories became widespread","The end of all trade","Only computer manufacturing","The disappearance of rural work"],
+        answer:0,
+        explanation:"Proto-industrial production served wider markets before factory production became dominant."
+      },
+      {
+        question:"2. The putting-out system involved:",
+        options:["Merchants distributing raw materials to rural households","Only government factories","Workers buying all machinery themselves","The complete end of home production"],
+        answer:0,
+        explanation:"Merchants organised production by supplying materials and collecting finished goods."
+      },
+      {
+        question:"3. Who invented the Spinning Jenny?",
+        options:["James Hargreaves","James Watt","Richard Arkwright","George Stephenson"],
+        answer:0,
+        explanation:"James Hargreaves invented the Spinning Jenny."
+      },
+      {
+        question:"4. The Spinning Jenny was used in:",
+        options:["Spinning yarn","Mining gold","Printing newspapers","Building railways"],
+        answer:0,
+        explanation:"The machine enabled several threads to be spun at once."
+      },
+      {
+        question:"5. Guilds mainly regulated:",
+        options:["Crafts and trades","International weather","School examinations","Ocean currents"],
+        answer:0,
+        explanation:"Guilds regulated entry, training and production in particular crafts and trades."
+      },
+      {
+        question:"6. Bombay's first cotton mill was established in:",
+        options:["1757","1818","1854","1947"],
+        answer:2,
+        explanation:"The first cotton mill in Bombay was established in 1854."
+      },
+      {
+        question:"7. Jobbers were associated with:",
+        options:["Recruitment of factory workers","The discovery of electricity","Printing money","Managing ocean tides"],
+        answer:0,
+        explanation:"Jobbers helped factories recruit workers."
+      },
+      {
+        question:"8. The jute industry developed significantly around:",
+        options:["Calcutta","Shimla","Jaipur","Bhopal"],
+        answer:0,
+        explanation:"Jute mills developed around Calcutta, near raw materials and transport links."
+      },
+      {
+        question:"9. A handloom is used for:",
+        options:["Weaving cloth","Spinning steel wire","Refining petroleum","Operating a steamship"],
+        answer:0,
+        explanation:"A handloom is a device for weaving fabric by hand."
+      },
+      {
+        question:"10. A fly shuttle helped improve:",
+        options:["Weaving speed","Cattle breeding","Railway signalling only","Food preservation"],
+        answer:0,
+        explanation:"The fly shuttle increased weaving efficiency and made wider cloth easier to weave."
+      },
+      {
+        question:"11. Why did some industrialists retain manual labour?",
+        options:["Labour could be cheaper and some tasks required skill","Machines were always free","Factories banned workers","There was no demand for goods"],
+        answer:0,
+        explanation:"Costs, variable demand and specialised work often made manual labour useful."
+      },
+      {
+        question:"12. One major challenge for Indian weavers was:",
+        options:["Competition from machine-made British textiles","The complete absence of cloth imports","Guaranteed high prices","The end of all markets"],
+        answer:0,
+        explanation:"Imported machine-made textiles competed with Indian handwoven products."
+      },
+      {
+        question:"13. Why did industrialists advertise products?",
+        options:["To attract buyers and build brand identity","To stop all sales","To make products impossible to identify","To end competition permanently"],
+        answer:0,
+        explanation:"Advertising helped manufacturers distinguish products and attract customers."
+      },
+      {
+        question:"14. Which event increased demand for some Indian industrial goods?",
+        options:["The First World War","The end of all international trade","The invention of agriculture","The disappearance of factories"],
+        answer:0,
+        explanation:"Wartime disruption reduced some imports and increased demand for Indian products."
+      },
+      {
+        question:"15. Industrialisation often caused:",
+        options:["Growth of industrial towns","The disappearance of all cities","The end of employment","The end of transport"],
+        answer:0,
+        explanation:"Workers migrated to industrial centres, contributing to urban growth."
+      },
+      {
+        question:"16. A factory system brings together:",
+        options:["Workers and machines in a central workplace","Only isolated farms","Only travelling merchants","Only household cooking tools"],
+        answer:0,
+        explanation:"The factory system organises production at a central workplace."
+      },
+      {
+        question:"17. Which was an important reason for rural household production?",
+        options:["Additional income from work","A universal ban on agriculture","The absence of merchants","The end of textile demand"],
+        answer:0,
+        explanation:"Rural families often undertook manufacturing to supplement agricultural income."
+      },
+      {
+        question:"18. Which medium could be used for industrial advertising?",
+        options:["Calendars","Only private conversations","Only railway tickets","None of these"],
+        answer:0,
+        explanation:"Calendars, posters, labels and newspapers were used to advertise goods."
+      },
+      {
+        question:"19. Which statement about handloom weaving is correct?",
+        options:["It survived in some specialised markets","It disappeared everywhere immediately","It never faced competition","It produced no cloth"],
+        answer:0,
+        explanation:"Handloom weaving survived in some markets through specialised skills and products."
+      },
+      {
+        question:"20. One common difficulty for factory workers was:",
+        options:["Long working hours and low wages","Guaranteed lifelong employment","No supervision at any time","Universal ownership of factories"],
+        answer:0,
+        explanation:"Many workers experienced long hours, low wages and insecure employment."
+      }
+    ]
+  },  // =====================================================
+  // CHAPTER 5: PRINT CULTURE AND THE MODERN WORLD
+  // =====================================================
+
+  "Print Culture and the Modern World": {
+
+    questions: [
+
+      // 20 VERY SHORT ANSWERS
+      {
+        type:"very-short",
+        q:"1. What is print culture?",
+        a:"Print culture refers to the production, circulation and reading of printed books, newspapers, pamphlets and other materials."
+      },
+      {
+        type:"very-short",
+        q:"2. Where was the earliest known form of printing developed?",
+        a:"An early form of printing developed in China, where woodblock printing was used."
+      },
+      {
+        type:"very-short",
+        q:"3. What is woodblock printing?",
+        a:"Woodblock printing is a method in which text or images are carved into a wooden block, inked and pressed onto paper."
+      },
+      {
+        type:"very-short",
+        q:"4. Who developed the movable-type printing press in Europe?",
+        a:"Johann Gutenberg developed a movable-type printing press in Europe during the fifteenth century."
+      },
+      {
+        type:"very-short",
+        q:"5. Which book is associated with Gutenberg's early printing press?",
+        a:"The Bible is associated with Gutenberg's early printing press."
+      },
+      {
+        type:"very-short",
+        q:"6. What is movable type?",
+        a:"Movable type consists of individual reusable letters or characters arranged to form text for printing."
+      },
+      {
+        type:"very-short",
+        q:"7. What was the Renaissance?",
+        a:"The Renaissance was a period of renewed interest in classical learning, literature, art and humanist ideas in Europe."
+      },
+      {
+        type:"very-short",
+        q:"8. Who was Martin Luther?",
+        a:"Martin Luther was a German religious reformer whose criticism of Church practices helped initiate the Protestant Reformation."
+      },
+      {
+        type:"very-short",
+        q:"9. What was the Protestant Reformation?",
+        a:"It was a religious movement that challenged the authority and practices of the Roman Catholic Church and led to the growth of Protestant traditions."
+      },
+      {
+        type:"very-short",
+        q:"10. What was the Index of Prohibited Books?",
+        a:"It was a list of books that the Roman Catholic Church prohibited or restricted for its followers."
+      },
+      {
+        type:"very-short",
+        q:"11. Who introduced the printing press to India?",
+        a:"Portuguese missionaries introduced the printing press to Goa in the sixteenth century."
+      },
+      {
+        type:"very-short",
+        q:"12. In which year did the first printing press arrive in Goa?",
+        a:"The first printing press arrived in Goa in 1556."
+      },
+      {
+        type:"very-short",
+        q:"13. What is a manuscript?",
+        a:"A manuscript is a text written by hand rather than produced through printing."
+      },
+      {
+        type:"very-short",
+        q:"14. What was the Vernacular Press Act?",
+        a:"The Vernacular Press Act of 1878 gave colonial authorities powers to control and suppress certain publications in Indian languages."
+      },
+      {
+        type:"very-short",
+        q:"15. What is a vernacular language?",
+        a:"A vernacular language is a language commonly spoken by people in a particular region."
+      },
+      {
+        type:"very-short",
+        q:"16. What was the role of newspapers in nationalism?",
+        a:"Newspapers circulated political ideas, reported events and helped spread nationalist arguments among readers."
+      },
+      {
+        type:"very-short",
+        q:"17. What was the Bengal Gazette?",
+        a:"The Bengal Gazette, published by James Augustus Hicky in 1780, is recognised as an early printed newspaper in India."
+      },
+      {
+        type:"very-short",
+        q:"18. What is censorship?",
+        a:"Censorship is the control or restriction of information, publications or expression by an authority."
+      },
+      {
+        type:"very-short",
+        q:"19. How did print help reform movements?",
+        a:"Print circulated reformist writings, religious debates and arguments about social practices to a wider readership."
+      },
+      {
+        type:"very-short",
+        q:"20. What is a chapbook?",
+        a:"A chapbook was a small, inexpensive printed booklet that circulated popular stories, ballads and other reading material."
+      },
+
+      // 10 SHORT ANSWERS
+      {
+        type:"short",
+        q:"21. How did printing develop in East Asia?",
+        a:"Printing developed early in China through woodblock techniques. Text and images were carved onto wooden blocks, inked and transferred onto paper. Printed materials were used for religious texts, education and administration. Printing techniques and printed materials later spread to other parts of East Asia, including Japan and Korea, where they supported literary and religious activities."
+      },
+      {
+        type:"short",
+        q:"22. How did Gutenberg's printing press change Europe?",
+        a:"Gutenberg's movable-type printing press made it possible to produce multiple copies of a text more efficiently than copying each manuscript by hand. Printing reduced the time needed to reproduce many works and helped books circulate among larger audiences. It encouraged the spread of religious, scientific and literary ideas and contributed to changes in European intellectual life."
+      },
+      {
+        type:"short",
+        q:"23. Explain the role of print in the Protestant Reformation.",
+        a:"Printed pamphlets and books helped religious arguments reach readers in different places. Martin Luther's writings criticising Church practices circulated widely and stimulated debate. Print allowed reformers to communicate their views beyond face-to-face meetings. However, printed arguments also generated controversy and prompted authorities to regulate or censor some publications."
+      },
+      {
+        type:"short",
+        q:"24. Why did some people fear the spread of printed books?",
+        a:"Some authorities feared that printed materials could spread criticism, religious disagreement and ideas that challenged established power. Readers could encounter arguments outside traditional institutions. Religious leaders and rulers worried that uncontrolled reading might encourage dissent. As a result, some publications were prohibited, monitored or censored."
+      },
+      {
+        type:"short",
+        q:"25. How did print contribute to the growth of reading in Europe?",
+        a:"Printing made books more available and encouraged the development of new reading audiences. Schools, libraries, bookshops and circulating libraries helped people obtain reading material. Publishers produced religious texts, novels, newspapers, pamphlets and popular literature. Literacy levels and access to books varied, but print created new opportunities for education and entertainment."
+      },
+      {
+        type:"short",
+        q:"26. How did print spread in India?",
+        a:"Portuguese missionaries brought printing technology to Goa in the sixteenth century. Printing later expanded through religious publications, newspapers, books and works in Indian languages. Indian printers and publishers produced texts for different communities and audiences. By the nineteenth century, print had become an important means of education, social debate and political communication."
+      },
+      {
+        type:"short",
+        q:"27. What was the importance of newspapers in colonial India?",
+        a:"Newspapers reported political developments, discussed social issues and circulated information among readers. Indian-language newspapers made public debates accessible to people who did not read English. They criticised certain colonial policies and helped communicate nationalist ideas. The colonial government also tried to control the press when publications challenged its authority."
+      },
+      {
+        type:"short",
+        q:"28. How did print support social reform in India?",
+        a:"Reformers used books, newspapers and pamphlets to question social practices and discuss education, caste, religion and women's rights. Printed debates allowed different groups to present arguments and respond to criticism. Religious and social reform ideas reached readers beyond personal meetings. Print therefore became an important tool for public discussion, although disagreements over reform continued."
+      },
+      {
+        type:"short",
+        q:"29. How did print affect women's lives in India?",
+        a:"Printed books and journals created new opportunities for women to read, learn and discuss social issues. Some women began writing autobiographies, essays and other literary works. Publications debated women's education, marriage and social restrictions. However, access to education and printed materials remained unequal, and many women faced resistance when they sought greater educational opportunities."
+      },
+      {
+        type:"short",
+        q:"30. Why did the British introduce press restrictions in India?",
+        a:"Colonial authorities feared publications that criticised government policies or encouraged resistance. They introduced laws and used censorship to monitor and restrict certain newspapers and printed works. The Vernacular Press Act of 1878 specifically targeted the Indian-language press. These measures attempted to limit criticism, but newspapers and writers continued to communicate political and nationalist ideas."
+      },
+
+      // 5 LONG ANSWERS
+      {
+        type:"long",
+        q:"31. Explain the development of print technology from East Asia to Europe.",
+        a:"The history of printing began long before the modern printing press. Printing techniques developed in East Asia and later underwent major changes in Europe, transforming the production and circulation of knowledge.\n\n1. **Early printing in China:** Woodblock printing was used to reproduce text and images. A design or text was carved into a wooden block, inked and pressed onto paper. This method supported the production of religious and educational materials.\n\n2. **Spread in East Asia:** Printing technologies and printed books were used in other East Asian societies, including Korea and Japan. Printing supported religious learning, literature and administration.\n\n3. **Manuscripts in Europe:** Before printing became widespread, books in Europe were copied by hand. Manuscripts required considerable time and labour, so books could be expensive and relatively difficult to obtain.\n\n4. **Gutenberg's innovation:** During the fifteenth century, Johann Gutenberg developed a movable-type printing press in Europe. Individual reusable metal letters could be arranged to create a page, inked and pressed onto paper.\n\n5. **Growth of printing:** Gutenberg's press enabled printers to produce multiple copies of texts more efficiently. Printing workshops spread to other European cities and produced religious books, classical works, pamphlets and other materials.\n\n6. **Spread of ideas:** Printed works circulated among growing reading audiences. Religious reformers, scholars and writers could reach people beyond their immediate communities.\n\nPrinting did not instantly make every book cheap or accessible, but it transformed how written information could be reproduced. It contributed to the expansion of education, religious debate, literature and scientific communication."
+      },
+      {
+        type:"long",
+        q:"32. Describe the impact of print culture on European society and religious life.",
+        a:"Print culture brought significant changes to European society by expanding the circulation of books, religious arguments and new ideas. It affected how people learned, debated and understood authority.\n\n1. **Wider availability of texts:** Printing allowed multiple copies of books to be produced more efficiently than handwritten manuscripts. A growing number of readers could obtain printed works, although access remained unequal.\n\n2. **Spread of knowledge:** Scientific, literary and philosophical writings circulated more widely. Readers could encounter ideas from different authors and compare arguments.\n\n3. **Religious debate:** Printed pamphlets helped people discuss religious beliefs and Church practices. Martin Luther's writings circulated widely and contributed to the Protestant Reformation.\n\n4. **Challenge to authority:** Some printed works questioned established religious and political institutions. Readers could encounter criticism that had previously circulated only among smaller groups.\n\n5. **Fear and censorship:** Religious authorities and rulers worried that printed materials might encourage dissent or religious conflict. Some books were prohibited, monitored or censored.\n\n6. **Growth of reading culture:** Publishers produced religious books, popular stories, newspapers and other material for different audiences. Bookshops and libraries helped circulate these works.\n\n7. **Public discussion:** Print created opportunities for readers to participate in debates about religion, politics and society. These debates did not always lead to agreement and sometimes intensified conflicts.\n\nPrint culture therefore expanded access to knowledge and encouraged discussion, but it also raised questions about authority, acceptable ideas and the control of information."
+      },
+      {
+        type:"long",
+        q:"33. Explain the growth and importance of print culture in India.",
+        a:"Print culture developed in India over several centuries and became increasingly important for religious learning, education, social reform and political discussion.\n\n1. **Introduction of printing:** Portuguese missionaries introduced the printing press to Goa in 1556. Early printing included religious texts and publications intended for particular communities.\n\n2. **Growth of publications:** Printing gradually expanded into books, newspapers, pamphlets and other materials. Publications appeared in English and in various Indian languages.\n\n3. **New reading audiences:** As education and printing expanded, different groups obtained access to printed works. Newspapers and inexpensive publications helped circulate information beyond small circles of scholars.\n\n4. **Religious discussion:** Printed texts allowed religious ideas and interpretations to circulate. Writers and readers discussed beliefs, traditions and religious practices.\n\n5. **Social reform:** Reformers used print to debate education, caste discrimination, women's rights and other social questions. Printed arguments allowed supporters and critics to respond to each other.\n\n6. **Women's writing and education:** Books and journals contributed to discussions about women's education and social position. Some women became writers, though educational opportunities remained unequal.\n\n7. **Nationalist politics:** Newspapers and pamphlets reported political events and criticised colonial policies. They helped circulate ideas about rights, self-government and resistance.\n\n8. **Colonial censorship:** The colonial government attempted to control publications it considered threatening. Press restrictions created conflicts between authorities and writers.\n\nPrint culture became a powerful part of public life in India. It supported learning, debate and political mobilisation while also reflecting differences in language, literacy, access and social power."
+      },
+      {
+        type:"long",
+        q:"34. How did print culture contribute to social reform, women's education and public debate in India?",
+        a:"Print culture created new ways for people in India to discuss social practices and argue for change. Books, journals, pamphlets and newspapers allowed ideas to reach audiences beyond face-to-face meetings.\n\n1. **Discussion of social customs:** Reformers used printed writings to question practices they considered unjust or harmful. Readers could examine arguments and respond through other publications.\n\n2. **Women's education:** Printed material helped spread arguments supporting education for girls and women. Textbooks, journals and other publications created opportunities for learning, although access differed by community and economic circumstances.\n\n3. **Women as authors:** Some women wrote autobiographies, essays and literary works that described their experiences and challenged social restrictions. Their writing contributed to public discussion about women's lives.\n\n4. **Debates about marriage and family:** Publications discussed marriage customs, widowhood, domestic life and women's roles. These subjects generated disagreement between reformers and defenders of established practices.\n\n5. **Religious and caste debates:** Printed works enabled writers to question religious interpretations and social hierarchies. Different communities used print to express their views and defend their traditions.\n\n6. **New readerships:** Newspapers, inexpensive booklets and publications in regional languages helped information reach people outside elite English-speaking circles, although literacy remained a barrier for many.\n\n7. **Limits and opposition:** Women and reformers often faced resistance. Access to schools, publishing and reading materials was uneven, and printed debates did not automatically remove discrimination.\n\nPrint culture widened the scope of social discussion and provided tools for reform. Its influence depended on who could read, publish, obtain books and participate in public debate."
+      },
+      {
+        type:"long",
+        q:"35. Explain the role of newspapers, censorship and print in the growth of Indian nationalism.",
+        a:"Newspapers, pamphlets and other printed materials became important means of political communication in colonial India. They helped people learn about government actions, discuss public issues and circulate nationalist ideas.\n\n1. **Political information:** Newspapers reported events, policies and public meetings. They helped readers follow developments beyond their immediate localities.\n\n2. **Criticism of colonial rule:** Editors and writers used printed articles to criticise policies, economic exploitation and restrictions on rights. Such criticism encouraged debate about the nature of colonial government.\n\n3. **Indian-language publications:** Newspapers in regional languages reached readers who did not necessarily read English. They connected political discussion with local concerns and communities.\n\n4. **Circulation of nationalist ideas:** Printed arguments about rights, representation and self-government could be reproduced and shared widely. Pamphlets and newspapers helped nationalist ideas travel between regions.\n\n5. **Censorship and press laws:** Colonial authorities tried to suppress publications they considered dangerous. The Vernacular Press Act of 1878 gave officials powers to take action against certain Indian-language publications.\n\n6. **Resistance to restrictions:** Writers, editors and readers continued to find ways to communicate political criticism. Attempts at censorship themselves became subjects of public debate.\n\n7. **Limits of print:** Not everyone could read, and access to newspapers depended on cost, language and distribution. Political communication also took place through meetings, speeches and other forms of mobilisation.\n\nPrint was therefore an important contributor to the growth of Indian nationalism, but it worked alongside many other political and social activities. It helped create a wider public sphere in which colonial policies could be debated and challenged."
+      }
+    ],
+
+    flashcards: [
+      {q:"What is print culture?",a:"The production and circulation of printed materials."},
+         {q:"What was an early printing method in China?",a:"Woodblock printing."},
+      {q:"How does woodblock printing work?",a:"A carved, inked block transfers text or images onto paper."},
+      {q:"Who developed a movable-type printing press in Europe?",a:"Johann Gutenberg."},
+      {q:"Which famous book is associated with Gutenberg?",a:"The Bible."},
+      {q:"What is movable type?",a:"Reusable individual letters or characters arranged for printing."},
+      {q:"What is a manuscript?",a:"A text written by hand."},
+      {q:"What was the Renaissance?",a:"A period of renewed interest in classical learning and the arts."},
+      {q:"Who was Martin Luther?",a:"A German religious reformer."},
+      {q:"What was the Protestant Reformation?",a:"A movement challenging aspects of Roman Catholic Church authority and practice."},
+      {q:"What was the Index of Prohibited Books?",a:"A list of books prohibited or restricted by the Catholic Church."},
+      {q:"When did printing arrive in Goa?",a:"1556."},
+      {q:"Who introduced printing to Goa?",a:"Portuguese missionaries."},
+      {q:"What is a vernacular language?",a:"A language commonly spoken in a particular region."},
+      {q:"What is censorship?",a:"The restriction or control of publications and expression."},
+      {q:"What was the Vernacular Press Act?",a:"An 1878 colonial law used to control parts of the Indian-language press."},
+      {q:"What was the Bengal Gazette?",a:"An early Indian newspaper published by James Augustus Hicky in 1780."},
+      {q:"How did print help reformers?",a:"It spread arguments about social and religious reform."},
+      {q:"How did print affect women?",a:"It opened new opportunities for reading, education and writing, although access remained unequal."},
+      {q:"What is a chapbook?",a:"A small, inexpensive booklet containing popular reading material."},
+      {q:"Why did authorities fear print?",a:"It could spread criticism and ideas challenging established power."},
+      {q:"How did print help nationalism?",a:"It circulated political news, criticism and nationalist ideas."},
+      {q:"Name two printed materials used in public debate.",a:"Newspapers and pamphlets."},
+      {q:"What was one effect of cheaper printed material?",a:"It helped expand access to reading for some groups."},
+      {q:"Why were printed labels and pamphlets useful?",a:"They communicated information and ideas to readers."},
+      {q:"What did printing change about book production?",a:"It made producing multiple copies more efficient."},
+      {q:"What did religious pamphlets encourage?",a:"Debate about beliefs and Church practices."},
+      {q:"Why did regional-language newspapers matter?",a:"They reached readers who did not necessarily read English."},
+      {q:"Did print eliminate illiteracy?",a:"No. Literacy and access to printed materials remained unequal."},
+      {q:"What is one limit of print as a political tool?",a:"People who could not read might not access printed arguments directly."}
+    ],
+
+    mcqs: [
+      {
+        question:"1. An early method of printing developed in China was:",
+        options:["Woodblock printing","Digital printing","Laser printing","Photocopying"],
+        answer:0,
+        explanation:"Woodblock printing was used to reproduce texts and images in China."
+      },
+      {
+        question:"2. Who developed a movable-type printing press in Europe?",
+        options:["Martin Luther","Johann Gutenberg","James Hargreaves","James Watt"],
+        answer:1,
+        explanation:"Johann Gutenberg developed a movable-type printing press in fifteenth-century Europe."
+      },
+      {
+        question:"3. Which book is associated with Gutenberg's early printing press?",
+        options:["The Bible","The Communist Manifesto","The Discovery of India","The Jungle Book"],
+        answer:0,
+        explanation:"The Bible is associated with Gutenberg's early printing work."
+      },
+      {
+        question:"4. Movable type consists of:",
+        options:["Reusable individual letters or characters","Only handwritten paragraphs","Wooden furniture","Unprinted cloth"],
+        answer:0,
+        explanation:"Individual characters can be rearranged to print different texts."
+      },
+      {
+        question:"5. Martin Luther was associated with:",
+        options:["The Protestant Reformation","The Industrial Revolution","The Corn Laws","The Great Depression"],
+        answer:0,
+        explanation:"Martin Luther's criticism of Church practices contributed to the Protestant Reformation."
+      },
+      {
+        question:"6. The first printing press arrived in Goa in:",
+        options:["1450","1556","1757","1878"],
+        answer:1,
+        explanation:"Portuguese missionaries introduced printing to Goa in 1556."
+      },
+      {
+        question:"7. A manuscript is:",
+        options:["A handwritten text","A factory machine","A type of steamship","A railway ticket"],
+        answer:0,
+        explanation:"A manuscript is written by hand rather than produced through printing."
+      },
+      {
+        question:"8. The Vernacular Press Act was passed in:",
+        options:["1556","1780","1857","1878"],
+        answer:3,
+        explanation:"The colonial government passed the Vernacular Press Act in 1878."
+      },
+      {
+        question:"9. The Bengal Gazette was associated with:",
+        options:["James Augustus Hicky","Johann Gutenberg","Martin Luther","James Hargreaves"],
+        answer:0,
+        explanation:"James Augustus Hicky published the Bengal Gazette in 1780."
+      },
+      {
+        question:"10. Censorship means:",
+        options:["Controlling or restricting publications","Increasing rainfall","Producing cotton","Building railways"],
+        answer:0,
+        explanation:"Censorship restricts information or expression."
+      },
+      {
+        question:"11. Print helped the Protestant Reformation by:",
+        options:["Circulating religious arguments","Ending all reading","Stopping the production of books","Preventing communication"],
+        answer:0,
+        explanation:"Printed pamphlets and books helped religious reformers spread their ideas."
+      },
+      {
+        question:"12. Which material helped circulate political ideas in colonial India?",
+        options:["Newspapers","Only farming tools","Only machinery parts","Only cooking utensils"],
+        answer:0,
+        explanation:"Newspapers circulated political information and nationalist arguments."
+      },
+      {
+        question:"13. Why did some authorities fear printed books?",
+        options:["They could challenge established beliefs and power","They could not contain ideas","They always supported censorship","They stopped all communication"],
+        answer:0,
+        explanation:"Authorities worried about criticism and dissent spreading through print."
+      },
+      {
+        question:"14. Print culture contributed to social reform by:",
+        options:["Circulating arguments about social practices","Ending all public debate","Preventing education","Banning every newspaper"],
+        answer:0,
+        explanation:"Printed writings helped reformers debate social and religious issues."
+      },
+      {
+        question:"15. The growth of print created:",
+        options:["New opportunities for reading and public discussion","The immediate end of all inequality","The disappearance of every language","An end to all political debate"],
+        answer:0,
+        explanation:"Print expanded reading opportunities and public debate, although access remained unequal."
+      },
+      {
+        question:"16. A chapbook was generally:",
+        options:["A small, inexpensive booklet","A large steam engine","A tax on imported goods","A type of factory"],
+        answer:0,
+        explanation:"Chapbooks were small, relatively inexpensive printed booklets."
+      },
+      {
+        question:"17. Regional-language newspapers were important because they:",
+        options:["Reached readers who did not necessarily read English","Were read only by foreign rulers","Contained no political information","Eliminated all language differences"],
+        answer:0,
+        explanation:"Publications in Indian languages made information available to additional audiences."
+      },
+      {
+        question:"18. Which of the following was an effect of print culture?",
+        options:["Wider circulation of ideas","The end of all books","The disappearance of literacy","The end of religious debate"],
+        answer:0,
+        explanation:"Print helped ideas circulate among growing reading audiences."
+      },
+      {
+        question:"19. Why did colonial authorities restrict some Indian newspapers?",
+        options:["They feared criticism of colonial rule","They wanted every paper to criticise them","They wanted to eliminate all government power","They opposed all forms of communication equally"],
+        answer:0,
+        explanation:"Colonial authorities used restrictions to suppress some criticism and political writing."
+      },
+      {
+        question:"20. Which statement about print and nationalism is correct?",
+        options:["Print helped circulate nationalist ideas but was not the only form of mobilisation","Print alone achieved independence","Print was never used for political discussion","Newspapers had no influence on public debate"],
+        answer:0,
+        explanation:"Printed materials contributed to nationalism alongside meetings, speeches and other forms of political activity."
+      }
+    ]
+  }
+
+});
+
+console.log("History Part 2 loaded: 3 chapters.");
+Object.assign(window.CONTENT["Social Science"].chapters, {
+
+  // =====================================================
+  // CHAPTER 1: DEVELOPMENT
+  // =====================================================
+
+  "Development": {
+    questions: [
+      // 20 VERY SHORT ANSWERS
+      {type:"very-short",q:"1. What is development?",a:"Development refers to improvement in people's quality of life, including income, education, health, security and freedom."},
+      {type:"very-short",q:"2. What is per capita income?",a:"Per capita income is the average income of a person in a country, calculated by dividing total national income by the total population."},
+      {type:"very-short",q:"3. How is per capita income calculated?",a:"Per capita income = Total national income ÷ Total population."},
+      {type:"very-short",q:"4. What is national income?",a:"National income is the total income earned by a country's people from economic activities during a given period, according to the measure being used."},
+      {type:"very-short",q:"5. What is average income?",a:"Average income is the total income of a group divided by the number of people in that group."},
+      {type:"very-short",q:"6. Why do people have different development goals?",a:"People have different development goals because their needs, circumstances, interests and priorities differ."},
+      {type:"very-short",q:"7. What is a public facility?",a:"A public facility is a service or amenity provided for public use, such as schools, hospitals, sanitation and public transport."},
+      {type:"very-short",q:"8. What is sustainable development?",a:"Sustainable development meets present needs without compromising the ability of future generations to meet their own needs."},
+      {type:"very-short",q:"9. What is literacy rate?",a:"Literacy rate is the percentage of people in a specified age group who can read and write with understanding."},
+      {type:"very-short",q:"10. What is infant mortality rate?",a:"Infant mortality rate is the number of children who die before reaching one year of age per 1,000 live births in a given year."},
+      {type:"very-short",q:"11. What is life expectancy?",a:"Life expectancy is the average number of years a person is expected to live under prevailing mortality conditions."},
+      {type:"very-short",q:"12. What is Human Development Index (HDI)?",a:"HDI is a composite measure of development that considers health, education and standard of living."},
+      {type:"very-short",q:"13. What is the main limitation of average income?",a:"Average income does not show how income is distributed among people."},
+      {type:"very-short",q:"14. What is a renewable resource?",a:"A renewable resource can be replenished naturally, such as sunlight and wind, although some renewable resources can still be depleted if mismanaged."},
+      {type:"very-short",q:"15. What is a non-renewable resource?",a:"A non-renewable resource exists in limited quantities or takes extremely long periods to form, such as coal and petroleum."},
+      {type:"very-short",q:"16. What is groundwater depletion?",a:"Groundwater depletion occurs when water is extracted faster than natural processes can replenish it."},
+      {type:"very-short",q:"17. What is an economic goal?",a:"An economic goal is an objective related to income, employment, production or material well-being."},
+      {type:"very-short",q:"18. What is equality?",a:"Equality means that people have fair rights, opportunities and treatment, without unjust discrimination."},
+      {type:"very-short",q:"19. What is freedom as a development goal?",a:"Freedom as a development goal means having the ability to make choices and live with dignity without unjust restrictions."},
+      {type:"very-short",q:"20. Why is income not the only measure of development?",a:"Income alone does not fully measure health, education, security, equality, freedom, environmental quality or overall well-being."},
+
+      // 10 SHORT ANSWERS
+      {type:"short",q:"21. Why do different people have different development goals?",a:"People have different development goals because they live in different social and economic circumstances. A landless worker may want better wages and secure employment, while a farmer may want irrigation and fair crop prices. A student may seek quality education, while a business owner may want better markets. Goals may also conflict: a factory owner may want lower wages, while workers want higher wages. Therefore, development goals depend on people's needs, opportunities and interests."},
+      {type:"short",q:"22. Why is income important for development?",a:"Income is important because it enables people to buy food, clothing, housing, education and other necessities. Higher income can improve living conditions and provide greater choices. However, income alone cannot guarantee good health, quality education, equality, personal security or a clean environment. Therefore, development must be assessed using income along with other important indicators."},
+      {type:"short",q:"23. Explain the difference between total income and per capita income.",a:"Total income is the combined income of all people or the total income measured for a country. Per capita income is calculated by dividing national income by the total population. Total income indicates the overall size of income, while per capita income gives an average per person. Per capita income is useful for comparing countries of different population sizes, but it does not reveal income inequality within a country."},
+      {type:"short",q:"24. Why is average income used to compare countries?",a:"Countries have different population sizes, so comparing their total incomes alone may be misleading. Average income, commonly measured as per capita income, divides national income by population. This provides an average figure for each person and helps make comparisons more meaningful. However, it does not show whether income is shared equally or whether people have similar access to health and education."},
+      {type:"short",q:"25. Why are public facilities important for development?",a:"Public facilities such as schools, hospitals, clean drinking water, sanitation and public transport improve people's quality of life. They can make essential services available to people who cannot afford private alternatives. For example, functioning public health services help prevent disease, while good schools improve educational opportunities. Public facilities therefore support individual well-being and contribute to wider social development."},
+      {type:"short",q:"26. How can two countries with similar incomes have different levels of development?",a:"Two countries may have similar average incomes but differ in the distribution of income and access to public services. One country may provide better healthcare, education, sanitation and clean drinking water. It may also have lower infant mortality and higher life expectancy. Therefore, comparing development requires more than income; health, education and other living conditions must also be considered."},
+      {type:"short",q:"27. What is the importance of the Human Development Index?",a:"The Human Development Index provides a broader measure of development than income alone. It considers health, education and standard of living. Health is commonly represented by life expectancy, education by indicators of schooling, and standard of living by income. The index helps compare countries using several important dimensions of human well-being, although it cannot capture every aspect of development."},
+      {type:"short",q:"28. Why should development be sustainable?",a:"Development should be sustainable because natural resources are essential for present and future generations. Excessive use of groundwater, forests, minerals and fossil fuels can damage ecosystems and reduce future availability. Pollution can harm health and livelihoods. Sustainable development encourages responsible resource use, conservation and cleaner technologies so that present needs are met without seriously limiting future generations."},
+      {type:"short",q:"29. How does groundwater overuse threaten development?",a:"Groundwater overuse occurs when water is withdrawn faster than it is naturally replenished. It can lower the water table, make wells run dry and increase the cost of pumping water. It may also threaten farming, drinking-water supplies and local ecosystems. Long-term development therefore requires careful groundwater management, efficient irrigation and protection of water-recharge areas."},
+      {type:"short",q:"30. Explain why development goals may conflict with one another.",a:"Development goals may conflict because the same activity can benefit one group while harming another. For example, a factory may create jobs and raise production, but pollution can affect nearby residents. A dam may provide electricity and irrigation while displacing communities. Similarly, employers may seek lower costs while workers seek higher wages. Development decisions should consider different interests and distribute benefits and costs fairly."},
+
+      // 5 LONG ANSWERS
+      {type:"long",q:"31. Explain why different people have different development goals, with examples.",a:"Development means improving people's lives, but the meaning of improvement differs according to people's circumstances, needs and priorities. Therefore, different people can have different development goals.\n\n1. **Different economic conditions:** A landless rural worker may want higher wages, regular employment and better working conditions. A large farmer may want irrigation facilities, affordable inputs and profitable prices for crops.\n\n2. **Different occupations:** A shopkeeper may want better transport and access to markets. An industrialist may want reliable electricity and infrastructure, while factory workers may want higher wages, job security and safe workplaces.\n\n3. **Different personal priorities:** A student may consider good education and employment opportunities essential. A person who is unwell may give greater importance to healthcare and clean drinking water.\n\n4. **Non-material goals:** People may also value respect, freedom, equality, security and the ability to participate in decisions. These goals cannot always be achieved by increasing income alone.\n\n5. **Conflicting goals:** One person's development may create difficulties for another. For example, an industrial project can provide jobs but may pollute nearby areas or displace residents. An employer may want lower production costs, while workers may demand higher wages.\n\n6. **Importance of fair decisions:** Development decisions should consider the needs of different groups, protect rights and avoid placing unfair burdens on vulnerable people.\n\nThus, development is not limited to earning more money. It includes the opportunities and conditions people need to live a secure, healthy, dignified and fulfilling life."},
+      {type:"long",q:"32. Explain the importance and limitations of per capita income as a measure of development.",a:"Per capita income is widely used to compare the average income of countries. It is calculated by dividing total national income by the total population. Although useful, it does not provide a complete picture of development.\n\n**Importance:**\n\n1. **Accounts for population:** Countries have different population sizes. Per capita income allows a more meaningful comparison than total income alone.\n\n2. **Shows average income:** It gives an estimate of the average income available per person in a country.\n\n3. **Helps comparisons:** Governments and researchers can use income data to compare economic conditions across countries and over time.\n\n**Limitations:**\n\n1. **Hides inequality:** An average does not reveal how income is distributed. A small wealthy group can raise the average even when many people remain poor.\n\n2. **Does not measure health:** A country with high average income may still have inadequate healthcare or high infant mortality.\n\n3. **Does not fully measure education:** Average income cannot show whether children have access to good schools or whether people can complete their education.\n\n4. **Ignores public facilities:** Access to clean water, sanitation, public transport and healthcare also affects quality of life.\n\n5. **Does not capture freedom and security:** Respect, equality, personal safety and freedom of choice are important development goals that income cannot fully measure.\n\n6. **Environmental concerns:** Income figures alone do not show whether economic activity is damaging natural resources or creating pollution.\n\nTherefore, per capita income is a useful economic indicator, but it should be considered alongside health, education, equality, public facilities, freedom and environmental sustainability."},
+      {type:"long",q:"33. What is sustainable development? Why is it necessary? Explain with examples.",a:"Sustainable development means meeting present needs without compromising the ability of future generations to meet their own needs. It seeks to balance economic progress, social well-being and environmental protection.\n\n1. **Limited resources:** Many resources, such as coal, petroleum and minerals, are finite. Excessive consumption can reduce the supplies available to future generations.\n\n2. **Groundwater conservation:** Groundwater is renewable in some circumstances, but it can be depleted when extraction exceeds recharge. Over-pumping can lower water tables and threaten drinking water and agriculture.\n\n3. **Environmental protection:** Industrial emissions, waste and excessive use of chemicals can pollute air, water and soil. Pollution harms human health and ecosystems, so development must reduce environmental damage.\n\n4. **Responsible production:** Efficient technologies, renewable energy and reduced waste can help meet present needs while lowering pressure on natural resources.\n\n5. **Conservation:** Protecting forests, rivers, soil and biodiversity helps maintain ecological systems that support agriculture, livelihoods and human health.\n\n6. **Intergenerational responsibility:** Future generations also need clean water, fertile soil, energy and a healthy environment. Current decisions should not unnecessarily deprive them of these resources.\n\n7. **Practical examples:** Rainwater harvesting, efficient irrigation, recycling, energy conservation, responsible mining and solar or wind energy can support more sustainable patterns of development.\n\nSustainable development is necessary because economic growth that destroys the resources on which people depend cannot continue indefinitely. Responsible planning helps improve present living conditions while protecting opportunities for the future."},
+      {type:"long",q:"34. Why are health and education important indicators of development?",a:"Health and education are essential indicators of development because they directly affect people's capabilities, opportunities and quality of life. Income alone cannot show whether people are healthy, educated or able to participate fully in society.\n\n1. **Health and well-being:** Access to healthcare, nutrition, sanitation and clean drinking water helps people prevent disease and live healthier lives.\n\n2. **Life expectancy:** Life expectancy provides information about mortality and general health conditions. Higher life expectancy often reflects better healthcare and living conditions, although it is influenced by several factors.\n\n3. **Infant mortality:** Infant mortality measures deaths of children under one year of age per 1,000 live births. A lower rate can indicate improvements in maternal care, healthcare, nutrition and sanitation.\n\n4. **Education:** Education develops knowledge and skills, improves employment opportunities and enables people to make informed decisions.\n\n5. **Literacy and schooling:** Literacy rates and measures of school participation help show how widely educational opportunities are available.\n\n6. **Equal opportunities:** Development improves when girls, boys and people from different social and economic backgrounds can access quality education and healthcare.\n\n7. **Wider benefits:** Healthy and educated people are better able to work, participate in community life and contribute to society. These benefits can support economic and social progress.\n\nHealth and education therefore provide important information about development that average income cannot capture. They should be considered alongside income, equality, public services and other indicators."},
+      {type:"long",q:"35. Explain how public facilities and equality contribute to development.",a:"Public facilities and equality are important because development should improve the lives of people across society, rather than benefit only a small group. Public services help people meet essential needs, while equality supports fair access to opportunities and resources.\n\n1. **Education:** Public schools can provide learning opportunities to children whose families cannot afford expensive private education. Good education improves knowledge, skills and future opportunities.\n\n2. **Healthcare:** Public hospitals, health centres, vaccination programmes and preventive services help protect people's health. Accessible healthcare reduces the risk that illness will cause severe financial hardship.\n\n3. **Water and sanitation:** Clean drinking water, sewage systems and waste management reduce disease and improve living conditions.\n\n4. **Transport and infrastructure:** Roads and public transport connect people to schools, hospitals, workplaces and markets. Reliable infrastructure can support employment and economic activity.\n\n5. **Reducing inequality:** If income and opportunities are concentrated among a few people, many others may remain unable to meet basic needs. Fair access to education, healthcare and employment can reduce some of these disadvantages.\n\n6. **Dignity and freedom:** Equality also involves respect, freedom from discrimination and the ability to participate in decisions that affect people's lives.\n\n7. **Shared responsibility:** Governments, communities and institutions all have roles in improving public services and ensuring that resources are used effectively.\n\nDevelopment is more meaningful when people have access to essential services and a fair chance to improve their lives. Public facilities and equality therefore complement income growth and help make development more inclusive."}
+    ],
+
+    flashcards: [
+      {q:"What is development?",a:"Improvement in quality of life, opportunities and well-being."},
+      {q:"What is per capita income?",a:"National income divided by total population."},
+      {q:"What is the formula for per capita income?",a:"Total national income ÷ total population."},
+      {q:"What is average income?",a:"Total income divided by the number of people."},
+      {q:"Name one limitation of average income.",a:"It hides differences in income distribution."},
+      {q:"What is a public facility?",a:"A service for public use, such as a school or hospital."},
+      {q:"What does HDI stand for?",a:"Human Development Index."},
+      {q:"What are the main dimensions of HDI?",a:"Health, education and standard of living."},
+      {q:"What is life expectancy?",a:"The average number of years a person is expected to live."},
+      {q:"What is infant mortality rate?",a:"Deaths under age one per 1,000 live births in a year."},
+      {q:"What is literacy rate?",a:"The percentage of people in a specified age group who can read and write with understanding."},
+      {q:"What is sustainable development?",a:"Meeting present needs without compromising future generations' ability to meet theirs."},
+      {q:"Name one renewable resource.",a:"Sunlight."},
+      {q:"Name one non-renewable resource.",a:"Coal."},
+          {q:"What is groundwater depletion?",a:"Extraction of groundwater faster than it is replenished."},
+      {q:"Why do people have different development goals?",a:"Their needs, circumstances and priorities differ."},
+      {q:"Give one example of a non-material goal.",a:"Respect, freedom or security."},
+      {q:"Why is income important?",a:"It helps people buy goods and services needed for living."},
+      {q:"Why is income alone insufficient?",a:"It does not fully measure health, education, equality or freedom."},
+      {q:"What is equality?",a:"Fair rights, opportunities and treatment."},
+      {q:"How can public healthcare help development?",a:"It improves health and makes essential services more accessible."},
+      {q:"How does education support development?",a:"It builds knowledge, skills and opportunities."},
+      {q:"Why is clean drinking water important?",a:"It supports health and helps prevent water-related diseases."},
+      {q:"What can excessive groundwater use cause?",a:"Falling water tables and water shortages."},
+      {q:"What is intergenerational responsibility?",a:"Considering the needs and opportunities of future generations."},
+      {q:"Name one way to conserve water.",a:"Rainwater harvesting or efficient irrigation."},
+      {q:"Can development goals conflict?",a:"Yes, one group's benefit may impose costs on another group."},
+      {q:"What does a trade-off in development mean?",a:"A choice involving competing goals or costs and benefits."},
+      {q:"What is environmental sustainability?",a:"Using resources and managing activities while protecting the environment over time."},
+      {q:"Why compare more than one development indicator?",a:"Different indicators reveal different aspects of people's lives."}
+    ],
+
+    mcqs: [
+      {question:"1. Per capita income is calculated by:",options:["Dividing total national income by population","Multiplying income by population","Subtracting population from income","Dividing population by land area"],answer:0,explanation:"Per capita income is total national income divided by total population."},
+      {question:"2. Which is a non-material development goal?",options:["Respect and freedom","A larger salary only","More factory output only","Higher sales only"],answer:0,explanation:"Respect and freedom are non-material goals that contribute to well-being."},
+      {question:"3. Which is a public facility?",options:["A public hospital","A private jewellery collection","A personal mobile phone","A private garden"],answer:0,explanation:"Public hospitals provide healthcare services for public use."},
+      {question:"4. HDI considers:",options:["Health, education and standard of living","Only population size","Only exports","Only rainfall"],answer:0,explanation:"HDI combines indicators relating to health, education and living standards."},
+      {question:"5. Infant mortality rate measures deaths of children:",options:["Before reaching one year of age","Before reaching ten years of age","Only at birth in all cases","After reaching eighteen years"],answer:0,explanation:"Infant mortality refers to deaths before the first birthday per 1,000 live births."},
+      {question:"6. Which is a renewable resource?",options:["Sunlight","Coal","Petroleum","Natural gas"],answer:0,explanation:"Sunlight is continuously replenished by natural processes."},
+      {question:"7. Which is a non-renewable resource?",options:["Petroleum","Wind","Sunlight","Tidal energy"],answer:0,explanation:"Petroleum takes millions of years to form and is finite on human timescales."},
+      {question:"8. Sustainable development aims to:",options:["Meet present needs while protecting future generations' opportunities","Use every resource immediately","Ignore environmental damage","Stop all forms of development"],answer:0,explanation:"Sustainable development considers present needs and future resource availability."},
+      {question:"9. Average income does not reveal:",options:["How income is distributed","The result of dividing income by population","An average figure","A numerical average"],answer:0,explanation:"Average income can hide large differences between rich and poor people."},
+      {question:"10. Which is an important health indicator?",options:["Life expectancy","Number of advertisements","Length of roads alone","Number of shops alone"],answer:0,explanation:"Life expectancy reflects important aspects of population health and mortality."},
+      {question:"11. Groundwater depletion occurs when:",options:["Extraction exceeds replenishment","Rainwater always exceeds use","No water is pumped","All rivers flow into the sea"],answer:0,explanation:"Groundwater levels can fall when water is withdrawn faster than it is replenished."},
+      {question:"12. Which statement about development goals is correct?",options:["Different people may have different goals","Everyone always has identical goals","Only income matters to everyone","Non-material goals never matter"],answer:0,explanation:"People's circumstances and priorities influence their development goals."},
+      {question:"13. Which can improve educational development?",options:["Access to quality schools","Closing all schools","Reducing learning opportunities","Restricting education to a few people"],answer:0,explanation:"Accessible, quality education expands knowledge and opportunities."},
+      {question:"14. Why are public facilities important?",options:["They make essential services more accessible","They guarantee identical incomes for everyone","They remove the need for education","They eliminate every social problem immediately"],answer:0,explanation:"Public facilities support access to services such as healthcare, water and education."},
+      {question:"15. Which is an example of a conflict between development goals?",options:["A factory creates jobs but pollutes a nearby community","A library lends books","A school teaches reading","A hospital provides treatment"],answer:0,explanation:"An industrial project can create employment while imposing environmental costs on others."},
+      {question:"16. Literacy rate is related to the ability to:",options:["Read and write with understanding","Earn the highest salary","Own a factory","Drive every type of vehicle"],answer:0,explanation:"Literacy measures reading and writing ability in a specified population group."},
+      {question:"17. Which action supports sustainable development?",options:["Rainwater harvesting","Uncontrolled groundwater pumping","Dumping waste into rivers","Unnecessary resource wastage"],answer:0,explanation:"Rainwater harvesting helps conserve water and support groundwater recharge."},
+      {question:"18. A country with higher average income:",options:["May still have poor access to health or education","Must have no poverty","Must distribute income equally","Must have no environmental problems"],answer:0,explanation:"Average income alone cannot establish whether all people have good services or living conditions."},
+      {question:"19. Equality as a development goal includes:",options:["Fair opportunities and freedom from unjust discrimination","Giving all opportunities to one group","Preventing access to education","Ignoring the rights of workers"],answer:0,explanation:"Equality involves fair treatment, rights and opportunities."},
+      {question:"20. Why should future generations be considered in development decisions?",options:["They will also need resources and a healthy environment","They do not depend on natural resources","They have no role in society","All resources are unlimited"],answer:0,explanation:"Responsible development protects the ability of future generations to meet their needs."}
+    ]
+  },
+
+  // =====================================================
+  // CHAPTER 2: SECTORS OF THE INDIAN ECONOMY
+  // =====================================================
+
+  "Sectors of the Indian Economy": {
+    questions: [
+      // 20 VERY SHORT ANSWERS
+      {type:"very-short",q:"1. What is an economic sector?",a:"An economic sector is a broad category of economic activities grouped according to the nature of the work performed."},
+      {type:"very-short",q:"2. Name the three main economic sectors.",a:"The primary, secondary and tertiary sectors."},
+      {type:"very-short",q:"3. What is the primary sector?",a:"The primary sector includes activities that obtain or produce goods directly from natural resources, such as farming, fishing and mining."},
+      {type:"very-short",q:"4. What is the secondary sector?",a:"The secondary sector transforms raw materials into manufactured goods or constructs buildings and infrastructure."},
+      {type:"very-short",q:"5. What is the tertiary sector?",a:"The tertiary sector provides services, such as transport, banking, education, healthcare and communication."},
+      {type:"very-short",q:"6. What is GDP?",a:"Gross Domestic Product is the total value of final goods and services produced within a country's domestic territory during a specified period."},
+      {type:"very-short",q:"7. What are final goods?",a:"Final goods are goods purchased for final use rather than for further production or resale as inputs."},
+      {type:"very-short",q:"8. What are intermediate goods?",a:"Intermediate goods are goods used as inputs in producing other goods or services."},
+      {type:"very-short",q:"9. What is disguised unemployment?",a:"Disguised unemployment occurs when more people are engaged in an activity than are actually needed, so some workers add little or no extra output."},
+      {type:"very-short",q:"10. What is underemployment?",a:"Underemployment occurs when people work fewer hours than they would like or do work that does not fully use their abilities or productive capacity."},
+      {type:"very-short",q:"11. What is organised sector employment?",a:"It refers to employment in registered establishments that generally follow applicable labour laws and formal rules."},
+      {type:"very-short",q:"12. What is unorganised sector employment?",a:"It refers to employment that often involves small, unregistered workplaces and limited job security or formal benefits."},
+      {type:"very-short",q:"13. What is the public sector?",a:"The public sector consists of economic activities and organisations owned or controlled by the government."},
+      {type:"very-short",q:"14. What is the private sector?",a:"The private sector consists of economic activities and organisations owned or controlled by private individuals or businesses."},
+      {type:"very-short",q:"15. Give one example of a primary-sector activity.",a:"Agriculture is a primary-sector activity."},
+      {type:"very-short",q:"16. Give one example of a secondary-sector activity.",a:"Manufacturing textiles is a secondary-sector activity."},
+      {type:"very-short",q:"17. Give one example of a tertiary-sector activity.",a:"Banking is a tertiary-sector activity."},
+      {type:"very-short",q:"18. What is MGNREGA?",a:"The Mahatma Gandhi National Rural Employment Guarantee Act provides a legal framework for guaranteed wage employment to rural households, subject to the scheme's conditions."},
+      {type:"very-short",q:"19. Why is the tertiary sector important?",a:"It provides essential services and supports agriculture, manufacturing, trade and everyday life."},
+      {type:"very-short",q:"20. What is value addition?",a:"Value addition is the increase in the value of a product as it is processed or improved at different stages of production."},
+
+      // 10 SHORT ANSWERS
+      {type:"short",q:"21. Explain the difference between the primary, secondary and tertiary sectors.",a:"The primary sector obtains goods directly from nature and includes agriculture, fishing, forestry and mining. The secondary sector transforms raw materials into finished or semi-finished products and includes manufacturing and construction. The tertiary sector provides services rather than directly producing most physical goods; examples include banking, transport, education and healthcare. These sectors depend on one another: agriculture supplies raw materials, industry processes them, and services help move, finance and sell the products."},
+      {type:"short",q:"22. Why are only final goods and services counted in GDP?",a:"GDP measures the value of final goods and services to avoid double counting. The value of intermediate goods is already included in the value of the final product. For example, if wheat is used to make flour and flour is used to make bread, counting the full value of wheat, flour and bread would count some value more than once. Counting final output, or using value added at each stage, avoids this problem."},
+      {type:"short",q:"23. What is disguised unemployment? Explain with an example.",a:"Disguised unemployment exists when more workers are engaged in an activity than are needed for its current level of production. For example, a small farm may employ six family members even though the same output could be produced by four. The additional workers appear employed, but their removal would not significantly reduce total production. This situation is common in some forms of agricultural work."},
+      {type:"short",q:"24. Why has the tertiary sector grown in importance in India?",a:"The tertiary sector has grown because agriculture and industry require services such as transport, storage, banking and communication. Rising incomes increase demand for education, healthcare, tourism and other services. Government activities also create demand for administration, public services and infrastructure. In addition, information technology and modern communication have expanded service-based employment and business opportunities."},
+      {type:"short",q:"25. Distinguish between the organised and unorganised sectors.",a:"The organised sector generally consists of registered establishments that follow formal rules and applicable labour laws. Workers may receive regular wages, paid leave and other benefits, depending on the job and law. The unorganised sector often includes small or unregistered workplaces where employment is less secure and workers may lack paid leave, social security or predictable wages. Conditions vary, but unorganised workers are generally more vulnerable."},
+      {type:"short",q:"26. Explain the difference between the public and private sectors.",a:"The public sector is owned or controlled by the government and often provides services considered essential for society, such as public administration and certain infrastructure services. The private sector is owned or controlled by individuals or companies and usually operates businesses to earn returns. Both sectors contribute to production and employment. The government may also regulate private businesses to protect public interests."},
+      {type:"short",q:"27. How can more employment be created in rural areas?",a:"Rural employment can be increased by improving irrigation, building roads, developing storage facilities and supporting small-scale industries. Better access to affordable credit and markets can help farmers and local businesses expand. Investment in schools, healthcare, tourism and food processing can create additional jobs. Public employment programmes can also provide wage work while supporting useful community assets."},
+      {type:"short",q:"28. Why is the unorganised sector vulnerable?",a:"Workers in the unorganised sector may have irregular employment, low or unpredictable wages and limited access to paid leave, pensions or social security. They may also work in unsafe conditions and have less bargaining power. Small businesses can be affected by changes in demand and may lack resources to provide formal benefits. Appropriate labour protections and social security can reduce these risks."},
+      {type:"short",q:"29. What role can the government play in providing employment and public services?",a:"The government can invest in roads, irrigation, schools, hospitals, sanitation and public transport. These facilities directly improve living conditions and can create jobs during construction and operation. It can support skill training, rural development and employment programmes, and enforce labour laws. Public investment may also help private businesses operate more effectively and create additional employment."},
+      {type:"short",q:"30. Why are the three sectors interdependent?",a:"The three sectors depend on one another for inputs, services and markets. Agriculture supplies crops and raw materials to industries. Manufacturing turns these inputs into goods, while transport, banking, storage and trade services help production and distribution. Industry and services also supply farmers with machinery, finance and communication. Growth in one sector can therefore support activity and employment in the others."},
+
+      // 5 LONG ANSWERS
+      {type:"long",q:"31. Explain the classification of economic activities into primary, secondary and tertiary sectors with examples.",a:"Economic activities are classified into primary, secondary and tertiary sectors according to the nature of the work performed. All three sectors contribute to the economy and are closely connected.\n\n1. **Primary sector:** This sector obtains or produces goods directly from natural resources. Agriculture, fishing, forestry, animal husbandry and mining are examples. Many primary activities depend on land, water, climate and other natural conditions.\n\n2. **Secondary sector:** This sector transforms raw materials into other goods and includes manufacturing and construction. For example, cotton from farms can be processed into yarn and then woven into cloth. Sugarcane can be processed into sugar. Construction workers use materials to build roads, houses and bridges.\n\n3. **Tertiary sector:** This sector provides services rather than directly producing most physical goods. Banking, transport, communication, education, healthcare, retail trade and information technology are examples. These services support households and other economic activities.\n\n4. **Interdependence:** The sectors rely on one another. Farmers need seeds, machinery, transport and credit. Factories need raw materials and services such as electricity, banking and shipping. Consumers need shops and transport to obtain finished goods.\n\n5. **Changing importance:** As economies develop, the contribution of different sectors to production and employment can change. Services may grow as incomes, education, technology and demand for specialised activities increase.\n\nThe three-sector classification helps us understand how goods and services are produced and how different activities contribute to national income and employment."},
+          {type:"long",q:"32. What is GDP? Explain how it is calculated and why intermediate goods are not counted separately.",a:"Gross Domestic Product (GDP) is the total value of all final goods and services produced within a country's domestic territory during a specified period, usually one year. It is an important indicator of the size of economic production.\n\n1. **Final goods and services:** GDP includes goods and services intended for final use. Examples include bread bought by a household, a new machine bought for final use by a business, and services provided to consumers.\n\n2. **Market value:** Different goods and services cannot simply be added by counting their physical quantities. Their values are expressed in monetary terms so that they can be combined.\n\n3. **Avoiding double counting:** Intermediate goods are used to produce other goods. If the value of every intermediate product and the final product were added together, the same value could be counted repeatedly.\n\n4. **Example:** A farmer sells wheat to a mill, the mill produces flour, and a bakery uses flour to make bread. If the full value of wheat, flour and bread were added without adjustment, some value would be counted more than once.\n\n5. **Value-added method:** Another way to calculate production is to add the value added at each stage. Value added is the value of output minus the value of intermediate inputs used in producing it.\n\n6. **Economic importance:** GDP helps assess changes in production and compare economic activity over time. However, it does not by itself show how income is distributed, the quality of public services or every aspect of people's well-being.\n\nGDP therefore measures the value of final domestic production while avoiding double counting. It is useful for understanding economic activity but should be considered alongside other indicators."},
+      {type:"long",q:"33. Explain disguised unemployment and suggest measures to create more employment in India.",a:"Disguised unemployment occurs when more people are engaged in an activity than are actually needed for the level of output being produced. Some workers appear employed, but removing them would not significantly reduce production. It is often discussed in relation to small farms and other activities where family members share limited work.\n\n**Example:** A farm may use six workers even though four workers could produce nearly the same output. The additional workers contribute little extra production, so their labour is underutilised.\n\n**Measures to create employment:**\n\n1. **Improve irrigation:** Canals, wells, water conservation and efficient irrigation can allow farmers to grow more crops and create work throughout the year.\n\n2. **Develop infrastructure:** Roads, bridges, storage facilities, electricity and communication networks can create jobs and help businesses reach markets.\n\n3. **Promote small industries:** Food processing, textiles, handicrafts, repair services and other small businesses can create non-farm jobs in rural areas.\n\n4. **Expand education and healthcare:** Schools, hospitals and other public services employ teachers, health workers and support staff while improving living conditions.\n\n5. **Improve access to credit:** Affordable loans can help farmers, artisans and small entrepreneurs invest in productive activities.\n\n6. **Provide skill training:** Training can help people find work in manufacturing, construction, tourism, technology and other service activities.\n\n7. **Support employment programmes:** Public employment programmes can provide wage work and create useful community assets, subject to their legal and programme conditions.\n\nCreating productive employment helps increase incomes, reduce underemployment and improve living standards. Policies should focus not only on the number of jobs but also on wages, safety and job security."},
+      {type:"long",q:"34. Compare the organised and unorganised sectors and explain why unorganised workers need protection.",a:"Economic activities can be divided into organised and unorganised sectors according to the nature of establishments, registration and employment conditions. The distinction is important because workers may have very different levels of security and access to benefits.\n\n1. **Organised sector:** This generally includes registered establishments that follow formal rules and applicable labour laws. Depending on the job, workers may receive regular wages, written terms, paid leave and social security benefits.\n\n2. **Unorganised sector:** This often includes small or unregistered enterprises and workers in casual or insecure employment. Wages may be irregular, working hours uncertain and benefits limited.\n\n3. **Job security:** Organised-sector workers may have clearer employment terms and legal protections. Unorganised workers can be more vulnerable to sudden loss of work or changes in wages.\n\n4. **Working conditions:** Formal workplaces are subject to applicable rules on safety and employment. Unorganised workers may face unsafe conditions or have difficulty enforcing their rights.\n\n5. **Social security:** Some organised workers have access to benefits such as pensions, insurance or paid leave. Many unorganised workers have limited access to such protection.\n\n6. **Need for protection:** Unorganised workers often have limited bargaining power and may find it difficult to challenge unfair treatment. Enforcement of minimum-wage rules, safer workplaces, social-security coverage and access to grievance mechanisms can reduce vulnerability.\n\n7. **Importance to the economy:** Both sectors provide goods, services and employment. The goal should be to improve working conditions and productivity rather than overlook the contribution of workers in smaller enterprises.\n\nProtecting unorganised workers supports dignity, fair treatment and more secure livelihoods. Effective labour laws and accessible social protection can help reduce exploitation."},
+      {type:"long",q:"35. Explain the role of the public sector and government in economic development and employment generation.",a:"The public sector consists of activities and organisations owned or controlled by the government. It plays an important role in providing essential services, building infrastructure and supporting development where private investment alone may not meet society's needs.\n\n1. **Essential public services:** The government supports education, healthcare, sanitation, public administration and other services that are important for people's well-being.\n\n2. **Infrastructure:** Investment in roads, bridges, irrigation, electricity and transport can create employment and help businesses operate more efficiently.\n\n3. **Employment generation:** Public projects employ workers directly during construction and operation. Improved infrastructure can also encourage private investment and additional jobs.\n\n4. **Rural development:** Irrigation, rural roads, storage facilities and local services can help farmers and rural businesses increase production and access markets.\n\n5. **Support for vulnerable groups:** Public services and employment programmes can help people who have limited access to private services or regular work.\n\n6. **Regulation and protection:** The government establishes and enforces laws concerning labour conditions, safety, consumer protection and other public interests.\n\n7. **Complementing the private sector:** Private businesses contribute investment, innovation and employment. Public infrastructure, education and regulation can create conditions in which private enterprises operate more effectively.\n\n8. **Responsible use of resources:** Public spending should be planned carefully, delivered transparently and assessed for its effectiveness so that limited resources produce meaningful benefits.\n\nThe public sector contributes to development by providing services and infrastructure, creating employment and helping address needs that markets may not meet adequately. Its role complements that of households, communities and private businesses."}
+    ],
+
+    flashcards: [
+      {q:"Name the three economic sectors.",a:"Primary, secondary and tertiary."},
+      {q:"What is the primary sector?",a:"Activities that obtain goods directly from natural resources."},
+      {q:"Give an example of the primary sector.",a:"Agriculture."},
+      {q:"What is the secondary sector?",a:"Activities that manufacture goods or construct infrastructure."},
+      {q:"Give an example of the secondary sector.",a:"Textile manufacturing."},
+      {q:"What is the tertiary sector?",a:"Activities that provide services."},
+      {q:"Give an example of the tertiary sector.",a:"Banking."},
+      {q:"What does GDP stand for?",a:"Gross Domestic Product."},
+      {q:"What does GDP measure?",a:"The value of final goods and services produced domestically during a specified period."},
+      {q:"What are final goods?",a:"Goods intended for final use."},
+      {q:"What are intermediate goods?",a:"Goods used as inputs to produce other goods or services."},
+      {q:"Why are intermediate goods not counted separately in GDP?",a:"To avoid double counting."},
+      {q:"What is value addition?",a:"The value of output minus the value of intermediate inputs."},
+      {q:"What is disguised unemployment?",a:"More workers are engaged than are needed for the current output."},
+      {q:"Where is disguised unemployment often found?",a:"In some agricultural and family-based activities."},
+      {q:"What is underemployment?",a:"Work that does not fully use a person's available time or productive capacity."},
+      {q:"What is the organised sector?",a:"Registered establishments generally following formal rules and applicable labour laws."},
+      {q:"What is the unorganised sector?",a:"Work often found in small or unregistered establishments with less secure conditions."},
+      {q:"What is the public sector?",a:"Economic activities owned or controlled by the government."},
+      {q:"What is the private sector?",a:"Economic activities owned or controlled by private individuals or businesses."},
+      {q:"What does MGNREGA stand for?",a:"Mahatma Gandhi National Rural Employment Guarantee Act."},
+      {q:"Name one way to create rural employment.",a:"Improving irrigation or developing small industries."},
+      {q:"Why is the tertiary sector important to agriculture?",a:"It provides transport, banking, storage and market services."},
+      {q:"How can roads support employment?",a:"They create construction jobs and connect businesses to markets."},
+      {q:"What is social security?",a:"Support or protection against certain risks, such as illness, old age or loss of income."},
+      {q:"Name one public facility that creates jobs.",a:"A school or hospital."},
+      {q:"Why do workers in the unorganised sector need protection?",a:"They may face insecure jobs, irregular wages and limited benefits."},
+      {q:"How can affordable credit help employment?",a:"It can help farmers and small businesses invest and expand."},
+      {q:"What is interdependence between sectors?",a:"Different sectors rely on one another for inputs, services and markets."},
+      {q:"Does GDP measure every aspect of well-being?",a:"No. It measures domestic production, not every aspect of quality of life."}
+    ],
+
+    mcqs: [
+      {question:"1. Which activity belongs to the primary sector?",options:["Agriculture","Banking","Teaching","Textile manufacturing"],answer:0,explanation:"Agriculture obtains products from natural resources and belongs to the primary sector."},
+      {question:"2. Which activity belongs to the secondary sector?",options:["Manufacturing cloth","Fishing","Banking","Teaching"],answer:0,explanation:"Manufacturing transforms raw materials into products."},
+      {question:"3. Which activity belongs to the tertiary sector?",options:["Banking","Wheat cultivation","Fishing","Mining"],answer:0,explanation:"Banking provides services and belongs to the tertiary sector."},
+      {question:"4. GDP stands for:",options:["Gross Domestic Product","General Development Plan","Gross District Population","Government Distribution Programme"],answer:0,explanation:"GDP means Gross Domestic Product."},
+      {question:"5. GDP counts the value of:",options:["Final goods and services produced domestically","Only imported goods","Only intermediate goods separately","Only agricultural goods"],answer:0,explanation:"GDP measures the value of final domestic production during a specified period."},
+      {question:"6. Why are intermediate goods not counted separately in GDP?",options:["To avoid double counting","Because they have no value","Because they are always imported","Because they are never sold"],answer:0,explanation:"Their value is included in the final product or accounted for through value added."},
+      {question:"7. Disguised unemployment means:",options:["More workers are engaged than are needed for current output","Everyone is unemployed","Only seasonal workers have jobs","All workers receive the same wages"],answer:0,explanation:"Some workers add little or no extra output because more labour is used than required."},
+      {question:"8. Which is commonly associated with disguised unemployment?",options:["A small farm employing more workers than necessary","A fully staffed hospital emergency unit","A bank using computers","A shop selling products"],answer:0,explanation:"Some family farms have more workers than are needed to produce their current output."},
+      {question:"9. The public sector is owned or controlled by:",options:["The government","Only foreign tourists","Only private families","Only consumers"],answer:0,explanation:"Government ownership or control defines the public sector."},
+      {question:"10. The private sector is owned or controlled by:",options:["Private individuals or businesses","Only the government","Only public schools","Only courts"],answer:0,explanation:"Private individuals and businesses own or control private-sector activities."},
+      {question:"11. Which is a common feature of organised-sector employment?",options:["Formal rules and applicable labour protections","No rules under any circumstances","Guaranteed absence of work","No written records anywhere"],answer:0,explanation:"Organised establishments generally follow formal rules and applicable labour laws."},
+      {question:"12. Workers in the unorganised sector may face:",options:["Irregular wages and limited job security","Guaranteed lifelong employment in every job","Automatic access to every benefit","No economic risks"],answer:0,explanation:"Unorganised workers are often more vulnerable to irregular work and limited benefits."},
+      {question:"13. Which can help create rural employment?",options:["Irrigation and rural infrastructure","Closing storage facilities","Reducing all access to credit","Removing rural roads"],answer:0,explanation:"Irrigation and infrastructure can increase production and create jobs."},
+      {question:"14. MGNREGA is related to:",options:["Rural wage employment","International space exploration","Importing luxury goods","Private banking alone"],answer:0,explanation:"MGNREGA provides a legal framework for guaranteed wage employment for eligible rural households."},
+      {question:"15. Which service supports both agriculture and industry?",options:["Transport","Only household cooking","Only personal hobbies","Only private entertainment"],answer:0,explanation:"Transport moves agricultural inputs, raw materials and finished goods."},
+      {question:"16. Which is an example of value addition?",options:["Turning cotton into cloth","Counting the same wheat value repeatedly","Leaving raw materials unused","Removing a finished product from the market"],answer:0,explanation:"Processing cotton into cloth increases the product's value."},
+      {question:"17. Which government action can improve development?",options:["Building schools and healthcare facilities","Closing all public services","Preventing access to roads","Stopping all education"],answer:0,explanation:"Public services improve living conditions and can create employment."},
+      {question:"18. Which statement about the three sectors is correct?",options:["They depend on one another","They never interact","Only the primary sector matters","Services have no economic value"],answer:0,explanation:"The sectors exchange goods, inputs and services and support each other."},
+      {question:"19. What is one limitation of GDP as a measure of well-being?",options:["It does not show how income is distributed","It measures no production at all","It only counts school attendance","It directly measures every person's happiness"],answer:0,explanation:"GDP measures production but does not by itself reveal income distribution or all aspects of well-being."},
+      {question:"20. Which measure can help protect vulnerable workers?",options:["Enforcing labour protections and social security","Ignoring unsafe workplaces","Removing all wage protections","Preventing workers from reporting problems"],answer:0,explanation:"Labour protections and social security can reduce workers' vulnerability."}
+    ]
+  }
+
+});
+
+console.log("Economics Part 1 loaded: 2 chapters.");
+Object.assign(window.CONTENT["Social Science"].chapters, {
+
+  // =====================================================
+  // CHAPTER 3: MONEY AND CREDIT
+  // =====================================================
+
+  "Money and Credit": {
+    questions: [
+
+      // 20 VERY SHORT ANSWERS
+      {type:"very-short",q:"1. What is money?",a:"Money is a generally accepted medium of exchange used to buy goods and services and settle payments."},
+      {type:"very-short",q:"2. What is barter?",a:"Barter is the direct exchange of goods and services without using money."},
+      {type:"very-short",q:"3. What is double coincidence of wants?",a:"It is a situation in which both parties in a barter exchange must want what the other party offers."},
+      {type:"very-short",q:"4. What is a medium of exchange?",a:"A medium of exchange is something generally accepted in payment for goods and services."},
+      {type:"very-short",q:"5. What is a demand deposit?",a:"A demand deposit is money kept in a bank account that can generally be withdrawn on demand, subject to account conditions."},
+      {type:"very-short",q:"6. What is a cheque?",a:"A cheque is a written instruction to a bank to pay a specified amount from the account of the person issuing it."},
+      {type:"very-short",q:"7. What is credit?",a:"Credit is an arrangement in which a lender provides money or goods to a borrower with an agreement to repay later."},
+      {type:"very-short",q:"8. What is collateral?",a:"Collateral is an asset pledged by a borrower as security against a loan."},
+      {type:"very-short",q:"9. What is a lender?",a:"A lender is a person or institution that provides money or credit to a borrower."},
+      {type:"very-short",q:"10. What is a borrower?",a:"A borrower is a person or organisation that receives a loan and agrees to repay it."},
+      {type:"very-short",q:"11. What is interest?",a:"Interest is the amount paid for borrowing money, usually calculated as a percentage of the principal."},
+      {type:"very-short",q:"12. What is principal?",a:"Principal is the original amount of money borrowed or invested, excluding interest."},
+      {type:"very-short",q:"13. What is a formal source of credit?",a:"A formal source of credit is a regulated institution such as a bank or cooperative society."},
+      {type:"very-short",q:"14. What is an informal source of credit?",a:"An informal source of credit includes moneylenders, traders, employers, relatives or friends outside formal regulated lending institutions."},
+      {type:"very-short",q:"15. What is the Reserve Bank of India (RBI)?",a:"The RBI is India's central bank, responsible for important monetary functions and regulation and supervision of banks."},
+      {type:"very-short",q:"16. What is a Self-Help Group (SHG)?",a:"An SHG is a small group, often formed by people with limited access to formal banking, that saves regularly and may provide loans to members."},
+      {type:"very-short",q:"17. What is debt?",a:"Debt is money or another obligation that a person or organisation owes and must repay."},
+      {type:"very-short",q:"18. What is a loan agreement?",a:"A loan agreement records the terms of borrowing, such as the amount, interest rate, repayment period and other conditions."},
+      {type:"very-short",q:"19. What is a cheque payment?",a:"It is a non-cash payment made through a cheque instructing a bank to transfer or pay money."},
+      {type:"very-short",q:"20. What is a debt trap?",a:"A debt trap is a situation in which a borrower struggles to repay loans and may need further borrowing to meet existing obligations."},
+
+      // 10 SHORT ANSWERS
+      {type:"short",q:"21. Why is barter inconvenient?",a:"Barter requires a double coincidence of wants: each person must want what the other offers at the same time. Finding such a match can be difficult. Some goods are also hard to divide, store or transport. Money overcomes many of these difficulties because people can sell goods for money and use that money to buy other goods later."},
+      {type:"short",q:"22. How does money solve the problem of double coincidence of wants?",a:"Money acts as a common medium of exchange. A seller can accept money instead of searching for someone who directly offers the desired good. The seller can then use that money to buy goods from another person. This separates selling from buying and makes exchange easier, faster and more flexible."},
+      {type:"short",q:"23. Why are demand deposits considered money?",a:"Demand deposits are balances kept in bank accounts that can generally be withdrawn on demand. Account holders can use them to make payments through cheques, debit cards or electronic transfers, depending on the account. These balances are widely accepted for transactions, so they perform many functions of money even though they are not physical currency."},
+      {type:"short",q:"24. What are the main terms of credit?",a:"The main terms of credit include the interest rate, collateral, required documents, repayment period and method of repayment. The lender may also specify instalments, fees and other conditions. These terms affect the total cost of borrowing and the risk faced by the borrower. Borrowers should understand the agreement before accepting a loan."},
+      {type:"short",q:"25. Distinguish between formal and informal sources of credit.",a:"Formal sources include banks and cooperative societies that operate under regulations and supervision. Informal sources include moneylenders, traders, employers and relatives. Formal loans often have more transparent terms, although access and conditions vary. Informal lenders may be easier to approach but can charge high interest or impose unfair conditions, increasing the risk of repayment difficulties."},
+      {type:"short",q:"26. Why is cheap and affordable credit important for development?",a:"Affordable credit helps farmers buy seeds, fertilisers and equipment, and enables small businesses to invest in production. It can support education, housing and other productive needs. When interest rates and repayment terms are reasonable, borrowers are more likely to repay without losing assets or taking further costly loans. Affordable credit can therefore support livelihoods and economic activity."},
+      {type:"short",q:"27. What role does the RBI play in the Indian banking system?",a:"The Reserve Bank of India is India's central bank. It issues currency notes as authorised by law, conducts monetary policy and regulates and supervises banks. It also monitors aspects of the banking system and supports financial stability. These functions help maintain confidence in money and the formal banking system."},
+      {type:"short",q:"28. How can a loan become a debt trap?",a:"A loan may become a debt trap when a borrower cannot earn enough to repay the principal and interest. High interest, crop failure, illness or loss of employment can make repayment difficult. The borrower may then take another loan to repay the earlier one, increasing the total debt. Clear loan terms and affordable credit help reduce this risk."},
+      {type:"short",q:"29. How do Self-Help Groups help their members?",a:"SHG members save small amounts regularly and pool their savings. The group may lend money to members for emergencies or income-generating activities. A record of savings and repayments can help the group obtain bank loans. SHGs can improve access to credit, encourage financial discipline and strengthen members' participation in collective decisions."},
+      {type:"short",q:"30. Why should banks expand credit to small borrowers?",a:"Small farmers, workers and entrepreneurs often need credit but may lack collateral or access to formal institutions. Expanding suitable bank credit can help them invest, increase income and avoid dependence on expensive informal loans. Responsible lending should include clear information, fair terms and repayment schedules suited to borrowers' circumstances."},
+
+      // 5 LONG ANSWERS
+      {type:"long",q:"31. Explain the functions of money and why modern economies need it.",a:"Money is an important part of modern economic life because it makes the exchange of goods and services easier. Before money became widely used, people often relied on barter, which involved exchanging goods directly.\n\n1. **Medium of exchange:** Money is accepted in payment for goods and services. A person can sell a product for money and use that money to purchase something else.\n\n2. **Solves double coincidence of wants:** In barter, both parties must want what the other offers. Money removes this requirement and allows people to trade with different buyers and sellers.\n\n3. **Facilitates payments:** Money can be used to pay wages, rent, bills, taxes and other obligations.\n\n4. **Supports saving:** People can keep money for future expenses, although inflation can affect its purchasing power over time.\n\n5. **Enables comparison of value:** Prices expressed in money allow buyers and sellers to compare the values of different goods and services.\n\n6. **Supports specialisation:** People can specialise in particular jobs or products because they can exchange their earnings for the many other things they need.\n\n7. **Modern forms of money:** Currency and demand deposits are commonly used forms of money. Bank balances can be used for payments through cheques and electronic transfers, depending on the facilities available.\n\nMoney reduces the difficulties of barter and supports trade, production and everyday transactions. It helps connect people and businesses within a modern economy."},
+      {type:"long",q:"32. Explain how banks work and why demand deposits are important.",a:"Banks accept deposits from people and organisations and provide facilities for saving, withdrawing and making payments. They also lend a portion of their funds to borrowers while maintaining the liquidity and reserves required by applicable rules.\n\n1. **Accepting deposits:** People deposit money in savings, current or other eligible accounts. Depositors may earn interest depending on the account and its terms.\n\n2. **Withdrawal and access:** Banks allow customers to withdraw funds according to account conditions. Many accounts provide access through branches, ATMs, cards or digital banking.\n\n3. **Lending:** Banks provide loans to individuals and businesses for activities such as farming, education, housing and production. Loans must be repaid according to agreed terms.\n\n4. **Interest and income:** Banks generally charge interest on loans and may pay interest on certain deposits. The difference, together with fees and other income, contributes to the bank's earnings after costs and risks.\n\n5. **Demand deposits:** These are balances that can generally be withdrawn on demand. They are important because account holders can use cheques and electronic transfers to pay others without physically handing over currency.\n\n6. **Role in economic activity:** Banking connects savers with borrowers and helps move funds to households and businesses that need credit.\n\n7. **Regulation:** Banks operate within rules and supervision intended to protect depositors, manage risks and support financial stability.\n\nDemand deposits are considered a form of money because they can be used for many payments. Banks therefore play a major role in savings, lending and the smooth functioning of the economy."},
+      {type:"long",q:"33. Compare formal and informal sources of credit and explain why affordable credit matters.",a:"Credit allows people to borrow money or obtain goods now and repay later. Sources of credit are commonly divided into formal and informal sources, which can differ in regulation, interest rates and borrower protection.\n\n1. **Formal sources:** Banks and cooperative societies are examples of formal credit institutions. They operate under applicable laws and regulations, and loan terms are generally documented.\n\n2. **Informal sources:** Moneylenders, traders, employers, relatives and friends may provide informal loans. These lenders can sometimes be easier to approach, but the terms may be less transparent or more costly.\n\n3. **Interest and repayment:** Formal loans may offer relatively reasonable interest rates, depending on the borrower and loan type. Informal loans can carry high interest or conditions that make repayment difficult.\n\n4. **Collateral and documents:** Formal lenders may require collateral, proof of income or other documents. This can make loans difficult to obtain for people who have few assets or irregular earnings.\n\n5. **Affordable credit:** Reasonably priced loans can help farmers purchase inputs, businesses invest, and families meet important needs. Productive credit can support higher income and employment.\n\n6. **Risks of expensive credit:** When income is uncertain or interest is high, borrowers may struggle to repay. They may sell assets or borrow again, creating a debt trap.\n\n7. **Improving access:** Banks, cooperative institutions and Self-Help Groups can help expand suitable credit. Clear agreements, fair treatment and responsible lending are also important.\n\nAffordable and accessible formal credit can reduce dependence on costly informal borrowing and support inclusive economic development. Borrowers should compare terms and understand the total repayment obligation before taking a loan."},
+      {type:"long",q:"34. What is collateral? Explain the terms of credit and the causes of a debt trap.",a:"Collateral is an asset pledged by a borrower as security for a loan. If the borrower fails to repay according to the agreement, the lender may have legal rights over the collateral, subject to applicable law and contract terms.\n\n**Main terms of credit:**\n\n1. **Interest rate:** The percentage charged for borrowing money. It affects how much the borrower must repay beyond the principal.\n\n2. **Collateral:** An asset, such as eligible land, property or another accepted asset, that secures a loan.\n\n3. **Documentation:** Lenders may ask for identity, income, ownership or other documents before approving a loan.\n\n4. **Repayment period:** The time allowed for repayment, which may involve regular instalments or another agreed schedule.\n\n5. **Other conditions:** Agreements may include fees, penalties, insurance requirements or specific uses for the loan.\n\n**Causes of a debt trap:**\n\n1. A borrower may earn less than expected because of crop failure, illness, unemployment or a fall in business sales.\n\n2. High interest rates can cause the outstanding amount to grow quickly.\n\n3. If repayment is missed, additional charges or further borrowing may increase the burden.\n\n4. Borrowers may take new loans to repay old loans, creating a cycle of debt.\n\n5. Losing collateral can damage the borrower's livelihood and make recovery more difficult.\n\nBorrowers should understand all loan conditions, compare available options and choose repayment terms that match their expected income. Fair lending practices and access to affordable credit can help prevent debt traps."},
+      {type:"long",q:"35. Explain the role of Self-Help Groups in improving access to credit.",a:"Self-Help Groups are small groups of people who save regularly and may provide loans to their members. They can be particularly helpful for people who have limited access to conventional banking or lack assets required as collateral.\n\n1. **Regular savings:** Members contribute small amounts to a common fund. Regular saving helps build financial discipline and creates money that can be lent within the group.\n\n2. **Loans to members:** The pooled fund can be used to provide loans for emergencies, household needs or income-generating activities, according to group rules.\n\n3. **Reduced dependence on moneylenders:** By providing an alternative source of small loans, SHGs can help some members avoid high-cost informal credit.\n\n4. **Bank connections:** Groups with a record of regular savings and repayments may be able to obtain loans from banks, subject to the bank's requirements.\n\n5. **Collective responsibility:** Members participate in group decisions, maintain records and monitor repayment. Mutual support can help the group manage its funds.\n\n6. **Women's participation:** Many SHGs include women and can strengthen their financial independence, confidence and participation in household or community decisions.\n\n7. **Limitations:** The amount available for lending may be small, and a group still needs sound management and fair rules. SHGs cannot replace every form of formal financial service.\n\nSHGs can widen access to credit, encourage savings and strengthen collective action. Their effectiveness depends on transparent management, responsible lending and access to suitable banking services."}
+    ],
+
+    flashcards: [
+      {q:"What is money?",a:"A generally accepted medium of exchange."},
+      {q:"What is barter?",a:"Direct exchange of goods or services without money."},
+      {q:"What is double coincidence of wants?",a:"Both parties in barter must want what the other offers."},
+      {q:"What is a medium of exchange?",a:"Something generally accepted for payment."},
+      {q:"What is a demand deposit?",a:"A bank deposit generally withdrawable on demand."},
+      {q:"What is a cheque?",a:"A written instruction to a bank to pay money."},
+      {q:"What is credit?",a:"Money or goods received now with an obligation to repay later."},
+      {q:"What is collateral?",a:"An asset pledged as security for a loan."},
+      {q:"What is principal?",a:"The original amount borrowed."},
+      {q:"What is interest?",a:"The cost paid for borrowing money."},
+      {q:"Name one formal credit source.",a:"A bank."},
+      {q:"Name one informal credit source.",a:"A moneylender."},
+      {q:"What does RBI stand for?",a:"Reserve Bank of India."},
+      {q:"What is a debt trap?",a:"A situation in which a borrower struggles to repay debt and may need further borrowing."},
+      {q:"What is a loan agreement?",a:"A record of borrowing and repayment conditions."},
+      {q:"What is a lender?",a:"The person or institution providing a loan."},
+      {q:"What is a borrower?",a:"The person or organisation receiving a loan."},
+      {q:"What is a Self-Help Group?",a:"A group that saves regularly and may lend to members."},
+      {q:"Why do banks accept deposits?",a:"To provide safe account services and support financial intermediation."},
+      {q:"Why do banks provide loans?",a:"To supply credit for household and business needs."},
+      {q:"Why is affordable credit important?",a:"It can support productive investment without excessive repayment burdens."},
+      {q:"What can make loan repayment difficult?",a:"High interest, low income or unexpected expenses."},
+      {q:"What is an interest rate?",a:"The rate used to calculate interest on a loan or deposit."},
+      {q:"Why are demand deposits treated as money?",a:"They can be used to make payments."},
+      {q:"Name one payment method linked to a bank account.",a:"Electronic transfer."},
+      {q:"What does collateral help secure?",a:"A loan."},
+      {q:"How can SHGs help borrowers?",a:"They pool savings and may provide small loans."},
+      {q:"Why should borrowers read loan terms?",a:"To understand costs, repayment obligations and conditions."},
+      {q:"What is a formal lender?",a:"A regulated institution such as a bank or cooperative society."},
+      {q:"How can high-interest borrowing affect a family?",a:"It can increase repayment burdens and risk of a debt trap."}
+    ],
+
+    mcqs: [
+      {question:"1. Barter means:",options:["Direct exchange without money","Payment by bank transfer","Saving money in a bank","Borrowing from the RBI"],answer:0,explanation:"Barter is the direct exchange of goods and services."},
+      {question:"2. Double coincidence of wants is associated with:",options:["Barter","Electronic banking only","Insurance","Tax collection"],answer:0,explanation:"Both sides of a barter exchange must want what the other offers."},
+      {question:"3. Money acts as a:",options:["Medium of exchange","Natural resource","Type of crop","Form of collateral in every case"],answer:0,explanation:"Money is generally accepted for payment of goods and services."},
+      {question:"4. Demand deposits are held in:",options:["Bank accounts","Only physical lockers","Farm fields","Factory machines"],answer:0,explanation:"Demand deposits are balances maintained in bank accounts."},
+      {question:"5. A cheque is:",options:["A written payment instruction to a bank","A type of crop","A loan security in every case","A form of barter"],answer:0,explanation:"A cheque instructs a bank to make a specified payment."},
+      {question:"6. Collateral is:",options:["An asset pledged as security","The original loan amount only","A bank employee","A form of currency note"],answer:0,explanation:"Collateral is pledged to secure a loan."},
+      {question:"7. Which is a formal source of credit?",options:["A bank","A local moneylender outside formal regulation","A neighbour lending informally","A trader giving an informal advance"],answer:0,explanation:"Banks are formal lending institutions."},
+      {question:"8. Which is an informal source of credit?",options:["A moneylender","A regulated bank","A cooperative bank","The RBI's monetary policy department"],answer:0,explanation:"Moneylenders are commonly an informal source of credit."},
+      {question:"9. The central bank of India is:",options:["Reserve Bank of India","State Bank of Europe","World Bank only","International Labour Organization"],answer:0,explanation:"The RBI is India's central bank."},
+      {question:"10. A debt trap occurs when:",options:["A borrower struggles to repay and may borrow again","A borrower saves money without debt","A person buys goods with cash","A bank closes a savings account"],answer:0,explanation:"Repeated borrowing to meet debt obligations can create a debt trap."},
+      {question:"11. Interest is generally:",options:["The cost of borrowing money","The original principal only","A type of farm equipment","A public road"],answer:0,explanation:"Interest is paid for the use of borrowed money."},
+      {question:"12. A Self-Help Group generally encourages:",options:["Regular savings and member support","Unrecorded spending only","Avoiding all financial planning","Borrowing at any cost"],answer:0,explanation:"SHGs pool savings and may lend to members under group rules."},
+      {question:"13. Banks generally earn income in part by:",options:["Charging interest on loans","Giving every loan without repayment","Destroying deposits","Avoiding all financial activity"],answer:0,explanation:"Interest on loans is one source of bank income."},
+      {question:"14. Which is an important term of credit?",options:["Repayment period","Colour of the borrower's clothes","Favourite sport","Number of festivals"],answer:0,explanation:"The repayment period is a key term in a loan agreement."},
+      {question:"15. Affordable credit can help farmers:",options:["Buy inputs and invest in production","Avoid every weather risk","Guarantee every harvest","Eliminate all market changes"],answer:0,explanation:"Credit can finance seeds, equipment and other productive needs."},
+      {question:"16. Demand deposits are useful because they:",options:["Can be used for payments","Cannot be withdrawn under any circumstances","Are always physical coins","Are never linked to banks"],answer:0,explanation:"Demand deposits can generally be accessed and used for transactions."},
+      {question:"17. What can make informal credit risky?",options:["High interest or unfair conditions","Clear and affordable terms in every case","Guaranteed protection from all losses","Automatic debt cancellation"],answer:0,explanation:"Some informal loans have high costs or difficult conditions."},
+      {question:"18. Why should a borrower check the loan agreement?",options:["To understand repayment and costs","To avoid knowing the interest rate","To guarantee the lender loses money","To remove all legal obligations"],answer:0,explanation:"Borrowers should understand the full terms before agreeing."},
+      {question:"19. Which is a possible benefit of SHGs?",options:["Improved access to small loans","Guaranteed unlimited credit","No need to keep records","Automatic elimination of poverty"],answer:0,explanation:"SHGs can help members access small loans through pooled savings and bank links."},
+      {question:"20. Which statement about money is correct?",options:["It makes exchange easier than barter","It requires double coincidence of wants","It can only exist as metal coins","It cannot be used for payments"],answer:0,explanation:"Money separates selling from buying and makes exchange more flexible."}
+    ]
+  },
+     // =====================================================
+  // CHAPTER 4: GLOBALISATION AND THE INDIAN ECONOMY
+  // =====================================================
+
+  "Globalisation and the Indian Economy": {
+    questions: [
+
+      // 20 VERY SHORT ANSWERS
+      {type:"very-short",q:"1. What is globalisation?",a:"Globalisation is the growing integration and interconnection of economies through trade, investment, technology and the movement of information and services."},
+      {type:"very-short",q:"2. What is an MNC?",a:"A multinational corporation is a company that owns or controls production in more than one country."},
+      {type:"very-short",q:"3. What is foreign investment?",a:"Foreign investment occurs when a company or individual from one country invests money in productive assets or business activities in another country."},
+      {type:"very-short",q:"4. What is foreign trade?",a:"Foreign trade is the exchange of goods and services between countries."},
+      {type:"very-short",q:"5. What is an import?",a:"An import is a good or service purchased from another country."},
+      {type:"very-short",q:"6. What is an export?",a:"An export is a good or service sold to another country."},
+      {type:"very-short",q:"7. What is liberalisation?",a:"Liberalisation is the removal or reduction of government restrictions on economic activities, trade or investment."},
+      {type:"very-short",q:"8. What is a trade barrier?",a:"A trade barrier is a government restriction, such as a tariff or quota, that limits international trade."},
+      {type:"very-short",q:"9. What is a tariff?",a:"A tariff is a tax imposed on imported or exported goods."},
+      {type:"very-short",q:"10. What is a quota?",a:"A quota is a limit on the quantity or value of a good that may be imported or exported."},
+      {type:"very-short",q:"11. What is the WTO?",a:"The World Trade Organization is an international organisation concerned with the rules of trade between countries."},
+      {type:"very-short",q:"12. What is outsourcing?",a:"Outsourcing is the practice of contracting another company or service provider to perform certain tasks or services."},
+      {type:"very-short",q:"13. What is a global production chain?",a:"A global production chain is a system in which different stages of producing a product take place in different countries."},
+      {type:"very-short",q:"14. What is a foreign brand?",a:"A foreign brand is a brand associated with a company or origin outside the country where it is being sold."},
+      {type:"very-short",q:"15. What is a trade agreement?",a:"A trade agreement is an arrangement between countries that sets rules or conditions for trade."},
+      {type:"very-short",q:"16. What is investment?",a:"Investment is the use of funds to acquire assets or support activities expected to provide future benefits or returns."},
+      {type:"very-short",q:"17. What is a consumer?",a:"A consumer is a person who purchases or uses goods and services."},
+      {type:"very-short",q:"18. What is a local producer?",a:"A local producer is a person or business that produces goods or services within a particular area or country."},
+      {type:"very-short",q:"19. What is competition?",a:"Competition occurs when businesses try to attract customers by offering products, prices or services that compare favourably with those of other businesses."},
+      {type:"very-short",q:"20. What is fair globalisation?",a:"Fair globalisation means ensuring that the benefits and opportunities of global integration are shared more widely and that vulnerable groups are protected."},
+
+      // 10 SHORT ANSWERS
+      {type:"short",q:"21. How do multinational corporations organise production?",a:"MNCs organise production by owning or controlling factories and offices in several countries. They may establish their own facilities, form partnerships with local companies or place orders with independent suppliers. They choose locations based on factors such as labour, infrastructure, skills, markets and production costs. Different stages of a product's production may take place in different countries."},
+      {type:"short",q:"22. How does foreign trade connect markets?",a:"Foreign trade allows producers to sell goods in other countries and consumers to buy products from abroad. It creates competition between domestic and foreign producers and can increase the range of goods available. Changes in prices or demand in one country can affect producers in another. Trade therefore connects markets and makes economies more interdependent."},
+      {type:"short",q:"23. What factors have enabled globalisation?",a:"Improvements in transport and communication have made it easier to move goods, services and information across borders. Faster shipping, air transport, the internet and digital communication have reduced time and coordination costs. Liberalisation of trade and investment has also enabled companies to operate in more countries. Together, these changes have strengthened international economic connections."},
+      {type:"short",q:"24. Why do MNCs invest in other countries?",a:"MNCs may invest abroad to reach new customers, obtain raw materials, access skilled or affordable labour and improve production efficiency. They may also seek locations with suitable infrastructure and reliable supply networks. Investment can help them expand their business, but the effects on local workers and producers depend on wages, working conditions, competition and the nature of the investment."},
+      {type:"short",q:"25. What is liberalisation of foreign trade?",a:"Liberalisation involves reducing government restrictions that limit imports, exports and foreign investment. It can make it easier for companies to buy and sell across borders and can increase competition. However, domestic businesses may face stronger competition from international producers. Governments may still regulate trade for legitimate economic, social and public-interest reasons."},
+      {type:"short",q:"26. How can globalisation benefit consumers?",a:"Globalisation can give consumers access to a wider range of products, improved technology and sometimes lower prices. Competition may encourage companies to improve quality and service. Consumers can also benefit from products developed through international cooperation. However, the benefits depend on affordability, consumer protection and whether competition is genuine."},
+      {type:"short",q:"27. How can globalisation affect small producers and workers?",a:"Small producers may gain access to new markets and suppliers, but they can also face competition from larger companies with more resources. Workers may find new employment opportunities, while others may experience insecure contracts, pressure on wages or difficult working conditions. The effects differ by industry, region and skill level. Training, fair labour standards and support for small businesses can help."},
+      {type:"short",q:"28. What role does the WTO play in international trade?",a:"The World Trade Organization provides a framework for trade rules and negotiations among member countries. It supports discussions about reducing trade barriers and resolving certain trade disputes under agreed procedures. Its decisions and rules affect how countries regulate trade. However, countries can disagree about whether international trade rules adequately protect the interests of developing economies."},
+      {type:"short",q:"29. What measures can help make globalisation fairer?",a:"Fairer globalisation can be supported by enforcing labour laws, improving worker safety, protecting consumers and helping small producers improve their competitiveness. Governments can invest in education, skills and infrastructure. Transparent business practices and appropriate regulation can reduce exploitation. International cooperation can also help address unfair practices and improve opportunities for less advantaged communities."},
+      {type:"short",q:"30. Explain the relationship between technology and globalisation.",a:"Technology has made globalisation faster and easier. Modern transport allows goods to travel across countries more efficiently, while the internet enables businesses to communicate and coordinate production in real time. Digital services can be delivered across borders, and online platforms help businesses reach new customers. These developments reduce some barriers to international economic activity, although access to technology remains unequal."},
+
+      // 5 LONG ANSWERS
+      {type:"long",q:"31. Explain the role of multinational corporations in globalisation.",a:"Multinational corporations (MNCs) are companies that own or control production in more than one country. They play a major role in globalisation by connecting production, investment and markets across national borders.\n\n1. **Foreign investment:** MNCs invest money in factories, offices, equipment and other productive activities in different countries. This can create jobs and expand production.\n\n2. **Choice of locations:** Companies select locations based on access to markets, raw materials, skilled workers, infrastructure, transport and production costs.\n\n3. **Partnerships and suppliers:** MNCs may work with local companies, purchase from suppliers or contract particular tasks to other businesses. These arrangements connect local producers to international production networks.\n\n4. **Technology and skills:** Foreign investment can introduce new production methods, technical knowledge and management practices, although the extent of knowledge transfer varies.\n\n5. **International markets:** MNCs sell products in many countries and may organise different stages of production in different locations. This creates global production chains.\n\n6. **Benefits:** Investment may increase employment, provide new products and services, and help local suppliers reach wider markets.\n\n7. **Challenges:** Small firms may struggle to compete, and workers can face insecure employment or poor conditions if protections are weak. Environmental impacts and the distribution of profits also require attention.\n\nMNCs connect countries through production and investment, but their overall impact depends on business practices, public regulation and the extent to which local workers and communities share the benefits."},
+      {type:"long",q:"32. Explain the major factors responsible for the growth of globalisation.",a:"Globalisation has expanded as countries and businesses have become more connected through trade, investment, technology and the movement of information. Several important developments have contributed to this process.\n\n1. **Improved transport:** Modern ships, aircraft, roads and logistics systems allow goods to move across long distances more efficiently. Faster transport helps businesses coordinate international production and distribution.\n\n2. **Communication technology:** The internet, mobile communication and digital platforms enable rapid exchange of information. Companies can coordinate offices, suppliers and customers in different countries.\n\n3. **Liberalisation:** Reducing certain trade and investment restrictions can make it easier for businesses to import, export and invest abroad.\n\n4. **Growth of MNCs:** Multinational companies establish or control production in several countries. Their networks connect workers, suppliers, investors and consumers across borders.\n\n5. **Foreign investment:** Investment from abroad can support new factories, services and production facilities. It may also connect local firms with international supply chains.\n\n6. **Expansion of foreign trade:** Countries exchange raw materials, manufactured goods and services. Consumers can access products from other countries, while producers can reach wider markets.\n\n7. **Global production chains:** Different stages of production can take place in separate countries according to skills, costs, resources and market access.\n\nThese factors reinforce one another. Technology makes international business easier, while trade and investment create demand for better transport and communication. The results include stronger economic connections, but also greater exposure to international competition and changes in global demand."},
+      {type:"long",q:"33. Explain the positive and negative effects of globalisation on India.",a:"Globalisation has connected India more closely with international markets through trade, investment, technology and services. Its effects have varied across industries, businesses, workers and consumers.\n\n**Positive effects:**\n\n1. **Consumer choice:** Consumers can access a wider range of domestic and foreign goods and services.\n\n2. **Investment:** Foreign investment can support factories, offices, infrastructure and business expansion.\n\n3. **Employment opportunities:** Some industries and service businesses have created jobs linked to international markets.\n\n4. **Technology:** International business connections can introduce new technologies, production methods and skills.\n\n5. **Markets for producers:** Some Indian firms can sell products and services to customers in other countries.\n\n**Negative effects and challenges:**\n\n1. **Pressure on small producers:** Small businesses may struggle to compete with large companies that have greater capital, technology or marketing resources.\n\n2. **Unequal benefits:** Workers and businesses with different skills and resources may benefit unequally. Some groups can be left behind.\n\n3. **Job insecurity:** Certain workers may face temporary contracts, irregular work or pressure to reduce costs.\n\n4. **Working conditions:** Weak enforcement of labour standards can allow unsafe conditions or unfair wages.\n\n5. **Dependence on international markets:** Businesses can be affected by changes in foreign demand, international prices and global disruptions.\n\nGlobalisation has created opportunities for India, but the benefits are not automatic or equally distributed. Education, worker protection, infrastructure, fair competition and support for small producers can help make the process more inclusive."},
+      {type:"long",q:"34. What is liberalisation? Explain the role of trade barriers and their removal.",a:"Liberalisation is the reduction or removal of certain government restrictions on economic activities, including international trade and investment. It can make it easier for goods, services and capital to move between countries.\n\n1. **Trade barriers:** Governments may impose tariffs, quotas or other restrictions on imports. Such measures can protect domestic producers from foreign competition or serve other policy objectives.\n\n2. **Protection of domestic industry:** When imported goods are restricted or made more expensive, local producers may receive greater protection from international competitors.\n\n3. **Removal of barriers:** Liberalisation reduces certain restrictions, allowing more foreign goods and services to enter domestic markets and making international business easier.\n\n4. **Greater competition:** Domestic firms may face pressure to improve quality, reduce costs and develop new products. Consumers may gain more choices and, in some cases, lower prices.\n\n5. **Challenges for local firms:** Businesses that are less productive or have limited resources may find it difficult to compete with large international companies.\n\n6. **Role of government:** Governments still need to enforce fair competition, protect consumers and workers, and address legitimate public-interest concerns. Liberalisation does not mean that all regulation must disappear.\n\n7. **Balanced approach:** Trade policy needs to consider the interests of consumers, workers, producers and the wider economy. Support for skills, technology and infrastructure can help local firms adapt.\n\nLiberalisation can strengthen international economic connections, but its results depend on the rules and policies that accompany it. Fair and effective regulation helps ensure that greater trade and investment create broad benefits."},
+      {type:"long",q:"35. What is fair globalisation? Suggest measures to make globalisation beneficial for more people.",a:"Fair globalisation means that the benefits of global economic integration are shared more widely and that workers, small producers, consumers and vulnerable communities are protected from unfair practices.\n\n1. **Enforce labour standards:** Governments should enforce rules relating to wages, working hours, workplace safety and other employment protections.\n\n2. **Support small producers:** Small businesses may need access to credit, technology, training, infrastructure and markets to compete effectively.\n\n3. **Protect consumers:** Clear product information, safety standards and effective complaint mechanisms help consumers make informed choices and obtain remedies when necessary.\n\n4. **Improve education and skills:** Education and vocational training help workers adapt to changing technologies and new forms of employment.\n\n5. **Promote fair competition:** Governments should address unfair business practices and prevent the misuse of market power where appropriate.\n\n6. **Responsible foreign investment:** Investment should comply with applicable laws and consider worker welfare, community interests and environmental protection.\n\n7. **International cooperation:** Countries can cooperate on trade rules, labour concerns and disputes so that international economic relations are more predictable and equitable.\n\n8. **Transparent decision-making:** Public policies should be open to scrutiny and should consider the views of affected communities.\n\nGlobalisation can create markets, jobs, technology and consumer choice, but these benefits may be uneven. Fair globalisation requires responsible business conduct, effective public policies and opportunities for people with fewer resources to participate in economic growth."}
+    ],
+
+    flashcards: [
+      {q:"What is globalisation?",a:"Growing integration of economies across countries."},
+      {q:"What is an MNC?",a:"A company that owns or controls production in more than one country."},
+      {q:"What is foreign investment?",a:"Investment in productive assets or business activities in another country."},
+      {q:"What is foreign trade?",a:"Exchange of goods and services between countries."},
+      {q:"What is an import?",a:"A good or service purchased from abroad."},
+      {q:"What is an export?",a:"A good or service sold to another country."},
+      {q:"What is liberalisation?",a:"Reducing or removing certain government restrictions on economic activity."},
+      {q:"What is a trade barrier?",a:"A restriction that limits international trade."},
+      {q:"What is a tariff?",a:"A tax imposed on traded goods."},
+      {q:"What is a quota?",a:"A limit on the quantity or value of goods traded."},
+      {q:"What does WTO stand for?",a:"World Trade Organization."},
+      {q:"What is outsourcing?",a:"Contracting another provider to perform particular tasks or services."},
+      {q:"What is a global production chain?",a:"A production process spread across different countries."},
+      {q:"Why do MNCs invest abroad?",a:"To access markets, resources, skills or more efficient production."},
+      {q:"How can transport support globalisation?",a:"It moves goods across borders more efficiently."},
+      {q:"How can the internet support globalisation?",a:"It enables rapid communication and coordination across countries."},
+      {q:"How can globalisation benefit consumers?",a:"It can increase choice and access to technology."},
+      {q:"How can globalisation challenge small firms?",a:"They may face competition from larger companies."},
+      {q:"What is competition?",a:"Businesses trying to attract customers against other businesses."},
+        {q:"What is fair globalisation?",a:"Global integration that shares benefits more widely and protects vulnerable groups."},
+      {q:"What is a foreign brand?",a:"A brand associated with a company or origin outside the local country."},
+      {q:"Name one factor attracting foreign investment.",a:"Access to markets or skilled workers."},
+      {q:"Why can workers face difficulties under globalisation?",a:"Some may experience insecure contracts or pressure on wages."},
+      {q:"How can training help workers?",a:"It improves skills and helps workers adapt to changing jobs."},
+      {q:"Why are trade agreements used?",a:"They set rules and conditions for trade between countries."},
+      {q:"What is a local producer?",a:"A producer operating within a particular area or country."},
+      {q:"Why can global markets affect local firms?",a:"International price and demand changes can affect sales and costs."},
+      {q:"How can governments support small producers?",a:"Through training, credit, infrastructure and market access."},
+      {q:"What is foreign competition?",a:"Competition from goods or businesses based in other countries."},
+      {q:"Why is consumer protection important in globalisation?",a:"It helps ensure safety, fair information and remedies for consumers."}
+    ],
+
+    mcqs: [
+      {question:"1. An MNC is a company that:",options:["Owns or controls production in more than one country","Operates only in one village","Never invests in production","Only provides government services"],answer:0,explanation:"Multinational corporations operate production or business activities across countries."},
+      {question:"2. Foreign investment means:",options:["Investment in another country","Buying only locally produced food","Avoiding all business activity","A tax on domestic income only"],answer:0,explanation:"Foreign investment involves investing across national borders."},
+      {question:"3. An import is a good or service:",options:["Purchased from another country","Sold only within a village","Produced only for personal use","Never exchanged"],answer:0,explanation:"Imports are goods and services purchased from abroad."},
+      {question:"4. An export is a good or service:",options:["Sold to another country","Purchased only from abroad","Always prohibited","Used only as an intermediate input"],answer:0,explanation:"Exports are goods and services sold to other countries."},
+      {question:"5. Liberalisation involves:",options:["Reducing certain restrictions on trade and investment","Banning every import","Stopping all foreign investment","Ending all domestic business"],answer:0,explanation:"Liberalisation reduces or removes certain economic restrictions."},
+      {question:"6. A tariff is:",options:["A tax on traded goods","A worker's training certificate","A type of bank account","A production factory"],answer:0,explanation:"Tariffs are taxes imposed on imported or exported goods."},
+      {question:"7. The WTO is concerned with:",options:["International trade rules","School examination results only","Local weather forecasts","Personal savings accounts only"],answer:0,explanation:"The World Trade Organization deals with trade rules among member countries."},
+      {question:"8. Which development has helped globalisation?",options:["Improved transport and communication","The end of all internet access","The closure of every port","A universal ban on trade"],answer:0,explanation:"Transport and communication improvements make cross-border activity easier."},
+      {question:"9. Outsourcing means:",options:["Contracting another provider to perform tasks","Stopping all production","Only selling goods abroad","Paying taxes in cash"],answer:0,explanation:"Outsourcing involves contracting work or services to another provider."},
+      {question:"10. Which can be a benefit of globalisation for consumers?",options:["A wider choice of products","The guaranteed disappearance of all costs","The end of all competition","No access to new technology"],answer:0,explanation:"Globalisation can widen consumer choice and access to products."},
+      {question:"11. Which may be a challenge for small producers?",options:["Competition from large companies","Guaranteed unlimited sales","No need to improve quality","Complete absence of market changes"],answer:0,explanation:"Small producers may struggle to compete with businesses having greater resources."},
+      {question:"12. MNCs may choose locations based on:",options:["Markets, skills and infrastructure","Only the colour of buildings","The absence of customers","A ban on transportation"],answer:0,explanation:"Companies consider costs, resources, skills, markets and infrastructure."},
+      {question:"13. What is a global production chain?",options:["Production stages spread across countries","A local road network only","A list of school subjects","A system without suppliers"],answer:0,explanation:"Different stages of a product's production can take place in different countries."},
+      {question:"14. Why can globalisation create jobs?",options:["Investment and expanding businesses may increase demand for workers","It automatically ends all production","It prevents all new businesses","It eliminates every service"],answer:0,explanation:"Investment and access to wider markets can expand some businesses and employment."},
+      {question:"15. Which can help make globalisation fairer?",options:["Enforcing labour protections","Ignoring workplace safety","Removing all consumer protections","Preventing skill training"],answer:0,explanation:"Labour protections help reduce exploitation and improve working conditions."},
+      {question:"16. What can foreign trade do to markets?",options:["Connect buyers and sellers in different countries","Prevent every exchange","Eliminate all consumer choice","Make every country produce only one item"],answer:0,explanation:"Foreign trade links markets across national borders."},
+      {question:"17. Which is an example of a trade barrier?",options:["An import quota","A school timetable","A personal diary","A household shopping list"],answer:0,explanation:"An import quota limits the quantity or value of goods that may be imported."},
+      {question:"18. Why is worker training important?",options:["It helps workers adapt to changing skills and jobs","It guarantees no business can fail","It eliminates every form of competition","It ends the need for education"],answer:0,explanation:"Training can help workers respond to changes in technology and employment."},
+      {question:"19. Which statement about globalisation is correct?",options:["Its benefits and costs can be unevenly distributed","Everyone always benefits equally","It affects only agriculture","It removes all government responsibilities"],answer:0,explanation:"Globalisation creates opportunities but its effects differ across groups and industries."},
+      {question:"20. Consumer protection in a global market helps:",options:["Promote product safety and fair treatment","Prevent consumers from receiving information","Remove all product standards","Guarantee every product is free"],answer:0,explanation:"Consumer protections support safety, accurate information and remedies."}
+    ]
+  },
+     // =====================================================
+  // CHAPTER 5: CONSUMER RIGHTS
+  // =====================================================
+
+  "Consumer Rights": {
+    questions: [
+
+      // 20 VERY SHORT ANSWERS
+      {type:"very-short",q:"1. Who is a consumer?",a:"A consumer is a person who buys goods or hires or avails services for consideration, subject to the applicable legal definition and exceptions."},
+      {type:"very-short",q:"2. What is consumer exploitation?",a:"Consumer exploitation occurs when sellers or service providers use unfair practices that harm consumers."},
+      {type:"very-short",q:"3. What is the right to safety?",a:"The right to safety protects consumers against goods and services that may be hazardous to life and property."},
+      {type:"very-short",q:"4. What is the right to information?",a:"The right to information enables consumers to know relevant details such as quality, quantity, price, ingredients and risks."},
+      {type:"very-short",q:"5. What is the right to choose?",a:"The right to choose means consumers should have access to a variety of goods and services at competitive prices, subject to applicable conditions."},
+      {type:"very-short",q:"6. What is the right to be heard?",a:"The right to be heard means that consumer interests and complaints should receive appropriate consideration."},
+      {type:"very-short",q:"7. What is the right to seek redressal?",a:"It is the right to seek a remedy against unfair trade practices, defective goods or deficient services."},
+      {type:"very-short",q:"8. What is the right to consumer education?",a:"It is the right to gain knowledge and skills needed to make informed consumer decisions."},
+      {type:"very-short",q:"9. What is an MRP?",a:"MRP means Maximum Retail Price, the maximum price at which a packaged commodity may be sold to a consumer under applicable rules."},
+      {type:"very-short",q:"10. What is a standardisation mark?",a:"A standardisation mark indicates that a product meets specified standards under the relevant certification scheme."},
+      {type:"very-short",q:"11. What does ISI stand for in product certification?",a:"ISI refers to the Indian Standards Institution mark historically associated with certification; the current certification framework is administered by BIS."},
+      {type:"very-short",q:"12. What is AGMARK associated with?",a:"AGMARK is associated with grading and certification standards for certain agricultural products in India."},
+      {type:"very-short",q:"13. What is Hallmarking used for?",a:"Hallmarking indicates the purity or fineness of precious metal articles, such as gold and silver, under the applicable system."},
+      {type:"very-short",q:"14. What is a consumer complaint?",a:"A consumer complaint is a formal claim that a seller or service provider has engaged in a legally recognised wrong or deficiency."},
+      {type:"very-short",q:"15. What is a defective product?",a:"A defective product has a fault or shortcoming in its quality, quantity, purity, standard or performance under applicable law."},
+      {type:"very-short",q:"16. What is deficiency in service?",a:"Deficiency in service means a fault, imperfection, shortcoming or inadequacy in a service as recognised under consumer law."},
+      {type:"very-short",q:"17. What is a consumer commission?",a:"A consumer commission is a legal body that hears and decides eligible consumer disputes."},
+      {type:"very-short",q:"18. What is a cash memo?",a:"A cash memo is a document recording a purchase and its price; it can serve as evidence of the transaction."},
+      {type:"very-short",q:"19. What is the Consumer Protection Act, 2019?",a:"It is an Indian law that provides a framework for consumer protection, rights and the resolution of consumer disputes."},
+      {type:"very-short",q:"20. Why should consumers check product labels?",a:"Labels help consumers check price, quantity, ingredients, expiry or best-before details, warnings and other relevant information."},
+
+      // 10 SHORT ANSWERS
+      {type:"short",q:"21. Why is consumer protection necessary?",a:"Consumers may face misleading advertisements, adulterated goods, overcharging, unsafe products or poor services. They may also lack the information or bargaining power needed to challenge large businesses. Consumer protection establishes rights, standards and complaint mechanisms to address such problems. Awareness of these protections helps consumers make informed choices and seek remedies when sellers or service providers act unfairly."},
+      {type:"short",q:"22. Explain the right to information with an example.",a:"The right to information enables consumers to know important details about a product or service before purchasing it. Packaged goods should provide relevant information such as price, quantity, ingredients and applicable date or warning details. For example, checking the label of a food product helps a buyer understand its ingredients and date information before deciding whether to buy it."},
+      {type:"short",q:"23. Why is a cash memo or bill important?",a:"A bill or cash memo records the purchase, price and other transaction details. It can help establish where and when a product was purchased and how much was paid. If a product is defective or a service dispute arises, the document may support a complaint or warranty claim. Consumers should retain relevant receipts and transaction records."},
+      {type:"short",q:"24. What is the right to seek redressal?",a:"The right to seek redressal allows consumers to seek an appropriate remedy for legally recognised grievances, such as defective goods, deficient services or unfair trade practices. Depending on the case, a remedy may include repair, replacement, refund or compensation. Consumers should preserve evidence and use the appropriate complaint mechanism under applicable law."},
+      {type:"short",q:"25. What is the role of standardisation marks?",a:"Standardisation marks help consumers identify products that have been assessed or certified under particular standards or schemes. For example, BIS certification marks apply to specified products under relevant certification arrangements, AGMARK relates to certain agricultural products, and hallmarking indicates the purity of precious metal articles. Consumers should check that a mark is genuine and applicable to the product."},
+      {type:"short",q:"26. How can consumers protect themselves from misleading advertisements?",a:"Consumers should compare claims with product labels, check prices and conditions, and seek reliable information before purchasing. They should be cautious about exaggerated promises, hidden conditions and claims that seem unrealistic. Keeping advertisements, receipts and communications can help if a dispute arises. Consumers may use appropriate complaint channels when an advertisement violates applicable rules."},
+      {type:"short",q:"27. Explain the right to safety.",a:"The right to safety protects consumers from goods and services that may pose unreasonable risks to life or property. Products should comply with applicable safety requirements and carry appropriate warnings or instructions. Consumers should follow safe-use directions and avoid products that appear damaged or unsafe. Reporting dangerous products can help prevent harm to other people."},
+      {type:"short",q:"28. What are consumer responsibilities?",a:"Consumers should check labels, prices, quantity, quality and relevant safety information before purchasing. They should ask for bills, follow instructions, compare available options and read important terms and conditions. They should use products responsibly and report unfair practices through appropriate channels. Responsible consumer behaviour supports informed decisions and helps maintain fair markets."},
+      {type:"short",q:"29. How can consumer awareness improve the market?",a:"Aware consumers compare products, demand accurate information and avoid sellers who use unfair practices. They can report unsafe goods, misleading advertisements and deficient services. Their choices encourage businesses to improve quality and customer service. Consumer awareness, combined with effective laws and enforcement, can make markets safer and more accountable."},
+      {type:"short",q:"30. How can a consumer seek help in a dispute?",a:"A consumer should first collect relevant evidence, such as the bill, warranty, product photographs, messages and details of the problem. Depending on the case, the consumer may contact the seller or service provider and use an appropriate grievance mechanism. Eligible disputes can be taken to the relevant consumer commission or other authorised complaint channel under current rules."},
+
+      // 5 LONG ANSWERS
+      {type:"long",q:"31. Explain the major consumer rights and their importance.",a:"Consumer rights protect people when they purchase goods or use services. They help reduce exploitation, improve access to information and provide ways to address unfair practices.\n\n1. **Right to safety:** Consumers should be protected against goods and services that may be hazardous to life and property. Safety standards, warnings and proper instructions are important for reducing risks.\n\n2. **Right to information:** Consumers should receive relevant information about quality, quantity, price, ingredients, risks and other important conditions. This helps them make informed choices.\n\n3. **Right to choose:** Consumers should have meaningful access to different products and services at competitive prices, without unfair restrictions or coercion.\n\n4. **Right to be heard:** Consumer interests and complaints should receive appropriate consideration by businesses, institutions and relevant authorities.\n\n5. **Right to seek redressal:** Consumers can seek remedies for eligible grievances, including defective products, deficient services and unfair trade practices. Depending on the case, remedies may include repair, replacement, refund or compensation.\n\n6. **Right to consumer education:** Consumers should be able to learn about their rights, responsibilities and available complaint mechanisms.\n\nThese rights are important because consumers may not have the same information or bargaining power as businesses. Awareness and effective enforcement help make transactions fairer, improve product safety and encourage businesses to act responsibly."},
+      {type:"long",q:"32. Describe common forms of consumer exploitation and suggest ways to prevent them.",a:"Consumer exploitation occurs when businesses or service providers use unfair practices that harm buyers. It can happen in markets for food, household products, transport, financial services and many other activities.\n\n**Common forms of exploitation:**\n\n1. **Adulteration:** Mixing inferior or harmful substances with a product can reduce quality and create health risks.\n\n2. **Underweight or short quantity:** A seller may provide less than the quantity stated or paid for.\n\n3. **Overcharging:** A consumer may be charged more than the permitted or displayed price under applicable rules.\n\n4. **Misleading advertisements:** Advertisements may exaggerate benefits, hide conditions or make unsupported claims.\n\n5. **Defective or unsafe goods:** Products may fail to meet expected quality or safety requirements.\n\n6. **Deficiency in services:** A service provider may fail to deliver the agreed or legally required standard of service.\n\n**Ways to prevent exploitation:**\n\n1. Read labels, check the price and quantity, and compare products before buying.\n\n2. Ask for a bill or cash memo and keep relevant records.\n\n3. Check applicable certification marks and safety instructions.\n\n4. Read warranties, return conditions and other important terms carefully.\n\n5. Report unfair practices and seek help through appropriate grievance mechanisms or consumer commissions when eligible.\n\n6. Strengthen consumer education, product standards, inspections and enforcement of consumer law.\n\nPreventing exploitation requires informed consumers, responsible businesses and effective public institutions. These measures help improve trust and fairness in the marketplace."},
+      {type:"long",q:"33. Explain the importance of bills, labels and standardisation marks in protecting consumers.",a:"Bills, product labels and standardisation marks help consumers make informed decisions and provide evidence when problems occur. Each serves a different purpose in consumer protection.\n\n1. **Bills and cash memos:** These record a transaction and may show the seller, date, items purchased and amount paid. They can support a complaint, return request or warranty claim.\n\n2. **Price information:** Labels help consumers check the maximum retail price where applicable and compare costs. Consumers should be alert to overcharging and unclear fees.\n\n3. **Quantity and ingredients:** Labels provide information about the amount of product and, where required, its ingredients or composition. This helps consumers select products suited to their needs.\n\n4. **Date and safety information:** Manufacturing, expiry or best-before information, storage instructions and warnings can help consumers use products appropriately.\n\n5. **Standardisation marks:** Relevant certification marks indicate compliance with particular standards or schemes. BIS certification applies to specified products, AGMARK is associated with certain agricultural products, and hallmarking relates to the purity of precious metal articles.\n\n6. **Evidence in disputes:** Receipts, labels, warranty documents and product packaging can help establish the details of a purchase and support a complaint.\n\n7. **Consumer responsibility:** Consumers should check that information is clear and that certification marks are genuine and applicable to the product.\n\nThese documents and marks do not guarantee that every product or transaction is problem-free, but they improve transparency and help consumers identify quality information and pursue remedies when necessary."},
+      {type:"long",q:"34. Explain the role of consumer commissions and the Consumer Protection Act, 2019.",a:"The Consumer Protection Act, 2019 provides an important legal framework for protecting consumer interests in India. It recognises consumer rights and establishes mechanisms for addressing eligible consumer disputes.\n\n1. **Consumer rights:** The law supports protections relating to safety, information, choice, being heard, redressal and consumer education.\n\n2. **Consumer commissions:** District, State and National Consumer Disputes Redressal Commissions hear eligible complaints according to their jurisdiction and the applicable rules.\n\n3. **Possible remedies:** Depending on the facts and law, an order may provide relief such as repair, replacement, refund or compensation, or require an unfair practice to be addressed.\n\n4. **Product and service complaints:** Complaints may concern defective goods, deficient services, unfair trade practices and other matters covered by consumer law.\n\n5. **Consumer protection mechanisms:** The law also provides for measures addressing misleading advertisements and other consumer-related issues through the relevant statutory framework.\n\n6. **Evidence:** Consumers should keep bills, product details, warranty documents, messages and other records that help explain the problem and support their claim.\n\n7. **Importance of awareness:** Knowing the available mechanisms helps consumers seek remedies rather than accepting unfair treatment. Consumers should check current filing procedures, jurisdiction and any applicable requirements before submitting a complaint.\n\nConsumer commissions and the law provide formal avenues for redressal. Their effectiveness depends on awareness, accessible procedures, reliable evidence and proper implementation."},
+      {type:"long",q:"35. What is consumer awareness? Explain consumer responsibilities and ways to become an informed consumer.",a:"Consumer awareness means understanding consumer rights, responsibilities, product information and the mechanisms available to address grievances. An informed consumer is better prepared to make decisions and respond to unfair practices.\n\n1. **Know your rights:** Consumers should understand the rights to safety, information, choice, being heard, redressal and consumer education.\n\n2. **Check labels:** Before purchasing, consumers should read relevant information about price, quantity, ingredients, date details, warnings and instructions.\n\n3. **Ask for a bill:** A receipt or cash memo provides evidence of the transaction and may be important for warranty or complaint purposes.\n\n4. **Compare products:** Consumers should compare quality, prices, specifications and terms instead of relying only on advertising or brand reputation.\n\n5. **Check standards:** Where relevant, consumers should verify applicable certification or hallmarking information and follow safety instructions.\n\n6. **Read conditions:** Warranty terms, service charges, cancellation policies and other important conditions should be understood before agreeing to a purchase or service.\n\n7. **Use complaint channels:** When a problem occurs, consumers should preserve evidence, contact the appropriate provider or grievance mechanism, and use the relevant consumer commission or authorised channel if necessary.\n\n8. **Act responsibly:** Consumers should use goods as instructed, provide accurate information when making claims and avoid knowingly making false complaints.\n\nConsumer awareness promotes informed choices, discourages unfair business practices and supports safer markets. It is most effective when consumers are active, businesses act responsibly and the law is properly enforced."}
+    ],
+
+    flashcards: [
+      {q:"Who is a consumer?",a:"A person who purchases goods or hires or avails services under the applicable legal definition."},
+      {q:"What is consumer exploitation?",a:"Unfair practices by sellers or service providers that harm consumers."},
+      {q:"What is the right to safety?",a:"Protection against goods and services that may be hazardous."},
+      {q:"What is the right to information?",a:"Access to important information about goods and services."},
+      {q:"What is the right to choose?",a:"Access to meaningful choices among goods and services."},
+      {q:"What is the right to be heard?",a:"Consumer interests and complaints should receive consideration."},
+      {q:"What is the right to redressal?",a:"The right to seek an appropriate remedy for eligible grievances."},
+      {q:"What is the right to consumer education?",a:"The right to learn about consumer rights and responsibilities."},
+      {q:"What does MRP stand for?",a:"Maximum Retail Price."},
+      {q:"What is a standardisation mark?",a:"A mark associated with specified standards or certification."},
+      {q:"What is BIS certification associated with?",a:"Specified product standards and certification schemes."},
+      {q:"What is AGMARK associated with?",a:"Grading and certification of certain agricultural products."},
+      {q:"What does hallmarking indicate?",a:"The purity or fineness of precious metal articles."},
+      {q:"Why is a cash memo important?",a:"It records a purchase and can support a complaint."},
+      {q:"What is a defective product?",a:"A product with a legally recognised fault or shortcoming."},
+      {q:"What is deficiency in service?",a:"A fault or inadequacy in a service under applicable law."},
+      {q:"What is a consumer complaint?",a:"A formal claim concerning a consumer-related legal grievance."},
+      {q:"What is the Consumer Protection Act, 2019?",a:"An Indian law establishing a framework for consumer protection and dispute resolution."},
+      {q:"What is a consumer commission?",a:"A body that hears and decides eligible consumer disputes."},
+        {q:"Name one possible consumer remedy.",a:"Repair, replacement, refund or compensation, depending on the case."},
+      {q:"Why should consumers read labels?",a:"To check price, quantity, ingredients, date details and warnings."},
+      {q:"What is misleading advertising?",a:"Advertising that gives false, deceptive or materially misleading information."},
+      {q:"Why keep warranty documents?",a:"They can help establish the terms of a product warranty."},
+      {q:"What is adulteration?",a:"Adding inferior or harmful substances to a product."},
+      {q:"What is overcharging?",a:"Charging more than the permitted or applicable displayed price."},
+      {q:"What is underweight selling?",a:"Providing less quantity than stated or paid for."},
+      {q:"How can consumers compare products?",a:"Compare price, quality, quantity, specifications and conditions."},
+      {q:"What is consumer awareness?",a:"Knowledge of consumer rights, responsibilities and complaint mechanisms."},
+      {q:"Why is product safety information important?",a:"It helps consumers understand risks and use products safely."},
+      {q:"What should consumers preserve when a dispute occurs?",a:"Bills, labels, warranties, messages and other relevant evidence."}
+    ],
+
+    mcqs: [
+      {question:"1. A consumer is generally a person who:",options:["Purchases goods or avails services under the applicable legal definition","Only manufactures products","Only collects taxes","Never buys goods"],answer:0,explanation:"Consumer law defines consumers in relation to purchases and services, subject to its provisions."},
+      {question:"2. The right to safety protects consumers against:",options:["Hazardous goods and services","All price comparisons","Reading labels","Keeping receipts"],answer:0,explanation:"The right to safety concerns risks to life and property from goods and services."},
+      {question:"3. The right to information includes details about:",options:["Price and quantity","The seller's private family matters","Unrelated personal information","Only the colour of packaging"],answer:0,explanation:"Relevant product information helps consumers make informed choices."},
+      {question:"4. MRP stands for:",options:["Maximum Retail Price","Minimum Required Payment","Market Return Plan","Monthly Retail Product"],answer:0,explanation:"MRP means Maximum Retail Price."},
+      {question:"5. A cash memo is useful because it:",options:["Records a purchase","Guarantees that no product can ever fail","Replaces every safety standard","Cancels all loan agreements"],answer:0,explanation:"A cash memo provides evidence of transaction details."},
+      {question:"6. AGMARK is associated with:",options:["Certain agricultural products","Every electronic device","All bank deposits","Road construction only"],answer:0,explanation:"AGMARK relates to grading and certification of specified agricultural products."},
+      {question:"7. Hallmarking relates to:",options:["Purity or fineness of precious metal articles","The expiry of every food product","The quality of roads","The weight of school books"],answer:0,explanation:"Hallmarking indicates precious metal purity under the applicable system."},
+      {question:"8. A defective product is one that:",options:["Has a fault or shortcoming under applicable standards or law","Is always expensive","Has a clear label only","Was purchased with cash"],answer:0,explanation:"Defects concern legally relevant faults in quality, quantity, purity, standard or performance."},
+      {question:"9. The right to seek redressal means consumers can:",options:["Seek remedies for eligible grievances","Avoid all product instructions","Demand every product for free","Ignore every contract"],answer:0,explanation:"Redressal mechanisms provide remedies for legally recognised consumer grievances."},
+      {question:"10. Which law provides a consumer protection framework in India?",options:["Consumer Protection Act, 2019","Corn Laws","Vernacular Press Act","Forest Act only"],answer:0,explanation:"The Consumer Protection Act, 2019 provides an important framework for consumer protection."},
+      {question:"11. Which is an example of consumer exploitation?",options:["Selling adulterated goods","Displaying accurate prices","Providing a valid bill","Following safety standards"],answer:0,explanation:"Adulteration can reduce quality and harm consumers."},
+      {question:"12. Misleading advertisements may:",options:["Give false or deceptive product claims","Always provide complete and accurate information","Replace every product label","Guarantee consumer safety"],answer:0,explanation:"Misleading claims can prevent consumers from making informed decisions."},
+      {question:"13. Which document may support a warranty claim?",options:["Purchase receipt","An unrelated poster","A blank page","A school timetable"],answer:0,explanation:"A purchase receipt can help establish when and where a product was bought."},
+      {question:"14. The right to choose supports:",options:["Meaningful access to different goods and services","Forced purchase of one product in every case","Hiding all prices","Preventing product comparison"],answer:0,explanation:"The right to choose concerns access to available options and fair choice."},
+      {question:"15. Consumer education helps people:",options:["Understand their rights and responsibilities","Avoid all product information","Make decisions without evidence","Ignore safety instructions"],answer:0,explanation:"Consumer education helps people make informed choices and seek remedies."},
+      {question:"16. What should a consumer do if a product appears unsafe?",options:["Stop unsafe use and seek appropriate guidance or report the issue","Ignore all warnings","Remove every safety label","Sell it without informing anyone"],answer:0,explanation:"Consumers should avoid unsafe use and report relevant safety concerns."},
+      {question:"17. Which can be evidence in a consumer dispute?",options:["Bill and warranty documents","An unrelated shopping list","A random photograph with no connection","A blank envelope"],answer:0,explanation:"Purchase and warranty records can help establish the facts of a dispute."},
+      {question:"18. A consumer commission deals with:",options:["Eligible consumer disputes","Only school attendance","Only weather forecasts","Only international sports"],answer:0,explanation:"Consumer commissions hear and decide eligible consumer cases under applicable law."},
+      {question:"19. Which is a responsible consumer practice?",options:["Checking labels and asking for a bill","Ignoring expiry information","Believing every advertisement without question","Discarding every purchase record immediately"],answer:0,explanation:"Checking labels and retaining receipts supports informed decisions."},
+      {question:"20. Consumer protection is most effective when:",options:["Consumers are aware and laws are properly enforced","Consumers never report problems","Businesses hide information","Safety rules are ignored"],answer:0,explanation:"Awareness, responsible businesses and effective enforcement work together to protect consumers."}
+    ]
+  }
+
+});
+
+console.log("Economics Part 2 loaded: 3 chapters.");
+Object.assign(window.CONTENT["Social Science"].chapters, {
+
+  "Federalism": {
+    questions: [
+
+      // 20 VERY SHORT ANSWERS
+
+      {type:"very-short",q:"1. What is federalism?",a:"Federalism is a system of government in which power is divided between a central authority and various constituent units of the country."},
+
+      {type:"very-short",q:"2. What are the two main levels of government in a federal system?",a:"The central government and the state or regional governments."},
+
+      {type:"very-short",q:"3. What is a unitary system of government?",a:"A system in which most powers are concentrated in the central government."},
+
+      {type:"very-short",q:"4. Name one country that follows a federal system.",a:"India."},
+
+      {type:"very-short",q:"5. What is the main objective of federalism?",a:"To divide power between different levels of government while maintaining the unity of the country."},
+
+      {type:"very-short",q:"6. What is a jurisdiction?",a:"Jurisdiction refers to the area or subjects over which a government or institution has legal authority."},
+
+      {type:"very-short",q:"7. What is the Union List?",a:"The Union List contains subjects of national importance on which Parliament makes laws."},
+
+      {type:"very-short",q:"8. Give one example of a Union List subject.",a:"Defence."},
+
+      {type:"very-short",q:"9. What is the State List?",a:"The State List contains subjects on which state legislatures generally make laws."},
+
+      {type:"very-short",q:"10. Give one example of a State List subject.",a:"Police."},
+
+      {type:"very-short",q:"11. What is the Concurrent List?",a:"The Concurrent List contains subjects on which both Parliament and state legislatures can make laws."},
+
+      {type:"very-short",q:"12. Give one example of a Concurrent List subject.",a:"Education."},
+
+      {type:"very-short",q:"13. What is residuary power?",a:"Residuary powers concern subjects that are not included in any of the three lists."},
+
+      {type:"very-short",q:"14. Who generally exercises residuary powers in India?",a:"The Union government."},
+
+      {type:"very-short",q:"15. What is decentralisation?",a:"Decentralisation is the transfer of power from central and state governments to local governments."},
+
+      {type:"very-short",q:"16. What is a Gram Panchayat?",a:"A Gram Panchayat is an elected local government body at the village level."},
+
+      {type:"very-short",q:"17. What is a Gram Sabha?",a:"A Gram Sabha consists of all adult voters registered in a village or a group of villages covered by it."},
+
+      {type:"very-short",q:"18. What is a municipality?",a:"A municipality is an elected local government body in an urban area."},
+
+      {type:"very-short",q:"19. What is a coalition government?",a:"A coalition government is formed when two or more political parties join together to govern."},
+
+      {type:"very-short",q:"20. What is linguistic diversity?",a:"Linguistic diversity means the existence of people speaking different languages in a country."},
+
+      // 10 SHORT ANSWERS
+
+      {type:"short",q:"21. Explain the main features of federalism.",a:"Federalism has two or more levels of government. Each level has its own powers and responsibilities, which are usually guaranteed by the Constitution. The jurisdiction of each level is clearly defined. No single level can change the fundamental division of power on its own. Courts help interpret the Constitution and settle disputes between different levels. Each level has its own sources of revenue to perform its functions."},
+
+      {type:"short",q:"22. Differentiate between federal and unitary systems of government.",a:"In a federal system, power is divided between the central government and regional governments, and both have constitutionally defined authority. In a unitary system, most powers are concentrated in the central government, which may delegate powers to regional units. Regional governments in a federal system have constitutionally protected powers, while in a unitary system their authority may depend more directly on the central government."},
+
+      {type:"short",q:"23. Why is federalism important in a diverse country like India?",a:"India has many languages, cultures, religions and regional identities. Federalism allows different regions to manage matters important to them while remaining part of one country. It helps accommodate regional diversity, brings government closer to people and allows decisions to reflect local needs. By sharing power, federalism can strengthen national unity and democratic participation."},
+
+      {type:"short",q:"24. Explain the three lists in the Indian Constitution.",a:"The Union List contains subjects of national importance, such as defence, foreign affairs and banking, on which Parliament makes laws. The State List includes subjects such as police, agriculture and public health, on which state legislatures generally make laws. The Concurrent List includes subjects such as education, forests and marriage, on which both Parliament and state legislatures can make laws. In case of a conflict on a Concurrent List subject, the Constitution generally gives precedence to Union law, subject to constitutional provisions."},
+
+      {type:"short",q:"25. What are the key features of federalism in India?",a:"India has different levels of government, including the Union, states and local bodies. The Constitution divides legislative powers through the Union, State and Concurrent Lists. The Constitution is supreme, and courts interpret its provisions and settle disputes. Changes to important federal provisions require a special constitutional procedure. Different levels of government have defined responsibilities and revenue arrangements."},
+
+      {type:"short",q:"26. What is decentralisation, and why is it needed?",a:"Decentralisation means transferring powers and responsibilities to local governments. It is needed because local people understand their problems and needs better. Local governments can make decisions about matters such as drinking water, sanitation, village roads and local facilities. Decentralisation encourages participation, improves accountability and allows citizens to take part in local development."},
+
+      {type:"short",q:"27. Describe the structure of rural local government in India.",a:"Rural local government generally has three levels. The Gram Panchayat functions at the village level. Panchayat Samitis or equivalent intermediate-level bodies work at the block or intermediate level, where that tier applies. Zila Parishads function at the district level. Elected representatives work on local development and public services. The Gram Sabha provides a forum for registered adult voters to participate in village-level decision-making."},
+
+      {type:"short",q:"28. How did language policy help strengthen Indian federalism?",a:"India did not declare one language as the national language. Hindi is the official language of the Union, and the Constitution recognises the use of English for official purposes under applicable law. The Constitution also recognises several scheduled languages. States can use their own official languages for state administration. These arrangements helped accommodate linguistic diversity and reduce fears that one language group would dominate others."},
+
+      {type:"short",q:"29. Explain the role of courts in a federal system.",a:"Courts interpret the Constitution and decide disputes involving different levels of government. They help determine whether a government has acted within its constitutional powers. An independent judiciary protects the constitutional division of powers and helps resolve disagreements according to law. This prevents disputes from being decided solely by the political strength of one level of government."},
+
+      {type:"short",q:"30. What changes strengthened local self-government in India?",a:"The 1992 constitutional amendments strengthened local self-government. Regular elections to local bodies became constitutionally required. Seats were reserved for Scheduled Castes, Scheduled Tribes and at least one-third of seats for women, subject to constitutional provisions. State Election Commissions were established to conduct local elections, and State Finance Commissions were provided for to review local finances. These changes gave local bodies a stronger constitutional foundation."},
+
+      // 5 LONG ANSWERS
+
+      {type:"long",q:"31. Explain federalism and describe its main features.",a:"Federalism is a system of government in which power is divided between a central authority and constituent units such as states or provinces. Both levels have their own areas of responsibility. Federalism allows a country to maintain national unity while recognising regional diversity.\n\n**Main features of federalism:**\n\n1. **Two or more levels of government:** A federal system has a central government and regional governments. Some federations also have constitutionally recognised local levels.\n\n2. **Division of powers:** The Constitution specifies which subjects belong to each level of government. This reduces confusion and helps governments perform their responsibilities.\n\n3. **Constitutional protection:** The division of powers is generally protected by the Constitution. One level cannot simply take away the powers of another level by ordinary action.\n\n4. **Written and supreme Constitution:** The Constitution establishes the structure of government and defines the powers of different levels.\n\n5. **Independent judiciary:** Courts interpret constitutional provisions and settle disputes between different levels of government.\n\n6. **Financial autonomy:** Different levels of government have access to sources of revenue so that they can carry out their assigned functions.\n\n7. **Cooperation and coordination:** Different levels of government often need to work together on subjects that affect the whole country, such as education, public health and development.\n\nFederalism is particularly useful in countries with large populations and diverse cultures, languages and regional interests. It allows regional governments to respond to local needs while the central government deals with national matters. In this way, federalism combines shared national authority with regional self-government."},
+
+      {type:"long",q:"32. Explain how powers are divided between different levels of government in India.",a:"India has a federal system in which powers are divided mainly between the Union government and state governments, with local governments also playing an important role. The Constitution establishes the division of legislative responsibilities.\n\n**1. Union List:**\n\nThe Union List contains subjects of national importance. Parliament makes laws on these matters. Examples include defence, foreign affairs, banking and currency. These subjects require national-level decisions because they affect the country as a whole.\n\n**2. State List:**\n\nThe State List contains subjects that are generally managed by state governments. Examples include police, agriculture, public health and local government. State legislatures make laws on these matters within their constitutional authority. States can therefore respond to regional conditions and local needs.\n\n**3. Concurrent List:**\n\nThe Concurrent List includes subjects on which both Parliament and state legislatures can make laws. Examples include education, forests, marriage and trade unions. This allows both levels to contribute to policies that require coordination. If Union and state laws conflict on a Concurrent List matter, Union law generally prevails, subject to the Constitution and its exceptions.\n\n**4. Residuary subjects:**\n\nSubjects that are not included in any of the three lists are called residuary subjects. In India, Parliament has the power to legislate on residuary matters under the Constitution.\n\n**5. Constitutional interpretation:**\n\nThe Constitution defines the powers of different levels. Courts settle disputes and interpret the division of authority.\n\n**6. Local government:**\n\nPanchayats and municipalities handle many local matters. The constitutional amendments of 1992 strengthened local self-government and provided a framework for regular elections, representation and local responsibilities.\n\nThis division helps India manage national matters centrally while allowing states and local bodies to address regional and community needs. It also makes government more accessible and responsive."},
+
+      {type:"long",q:"33. Describe the major steps through which decentralisation was strengthened in India.",a:"Decentralisation means transferring power from central and state governments to local governments. It enables people to participate directly in decisions about their communities. The constitutional amendments of 1992 were important in strengthening local self-government in India.\n\n**Major steps:**\n\n1. **Constitutional status:** Local governments received a stronger constitutional foundation. States were required to establish systems for regular local elections according to constitutional provisions.\n\n2. **Regular elections:** Elections to local government bodies became a constitutional requirement. This helped make local representatives accountable to citizens.\n\n3. **Reservation of seats:** Seats were reserved for Scheduled Castes and Scheduled Tribes in proportion to their population, according to applicable provisions. At least one-third of seats were reserved for women under the constitutional framework; states may provide greater reservation.\n\n4. **State Election Commission:** Each state has a State Election Commission responsible for conducting local body elections.\n\n5. **State Finance Commission:** A State Finance Commission is constituted periodically to review the financial position of local bodies and make recommendations about financial arrangements.\n\n6. **Rural local government:** Panchayati Raj institutions operate at village, intermediate and district levels, subject to the constitutional framework and applicable state arrangements.\n\n7. **Urban local government:** Municipalities and municipal corporations manage local affairs in urban areas.\n\n**Importance of decentralisation:**\n\nLocal people understand local problems, so their participation can improve decision-making. Local government can address services such as sanitation, water supply and local roads. Representation also gives more people, including women and historically disadvantaged groups, opportunities to take part in public life.\n\nHowever, decentralisation works effectively only when local bodies receive adequate powers, funds and staff. Thus, constitutional recognition is important, but practical support is also necessary for strong local democracy."},
+
+      {type:"long",q:"34. Explain the role of language policy and state reorganisation in strengthening Indian federalism.",a:"India is a country of great linguistic and cultural diversity. After independence, leaders had to decide how to accommodate different language groups while maintaining national unity. Language policy and the reorganisation of states helped make Indian federalism more inclusive.\n\n**1. Linguistic reorganisation of states:**\n\nAfter independence, several states were reorganised on linguistic lines. This allowed people speaking the same language to have a state where their language could be used in administration and public life. The reorganisation helped accommodate regional aspirations within the Indian Union.\n\n**2. No single national language:**\n\nIndia did not declare any one language as the national language. Hindi is the official language of the Union, while English continues to be used for official purposes under applicable law. The Constitution also recognises several scheduled languages.\n\n**3. State official languages:**\n\nStates can adopt their own official languages for administration. This enables state governments to communicate with people in languages familiar to them and helps protect linguistic identities.\n\n**4. Respect for linguistic diversity:**\n\nLanguage arrangements recognise that India's unity does not require every region to speak the same language. Different language communities can preserve their identities while participating in the national political system.\n\n**5. Political accommodation:**\n\nDemocratic negotiations and adjustments helped address many linguistic demands through constitutional and political processes rather than requiring uniformity.\n\n**6. Strengthening unity:**\n\nWhen people feel that their language and culture are respected, they are more likely to trust national institutions. The accommodation of linguistic diversity has helped Indian federalism respond to regional aspirations while preserving the country's unity.\n\nThus, the experience of India shows that respecting diversity and allowing democratic accommodation can strengthen rather than weaken a federation."},
+
+      {type:"long",q:"35. Why is federalism important for democracy in India? Explain its achievements and challenges.",a:"Federalism is important for Indian democracy because it divides power, accommodates diversity and brings government closer to people. India has many languages, religions, cultures and regional interests, so a single central authority cannot respond equally well to every local need.\n\n**Importance and achievements:**\n\n1. **Division of power:** The Constitution divides powers between the Union and states, helping prevent the concentration of all authority in one government.\n\n2. **Accommodation of diversity:** State governments can address regional needs and use appropriate official languages. This helps different communities participate in public life.\n\n3. **Linguistic reorganisation:** The creation and reorganisation of states helped accommodate linguistic aspirations within the Union.\n\n4. **Democratic participation:** State and local elections allow people to choose representatives at different levels.\n\n5. **Decentralisation:** Panchayats and municipalities provide opportunities for citizens to influence local decisions.\n\n6. **Accountability:** Different levels of government can be questioned by elected representatives, courts and citizens within their respective areas of responsibility.\n\n**Challenges:**\n\n1. Some states and local bodies may lack adequate financial resources to perform their responsibilities.\n\n2. Disputes may arise between the Union and states over powers, resources or policies.\n\n3. Local governments may not always have enough staff, authority or capacity to carry out their duties effectively.\n\n4. Political disagreements can make cooperation between levels of government difficult.\n\n5. Unequal administrative and financial capacities can affect the quality of public services in different regions.\n\n**Conclusion:** Federalism has helped India combine national unity with regional diversity. Its success depends on respecting constitutional powers, cooperating across levels of government, providing local bodies with sufficient resources and ensuring that citizens can participate meaningfully in democratic decisions."}
+    ],
+
+    flashcards: [
+      {q:"What is federalism?",a:"A system dividing power between central and regional governments."},
+      {q:"Name the two main levels in a federation.",a:"Central government and state or regional governments."},
+      {q:"What is a unitary government?",a:"A system where most powers are concentrated in the central government."},
+      {q:"What is jurisdiction?",a:"The area or subjects over which an authority has legal power."},
+      {q:"What is the Union List?",a:"Subjects of national importance on which Parliament legislates."},
+      {q:"Give one Union List subject.",a:"Defence."},
+      {q:"What is the State List?",a:"Subjects on which state legislatures generally legislate."},
+         {q:"Give one State List subject.",a:"Police."},
+      {q:"What is the Concurrent List?",a:"Subjects on which both Parliament and state legislatures can legislate."},
+      {q:"Give one Concurrent List subject.",a:"Education."},
+      {q:"What are residuary subjects?",a:"Subjects not included in the Union, State or Concurrent Lists."},
+      {q:"Who legislates on residuary subjects in India?",a:"Parliament, under the constitutional framework."},
+      {q:"What is decentralisation?",a:"Transfer of power to local governments."},
+      {q:"What is a Gram Sabha?",a:"All registered adult voters of a village or the area covered by it."},
+      {q:"What is a Gram Panchayat?",a:"An elected local government body at the village level."},
+      {q:"What is a municipality?",a:"An elected local government body in an urban area."},
+      {q:"What is federal division of power based on?",a:"The Constitution."},
+      {q:"What is the role of the judiciary in federalism?",a:"Interpreting the Constitution and settling disputes."},
+      {q:"What is linguistic diversity?",a:"The presence of different language communities."},
+      {q:"What did the 1992 amendments strengthen?",a:"Local self-government."},
+      {q:"What is a State Election Commission?",a:"A body responsible for conducting local body elections in a state."},
+      {q:"What is a State Finance Commission?",a:"A body that reviews the financial position of local bodies and makes recommendations."},
+      {q:"What is a Panchayat Samiti?",a:"An intermediate-level rural local government institution where that tier applies."},
+      {q:"What is a Zila Parishad?",a:"A district-level rural local government body."},
+      {q:"What is a coalition government?",a:"A government formed by two or more political parties together."},
+      {q:"What is one purpose of federalism?",a:"Accommodating regional diversity while maintaining national unity."},
+      {q:"What is one example of a rural local issue?",a:"Village roads, sanitation or drinking water."},
+      {q:"What is one example of an urban local issue?",a:"Urban sanitation, waste management or local roads."},
+      {q:"What is the official language of the Union government?",a:"Hindi in Devanagari script; English is also used for official purposes under applicable law."},
+      {q:"Why is local participation important?",a:"It helps decisions reflect community needs and improves accountability."}
+    ],
+
+    mcqs: [
+      {question:"1. What is federalism?",options:["Division of power between levels of government","Rule by one person only","Government without a Constitution","Rule by foreign governments"],answer:0,explanation:"Federalism divides powers between central and regional governments."},
+      {question:"2. Which of the following is a feature of federalism?",options:["Constitutionally defined powers","All powers permanently held by one authority","No regional governments","No courts"],answer:0,explanation:"Federal systems constitutionally define the powers of different levels."},
+      {question:"3. Which list includes defence?",options:["Union List","State List","Concurrent List","Village List"],answer:0,explanation:"Defence is a Union List subject."},
+      {question:"4. Police is generally included in which list?",options:["State List","Union List","Concurrent List","International List"],answer:0,explanation:"Police is generally a State List subject."},
+      {question:"5. Education is included in which list?",options:["Concurrent List","Union List only","State List only","No list"],answer:0,explanation:"Education is a Concurrent List subject."},
+      {question:"6. Who generally legislates on residuary subjects in India?",options:["Parliament","Only Gram Sabha","Only municipalities","Foreign courts"],answer:0,explanation:"Parliament has residuary legislative powers under the Constitution."},
+      {question:"7. What does decentralisation mean?",options:["Transferring power to local government","Removing all elections","Concentrating all power at the centre","Ending state governments"],answer:0,explanation:"Decentralisation transfers powers and responsibilities to local bodies."},
+      {question:"8. Who are members of the Gram Sabha?",options:["Registered adult voters in the village or covered area","Only government officers","Only elected MPs","Only school teachers"],answer:0,explanation:"The Gram Sabha consists of registered adult voters in its area."},
+      {question:"9. Which body operates at the village level?",options:["Gram Panchayat","Supreme Court","Union Cabinet","Election Commission of India only"],answer:0,explanation:"The Gram Panchayat is a village-level local government body."},
+      {question:"10. Which is an urban local government body?",options:["Municipality","Gram Sabha","Zila Parishad only","Gram Panchayat"],answer:0,explanation:"Municipalities govern urban areas."},
+      {question:"11. What is a key role of courts in federalism?",options:["Resolving constitutional disputes","Running all elections directly","Replacing all state governments","Making every local budget"],answer:0,explanation:"Courts interpret the Constitution and settle disputes over powers."},
+      {question:"12. Which amendment strengthened local self-government in India in 1992?",options:["Constitutional amendments concerning Panchayats and municipalities","The First Schedule of the UN Charter","A law ending local elections","A law abolishing states"],answer:0,explanation:"The 1992 constitutional amendments strengthened rural and urban local bodies."},
+      {question:"13. Which institution conducts local body elections in a state?",options:["State Election Commission","Reserve Bank of India","Supreme Court alone","Union Public Service Commission"],answer:0,explanation:"State Election Commissions conduct elections to local bodies."},
+      {question:"14. What is the purpose of a State Finance Commission?",options:["Reviewing local bodies' finances and recommending financial arrangements","Conducting international diplomacy","Commanding the armed forces","Making school textbooks only"],answer:0,explanation:"State Finance Commissions review local finances and make recommendations."},
+      {question:"15. Which is a rural local government institution?",options:["Zila Parishad","Municipal corporation only","Union Cabinet","High Court"],answer:0,explanation:"Zila Parishads function at the district level in rural local government."},
+      {question:"16. Which statement about India's language policy is correct?",options:["India has not declared one language as its national language","Every state must use only English","All regional languages are prohibited","Every state must use only Hindi"],answer:0,explanation:"India has not declared a national language and recognises linguistic diversity."},
+      {question:"17. What is a major benefit of federalism?",options:["Accommodating regional diversity","Eliminating all regional identities","Removing public participation","Concentrating all powers"],answer:0,explanation:"Federalism allows regions to manage matters important to them."},
+      {question:"18. Which is a feature of a unitary system?",options:["Most powers are concentrated in the central government","Regional governments always have constitutionally guaranteed independent powers","Every village makes national defence laws","Courts do not exist"],answer:0,explanation:"A unitary system concentrates most powers in the central government."},
+      {question:"19. Why are local governments important?",options:["They can address local needs and encourage participation","They replace the Constitution","They control foreign policy","They abolish state legislatures"],answer:0,explanation:"Local bodies can respond to community needs and encourage democratic participation."},
+      {question:"20. Which statement best describes Indian federalism?",options:["Power is divided among levels of government under the Constitution","Only local governments exist","All states are independent countries","The Constitution gives no powers to states"],answer:0,explanation:"India's Constitution divides powers between the Union and states and provides for local government."}
+    ]
+  },
+
+});
+
+console.log("Civics Chapter 2 — Federalism loaded successfully.");
+Object.assign(window.CONTENT["Social Science"].chapters, {
+
+  "Gender, Religion and Caste": {
+    questions: [
+
+      // 20 VERY SHORT ANSWERS
+
+      {type:"very-short",q:"1. What is sexual division of labour?",a:"It is a system in which work is divided between men and women according to socially created ideas about gender roles."},
+      {type:"very-short",q:"2. What is patriarchy?",a:"Patriarchy is a social system in which men generally hold greater power and authority than women."},
+      {type:"very-short",q:"3. What is feminism?",a:"Feminism is a movement and set of ideas that support equal rights and opportunities for women and men."},
+      {type:"very-short",q:"4. What is a feminist movement?",a:"It is a movement that seeks equal rights and opportunities for women in personal, social, economic and political life."},
+      {type:"very-short",q:"5. What is gender inequality?",a:"Gender inequality means unequal rights, opportunities or treatment based on gender."},
+      {type:"very-short",q:"6. What is a gender stereotype?",a:"A gender stereotype is a fixed belief about the roles or abilities of women and men."},
+      {type:"very-short",q:"7. What is communalism?",a:"Communalism is the belief that religion is the main basis of social and political community and that religious interests are opposed to those of other communities."},
+      {type:"very-short",q:"8. What is a secular state?",a:"A secular state does not establish an official religion and treats citizens equally regardless of their religion."},
+      {type:"very-short",q:"9. What is caste hierarchy?",a:"Caste hierarchy is a social arrangement in which caste groups are ranked unequally."},
+      {type:"very-short",q:"10. What is casteism?",a:"Casteism is prejudice or discrimination based on caste and the belief that caste interests should dominate."},
+      {type:"very-short",q:"11. What is a political party?",a:"A political party is an organised group that seeks to gain political power through elections and implement its policies."},
+      {type:"very-short",q:"12. What is a reserved constituency?",a:"It is a constituency in which only candidates from specified historically disadvantaged communities can contest, while all eligible voters can vote."},
+      {type:"very-short",q:"13. What is women's political representation?",a:"It refers to the participation and presence of women in elected bodies and political decision-making."},
+      {type:"very-short",q:"14. What is religious discrimination?",a:"Religious discrimination means treating people unfairly because of their religion."},
+      {type:"very-short",q:"15. What is communal politics?",a:"Communal politics uses religious identity to organise political demands or mobilise people against other religious communities."},
+      {type:"very-short",q:"16. What is social diversity?",a:"Social diversity is the presence of different social, cultural, religious or linguistic groups in society."},
+      {type:"very-short",q:"17. What is equal political rights?",a:"Equal political rights mean that citizens have equal rights to participate in political life, subject to constitutional and legal provisions."},
+      {type:"very-short",q:"18. What is caste discrimination?",a:"Caste discrimination is unfair treatment of people because of their caste."},
+      {type:"very-short",q:"19. What is occupational mobility?",a:"Occupational mobility is the ability of people to change their occupation or profession."},
+      {type:"very-short",q:"20. What is the main aim of a democratic society regarding social differences?",a:"To ensure equal rights, dignity, participation and protection against discrimination."},
+
+      // 10 SHORT ANSWERS
+
+      {type:"short",q:"21. Explain the sexual division of labour.",a:"The sexual division of labour refers to the division of work according to socially assigned gender roles. Women are often expected to perform household tasks such as cooking, cleaning and caring for children, while men are often expected to earn income outside the home. This division is not simply natural; it is shaped by social expectations and traditions. Women's unpaid domestic work may be overlooked, even though it is essential for families and society. Equal opportunities and shared responsibilities can help reduce this inequality."},
+
+      {type:"short",q:"22. What is patriarchy, and how can it affect women?",a:"Patriarchy is a social system in which men generally have greater power and authority. It can affect women by limiting their access to education, employment, property, decision-making and political representation. In some families and communities, traditional expectations place most household responsibilities on women. Patriarchal attitudes can also lead to unequal treatment and restrictions on women's choices. Education, legal protection, equal opportunities and changes in social attitudes can help challenge these inequalities."},
+
+      {type:"short",q:"23. How have feminist movements helped women?",a:"Feminist movements have challenged discrimination and demanded equal rights for women. They have campaigned for voting rights, educational opportunities, equal wages, fair treatment at work and greater political representation. Such movements have helped bring women's concerns into public debate and encouraged legal and social reforms. Although progress has been made, unequal treatment and gender-based stereotypes continue in many societies."},
+
+      {type:"short",q:"24. Why is women's representation in politics important?",a:"Women's representation is important because women form a large part of society and should have an equal opportunity to influence public decisions. Greater representation can bring attention to issues such as education, health, safety, equal pay and care responsibilities. It also strengthens the democratic principle of equal participation. However, representation alone cannot remove every form of inequality; elected representatives also need opportunities and authority to perform their responsibilities effectively."},
+
+      {type:"short",q:"25. What are the different forms of communalism in politics?",a:"Communalism can appear in several forms. It may involve the belief that one religion is superior to others. It may lead to demands for political dominance by one religious community. Political parties or leaders may use religious symbols, emotions and prejudices to mobilise voters. In extreme cases, communalism can produce riots, violence and conflict. Democracy requires equal citizenship, respect for religious freedom and rejection of discrimination."},
+
+      {type:"short",q:"26. Explain the meaning and importance of secularism in India.",a:"Secularism means that the state does not establish one official religion and does not discriminate against citizens because of their religious beliefs. India has no official state religion. The Constitution protects freedom of religion and guarantees equality before the law. Secularism is important because it helps people of different faiths live together as equal citizens. It also limits the use of religious identity as a basis for unequal political treatment."},
+
+      {type:"short",q:"27. How has the caste system changed in modern India?",a:"The caste system has changed due to urbanisation, education, industrialisation, occupational mobility, constitutional protections and social reform movements. People increasingly work in occupations that are not traditionally associated with their caste, and people from different caste groups interact in schools, workplaces and cities. Laws prohibit untouchability and caste-based discrimination. However, caste inequalities, prejudice and unequal access to resources still exist in many areas."},
+
+      {type:"short",q:"28. How does caste influence politics?",a:"Caste can influence politics because political parties may consider caste composition when selecting candidates and seeking support. Some voters may prefer candidates from their own caste, while political leaders may raise issues affecting particular caste groups. However, caste is not the only factor that determines voting behaviour. Voters also consider party policies, leadership, performance, economic issues and local concerns. Political competition can also encourage groups to cooperate across caste boundaries."},
+
+      {type:"short",q:"29. How can politics influence caste relations?",a:"Politics can influence caste relations by creating opportunities for different groups to organise and demand equal rights, representation and resources. Democratic competition may encourage caste groups to form alliances and negotiate with other groups. This can help previously disadvantaged communities gain a stronger voice. However, political leaders may also deepen divisions if they rely on caste prejudice or promote hostility. The effect depends on how political power and social identities are used."},
+
+      {type:"short",q:"30. Why can social divisions be both helpful and harmful in democracy?",a:"Social divisions can help people identify shared problems and organise to demand justice, equal rights and representation. For example, movements against gender or caste discrimination can strengthen democracy. However, divisions can become harmful when groups treat others as enemies, promote superiority or deny equal rights. Democracy works best when people can express their identities while respecting the dignity and rights of others."},
+
+      // 5 LONG ANSWERS
+
+      {type:"long",q:"31. Explain how gender inequality is reflected in society and what steps can reduce it.",a:"Gender inequality refers to unequal rights, opportunities and treatment of people based on gender. It can be seen in family life, education, employment, access to resources and political representation. Although women have made significant progress in many areas, social expectations and discrimination continue to create barriers.\n\n**Forms of gender inequality:**\n\n1. **Division of household work:** Women are often expected to perform cooking, cleaning and care work. Much of this work is unpaid and may not be recognised as an economic contribution.\n\n2. **Unequal opportunities:** In some communities, girls may face obstacles in accessing education, training or employment. Such barriers reduce their choices and independence.\n\n3. **Employment inequalities:** Women may face unequal wages, limited promotion opportunities, unsafe working conditions or discrimination in recruitment.\n\n4. **Gender stereotypes:** Beliefs that certain jobs or responsibilities are suitable only for men or women can limit individual choices.\n\n5. **Political underrepresentation:** Women have historically held fewer elected positions than men in many political institutions, limiting their direct presence in decision-making.\n\n**Steps to reduce gender inequality:**\n\n1. Provide equal access to quality education and skill development.\n2. Ensure equal pay for equal work and fair employment opportunities.\n3. Share household and care responsibilities among family members.\n4. Enforce laws against discrimination, harassment and violence.\n5. Encourage women to participate in elections, public life and leadership.\n6. Challenge stereotypes through education, media and community awareness.\n7. Improve access to health services, financial resources and legal support.\n\nGender equality benefits society as a whole. When people have equal opportunities, they can develop their abilities and contribute more fully to family, economic and political life. A democracy must protect equal rights and ensure that gender does not determine a person's opportunities."},
+
+      {type:"long",q:"32. What is communalism? Explain its different forms and its effects on democracy.",a:"Communalism is an ideology that treats religious identity as the principal basis of social and political interests. It assumes that members of one religion share the same political interests and that these interests are necessarily opposed to those of other religions. This view can create mistrust and conflict among religious communities.\n\n**Forms of communalism:**\n\n1. **Everyday prejudices:** Communal ideas may appear in stereotypes, jokes or assumptions that one religious community is superior or inferior to another.\n\n2. **Claims of religious superiority:** Some people may believe that their religion alone should dominate public life and that other religious groups deserve fewer rights.\n\n3. **Political mobilisation:** Political leaders may use religious symbols, emotional appeals or fears to attract support. This can turn religious identity into a tool of political competition.\n\n4. **Demands for dominance:** A religious majority may demand that the state give special political status or privileges to its community, disregarding equal citizenship.\n\n5. **Communal violence:** In its most dangerous form, communalism can contribute to riots, targeted attacks, displacement and long-term mistrust.\n\n**Effects on democracy:**\n\nCommunalism weakens the principle that all citizens should be treated equally regardless of religion. It can reduce trust between communities, divert attention from public issues and make political debate more hostile. Violence and discrimination also threaten people's safety and freedom.\n\n**How it can be addressed:**\n\nThe Constitution protects religious freedom and equality. Governments must enforce laws fairly, protect people from discrimination and violence, and hold those responsible for crimes accountable. Education, interfaith dialogue, responsible public communication and political rejection of hatred can help strengthen social harmony.\n\nDemocracy allows people to practise and express their religions, but religious identity should not be used to deny equal rights to others. Secularism and equal citizenship are therefore important safeguards against communalism."},
+
+      {type:"long",q:"33. Explain the meaning of secularism and describe how the Indian Constitution supports it.",a:"Secularism is the principle that the state should not establish an official religion or treat citizens unequally because of their religious beliefs. In a secular democracy, people have the freedom to follow, practise and express their religion, subject to constitutional limits and laws that protect public order, health and other rights.\n\n**Secularism in India:**\n\n1. **No official state religion:** India does not have an official state religion. Citizens belong to different religious communities but share equal citizenship.\n\n2. **Freedom of religion:** The Constitution protects freedom of conscience and the right to profess, practise and propagate religion, subject to constitutional restrictions.\n\n3. **Equality before the law:** The state must respect equality and cannot deny equal protection of the laws simply because a person belongs to a particular religion.\n\n4. **Protection against discrimination:** Constitutional provisions prohibit certain forms of discrimination and protect citizens' rights irrespective of religion.\n\n5. **Cultural and educational rights:** Constitutional protections help religious and linguistic minorities preserve aspects of their culture and establish and administer educational institutions under applicable provisions.\n\n6. **Limits on state power:** The government must operate within constitutional rules and cannot simply deny basic rights to citizens on the basis of religion.\n\n**Importance of secularism:**\n\nIndia has many religious communities. Secularism helps maintain equality among citizens, protects freedom of belief and reduces the risk that one religious community will dominate others through state power. It supports peaceful coexistence and democratic participation.\n\nSecularism does not mean that people must abandon religion. It means that citizenship and basic rights should not depend on a person's faith. By protecting freedom of religion and equal treatment, the Constitution provides a framework for people of different beliefs to live together in a democratic society."},
+
+      {type:"long",q:"34. Describe the caste system and explain the changes that have taken place in caste relations in modern India.",a:"The caste system has historically divided Indian society into hereditary social groups associated with different status, occupations and social restrictions. Caste could affect whom people married, the work they performed, their social interactions and their access to resources. Such arrangements produced inequality and discrimination, particularly against communities treated as socially disadvantaged.\n\n**Historical features:**\n\n1. Caste membership was generally inherited by birth.\n2. Social groups were arranged in a hierarchy, with unequal status and privileges.\n3. Many occupations were traditionally associated with particular caste groups.\n4. Marriage and social interaction were often restricted by caste rules.\n5. Practices such as untouchability caused severe exclusion and humiliation.\n\n**Changes in modern India:**\n\n1. **Education:** Wider access to education has created new opportunities and challenged inherited social restrictions.\n\n2. **Urbanisation and industrialisation:** Cities and modern workplaces bring people from different caste groups into contact and provide occupations beyond traditional caste roles.\n\n3. **Occupational mobility:** People increasingly choose jobs according to education, skills and opportunities rather than traditional caste occupations.\n\n4. **Constitutional safeguards:** The Constitution prohibits untouchability and supports equality. Laws and policies address discrimination and the disadvantages experienced by historically marginalised communities.\n\n5. **Social reform movements:** Reformers and organisations have challenged caste discrimination and demanded dignity, equal access and social justice.\n\n6. **Democratic politics:** Historically disadvantaged groups can organise, elect representatives and raise demands for equal rights and opportunities.\n\n**Continuing challenges:**\n\nCaste-based prejudice, discrimination, social exclusion and unequal access to resources have not disappeared. In some places, caste continues to influence marriage, social relations and political behaviour.\n\nThus, modern India has experienced major changes in caste relations, but complete equality requires continued enforcement of rights, access to education and opportunities, and rejection of caste-based discrimination."},
+       {type:"long",q:"35. Explain the relationship between gender, religion, caste and politics in a democracy.",a:"Gender, religion and caste are important social identities that can influence political participation, public debate and government policies. Their influence can strengthen democracy when people use politics to demand equality and representation. It can weaken democracy when leaders promote prejudice, exclusion or unequal rights.\n\n**Gender and politics:**\n\nWomen have historically faced barriers in education, employment and political representation. Women's movements and campaigns for equal rights have brought these issues into public discussion. Greater participation by women can help make political institutions more representative, though equal representation alone does not automatically remove every inequality.\n\n**Religion and politics:**\n\nReligious communities may raise concerns about freedom of religion, cultural rights and equal treatment. A democratic state must protect these rights for all communities. However, communalism arises when religion is used to claim superiority, promote hostility or deny equal citizenship to others. Secularism helps protect religious freedom while maintaining equality before the law.\n\n**Caste and politics:**\n\nCaste may influence candidate selection, electoral alliances and demands for representation. Democratic politics has provided opportunities for disadvantaged caste groups to organise and demand social justice. At the same time, caste prejudice can lead to discrimination and exclusion. Voters also consider factors beyond caste, such as policies, leadership and government performance.\n\n**How politics affects social relations:**\n\nPolitical participation can challenge traditional inequalities through laws, representation and public programmes. Elections and public debate allow people to raise social problems. Yet political actors may also exploit social identities to divide communities for electoral advantage.\n\n**Conclusion:**\n\nDemocracy should enable people to express their identities while protecting equal rights for everyone. Gender equality, religious freedom, secularism and opposition to caste discrimination help create an inclusive political system. The key is not to ignore social differences, but to address injustice without allowing one group to dominate or exclude another."}
+    ],
+
+    flashcards: [
+      {q:"What is sexual division of labour?",a:"Division of work according to socially assigned gender roles."},
+      {q:"What is patriarchy?",a:"A social system in which men generally hold greater power and authority."},
+      {q:"What is feminism?",a:"Ideas and movements supporting equal rights and opportunities for women."},
+      {q:"What is a gender stereotype?",a:"A fixed belief about the roles or abilities of women and men."},
+      {q:"What is gender inequality?",a:"Unequal rights, opportunities or treatment based on gender."},
+      {q:"What is communalism?",a:"Treating religious identity as the principal basis of political and social interests."},
+      {q:"What is secularism?",a:"A principle of equal citizenship and freedom of religion without an official state religion."},
+      {q:"What is caste hierarchy?",a:"A system that ranks caste groups unequally."},
+      {q:"What is casteism?",a:"Prejudice or discrimination based on caste."},
+      {q:"What is caste discrimination?",a:"Unfair treatment because of caste."},
+      {q:"What is a feminist movement?",a:"A movement demanding equal rights and opportunities for women."},
+      {q:"What is a reserved constituency?",a:"A constituency reserved for candidates from specified communities, with all eligible voters able to vote."},
+      {q:"What is political representation?",a:"The presence of people's chosen representatives in political institutions."},
+      {q:"Why is women's political participation important?",a:"It helps ensure that women can influence decisions affecting society."},
+      {q:"What is religious discrimination?",a:"Unfair treatment because of religion."},
+      {q:"What is communal politics?",a:"Using religious identity to mobilise political support or promote opposing community interests."},
+      {q:"What is occupational mobility?",a:"The ability to change one's occupation."},
+      {q:"Name one cause of changing caste relations.",a:"Education, urbanisation, industrialisation or social reform."},
+      {q:"What is a gender role?",a:"A social expectation about how people of a particular gender should behave."},
+      {q:"What is unpaid domestic work?",a:"Household and care work performed without direct payment."},
+      {q:"What does equal citizenship mean?",a:"All citizens have equal status and legal protection."},
+      {q:"What is one danger of communalism?",a:"It can create mistrust, discrimination and communal violence."},
+      {q:"What is one constitutional protection against caste exclusion?",a:"The Constitution prohibits untouchability."},
+      {q:"How can politics help disadvantaged groups?",a:"By giving them opportunities to organise, seek representation and demand equal rights."},
+      {q:"Does caste alone determine voting behaviour?",a:"No. Voters also consider policies, leadership, performance and local issues."},
+      {q:"What does secularism protect?",a:"Freedom of religion and equal treatment of citizens."},
+      {q:"What is social diversity?",a:"The presence of different social, cultural, religious or linguistic groups."},
+      {q:"How can gender stereotypes be challenged?",a:"Through education, awareness and equal opportunities."},
+      {q:"What is a major goal of feminism?",a:"Equality in rights, opportunities and participation."},
+      {q:"How can democracy address social divisions?",a:"By protecting rights, encouraging participation and opposing discrimination."}
+    ],
+
+    mcqs: [
+      {question:"1. What is sexual division of labour?",options:["Division of work based on socially assigned gender roles","Division of countries by language","Division of Parliament into houses","Division of money among states"],answer:0,explanation:"It refers to work being divided according to social expectations about gender."},
+      {question:"2. What is patriarchy?",options:["A system in which men generally hold greater power","A system of equal political representation in every institution","A system of village elections","A form of local taxation"],answer:0,explanation:"Patriarchy refers to social arrangements in which men generally hold greater authority."},
+      {question:"3. Feminist movements seek:",options:["Equal rights and opportunities for women","Fewer educational opportunities for women","The end of elections","The abolition of all public institutions"],answer:0,explanation:"Feminist movements work to challenge discrimination and promote equality."},
+      {question:"4. Which is an example of a gender stereotype?",options:["Believing that a particular job is suitable only for men","Providing equal access to education","Sharing household responsibilities","Ensuring equal legal rights"],answer:0,explanation:"A gender stereotype assigns fixed roles or abilities to people based on gender."},
+      {question:"5. What is communalism?",options:["Using religious identity as the main basis of political interests","Respecting every citizen equally","Sharing household tasks","Changing one's occupation"],answer:0,explanation:"Communalism treats religious identity as the principal basis of social and political interests."},
+      {question:"6. What is a secular state?",options:["A state that does not establish an official religion and respects equal citizenship","A state that bans every religion","A state ruled only by religious leaders","A state that gives no legal rights to minorities"],answer:0,explanation:"Secularism protects freedom of religion and equal treatment."},
+      {question:"7. Which is an example of caste discrimination?",options:["Denying someone an opportunity because of caste","Selecting a candidate through an open examination","Providing equal legal protection","Allowing occupational mobility"],answer:0,explanation:"Caste discrimination means unfair treatment based on caste."},
+      {question:"8. What is a reserved constituency?",options:["A constituency in which only candidates from specified communities can contest under reservation rules","A constituency in which nobody can vote","A constituency without elected representatives","A constituency reserved for government officers only"],answer:0,explanation:"Reservation rules restrict candidate eligibility for specified seats, while eligible voters can vote."},
+      {question:"9. Which factor has helped change caste relations?",options:["Education and urbanisation","The end of all schooling","A ban on occupational mobility","The removal of constitutional rights"],answer:0,explanation:"Education and urbanisation have opened opportunities and challenged traditional restrictions."},
+      {question:"10. Which constitutional principle supports equal treatment regardless of religion?",options:["Equality before the law","Caste hierarchy","Majoritarianism","Occupational heredity"],answer:0,explanation:"Equality before the law supports equal legal protection for citizens."},
+      {question:"11. Which statement about women's domestic work is correct?",options:["It is important work even when unpaid","It has no value to families","It must always be performed only by women","It is prohibited by law"],answer:0,explanation:"Unpaid household and care work contributes significantly to family and social life."},
+      {question:"12. Which is a possible effect of communalism?",options:["Mistrust and conflict between religious communities","Guaranteed end of discrimination","Equal income for all citizens","Automatic improvement in public services"],answer:0,explanation:"Communalism can increase prejudice, mistrust and conflict."},
+      {question:"13. What does occupational mobility mean?",options:["The ability to change one's occupation","Being permanently restricted to one inherited job","The division of Parliament","The right to vote twice"],answer:0,explanation:"Occupational mobility allows people to move between different jobs or professions."},
+      {question:"14. Why is women's representation in politics important?",options:["It gives women a greater opportunity to participate in decisions","It removes the need for elections","It gives women fewer rights","It prevents women from becoming leaders"],answer:0,explanation:"Representation helps women participate in democratic decision-making."},
+      {question:"15. Which statement about caste and voting is correct?",options:["Caste can influence voting, but it is not the only factor","Every voter always votes only by caste","Caste has no possible political influence","Only one caste is allowed to vote"],answer:0,explanation:"Voters may consider caste alongside policies, leadership, performance and local issues."},
+      {question:"16. Which of the following is a constitutional protection in India?",options:["Prohibition of untouchability","Legal enforcement of caste hierarchy","Unequal citizenship based on religion","A ban on women's education"],answer:0,explanation:"The Constitution prohibits untouchability."},
+      {question:"17. What is a gender role?",options:["A social expectation about how a person of a particular gender should behave","A type of election","A constitutional list","A form of taxation"],answer:0,explanation:"Gender roles are shaped by social expectations and traditions."},
+      {question:"18. How can political participation help disadvantaged groups?",options:["It can help them demand representation and equal rights","It removes their right to vote","It prevents them from organising","It guarantees that discrimination will never occur"],answer:0,explanation:"Democratic participation gives groups opportunities to organise and raise concerns."},
+      {question:"19. What is one important feature of secularism in India?",options:["The state must respect religious freedom and equality","One religion is the official religion of every state","Citizens must follow the same religion","Religious minorities have no rights"],answer:0,explanation:"Indian constitutional principles protect religious freedom and equal citizenship."},
+      {question:"20. How should democracy respond to social differences?",options:["Protect equal rights and address discrimination","Allow one group to dominate all others","Ban every cultural identity","Prevent disadvantaged groups from participating"],answer:0,explanation:"An inclusive democracy protects rights and encourages participation while opposing discrimination."}
+    ]
+  }
+
+});
+
+console.log("Civics Chapter 3 — Gender, Religion and Caste loaded successfully.");
+Object.assign(window.CONTENT["Social Science"].chapters, {
+  "Political Parties": {
+    questions: [
+      // 20 Very Short Answer Questions
+      {
+        type: "very-short",
+        q: "1. What is a political party?",
+        a: "A political party is a group of people who come together to contest elections and hold power in the government."
+      },
+      {
+        type: "very-short",
+        q: "2. What are the three components of a political party?",
+        a: "The three components are the leaders, the active members and the followers."
+      },
+      {
+        type: "very-short",
+        q: "3. What is the main aim of a political party?",
+        a: "The main aim is to gain political power by contesting elections and form or influence the government."
+      },
+      {
+        type: "very-short",
+        q: "4. What is a ruling party?",
+        a: "A ruling party is the political party or coalition that forms and runs the government."
+      },
+      {
+        type: "very-short",
+        q: "5. What is an opposition party?",
+        a: "An opposition party is a party that does not form the government and questions its policies and decisions."
+      },
+      {
+        type: "very-short",
+        q: "6. What is a multi-party system?",
+        a: "A multi-party system is a system in which several political parties compete for power and have a reasonable chance of winning."
+      },
+      {
+        type: "very-short",
+        q: "7. What is a one-party system?",
+        a: "A one-party system is one in which only one political party is allowed to control or dominate political power."
+      },
+      {
+        type: "very-short",
+        q: "8. What is a two-party system?",
+        a: "A two-party system is one in which two major political parties have a realistic chance of forming the government."
+      },
+      {
+        type: "very-short",
+        q: "9. What is a coalition government?",
+        a: "A coalition government is formed when two or more political parties join together to govern."
+      },
+      {
+        type: "very-short",
+        q: "10. What is a political manifesto?",
+        a: "A political manifesto is a document explaining a party's policies, promises and programmes before an election."
+      },
+      {
+        type: "very-short",
+        q: "11. What is defection?",
+        a: "Defection occurs when an elected representative leaves the party on whose ticket they were elected and joins another party."
+      },
+      {
+        type: "very-short",
+        q: "12. What is the anti-defection law?",
+        a: "It is a law intended to prevent elected representatives from changing parties for personal or political gain."
+      },
+      {
+        type: "very-short",
+        q: "13. What is a recognised political party?",
+        a: "It is a party recognised by the Election Commission according to prescribed electoral performance and other criteria."
+      },
+      {
+        type: "very-short",
+        q: "14. What is the Election Commission of India?",
+        a: "It is an independent constitutional body responsible for conducting elections to Parliament, state legislatures and certain other elected offices."
+      },
+      {
+        type: "very-short",
+        q: "15. What is meant by partisanship?",
+        a: "Partisanship means strong support for a particular party, group or cause, sometimes without considering opposing views fairly."
+      },
+      {
+        type: "very-short",
+        q: "16. Name one function of political parties.",
+        a: "Political parties contest elections and present candidates to voters."
+      },
+      {
+        type: "very-short",
+        q: "17. Why do parties nominate candidates?",
+        a: "Parties nominate candidates to represent them and contest elections."
+      },
+      {
+        type: "very-short",
+        q: "18. What is meant by a party symbol?",
+        a: "A party symbol is an identifying sign used by a political party, especially on ballot papers and electronic voting machines."
+      },
+      {
+        type: "very-short",
+        q: "19. What is meant by dynastic succession?",
+        a: "Dynastic succession occurs when leadership positions are passed mainly among members of the same family."
+      },
+      {
+        type: "very-short",
+        q: "20. Why are political parties necessary in a democracy?",
+        a: "They organise elections, offer policy choices, form governments and connect citizens with the government."
+      },
+
+      // 10 Short Answer Questions
+      {
+        type: "short",
+        q: "21. Explain any three functions of political parties.",
+        a: "First, political parties contest elections by selecting candidates. Second, they present policies and programmes to voters. Third, the party or coalition that wins a majority forms the government and makes decisions. Parties that remain outside the government act as opposition and scrutinise its work."
+      },
+      {
+        type: "short",
+        q: "22. How do political parties shape public opinion?",
+        a: "Political parties raise and discuss public issues through meetings, campaigns, speeches and other forms of communication. They highlight problems, suggest solutions and organise public debate. Their activities can influence how citizens understand political and social questions."
+      },
+      {
+        type: "short",
+        q: "23. Why is an opposition party important?",
+        a: "An opposition party questions government decisions, points out mistakes and presents alternative policies. It represents voters who did not support the ruling party and helps prevent the misuse of power. A strong opposition makes the government more accountable."
+      },
+      {
+        type: "short",
+        q: "24. Why does India have a multi-party system?",
+        a: "India is a large and diverse country with many languages, regions, religions, castes and social groups. Different parties represent different interests and viewpoints. A multi-party system gives citizens more choices and allows regional as well as national issues to be represented."
+      },
+      {
+        type: "short",
+        q: "25. Distinguish between a national party and a state party.",
+        a: "A national party has a political presence across several states and meets the Election Commission's recognition criteria at the national level. A state party, often called a regional party, meets the recognition criteria in a particular state or states. State parties frequently focus on regional needs, while national parties generally address issues across the country."
+      },
+      {
+        type: "short",
+        q: "26. What are the main challenges faced by political parties?",
+        a: "The major challenges are lack of internal democracy, dynastic succession, the growing influence of money and muscle power, and the limited meaningful choices sometimes offered to voters. These problems can reduce transparency and public trust."
+      },
+      {
+        type: "short",
+        q: "27. What is lack of internal democracy in political parties?",
+        a: "It occurs when power is concentrated in a few leaders and ordinary members have little influence over decisions. Internal elections may not be regular or genuinely competitive. Important decisions can be made without proper consultation with party members."
+      },
+      {
+        type: "short",
+        q: "28. How does money power affect political parties?",
+        a: "Election campaigns require substantial resources. Wealthy candidates and donors may gain greater influence, while candidates with fewer resources can face disadvantages. Excessive dependence on money can encourage unfair practices and make parties less responsive to ordinary citizens."
+      },
+      {
+        type: "short",
+        q: "29. How can dynastic succession harm democracy?",
+        a: "Dynastic succession can give preference to relatives of influential leaders instead of choosing candidates on merit and experience. Ordinary party workers may find it difficult to rise to leadership positions. This weakens equal opportunities and internal democracy."
+      },
+      {
+        type: "short",
+        q: "30. Suggest three reforms to improve political parties.",
+        a: "Political parties should hold regular and transparent internal elections, maintain clear financial records and give ordinary members greater participation in decisions. They should also provide fair opportunities to women and underrepresented groups and select candidates through transparent procedures."
+      },
+
+      // 5 Long Answer Questions
+      {
+        type: "long",
+        q: "31. Explain the major functions of political parties in a democracy.",
+        a: "Political parties perform several essential functions in a democracy.\\n\\n1. Contesting elections: Parties select and nominate candidates who contest elections under their names and symbols.\\n\\n2. Presenting policies and programmes: Each party presents its ideas and proposals on economic, social and political issues. Voters can compare these programmes before choosing a representative.\\n\\n3. Making laws: Elected representatives belonging to political parties participate in legislatures, debate bills and help make laws. Parties influence the legislative agenda and decisions.\\n\\n4. Forming and running governments: A party or coalition that secures the required support forms the government. Its leaders take responsibility for implementing policies and administering the country or state.\\n\\n5. Acting as opposition: Parties that do not form the government criticise its policies, ask questions, raise public concerns and offer alternatives.\\n\\n6. Shaping public opinion: Parties raise public issues through campaigns, meetings, speeches and discussions. They can help citizens understand different viewpoints.\\n\\n7. Connecting citizens with government: Parties communicate people's demands to government institutions and explain government policies to the public.\\n\\nThus, political parties organise political competition, provide choices to voters and help make democratic government work."
+      },
+      {
+        type: "long",
+        q: "32. Explain the different party systems found in the world.",
+        a: "Political systems are commonly classified into one-party, two-party and multi-party systems.\\n\\n1. One-party system: In this system, only one political party is permitted to control political power. Other parties are not allowed to compete freely. Such a system does not provide voters with genuine competition among different parties. China is commonly cited in textbooks as an example of a one-party system.\\n\\n2. Two-party system: In this system, two major parties dominate electoral competition and have a realistic chance of forming the government. Other parties may exist, but they usually have a smaller role in government formation. The United States and the United Kingdom are often used as examples of systems dominated by two major parties, although other parties also exist.\\n\\n3. Multi-party system: In this system, several parties compete for power and more than two parties have a realistic chance of winning seats or participating in government. India is an example. Because many parties may contest elections, governments are sometimes formed through coalitions.\\n\\nEach system has advantages and limitations. A one-party system restricts political choice. A two-party system can make government formation more straightforward but may not represent every viewpoint. A multi-party system offers wider representation, though forming a stable government can sometimes be more complicated. The choice of party system is influenced by a country's social diversity, history and political conditions."
+      },
+      {
+        type: "long",
+        q: "33. Describe the major challenges faced by political parties in India.",
+        a: "Political parties in India face several challenges that can affect the quality of democracy.\\n\\n1. Lack of internal democracy: Important decisions are often concentrated in the hands of a few senior leaders. Ordinary members may have little say in candidate selection, policy decisions or leadership choices. Regular, fair internal elections are important for improving participation.\\n\\n2. Dynastic succession: Leadership positions and election tickets may be given to relatives of influential leaders. This can prevent capable workers without family connections from rising within the party and may weaken merit-based selection.\\n\\n3. Money and muscle power: Parties and candidates may rely on wealthy donors or powerful individuals to fund campaigns and influence elections. This can give an unfair advantage to rich candidates and encourage the use of unfair or intimidating methods.\\n\\n4. Limited meaningful choice: Sometimes parties offer similar policies or change positions mainly to attract voters. In such cases, citizens may find it difficult to choose between clearly different alternatives.\\n\\nThese challenges can reduce public trust and make parties less accountable. Improving internal democracy, increasing transparency in funding, choosing candidates fairly and encouraging active participation by citizens can help address these problems."
+      },
+      {
+        type: "long",
+        q: "34. Suggest and explain reforms that can make political parties more democratic.",
+        a: "Several measures can help improve political parties and make them more democratic.\\n\\n1. Regular internal elections: Parties should conduct genuine, regular and competitive elections for leadership positions. This would allow members to participate in choosing their leaders.\\n\\n2. Transparency in funding: Parties should maintain accurate financial records and disclose their income and expenditure according to the law. Greater transparency can help reduce the influence of undisclosed money.\\n\\n3. Fair candidate selection: Candidates should be selected through clear procedures based on ability, public service and integrity rather than family connections alone.\\n\\n4. Stronger participation of members: Ordinary members should have opportunities to discuss policies, raise concerns and influence party decisions.\\n\\n5. Equal opportunities: Parties should make genuine efforts to increase the participation of women and underrepresented communities in leadership and candidate selection.\\n\\n6. Responsible use of legal measures: Laws should discourage corruption, criminal influence and defection while protecting democratic debate and the rights of representatives.\\n\\n7. Citizen pressure: Voters, media, civil society groups and party members can demand transparent practices and reject candidates involved in serious wrongdoing.\\n\\nNo single reform can solve every problem. A combination of legal rules, internal party changes and active public participation is needed to make political parties more accountable and democratic."
+      },
+      {
+        type: "long",
+        q: "35. Why are political parties essential for democracy? Explain their role and limitations.",
+        a: "Political parties are essential because they organise political competition and make representative democracy workable. Without parties, every candidate might act independently, making it difficult for voters to understand policy choices or for elected representatives to work together on a common programme.\\n\\nRole of political parties:\\n\\n1. They nominate candidates and contest elections.\\n2. They present policies and programmes so that voters can compare alternatives.\\n3. They help elected representatives coordinate their work in legislatures and participate in law-making.\\n4. They form governments and implement policies when they have sufficient support.\\n5. They act as opposition when they are not in power and scrutinise government decisions.\\n6. They raise public issues, shape public opinion and connect citizens with government institutions.\\n\\nLimitations and problems:\\n\\nPolitical parties may suffer from a lack of internal democracy, dynastic succession, excessive influence of money and muscle power, and limited policy choices. Party leaders may sometimes give priority to electoral success over public interest.\\n\\nThese limitations do not make parties unnecessary. Instead, they show why parties need reforms and why citizens should remain informed and active. Transparent funding, fair internal elections, accountable leadership and meaningful public participation can help political parties serve democracy more effectively."
+      }
+    ],
+
+    flashcards: [
+      { q: "What is a political party?", a: "A group that contests elections and seeks to hold political power." },
+      { q: "Name the three components of a political party.", a: "Leaders, active members and followers." },
+      { q: "What is the main purpose of political parties?", a: "To contest elections, influence policies and form or influence government." },
+      { q: "What is a ruling party?", a: "The party or coalition that forms the government." },
+      { q: "What is an opposition party?", a: "A party outside the government that scrutinises and challenges its decisions." },
+      { q: "What is a one-party system?", a: "A system in which only one party is allowed to control political power." },
+      { q: "What is a two-party system?", a: "A system dominated by two major parties with a realistic chance of forming the government." },
+      { q: "What is a multi-party system?", a: "A system in which several parties compete for power." },
+      { q: "Which party system does India follow?", a: "A multi-party system." },
+      { q: "What is a coalition government?", a: "A government formed by two or more parties working together." },
+      { q: "What is a party manifesto?", a: "A document describing a party's policies, promises and programmes." },
+      { q: "What is defection?", a: "When an elected representative leaves the party on whose ticket they were elected and joins another." },
+      { q: "What is the purpose of the anti-defection law?", a: "To discourage elected representatives from changing parties in specified circumstances." },
+      { q: "Who conducts elections in India?", a: "The Election Commission of India conducts elections to Parliament and state legislatures, among others." },
+      { q: "What is a party symbol?", a: "An identifying sign associated with a political party." },
+      { q: "Name one function of political parties.", a: "Contesting elections." },
+      { q: "How do parties help make laws?", a: "Their elected representatives debate and vote on legislation in legislatures." },
+      { q: "How do parties shape public opinion?", a: "Through campaigns, meetings, speeches and public discussions." },
+      { q: "What is dynastic succession?", a: "Leadership passing mainly among members of the same family." },
+      { q: "What is internal party democracy?", a: "Meaningful participation of party members in decisions and leadership selection." },
+      { q: "Name one challenge faced by political parties.", a: "Lack of internal democracy." },
+      { q: "How can money power affect elections?", a: "It can give wealthy candidates an unfair advantage and increase the influence of rich donors." },
+      { q: "Why is the opposition important?", a: "It questions government decisions and offers alternative policies." },
+      { q: "Why does India have many political parties?", a: "Its social, linguistic, regional and cultural diversity creates many political interests." },
+      { q: "What is a national party?", a: "A party recognised by the Election Commission under national-level criteria." },
+      { q: "What is a state party?", a: "A party recognised under the Election Commission's criteria at the state level." },
+      { q: "How can citizens improve political parties?", a: "By demanding transparency, informed voting and accountable leadership." },
+      { q: "Why are regular internal elections useful?", a: "They give party members a chance to choose leaders and improve accountability." },
+      { q: "What does transparency in party funding mean?", a: "Keeping clear financial records and making required financial information available." },
+      { q: "Why are political parties essential in representative democracy?", a: "They organise electoral competition, form governments and connect citizens with public decisions." }
+    ],
+
+    mcqs: [
+      {
+        question: "1. What is the main purpose of a political party?",
+        options: ["To conduct court trials", "To contest elections and seek political power", "To run only private businesses", "To replace all government institutions"],
+        answer: 1,
+        explanation: "Political parties contest elections and seek to form or influence the government."
+      },
+      {
+        question: "2. Which of the following is NOT a component of a political party?",
+        options: ["Leaders", "Active members", "Followers", "Judges as a necessary party component"],
+        answer: 3,
+        explanation: "The three main components are leaders, active members and followers."
+      },
+      {
+        question: "3. Which party forms the government after securing the required support?",
+        options: ["Ruling party", "Opposition party", "Every party automatically", "Only an independent candidate"],
+        answer: 0,
+        explanation: "The party or coalition with sufficient legislative support forms the government."
+      },
+      {
+        question: "4. What is the role of an opposition party?",
+        options: ["To stop every election", "To scrutinise and question the government", "To control courts", "To remove voters from electoral rolls"],
+        answer: 1,
+        explanation: "Opposition parties question government policies and present alternative views."
+      },
+      {
+        question: "5. India follows which type of party system?",
+        options: ["Only one-party system", "Strict two-party system", "Multi-party system", "No-party system"],
+        answer: 2,
+        explanation: "Several parties compete in India's elections, making it a multi-party system."
+      },
+      {
+        question: "6. A government formed by two or more parties is called a:",
+        options: ["Judicial government", "Coalition government", "One-party opposition", "Military court"],
+        answer: 1,
+        explanation: "A coalition government is formed when parties join together to govern."
+      },
+      {
+        question: "7. Which document explains a party's election promises and programmes?",
+        options: ["Party manifesto", "Birth certificate", "Court summons", "Voter identity card"],
+        answer: 0,
+        explanation: "A manifesto sets out a party's policies and proposed programmes."
+      },
+      {
+        question: "8. What does defection mean?",
+        options: ["Joining a public meeting", "Changing political party after being elected", "Casting a vote", "Registering as a voter"],
+        answer: 1,
+        explanation: "Defection refers to an elected representative leaving the party on whose ticket they were elected and joining another."
+      },
+      {
+        question: "9. Which body recognises political parties under electoral rules in India?",
+        options: ["Supreme Court alone", "Election Commission of India", "Reserve Bank of India", "Finance Commission alone"],
+        answer: 1,
+        explanation: "The Election Commission of India recognises parties according to prescribed criteria."
+      },
+      {
+        question: "10. Which of these is a major challenge faced by political parties?",
+        options: ["Internal democracy always being perfect", "Dynastic succession", "No need for elections", "Absence of any political competition everywhere"],
+        answer: 1,
+        explanation: "Dynastic succession can give preference to family connections over merit."
+      },
+      {
+        question: "11. What is meant by a one-party system?",
+        options: ["Several parties share power equally", "Only one party is permitted to control political power", "Two parties alternate in government", "No political organisation exists"],
+        answer: 1,
+        explanation: "A one-party system restricts political competition by allowing only one party to control power."
+      },
+      {
+        question: "12. What is a key feature of a two-party system?",
+        options: ["Two major parties dominate competition", "Only one candidate can stand for election", "No opposition is possible", "All parties must merge"],
+        answer: 0,
+        explanation: "Two major parties have a realistic chance of forming the government, though smaller parties may also exist."
+      },
+      {
+        question: "13. Why is a multi-party system suitable for a diverse country like India?",
+        options: ["It removes all differences", "It allows different interests and viewpoints to be represented", "It prevents citizens from voting", "It guarantees every party a majority"],
+        answer: 1,
+        explanation: "Many parties can represent India's varied regional, social and cultural interests."
+      },
+      {
+        question: "14. What is dynastic succession in politics?",
+        options: ["Choosing leaders only through public service records", "Passing leadership mainly among family members", "Holding regular public debates", "Changing a party's symbol"],
+        answer: 1,
+        explanation: "Dynastic succession occurs when family connections strongly influence access to leadership."
+      },
+      {
+        question: "15. Which reform can improve internal party democracy?",
+        options: ["Cancelling all party meetings", "Holding regular and fair internal elections", "Allowing only one leader to decide everything", "Hiding all party rules"],
+        answer: 1,
+        explanation: "Regular, competitive internal elections give members a voice in selecting leaders."
+      },
+      {
+        question: "16. How can money power damage electoral competition?",
+        options: ["It always makes elections fair", "It can give wealthy candidates an unfair advantage", "It removes the need for campaign funding", "It guarantees equal opportunities"],
+        answer: 1,
+        explanation: "Large financial resources can create unfair advantages and increase donor influence."
+      },
+      {
+        question: "17. Which is an important function of political parties in legislatures?",
+        options: ["Debating and helping make laws", "Replacing every court", "Issuing currency", "Conducting all school examinations"],
+        answer: 0,
+        explanation: "Party representatives participate in legislative debates and law-making."
+      },
+      {
+        question: "18. A party recognised at the state level is commonly called a:",
+        options: ["State party", "Court party", "Private company", "Non-political department"],
+        answer: 0,
+        explanation: "A state party meets the Election Commission's recognition criteria at the state level."
+      },
+      {
+        question: "19. Which action can citizens take to make political parties more accountable?",
+        options: ["Ignore all political issues", "Demand transparency and vote thoughtfully", "Prevent public discussion", "Reject every democratic institution"],
+        answer: 1,
+        explanation: "Informed voting and public demands for transparency encourage accountability."
+      },
+      {
+        question: "20. Why are political parties important in representative democracy?",
+        options: ["They organise political choices and government formation", "They make elections unnecessary", "They eliminate the need for citizens", "They must always agree with one another"],
+        answer: 0,
+        explanation: "Political parties organise electoral competition, offer policy choices and help form and scrutinise governments."
+      }
+    ]
+  }
+});
+
+console.log("Civics Chapter 4 — Political Parties loaded successfully.");
+Object.assign(window.CONTENT["Social Science"].chapters, {
+  "Outcomes of Democracy": {
+    questions: [
+      // 20 Very Short Answer Questions
+      {
+        type: "very-short",
+        q: "1. What is democracy?",
+        a: "Democracy is a form of government in which rulers are elected by the people."
+      },
+      {
+        type: "very-short",
+        q: "2. What is the basic principle of democracy?",
+        a: "The basic principle is that political power ultimately rests with the people and their elected representatives."
+      },
+      {
+        type: "very-short",
+        q: "3. What is an accountable government?",
+        a: "An accountable government is one that is answerable to citizens for its decisions and actions."
+      },
+      {
+        type: "very-short",
+        q: "4. What is a responsive government?",
+        a: "A responsive government pays attention to people's needs and takes appropriate action."
+      },
+      {
+        type: "very-short",
+        q: "5. What is a legitimate government?",
+        a: "A legitimate government is one that people regard as having the right to govern, particularly because it follows accepted democratic procedures."
+      },
+      {
+        type: "very-short",
+        q: "6. What is transparency in democracy?",
+        a: "Transparency means that citizens can understand how decisions are made and can access relevant information about government functioning."
+      },
+      {
+        type: "very-short",
+        q: "7. What is political equality?",
+        a: "Political equality means that citizens have equal political rights, including the right to vote."
+      },
+      {
+        type: "very-short",
+        q: "8. What is economic inequality?",
+        a: "Economic inequality refers to differences in income, wealth and access to economic resources among people."
+      },
+      {
+        type: "very-short",
+        q: "9. What is social diversity?",
+        a: "Social diversity means the presence of different social, cultural, linguistic and religious groups in society."
+      },
+      {
+        type: "very-short",
+        q: "10. What is dignity of the individual?",
+        a: "It means recognising every person's worth and treating everyone with respect."
+      },
+      {
+        type: "very-short",
+        q: "11. What is freedom in a democracy?",
+        a: "Freedom means that people can exercise their rights and express their views within the framework of the law."
+      },
+      {
+        type: "very-short",
+        q: "12. What is public opinion?",
+        a: "Public opinion refers to the views and attitudes of people about public issues and government policies."
+      },
+      {
+        type: "very-short",
+        q: "13. What is a democratic decision?",
+        a: "A democratic decision is made through democratic procedures that allow participation, discussion and accountability."
+      },
+      {
+        type: "very-short",
+        q: "14. Does democracy guarantee economic equality?",
+        a: "No. Democracy provides political equality, but economic inequalities may continue."
+      },
+      {
+        type: "very-short",
+        q: "15. What is majority rule?",
+        a: "Majority rule means that decisions are generally made according to the choice of the majority while respecting the rights of minorities."
+      },
+      {
+        type: "very-short",
+        q: "16. Why are elections important in democracy?",
+        a: "Elections allow citizens to choose their representatives and hold governments accountable."
+      },
+      {
+        type: "very-short",
+        q: "17. What is a democratic government expected to do?",
+        a: "It is expected to be accountable, responsive and legitimate."
+      },
+      {
+        type: "very-short",
+        q: "18. What does democracy promote among citizens?",
+        a: "Democracy promotes political equality, freedom, participation and respect for individual dignity."
+      },
+      {
+        type: "very-short",
+        q: "19. How can democracy accommodate social diversity?",
+        a: "It can accommodate diversity through dialogue, equal rights, negotiation and respect for different groups."
+      },
+      {
+        type: "very-short",
+        q: "20. Does democracy always produce quick decisions?",
+        a: "No. Democratic decisions may take longer because they involve discussion, consultation and procedures."
+      },
+
+      // 10 Short Answer Questions
+      {
+        type: "short",
+        q: "21. How does democracy produce an accountable government?",
+        a: "In a democracy, citizens elect their representatives and can question their performance. Representatives must face elections at regular intervals and explain their decisions. Legislative debates, public discussion, the media and access to information can also help citizens scrutinise government actions. These mechanisms make the government answerable to the people."
+      },
+      {
+        type: "short",
+        q: "22. Explain the meaning of a responsive government.",
+        a: "A responsive government takes citizens' needs and expectations seriously. It listens to public demands, responds to grievances and considers people's welfare while making policies. Democratic elections and public pressure encourage leaders to pay attention to citizens, although the level of responsiveness may differ."
+      },
+      {
+        type: "short",
+        q: "23. Why is democracy considered a legitimate form of government?",
+        a: "Democracy is considered legitimate because the government is formed through elections in which citizens can choose their representatives. People have a role in selecting and changing their rulers. Democratic procedures provide a widely accepted basis for political authority, even when citizens disagree with particular government decisions."
+      },
+      {
+        type: "short",
+        q: "24. Why may democratic decision-making take more time?",
+        a: "Democratic decision-making involves discussion, consultation, debate and following established procedures. Different viewpoints must be considered before a decision is reached. This can make decisions slower than decisions made by an authoritarian ruler. However, discussion can improve the quality and acceptance of decisions."
+      },
+      {
+        type: "short",
+        q: "25. How does democracy promote economic development?",
+        a: "Democracy can support development by providing political stability, accountability, public participation and opportunities to debate economic policies. However, economic growth also depends on factors such as resources, education, infrastructure and government policies. Therefore, democracy alone does not guarantee a high rate of economic development."
+      },
+      {
+        type: "short",
+        q: "26. Why does economic inequality continue in many democracies?",
+        a: "Political equality does not automatically create economic equality. Wealth and resources may remain concentrated in the hands of a small section of society, while many people have limited income and opportunities. Economic inequalities can continue if policies and social conditions do not adequately address unequal access to resources."
+      },
+      {
+        type: "short",
+        q: "27. How does democracy accommodate social diversity?",
+        a: "Democracy allows different groups to express their interests and participate in public decisions. It encourages discussion, negotiation and peaceful resolution of differences. Respecting minority rights and ensuring equal treatment help prevent the majority from dominating other groups."
+      },
+      {
+        type: "short",
+        q: "28. Explain the relationship between democracy and the dignity of citizens.",
+        a: "Democracy recognises citizens as equal individuals with rights and freedoms. It provides opportunities for people to express opinions, challenge discrimination and demand equal treatment. This can strengthen the dignity of women, disadvantaged communities and other groups that have historically faced unequal treatment."
+      },
+      {
+        type: "short",
+        q: "29. How can citizens improve the functioning of democracy?",
+        a: "Citizens can vote responsibly, stay informed, participate in public discussions and question government decisions. They can use lawful democratic methods to raise grievances, demand transparency and support equal rights. Active participation helps make representatives more accountable and improves democratic functioning."
+      },
+      {
+        type: "short",
+        q: "30. Why should democracy be judged by its outcomes rather than only by elections?",
+        a: "Elections are essential, but they do not by themselves show whether a government is working effectively. Democracy should also be assessed by its accountability, responsiveness, legitimacy, protection of rights, reduction of inequalities and treatment of different social groups. These outcomes help determine whether democratic institutions are serving citizens well."
+      },
+
+      // 5 Long Answer Questions
+      {
+        type: "long",
+        q: "31. Explain the major outcomes expected from democracy.",
+        a: "Democracy is expected to produce several important outcomes. Its actual performance may vary, but these expectations provide a basis for judging democratic government.\\n\\n1. Accountable government: Citizens elect representatives and can question their performance. Regular elections, public debate and legislative scrutiny encourage leaders to explain their decisions.\\n\\n2. Responsive government: A democratic government is expected to consider people's needs and respond to public demands. Citizens can raise issues through representatives, public discussion and other democratic channels.\\n\\n3. Legitimate government: Democratic rulers gain authority through accepted electoral procedures. Since citizens participate in choosing their representatives, democratic government is generally regarded as having a legitimate right to govern.\\n\\n4. Economic development: Democracy can provide conditions for discussing and reviewing development policies. However, economic development also depends on resources, education, infrastructure, historical conditions and policy choices. Democracy does not automatically guarantee rapid growth.\\n\\n5. Reduction of inequality: Democracy promises political equality and equal rights. However, economic inequalities may continue because wealth and resources are not always distributed equally. Democratic governments are expected to address these problems through fair policies and opportunities.\\n\\n6. Accommodation of social diversity: Democracy provides space for different groups to express their interests and resolve disagreements peacefully. Respect for minority rights is essential.\\n\\n7. Dignity and freedom: Democracy recognises the equal worth of citizens and provides opportunities to challenge discrimination and demand respect.\\n\\nThus, democracy should be judged by how effectively it delivers accountability, responsiveness, equality, social accommodation and dignity, rather than by elections alone."
+      },
+      {
+        type: "long",
+        q: "32. How does democracy ensure an accountable, responsive and legitimate government?",
+        a: "Democracy creates several mechanisms through which citizens can influence and scrutinise government.\\n\\n1. Regular elections: Citizens elect their representatives at regular intervals. They can replace representatives who fail to perform satisfactorily.\\n\\n2. Public accountability: Elected leaders are expected to explain their decisions and actions. Citizens can question policies and demand answers about public issues.\\n\\n3. Legislative scrutiny: Representatives discuss government policies and decisions in legislatures. Opposition parties can question the government and highlight mistakes.\\n\\n4. Public participation: Citizens can raise demands, participate in public debate and communicate their problems to elected representatives. This encourages the government to respond to people's needs.\\n\\n5. Transparency: Access to relevant government information enables citizens to understand decisions and examine the use of public resources.\\n\\n6. Legitimacy: Because rulers are chosen through democratic procedures, their authority has a basis in public consent. People can change the government through elections rather than relying on force.\\n\\nHowever, these outcomes are not automatic. Governments may sometimes be slow, unresponsive or poorly managed. Active citizens, independent institutions, free discussion and fair electoral competition help democratic systems work more effectively."
+      },
+      {
+        type: "long",
+        q: "33. Does democracy guarantee economic growth and reduce economic inequality? Explain.",
+        a: "Democracy does not automatically guarantee rapid economic growth or the elimination of economic inequality. Its economic outcomes depend on many factors.\\n\\nEconomic growth: A democratic government can discuss economic policies, allow public scrutiny and change policies when they do not work. However, growth also depends on the availability of natural and human resources, infrastructure, education, technology, investment and the quality of economic policies. Therefore, the presence of democracy alone cannot determine a country's growth rate.\\n\\nEconomic inequality: Democracy gives citizens political equality, including equal voting rights. But political equality does not mean that everyone has equal income or wealth. A small section of society may control a large share of resources while poorer citizens struggle to meet basic needs.\\n\\nWhy inequality may continue:\\n\\n1. Wealth and property can remain concentrated among a limited number of people.\\n2. Access to education, healthcare and employment opportunities may be unequal.\\n3. Economic policies may not benefit all sections of society equally.\\n4. Social disadvantages can restrict opportunities for some groups.\\n\\nDemocratic governments can try to reduce these problems by improving public services, expanding opportunities, supporting disadvantaged groups and making economic decisions accountable to citizens.\\n\\nIn conclusion, democracy creates opportunities for public debate and policy change, but economic growth and greater equality require effective policies and sustained effort."
+      },
+      {
+        type: "long",
+        q: "34. Explain how democracy accommodates social diversity and protects the dignity of citizens.",
+        a: "Democracy is important in societies where people belong to different religions, languages, castes, cultures and social groups. It provides methods for managing these differences peacefully.\\n\\n1. Equal political rights: Citizens have the right to participate in political life and vote, regardless of their social background.\\n\\n2. Freedom of expression: People can express their views and raise concerns about discrimination or unfair treatment through democratic means.\\n\\n3. Discussion and negotiation: Different groups can present their demands, discuss disagreements and search for acceptable solutions.\\n\\n4. Protection of minority rights: Democracy must not mean that the majority can do whatever it wants. The rights and dignity of minorities must also be respected.\\n\\n5. Respect for individual dignity: Democratic principles recognise the equal worth of every person. They support efforts to challenge social practices that deny people equal respect.\\n\\n6. Opportunities for disadvantaged groups: Democratic participation allows women and historically disadvantaged communities to demand fair treatment and greater representation.\\n\\nDemocracy does not automatically eliminate every form of discrimination or conflict. Its success depends on respect for constitutional rights, responsible leadership, public awareness and willingness to resolve differences peacefully. By providing equal rights and opportunities for participation, democracy can strengthen social harmony and individual dignity."
+      },
+      {
+        type: "long",
+        q: "35. Why is democracy considered better than other forms of government despite its limitations?",
+        a: "Democracy has limitations, but it offers important advantages over forms of government in which people have little or no say in choosing their rulers.\\n\\n1. Accountable rulers: Democratic leaders must face elections and can be removed by voters. This gives citizens a means of holding leaders responsible.\\n\\n2. Better decision-making procedures: Democratic decisions may take time because they involve discussion and consultation. These procedures can help identify problems and allow different viewpoints to be considered.\\n\\n3. Peaceful resolution of differences: Democracy provides opportunities to debate disagreements and settle them through elections, discussion and lawful institutions.\\n\\n4. Political equality: Citizens have equal voting rights and opportunities to participate in political life.\\n\\n5. Dignity and freedom: Democratic principles recognise individual rights and allow people to question unfair treatment.\\n\\n6. Scope for correction: If a policy fails or a government performs poorly, citizens can demand changes and choose different representatives in future elections.\\n\\nLimitations: Democratic governments can be slow, and economic inequality, corruption or unresponsive administration may continue. Elections alone cannot guarantee good outcomes.\\n\\nDespite these limitations, democracy provides peaceful ways to hold rulers accountable, protect rights and correct mistakes. Its quality improves when citizens participate actively, institutions function fairly and governments respect the rights of all groups."
+      }
+    ],
+
+    flashcards: [
+      { q: "What is democracy?", a: "A government in which rulers are elected by the people." },
+      { q: "What is an accountable government?", a: "A government answerable to citizens for its actions and decisions." },
+      { q: "What is a responsive government?", a: "A government that pays attention to people's needs and demands." },
+      { q: "What is a legitimate government?", a: "A government whose authority is accepted as valid, especially because it follows democratic procedures." },
+      { q: "What is transparency?", a: "Openness that enables citizens to understand government decisions and functioning." },
+      { q: "What is political equality?", a: "Equal political rights, including equal voting rights." },
+      { q: "What is economic inequality?", a: "Unequal distribution of income, wealth and economic resources." },
+      { q: "What is social diversity?", a: "The presence of different social, cultural, linguistic and religious groups." },
+      { q: "What is individual dignity?", a: "Recognition of every person's worth and right to be treated with respect." },
+      { q: "Does democracy guarantee economic equality?", a: "No. Economic inequalities can continue in democracies." },
+      { q: "Why are elections important?", a: "They let citizens choose representatives and hold governments accountable." },
+      { q: "Why may democratic decisions take time?", a: "They involve discussion, consultation and established procedures." },
+      { q: "How does democracy promote accountability?", a: "Through elections, public scrutiny and opportunities to question representatives." },
+      { q: "What is majority rule?", a: "Decision-making according to the majority while respecting minority rights." },
+      { q: "How does democracy accommodate diversity?", a: "Through dialogue, negotiation, equal rights and respect for minorities." },
+      { q: "What is public opinion?", a: "People's views and attitudes about public issues." },
+          { q: "Does democracy always ensure rapid economic growth?", a: "No. Growth also depends on resources, infrastructure and economic policies." },
+      { q: "How can citizens influence government?", a: "By voting, raising concerns and participating in public debate." },
+      { q: "What does transparency help citizens do?", a: "Understand and scrutinise government decisions." },
+      { q: "What is one benefit of democratic discussion?", a: "It allows different viewpoints to be considered." },
+      { q: "What is one limitation of democracy?", a: "Decision-making may be slow." },
+      { q: "How does democracy support dignity?", a: "It recognises equal worth and gives people opportunities to challenge discrimination." },
+      { q: "What is the role of the opposition?", a: "To question government decisions and present alternatives." },
+      { q: "What does democratic legitimacy come from?", a: "Authority gained through accepted democratic procedures and public participation." },
+      { q: "Why is minority protection important?", a: "It prevents majority rule from becoming domination over other groups." },
+      { q: "Can citizens replace an elected government?", a: "Yes, through elections conducted according to democratic rules." },
+      { q: "Why can inequality continue in democracy?", a: "Wealth and opportunities may remain unevenly distributed." },
+      { q: "How can democracy correct mistakes?", a: "Citizens can demand policy changes and elect different representatives." },
+      { q: "What helps democracy work effectively?", a: "Active citizens, fair institutions, accountability and respect for rights." },
+      { q: "How should democracy be evaluated?", a: "By accountability, responsiveness, legitimacy, equality, dignity and its other outcomes." }
+    ],
+
+    mcqs: [
+      {
+        question: "1. Which is an important expected outcome of democracy?",
+        options: ["Unaccountable rulers", "Accountable government", "Permanent rule by one family", "No public participation"],
+        answer: 1,
+        explanation: "Democracy allows citizens to question representatives and replace them through elections."
+      },
+      {
+        question: "2. What is meant by a responsive government?",
+        options: ["A government that ignores public demands", "A government that responds to people's needs", "A government that cancels elections", "A government that prevents public debate"],
+        answer: 1,
+        explanation: "A responsive government pays attention to citizens' needs and concerns."
+      },
+      {
+        question: "3. Why is a democratic government considered legitimate?",
+        options: ["It never makes mistakes", "It is formed through accepted democratic procedures", "It does not need public support", "It prevents political competition"],
+        answer: 1,
+        explanation: "Democratic authority is based on procedures that allow citizens to choose their representatives."
+      },
+      {
+        question: "4. Which of the following is an example of political equality?",
+        options: ["Only wealthy people can vote", "Citizens have equal voting rights", "Only one social group can contest elections", "Votes are counted differently according to wealth"],
+        answer: 1,
+        explanation: "Political equality includes equal voting rights for citizens."
+      },
+      {
+        question: "5. Does democracy automatically eliminate economic inequality?",
+        options: ["Yes, in every country", "No, economic inequality may continue", "Yes, immediately after an election", "Only when elections are cancelled"],
+        answer: 1,
+        explanation: "Equal political rights do not automatically produce equal wealth or income."
+      },
+      {
+        question: "6. Why can democratic decision-making be slow?",
+        options: ["It requires no discussion", "It involves discussion and established procedures", "Citizens are never consulted", "All decisions are made by one person"],
+        answer: 1,
+        explanation: "Democratic procedures often require debate, consultation and consideration of different views."
+      },
+      {
+        question: "7. What is transparency in government?",
+        options: ["Keeping every decision secret", "Making government functioning understandable to citizens", "Preventing access to information", "Avoiding public accountability"],
+        answer: 1,
+        explanation: "Transparency helps citizens understand and examine government decisions."
+      },
+      {
+        question: "8. Which is a way citizens can hold rulers accountable?",
+        options: ["Voting in elections", "Giving up all political rights", "Avoiding public issues", "Preventing all public discussion"],
+        answer: 0,
+        explanation: "Elections allow citizens to choose representatives and remove those who perform poorly."
+      },
+      {
+        question: "9. Which factor affects economic development besides the type of government?",
+        options: ["Availability of resources and infrastructure", "The absence of all education", "Whether citizens have no rights", "The cancellation of public discussion"],
+        answer: 0,
+        explanation: "Economic development depends on many factors, including resources, infrastructure and policies."
+      },
+      {
+        question: "10. How can democracy help accommodate social diversity?",
+        options: ["By silencing minority groups", "By encouraging dialogue and respecting rights", "By allowing discrimination without limits", "By ending all public participation"],
+        answer: 1,
+        explanation: "Dialogue, negotiation and equal rights help diverse groups live together peacefully."
+      },
+      {
+        question: "11. What does individual dignity mean?",
+        options: ["Treating some people as naturally superior", "Recognising every person's worth", "Giving rights only to leaders", "Preventing people from expressing opinions"],
+        answer: 1,
+        explanation: "Dignity means recognising the equal worth of every individual."
+      },
+      {
+        question: "12. What is a major role of the opposition in a democracy?",
+        options: ["Questioning government decisions", "Cancelling citizens' voting rights", "Preventing all legislation", "Replacing every public institution"],
+        answer: 0,
+        explanation: "Opposition parties scrutinise government actions and present alternative policies."
+      },
+      {
+        question: "13. What does majority rule require in a democracy?",
+        options: ["Ignoring every minority right", "Making decisions according to the majority while respecting rights", "Removing elections", "Giving permanent power to one group"],
+        answer: 1,
+        explanation: "Democratic majority rule must operate alongside the protection of minority rights."
+      },
+      {
+        question: "14. Which is a limitation of democracy?",
+        options: ["It always eliminates inequality", "Decisions may take time", "Citizens can never change rulers", "It does not permit discussion"],
+        answer: 1,
+        explanation: "Consultation and democratic procedures can make decision-making slower."
+      },
+      {
+        question: "15. What can citizens do if a government performs poorly?",
+        options: ["Demand accountability and vote in elections", "Permanently give up their rights", "Stop all public discussion", "Make elections unnecessary"],
+        answer: 0,
+        explanation: "Citizens can question leaders and choose different representatives in future elections."
+      },
+      {
+        question: "16. Which statement about democracy and economic growth is correct?",
+        options: ["Democracy guarantees the same growth rate everywhere", "Economic growth depends on several factors", "Economic growth never depends on policies", "Democracy automatically removes poverty"],
+        answer: 1,
+        explanation: "Resources, infrastructure, education and economic policies also influence growth."
+      },
+      {
+        question: "17. What does public opinion refer to?",
+        options: ["The views of people on public issues", "Only the private views of one ruler", "Court judgments alone", "The decisions of businesses alone"],
+        answer: 0,
+        explanation: "Public opinion consists of people's views and attitudes about public matters."
+      },
+      {
+        question: "18. Which practice can strengthen democratic functioning?",
+        options: ["Public scrutiny and informed participation", "Hiding every government decision", "Preventing peaceful criticism", "Ignoring citizens' grievances"],
+        answer: 0,
+        explanation: "Informed citizens and public scrutiny encourage transparency and accountability."
+      },
+      {
+        question: "19. Why are minority rights important in a democracy?",
+        options: ["They allow the majority to dominate everyone", "They protect groups from unfair domination", "They remove equal rights", "They make public participation impossible"],
+        answer: 1,
+        explanation: "Democracy must protect the rights and dignity of minority groups as well as respect majority decisions."
+      },
+      {
+        question: "20. Which is the best way to judge the outcomes of democracy?",
+        options: ["By elections alone", "By accountability, responsiveness, legitimacy and respect for rights", "By the power of one leader alone", "By whether every decision is immediate"],
+        answer: 1,
+        explanation: "Democracy should be evaluated by how its institutions function and how well they serve citizens."
+      }
+    ]
+  }
+});
+
+console.log("Civics Chapter 5 — Outcomes of Democracy loaded successfully.");
