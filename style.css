@@ -180,6 +180,7 @@ textarea {
 
 /* SIDEBAR */
 
+
 .sidebar {
   position: fixed;
   top: 72px;
@@ -194,7 +195,12 @@ textarea {
   overflow-y: auto;
   background: var(--bg);
   border-right: 1px solid var(--border);
+  transform: translateX(-105%);
   transition: transform 0.25s ease, background 0.25s ease;
+}
+
+.sidebar.open {
+  transform: translateX(0);
 }
 
 .sidebar-heading {
@@ -250,6 +256,7 @@ textarea {
 .overlay {
   display: none;
 }
+
 
 /* MAIN CONTENT */
 
