@@ -1109,7 +1109,7 @@ visibility: visible;
 @media (prefers-reduced-motion: reduce) {
 .sidebar,
 #sidebarOverlay {
-transition-duration: 0.01ms;
+transition-duration: 0.10ms;
 }
 }
 
