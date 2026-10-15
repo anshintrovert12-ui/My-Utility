@@ -1750,7 +1750,7 @@ Object.assign(window.CONTENT.Mathematics.chapters, {
       {q:"If a = 3 and d = 0, what is the 10th term?",a:"a₁₀ = 3 + 9(0) = 3.",type:"Very Short"},
       {q:"Find the sum of the first 20 even positive integers.",a:"S₂₀ = 20(20 + 1) = 420.",type:"Very Short"},
       {q:"Find the common difference if a₁ = 5 and a₂ = 12.",a:"d = 12 − 5 = 7.",type:"Very Short"},
-      {q:"Find the 25th term of 100, 96, 92, ...",a₂₅:"",a:"a₂₅ = 100 + 24(−4) = 4.",type:"Very Short"},
+      {q:"Find the 25th term of 100, 96, 92, ...",a:"a₂₅ = 100 + 24(−4) = 4.",type:"Very Short"},
       {q:"Find the sum of the first 10 terms of an AP with a = 2 and d = 2.",a:"S₁₀ = 10/2 [2(2) + 9(2)] = 5(22) = 110.",type:"Very Short"},
 
       {q:"Find the 25th term of the AP 5, 9, 13, 17, ...",a:"a = 5, d = 4. a₂₅ = 5 + 24(4) = 101.",type:"Short"},
