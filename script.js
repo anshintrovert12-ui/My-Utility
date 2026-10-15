@@ -1405,3 +1405,24 @@ function applyTheme(theme) {
   }
 })();
 
+/* Fix: Close sidebar and remove dark overlay */
+(() => {
+  const sidebar = document.getElementById("sidebar");
+  const overlay = document.getElementById("sidebarOverlay");
+
+  if (!sidebar || !overlay) return;
+
+  function closeSidebar() {
+    sidebar.classList.remove("open");
+    overlay.classList.remove("open");
+  }
+
+  overlay.addEventListener("click", closeSidebar);
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeSidebar();
+    }
+  });
+})();
+
