@@ -1313,3 +1313,77 @@
     init();
   }
 })();
+
+/* Class 10 Hub — Theme Toggle Fix */
+(function () {
+  function setupThemeToggle() {
+    const themeButton = document.getElementById("themeBtn");
+    const darkButton = document.getElementById("darkMode");
+    const lightButton = document.getElementById("lightMode");
+
+    function setTheme(theme) {
+      const isLight = theme === "light";
+
+      document.body.classList.toggle("light-mode", isLight);
+      document.documentElement.style.colorScheme =
+        isLight ? "light" : "dark";
+
+      try {
+        localStorage.setItem("class10hub-theme", theme);
+      } catch (error) {}
+
+      if (themeButton) {
+        themeButton.textContent = isLight ? "🌙" : "☀️";
+        themeButton.setAttribute(
+          "aria-label",
+          isLight ? "Switch to dark mode" : "Switch to light mode"
+        );
+        themeButton.setAttribute(
+          "title",
+          isLight ? "Switch to dark mode" : "Switch to light mode"
+        );
+      }
+    }
+
+    let savedTheme = "dark";
+    try {
+      savedTheme = localStorage.getItem("class10hub-theme") || "dark";
+    } catch (error) {}
+
+    setTheme(savedTheme);
+
+    if (themeButton && !themeButton.dataset.themeFixBound) {
+      themeButton.dataset.themeFixBound = "true";
+      themeButton.addEventListener("click", function () {
+        setTheme(
+          document.body.classList.contains("light-mode")
+            ? "dark"
+            : "light"
+        );
+      });
+    }
+
+    if (darkButton && !darkButton.dataset.themeFixBound) {
+      darkButton.dataset.themeFixBound = "true";
+      darkButton.addEventListener("click", function () {
+        setTheme("dark");
+      });
+    }
+
+    if (lightButton && !lightButton.dataset.themeFixBound) {
+      lightButton.dataset.themeFixBound = "true";
+      lightButton.addEventListener("click", function () {
+        setTheme("light");
+      });
+    }
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", setupThemeToggle, {
+      once: true
+    });
+  } else {
+    setupThemeToggle();
+  }
+})();
+
