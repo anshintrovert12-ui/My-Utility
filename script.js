@@ -251,17 +251,35 @@
     });
   }
 
-  function applyTheme(theme) {
-    const light = theme === "light";
-    document.documentElement.dataset.theme = light ? "light" : "dark";
-    document.body.classList.toggle("light-theme", light);
-    document.body.classList.toggle("dark-theme", !light);
-    const button = $("themeBtn");
-        if (button) button.textContent = light ? "☀️" : "🌙";
-    $("darkMode")?.classList.toggle("active", !light);
-    $("lightMode")?.classList.toggle("active", light);
-    localStorage.setItem(STORAGE.theme, light ? "light" : "dark");
+  
+function applyTheme(theme) {
+  const light = theme === "light";
+
+  document.documentElement.dataset.theme = light ? "light" : "dark";
+  document.documentElement.style.colorScheme = light ? "light" : "dark";
+
+  document.body.classList.toggle("light-mode", light);
+  document.body.classList.toggle("light-theme", light);
+  document.body.classList.toggle("dark-theme", !light);
+
+  const button = $("themeBtn");
+  if (button) {
+    button.textContent = light ? "🌙" : "☀️";
+    button.setAttribute(
+      "aria-label",
+      light ? "Switch to dark mode" : "Switch to light mode"
+    );
   }
+
+  $("darkMode")?.classList.toggle("active", !light);
+  $("lightMode")?.classList.toggle("active", light);
+
+  try {
+    localStorage.setItem(STORAGE.theme, light ? "light" : "dark");
+    localStorage.setItem("class10hub-theme", light ? "light" : "dark");
+  } catch (error) {}
+}
+   
 
   function initTheme() {
     let theme = "dark";
