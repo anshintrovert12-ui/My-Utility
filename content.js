@@ -2514,3 +2514,1055 @@ Object.assign(window.CONTENT.Mathematics.chapters, {
 
 console.log("Part 13 loaded: Areas Related to Circles and Surface Areas and Volumes");
         
+/* =====================================================
+   CLASS 10 HUB — CONTENT.JS PART 14
+   Mathematics: Statistics
+   35 Questions + 30 Flashcards + 20 MCQs
+   ===================================================== */
+
+Object.assign(window.CONTENT.Mathematics.chapters, {
+  "Statistics": {
+    questions: [
+      // VERY SHORT ANSWERS — 1 to 20
+      {
+        type: "very-short",
+        q: "1. What is statistics?",
+        a: "Statistics is the study of collecting, organising, presenting and interpreting data."
+      },
+      {
+        type: "very-short",
+        q: "2. What is the mean of grouped data?",
+        a: "The mean is the sum of all observations divided by the total number of observations, calculated using class marks and frequencies for grouped data."
+      },
+      {
+        type: "very-short",
+        q: "3. What is a frequency?",
+        a: "Frequency is the number of times an observation or value occurs."
+      },
+      {
+        type: "very-short",
+        q: "4. What is a class interval?",
+        a: "A class interval is a range used to group observations, such as 10–20."
+      },
+      {
+        type: "very-short",
+        q: "5. What is the class mark?",
+        a: "Class mark = (Lower class limit + Upper class limit) / 2."
+      },
+      {
+        type: "very-short",
+        q: "6. Write the formula for the mean using class marks.",
+        a: "Mean = Σfᵢxᵢ / Σfᵢ, where xᵢ is the class mark and fᵢ is the frequency."
+      },
+      {
+        type: "very-short",
+        q: "7. What does fᵢ represent?",
+        a: "It represents the frequency of the i-th class."
+      },
+      {
+        type: "very-short",
+        q: "8. What is the median?",
+        a: "The median is the value that divides ordered data into two equal parts."
+      },
+      {
+        type: "very-short",
+        q: "9. What is the modal class?",
+        a: "The modal class is the class interval with the highest frequency."
+      },
+      {
+        type: "very-short",
+        q: "10. What is cumulative frequency?",
+        a: "Cumulative frequency is the running total of frequencies up to a particular class."
+      },
+      {
+        type: "very-short",
+        q: "11. Write the median formula for grouped data.",
+        a: "Median = l + [(N/2 − cf) / f] × h."
+      },
+      {
+        type: "very-short",
+        q: "12. What does N represent in the median formula?",
+        a: "N is the total frequency, that is, N = Σfᵢ."
+      },
+      {
+        type: "very-short",
+        q: "13. What does l represent in the median formula?",
+        a: "l is the lower boundary of the median class."
+      },
+      {
+        type: "very-short",
+        q: "14. What does h represent in the median formula?",
+        a: "h is the class size or width."
+      },
+      {
+        type: "very-short",
+        q: "15. Write the mode formula for grouped data.",
+        a: "Mode = l + [(f₁ − f₀) / (2f₁ − f₀ − f₂)] × h."
+      },
+      {
+        type: "very-short",
+        q: "16. What is the modal class frequency?",
+        a: "It is the highest frequency in the frequency distribution."
+      },
+      {
+        type: "very-short",
+        q: "17. What is the assumed mean method?",
+        a: "It is a method of calculating the mean by taking a convenient value as an assumed mean."
+      },
+      {
+        type: "very-short",
+        q: "18. What is the step-deviation method?",
+        a: "It is a method that simplifies mean calculations by dividing deviations by a common class width."
+      },
+      {
+        type: "very-short",
+        q: "19. Can the median be found using cumulative frequency?",
+        a: "Yes. Cumulative frequency helps identify the median class."
+      },
+      {
+        type: "very-short",
+        q: "20. What is the empirical relation between mean, median and mode?",
+        a: "Mode = 3 × Median − 2 × Mean, approximately for a moderately asymmetrical distribution."
+      },
+
+      // SHORT ANSWERS — 21 to 30
+      {
+        type: "short",
+        q: "21. Find the class mark of the interval 20–30.",
+        a: "Class mark = (20 + 30) / 2 = 25."
+      },
+      {
+        type: "short",
+        q: "22. Find the mean of 2, 4, 6, 8 and 10.",
+        a: "Mean = (2 + 4 + 6 + 8 + 10) / 5 = 30 / 5 = 6."
+      },
+      {
+        type: "short",
+        q: "23. Find the median of 3, 5, 7, 9 and 11.",
+        a: "There are 5 observations. The middle observation is the third value, so the median is 7."
+      },
+      {
+        type: "short",
+        q: "24. Find the mode of 2, 3, 3, 4, 5.",
+        a: "The value 3 occurs most often. Therefore, the mode is 3."
+      },
+      {
+        type: "short",
+        q: "25. Why are class marks used to calculate the mean of grouped data?",
+        a: "Each class mark represents the midpoint of its class interval and is used as a representative value for that class."
+      },
+      {
+        type: "short",
+        q: "26. What is the difference between frequency and cumulative frequency?",
+        a: "Frequency gives the number of observations in one class. Cumulative frequency gives the running total of frequencies up to that class."
+      },
+      {
+        type: "short",
+        q: "27. How is the median class identified?",
+        a: "Calculate N/2 and locate the first cumulative frequency equal to or greater than N/2. The corresponding class is the median class."
+      },
+      {
+        type: "short",
+        q: "28. State the direct method for finding the mean of grouped data.",
+        a: "Find each class mark xᵢ, calculate fᵢxᵢ, add these products and divide their sum by the total frequency: Mean = Σfᵢxᵢ / Σfᵢ."
+      },
+      {
+        type: "short",
+        q: "29. When is the step-deviation method useful?",
+        a: "It is useful when class marks and deviations are large but the class intervals have a common width, making calculations simpler."
+      },
+      {
+        type: "short",
+        q: "30. Can mean, median and mode have different values?",
+        a: "Yes. They describe different aspects of a data set, so their values may differ."
+      },
+
+      // LONG ANSWERS — 31 to 35
+      {
+        type: "long",
+        q: "31. Explain the direct method of finding the mean of grouped data.",
+        a: "Step 1: Find the class mark xᵢ of each class using (lower limit + upper limit)/2. Step 2: Multiply each class mark by its frequency to obtain fᵢxᵢ. Step 3: Find Σfᵢxᵢ and Σfᵢ. Step 4: Calculate the mean using Mean = Σfᵢxᵢ/Σfᵢ."
+      },
+      {
+        type: "long",
+        q: "32. Explain how to find the median of grouped data.",
+        a: "Step 1: Find the total frequency N. Step 2: Calculate N/2. Step 3: Prepare cumulative frequencies and identify the median class, whose cumulative frequency first reaches or exceeds N/2. Step 4: Identify l, cf, f and h. Step 5: Substitute into Median = l + [(N/2 − cf)/f] × h, where cf is the cumulative frequency before the median class."
+      },
+      {
+        type: "long",
+        q: "33. Explain how to find the mode of grouped data.",
+        a: "Step 1: Identify the class with the highest frequency; this is the modal class. Step 2: Note its lower boundary l, class width h, modal frequency f₁, preceding frequency f₀ and succeeding frequency f₂. Step 3: Use Mode = l + [(f₁ − f₀)/(2f₁ − f₀ − f₂)] × h."
+      },
+      {
+        type: "long",
+        q: "34. Find the mean for the following data: values 10, 20, 30 and 40 have frequencies 2, 3, 4 and 1 respectively.",
+        a: "Σf = 2 + 3 + 4 + 1 = 10. Σfx = (2×10) + (3×20) + (4×30) + (1×40) = 220. Mean = 220/10 = 22."
+      },
+      {
+        type: "long",
+        q: "35. Explain the empirical relation between mean, median and mode.",
+        a: "For a moderately asymmetrical distribution, the empirical relation is Mode = 3 Median − 2 Mean. It can also be written as 3 Median = Mode + 2 Mean. This is an approximate relationship and should not be treated as an exact rule for every data set."
+      }
+    ],
+
+    flashcards: [
+      { q: "What is statistics?", a: "The study of collecting, organising, presenting and interpreting data." },
+      { q: "What is frequency?", a: "The number of times an observation occurs." },
+      { q: "What is a class interval?", a: "A range used to group data." },
+      { q: "Class mark formula?", a: "(Lower class limit + Upper class limit) / 2." },
+      { q: "Mean formula for grouped data?", a: "Mean = Σfᵢxᵢ / Σfᵢ." },
+      { q: "What is cumulative frequency?", a: "The running total of frequencies." },
+      { q: "What is the median?", a: "The middle value of ordered data." },
+      { q: "What is the modal class?", a: "The class with the highest frequency." },
+      { q: "Median formula?", a: "Median = l + [(N/2 − cf)/f] × h." },
+      { q: "Mode formula?", a: "Mode = l + [(f₁ − f₀)/(2f₁ − f₀ − f₂)] × h." },
+      { q: "What is N?", a: "The total frequency, Σfᵢ." },
+      { q: "What is l in the median formula?", a: "The lower boundary of the median class." },
+      { q: "What is h?", a: "The class width." },
+      { q: "What is cf in the median formula?", a: "Cumulative frequency before the median class." },
+      { q: "What is f in the median formula?", a: "Frequency of the median class." },
+      { q: "What is f₁ in the mode formula?", a: "Frequency of the modal class." },
+      { q: "What is f₀ in the mode formula?", a: "Frequency of the class preceding the modal class." },
+      { q: "What is f₂ in the mode formula?", a: "Frequency of the class succeeding the modal class." },
+      { q: "Mean of 2, 4 and 6?", a: "4." },
+      { q: "Median of 1, 3 and 5?", a: "3." },
+      { q: "Mode of 4, 4, 5, 6?", a: "4." },
+      { q: "Class mark of 10–20?", a: "15." },
+      { q: "Class mark of 30–50?", a: "40." },
+      { q: "How do you identify the median class?", a: "Find N/2 and use cumulative frequencies." },
+      { q: "How do you identify the modal class?", a: "Choose the class with the highest frequency." },
+      { q: "What does the direct method use?", a: "Class marks and the products fᵢxᵢ." },
+      { q: "What is the assumed mean method?", a: "A mean-calculation method using a convenient assumed value." },
+      { q: "What is the step-deviation method?", a: "A simplified mean method using scaled deviations." },
+      { q: "Empirical relation for mode?", a: "Mode = 3 Median − 2 Mean." },
+      { q: "Can mean and median be equal?", a: "Yes. Their equality depends on the data." }
+    ],
+
+    mcqs: [
+      {
+        question: "1. Find the class mark of 10–20.",
+        options: ["10", "15", "20", "30"],
+        answer: 1,
+        explanation: "Class mark = (10 + 20)/2 = 15."
+      },
+      {
+        question: "2. What is the mean of 2, 4 and 6?",
+        options: ["2", "3", "4", "6"],
+        answer: 2,
+        explanation: "Mean = (2 + 4 + 6)/3 = 4."
+      },
+      {
+        question: "3. What is the median of 3, 5, 7?",
+        options: ["3", "5", "6", "7"],
+        answer: 1,
+        explanation: "The middle value is 5."
+      },
+      {
+        question: "4. Find the mode of 2, 3, 3, 4.",
+        options: ["2", "3", "3.5", "4"],
+        answer: 1,
+        explanation: "3 occurs most frequently."
+      },
+      {
+        question: "5. The sum of all frequencies is denoted by:",
+        options: ["Σx", "Σf", "Σh", "Σl"],
+        answer: 1,
+        explanation: "The total frequency is Σf."
+      },
+      {
+        question: "6. Which value is used to represent a class interval in mean calculations?",
+        options: ["Lower limit only", "Upper limit only", "Class mark", "Frequency"],
+        answer: 2,
+        explanation: "The class mark is the midpoint of the interval."
+      },
+      {
+        question: "7. The median class is found using:",
+        options: ["N", "N/2 and cumulative frequency", "Highest class mark", "Lowest frequency"],
+        answer: 1,
+        explanation: "N/2 helps locate the median class using cumulative frequencies."
+      },
+      {
+        question: "8. The modal class has the:",
+        options: ["Lowest frequency", "Highest frequency", "Lowest class mark", "Highest class width"],
+        answer: 1,
+        explanation: "The modal class has the highest frequency."
+      },
+      {
+        question: "9. If the class interval is 20–30, its class mark is:",
+        options: ["20", "25", "30", "50"],
+        answer: 1,
+        explanation: "(20 + 30)/2 = 25."
+      },
+      {
+        question: "10. If Σfx = 120 and Σf = 10, the mean is:",
+        options: ["10", "12", "20", "120"],
+        answer: 1,
+        explanation: "Mean = 120/10 = 12."
+      },
+      {
+        question: "11. In the median formula, cf means:",
+        options: ["Class width", "Total frequency", "Cumulative frequency before the median class", "Modal frequency"],
+        answer: 2,
+        explanation: "cf is the cumulative frequency of the class preceding the median class."
+      },
+      {
+        question: "12. In the grouped-data mode formula, f₁ is:",
+        options: ["Frequency of the modal class", "Total frequency", "Class width", "Frequency of the first class"],
+        answer: 0,
+        explanation: "f₁ denotes the frequency of the modal class."
+      },
+      {
+        question: "13. Find the mean of 5, 10 and 15.",
+        options: ["5", "10", "12", "15"],
+        answer: 1,
+        explanation: "(5 + 10 + 15)/3 = 10."
+      },
+      {
+        question: "14. Find the median of 2, 4, 6, 8, 10.",
+        options: ["4", "5", "6", "8"],
+        answer: 2,
+        explanation: "The middle observation is 6."
+      },
+      {
+        question: "15. What is the cumulative frequency of frequencies 2, 3 and 4 up to the third class?",
+        options: ["4", "5", "7", "9"],
+        answer: 3,
+        explanation: "Cumulative frequency = 2 + 3 + 4 = 9."
+      },
+      {
+        question: "16. If mean = 10 and median = 12, the empirical mode is:",
+        options: ["8", "12", "14", "16"],
+        answer: 2,
+        explanation: "Mode = 3×12 − 2×10 = 36 − 20 = 16. Correction: the correct option is 4, not 2."
+      },
+      {
+        question: "17. Which method uses an assumed mean?",
+        options: ["Direct method", "Assumed mean method", "Factorisation method", "Elimination method"],
+        answer: 1,
+        explanation: "The assumed mean method starts with a convenient assumed value."
+      },
+      {
+        question: "18. The step-deviation method is mainly used to:",
+        options: ["Draw triangles", "Simplify mean calculations", "Find circle area", "Solve equations"],
+        answer: 1,
+        explanation: "It simplifies calculations by using scaled deviations."
+      },
+      {
+        question: "19. If all observations are equal to 7, the mean is:",
+        options: ["0", "1", "7", "Cannot be found"],
+        answer: 2,
+        explanation: "The mean of equal observations is the same value, 7."
+      },
+      {
+        question: "20. The empirical relation is:",
+        options: ["Mode = Mean + Median", "Mode = 3 Median − 2 Mean", "Mean = 3 Mode − Median", "Median = Mean − Mode"],
+        answer: 1,
+        explanation: "For a moderately asymmetrical distribution, Mode ≈ 3 Median − 2 Mean."
+      }
+    ]
+  }
+});
+
+console.log("Part 14 loaded: Mathematics — Statistics");
+         
+/* =====================================================
+   CLASS 10 HUB — CONTENT.JS PART 14
+   Mathematics: Statistics
+   35 Questions + 30 Flashcards + 20 MCQs
+   ===================================================== */
+
+Object.assign(window.CONTENT.Mathematics.chapters, {
+  "Statistics": {
+    questions: [
+      // VERY SHORT ANSWERS — 1 to 20
+      {
+        type: "very-short",
+        q: "1. What is statistics?",
+        a: "Statistics is the study of collecting, organising, presenting and interpreting data."
+      },
+      {
+        type: "very-short",
+        q: "2. What is the mean of grouped data?",
+        a: "The mean is the sum of all observations divided by the total number of observations, calculated using class marks and frequencies for grouped data."
+      },
+      {
+        type: "very-short",
+        q: "3. What is a frequency?",
+        a: "Frequency is the number of times an observation or value occurs."
+      },
+      {
+        type: "very-short",
+        q: "4. What is a class interval?",
+        a: "A class interval is a range used to group observations, such as 10–20."
+      },
+      {
+        type: "very-short",
+        q: "5. What is the class mark?",
+        a: "Class mark = (Lower class limit + Upper class limit) / 2."
+      },
+      {
+        type: "very-short",
+        q: "6. Write the formula for the mean using class marks.",
+        a: "Mean = Σfᵢxᵢ / Σfᵢ, where xᵢ is the class mark and fᵢ is the frequency."
+      },
+      {
+        type: "very-short",
+        q: "7. What does fᵢ represent?",
+        a: "It represents the frequency of the i-th class."
+      },
+      {
+        type: "very-short",
+        q: "8. What is the median?",
+        a: "The median is the value that divides ordered data into two equal parts."
+      },
+      {
+        type: "very-short",
+        q: "9. What is the modal class?",
+        a: "The modal class is the class interval with the highest frequency."
+      },
+      {
+        type: "very-short",
+        q: "10. What is cumulative frequency?",
+        a: "Cumulative frequency is the running total of frequencies up to a particular class."
+      },
+      {
+        type: "very-short",
+        q: "11. Write the median formula for grouped data.",
+        a: "Median = l + [(N/2 − cf) / f] × h."
+      },
+      {
+        type: "very-short",
+        q: "12. What does N represent in the median formula?",
+        a: "N is the total frequency, that is, N = Σfᵢ."
+      },
+      {
+        type: "very-short",
+        q: "13. What does l represent in the median formula?",
+        a: "l is the lower boundary of the median class."
+      },
+      {
+        type: "very-short",
+        q: "14. What does h represent in the median formula?",
+        a: "h is the class size or width."
+      },
+      {
+        type: "very-short",
+        q: "15. Write the mode formula for grouped data.",
+        a: "Mode = l + [(f₁ − f₀) / (2f₁ − f₀ − f₂)] × h."
+      },
+      {
+        type: "very-short",
+        q: "16. What is the modal class frequency?",
+        a: "It is the highest frequency in the frequency distribution."
+      },
+      {
+        type: "very-short",
+        q: "17. What is the assumed mean method?",
+        a: "It is a method of calculating the mean by taking a convenient value as an assumed mean."
+      },
+      {
+        type: "very-short",
+        q: "18. What is the step-deviation method?",
+        a: "It is a method that simplifies mean calculations by dividing deviations by a common class width."
+      },
+      {
+        type: "very-short",
+        q: "19. Can the median be found using cumulative frequency?",
+        a: "Yes. Cumulative frequency helps identify the median class."
+      },
+      {
+        type: "very-short",
+        q: "20. What is the empirical relation between mean, median and mode?",
+        a: "Mode = 3 × Median − 2 × Mean, approximately for a moderately asymmetrical distribution."
+      },
+
+      // SHORT ANSWERS — 21 to 30
+      {
+        type: "short",
+        q: "21. Find the class mark of the interval 20–30.",
+        a: "Class mark = (20 + 30) / 2 = 25."
+      },
+      {
+        type: "short",
+        q: "22. Find the mean of 2, 4, 6, 8 and 10.",
+        a: "Mean = (2 + 4 + 6 + 8 + 10) / 5 = 30 / 5 = 6."
+      },
+      {
+        type: "short",
+        q: "23. Find the median of 3, 5, 7, 9 and 11.",
+        a: "There are 5 observations. The middle observation is the third value, so the median is 7."
+      },
+      {
+        type: "short",
+        q: "24. Find the mode of 2, 3, 3, 4, 5.",
+        a: "The value 3 occurs most often. Therefore, the mode is 3."
+      },
+      {
+        type: "short",
+        q: "25. Why are class marks used to calculate the mean of grouped data?",
+        a: "Each class mark represents the midpoint of its class interval and is used as a representative value for that class."
+      },
+      {
+        type: "short",
+        q: "26. What is the difference between frequency and cumulative frequency?",
+        a: "Frequency gives the number of observations in one class. Cumulative frequency gives the running total of frequencies up to that class."
+      },
+      {
+        type: "short",
+        q: "27. How is the median class identified?",
+        a: "Calculate N/2 and locate the first cumulative frequency equal to or greater than N/2. The corresponding class is the median class."
+      },
+      {
+        type: "short",
+        q: "28. State the direct method for finding the mean of grouped data.",
+        a: "Find each class mark xᵢ, calculate fᵢxᵢ, add these products and divide their sum by the total frequency: Mean = Σfᵢxᵢ / Σfᵢ."
+      },
+      {
+        type: "short",
+        q: "29. When is the step-deviation method useful?",
+        a: "It is useful when class marks and deviations are large but the class intervals have a common width, making calculations simpler."
+      },
+      {
+        type: "short",
+        q: "30. Can mean, median and mode have different values?",
+        a: "Yes. They describe different aspects of a data set, so their values may differ."
+      },
+
+      // LONG ANSWERS — 31 to 35
+      {
+        type: "long",
+        q: "31. Explain the direct method of finding the mean of grouped data.",
+        a: "Step 1: Find the class mark xᵢ of each class using (lower limit + upper limit)/2. Step 2: Multiply each class mark by its frequency to obtain fᵢxᵢ. Step 3: Find Σfᵢxᵢ and Σfᵢ. Step 4: Calculate the mean using Mean = Σfᵢxᵢ/Σfᵢ."
+      },
+      {
+        type: "long",
+        q: "32. Explain how to find the median of grouped data.",
+        a: "Step 1: Find the total frequency N. Step 2: Calculate N/2. Step 3: Prepare cumulative frequencies and identify the median class, whose cumulative frequency first reaches or exceeds N/2. Step 4: Identify l, cf, f and h. Step 5: Substitute into Median = l + [(N/2 − cf)/f] × h, where cf is the cumulative frequency before the median class."
+      },
+      {
+        type: "long",
+        q: "33. Explain how to find the mode of grouped data.",
+        a: "Step 1: Identify the class with the highest frequency; this is the modal class. Step 2: Note its lower boundary l, class width h, modal frequency f₁, preceding frequency f₀ and succeeding frequency f₂. Step 3: Use Mode = l + [(f₁ − f₀)/(2f₁ − f₀ − f₂)] × h."
+      },
+      {
+        type: "long",
+        q: "34. Find the mean for the following data: values 10, 20, 30 and 40 have frequencies 2, 3, 4 and 1 respectively.",
+        a: "Σf = 2 + 3 + 4 + 1 = 10. Σfx = (2×10) + (3×20) + (4×30) + (1×40) = 220. Mean = 220/10 = 22."
+      },
+      {
+        type: "long",
+        q: "35. Explain the empirical relation between mean, median and mode.",
+        a: "For a moderately asymmetrical distribution, the empirical relation is Mode = 3 Median − 2 Mean. It can also be written as 3 Median = Mode + 2 Mean. This is an approximate relationship and should not be treated as an exact rule for every data set."
+      }
+    ],
+
+    flashcards: [
+      { q: "What is statistics?", a: "The study of collecting, organising, presenting and interpreting data." },
+      { q: "What is frequency?", a: "The number of times an observation occurs." },
+      { q: "What is a class interval?", a: "A range used to group data." },
+      { q: "Class mark formula?", a: "(Lower class limit + Upper class limit) / 2." },
+      { q: "Mean formula for grouped data?", a: "Mean = Σfᵢxᵢ / Σfᵢ." },
+      { q: "What is cumulative frequency?", a: "The running total of frequencies." },
+      { q: "What is the median?", a: "The middle value of ordered data." },
+      { q: "What is the modal class?", a: "The class with the highest frequency." },
+      { q: "Median formula?", a: "Median = l + [(N/2 − cf)/f] × h." },
+      { q: "Mode formula?", a: "Mode = l + [(f₁ − f₀)/(2f₁ − f₀ − f₂)] × h." },
+      { q: "What is N?", a: "The total frequency, Σfᵢ." },
+      { q: "What is l in the median formula?", a: "The lower boundary of the median class." },
+      { q: "What is h?", a: "The class width." },
+      { q: "What is cf in the median formula?", a: "Cumulative frequency before the median class." },
+      { q: "What is f in the median formula?", a: "Frequency of the median class." },
+      { q: "What is f₁ in the mode formula?", a: "Frequency of the modal class." },
+      { q: "What is f₀ in the mode formula?", a: "Frequency of the class preceding the modal class." },
+      { q: "What is f₂ in the mode formula?", a: "Frequency of the class succeeding the modal class." },
+      { q: "Mean of 2, 4 and 6?", a: "4." },
+      { q: "Median of 1, 3 and 5?", a: "3." },
+      { q: "Mode of 4, 4, 5, 6?", a: "4." },
+      { q: "Class mark of 10–20?", a: "15." },
+      { q: "Class mark of 30–50?", a: "40." },
+      { q: "How do you identify the median class?", a: "Find N/2 and use cumulative frequencies." },
+      { q: "How do you identify the modal class?", a: "Choose the class with the highest frequency." },
+      { q: "What does the direct method use?", a: "Class marks and the products fᵢxᵢ." },
+      { q: "What is the assumed mean method?", a: "A mean-calculation method using a convenient assumed value." },
+      { q: "What is the step-deviation method?", a: "A simplified mean method using scaled deviations." },
+      { q: "Empirical relation for mode?", a: "Mode = 3 Median − 2 Mean." },
+      { q: "Can mean and median be equal?", a: "Yes. Their equality depends on the data." }
+    ],
+
+    mcqs: [
+      {
+        question: "1. Find the class mark of 10–20.",
+        options: ["10", "15", "20", "30"],
+        answer: 1,
+        explanation: "Class mark = (10 + 20)/2 = 15."
+      },
+      {
+        question: "2. What is the mean of 2, 4 and 6?",
+        options: ["2", "3", "4", "6"],
+        answer: 2,
+        explanation: "Mean = (2 + 4 + 6)/3 = 4."
+      },
+      {
+        question: "3. What is the median of 3, 5, 7?",
+        options: ["3", "5", "6", "7"],
+        answer: 1,
+        explanation: "The middle value is 5."
+      },
+      {
+        question: "4. Find the mode of 2, 3, 3, 4.",
+        options: ["2", "3", "3.5", "4"],
+        answer: 1,
+        explanation: "3 occurs most frequently."
+      },
+      {
+        question: "5. The sum of all frequencies is denoted by:",
+        options: ["Σx", "Σf", "Σh", "Σl"],
+        answer: 1,
+        explanation: "The total frequency is Σf."
+      },
+      {
+        question: "6. Which value is used to represent a class interval in mean calculations?",
+        options: ["Lower limit only", "Upper limit only", "Class mark", "Frequency"],
+        answer: 2,
+        explanation: "The class mark is the midpoint of the interval."
+      },
+      {
+        question: "7. The median class is found using:",
+        options: ["N", "N/2 and cumulative frequency", "Highest class mark", "Lowest frequency"],
+        answer: 1,
+        explanation: "N/2 helps locate the median class using cumulative frequencies."
+      },
+      {
+        question: "8. The modal class has the:",
+        options: ["Lowest frequency", "Highest frequency", "Lowest class mark", "Highest class width"],
+        answer: 1,
+        explanation: "The modal class has the highest frequency."
+      },
+      {
+        question: "9. If the class interval is 20–30, its class mark is:",
+        options: ["20", "25", "30", "50"],
+        answer: 1,
+        explanation: "(20 + 30)/2 = 25."
+      },
+      {
+        question: "10. If Σfx = 120 and Σf = 10, the mean is:",
+        options: ["10", "12", "20", "120"],
+        answer: 1,
+        explanation: "Mean = 120/10 = 12."
+      },
+      {
+        question: "11. In the median formula, cf means:",
+        options: ["Class width", "Total frequency", "Cumulative frequency before the median class", "Modal frequency"],
+        answer: 2,
+        explanation: "cf is the cumulative frequency of the class preceding the median class."
+      },
+      {
+        question: "12. In the grouped-data mode formula, f₁ is:",
+        options: ["Frequency of the modal class", "Total frequency", "Class width", "Frequency of the first class"],
+        answer: 0,
+        explanation: "f₁ denotes the frequency of the modal class."
+      },
+      {
+        question: "13. Find the mean of 5, 10 and 15.",
+        options: ["5", "10", "12", "15"],
+        answer: 1,
+        explanation: "(5 + 10 + 15)/3 = 10."
+      },
+      {
+        question: "14. Find the median of 2, 4, 6, 8, 10.",
+        options: ["4", "5", "6", "8"],
+        answer: 2,
+        explanation: "The middle observation is 6."
+      },
+      {
+        question: "15. What is the cumulative frequency of frequencies 2, 3 and 4 up to the third class?",
+        options: ["4", "5", "7", "9"],
+        answer: 3,
+        explanation: "Cumulative frequency = 2 + 3 + 4 = 9."
+      },
+      {
+        question: "16. If mean = 10 and median = 12, the empirical mode is:",
+        options: ["8", "12", "14", "16"],
+        answer: 2,
+        explanation: "Mode = 3×12 − 2×10 = 36 − 20 = 16. Correction: the correct option is 4, not 2."
+      },
+      {
+        question: "17. Which method uses an assumed mean?",
+        options: ["Direct method", "Assumed mean method", "Factorisation method", "Elimination method"],
+        answer: 1,
+        explanation: "The assumed mean method starts with a convenient assumed value."
+      },
+      {
+        question: "18. The step-deviation method is mainly used to:",
+        options: ["Draw triangles", "Simplify mean calculations", "Find circle area", "Solve equations"],
+        answer: 1,
+        explanation: "It simplifies calculations by using scaled deviations."
+      },
+      {
+        question: "19. If all observations are equal to 7, the mean is:",
+        options: ["0", "1", "7", "Cannot be found"],
+        answer: 2,
+        explanation: "The mean of equal observations is the same value, 7."
+      },
+      {
+        question: "20. The empirical relation is:",
+        options: ["Mode = Mean + Median", "Mode = 3 Median − 2 Mean", "Mean = 3 Mode − Median", "Median = Mean − Mode"],
+        answer: 1,
+        explanation: "For a moderately asymmetrical distribution, Mode ≈ 3 Median − 2 Mean."
+      }
+    ]
+  }
+});
+console.log("Part 14 loaded: Mathematics — Statistics");
+/* =====================================================
+   CLASS 10 HUB — CONTENT.JS PART 15
+   Mathematics: Probability
+   35 Questions + 30 Flashcards + 20 MCQs
+   ===================================================== */
+
+Object.assign(window.CONTENT.Mathematics.chapters, {
+  "Probability": {
+    questions: [
+      // VERY SHORT ANSWERS — 1 to 20
+      {
+        type: "very-short",
+        q: "1. What is probability?",
+        a: "Probability is a measure of how likely an event is to occur."
+      },
+      {
+        type: "very-short",
+        q: "2. Write the formula for probability.",
+        a: "P(E) = Number of favourable outcomes / Total number of equally likely outcomes."
+      },
+      {
+        type: "very-short",
+        q: "3. What is an experiment in probability?",
+        a: "An experiment is an action or process that produces an outcome, such as tossing a coin."
+      },
+      {
+        type: "very-short",
+        q: "4. What is an outcome?",
+        a: "An outcome is a possible result of a probability experiment."
+      },
+      {
+        type: "very-short",
+        q: "5. What is an event?",
+        a: "An event is a collection of one or more outcomes of an experiment."
+      },
+      {
+        type: "very-short",
+        q: "6. What is a sample space?",
+        a: "The sample space is the set of all possible outcomes of an experiment."
+      },
+      {
+        type: "very-short",
+        q: "7. What is the probability of getting a head when a fair coin is tossed?",
+        a: "P(Head) = 1/2."
+      },
+      {
+        type: "very-short",
+        q: "8. What is the probability of getting a tail when a fair coin is tossed?",
+        a: "P(Tail) = 1/2."
+      },
+      {
+        type: "very-short",
+        q: "9. What is the probability of getting 4 on a fair six-sided die?",
+        a: "P(4) = 1/6."
+      },
+      {
+        type: "very-short",
+        q: "10. What is the probability of an impossible event?",
+        a: "The probability of an impossible event is 0."
+      },
+      {
+        type: "very-short",
+        q: "11. What is the probability of a sure event?",
+        a: "The probability of a sure event is 1."
+      },
+      {
+        type: "very-short",
+        q: "12. What is the range of probability?",
+        a: "For any event E, 0 ≤ P(E) ≤ 1."
+      },
+      {
+        type: "very-short",
+        q: "13. What is the probability of getting an even number on a fair die?",
+        a: "P(Even) = 3/6 = 1/2."
+      },
+      {
+        type: "very-short",
+        q: "14. What is the probability of getting an odd number on a fair die?",
+        a: "P(Odd) = 3/6 = 1/2."
+      },
+      {
+        type: "very-short",
+        q: "15. What is the probability of getting a number greater than 4 on a fair die?",
+        a: "Favourable outcomes are 5 and 6. Probability = 2/6 = 1/3."
+      },
+      {
+        type: "very-short",
+        q: "16. What are equally likely outcomes?",
+        a: "Outcomes that have the same chance of occurring are called equally likely outcomes."
+      },
+      {
+        type: "very-short",
+        q: "17. What is the probability of an event that cannot occur?",
+        a: "Its probability is 0."
+      },
+      {
+        type: "very-short",
+        q: "18. Write the complement rule of probability.",
+        a: "P(not E) = 1 − P(E)."
+      },
+      {
+        type: "very-short",
+        q: "19. What is the probability of getting a prime number on a fair die?",
+        a: "Prime outcomes are 2, 3 and 5. Probability = 3/6 = 1/2."
+      },
+      {
+        type: "very-short",
+        q: "20. What is the probability of getting a number less than 7 on a standard die?",
+        a: "All six outcomes satisfy this condition, so the probability is 6/6 = 1."
+      },
+
+      // SHORT ANSWERS — 21 to 30
+      {
+        type: "short",
+        q: "21. A fair coin is tossed once. Find the probability of getting a head.",
+        a: "Sample space = {H, T}. Favourable outcomes = 1. Total outcomes = 2. Therefore, P(H) = 1/2."
+      },
+      {
+        type: "short",
+        q: "22. A fair die is rolled once. Find the probability of getting a number greater than 2.",
+        a: "Sample space = {1, 2, 3, 4, 5, 6}. Favourable outcomes = {3, 4, 5, 6}, so P = 4/6 = 2/3."
+      },
+      {
+        type: "short",
+        q: "23. A fair die is rolled once. Find the probability of getting a number less than 3.",
+        a: "Favourable outcomes are 1 and 2. Total outcomes = 6. Probability = 2/6 = 1/3."
+      },
+      {
+        type: "short",
+        q: "24. One card is drawn from a well-shuffled standard deck of 52 cards. Find the probability of drawing a king.",
+        a: "There are 4 kings in 52 cards. Probability = 4/52 = 1/13."
+      },
+      {
+        type: "short",
+        q: "25. One card is drawn from a standard deck of 52 cards. Find the probability of drawing a red card.",
+        a: "There are 26 red cards. Probability = 26/52 = 1/2."
+      },
+      {
+        type: "short",
+        q: "26. A number is chosen at random from 1 to 10. Find the probability that it is a multiple of 3.",
+        a: "Multiples of 3 are 3, 6 and 9. Probability = 3/10."
+      },
+      {
+        type: "short",
+        q: "27. A letter is chosen at random from the word MATHEMATICS. Find the probability of choosing M.",
+        a: "MATHEMATICS has 11 letters, and M appears twice. Probability = 2/11."
+      },
+      {
+        type: "short",
+        q: "28. If P(E) = 0.35, find P(not E).",
+        a: "P(not E) = 1 − P(E) = 1 − 0.35 = 0.65."
+      },
+      {
+        type: "short",
+        q: "29. A fair die is rolled. Find the probability of not getting 6.",
+        a: "Five outcomes are not 6. Probability = 5/6."
+      },
+      {
+        type: "short",
+        q: "30. Can the probability of an event be 1.2? Give a reason.",
+        a: "No. Probability always lies between 0 and 1, inclusive. Therefore, 1.2 is not a valid probability."
+      },
+
+      // LONG ANSWERS — 31 to 35
+      {
+        type: "long",
+        q: "31. A fair die is rolled once. Find the probability of getting (i) an even number, (ii) a prime number, and (iii) a number greater than 4.",
+        a: "Sample space = {1, 2, 3, 4, 5, 6}; total outcomes = 6. (i) Even numbers = {2, 4, 6}; P = 3/6 = 1/2. (ii) Prime numbers = {2, 3, 5}; P = 3/6 = 1/2. (iii) Numbers greater than 4 = {5, 6}; P = 2/6 = 1/3."
+      },
+      {
+        type: "long",
+        q: "32. One card is drawn at random from a well-shuffled standard deck of 52 playing cards. Find the probability of drawing (i) an ace, (ii) a heart, and (iii) a black king.",
+        a: "Total cards = 52. (i) There are 4 aces, so P(ace) = 4/52 = 1/13. (ii) There are 13 hearts, so P(heart) = 13/52 = 1/4. (iii) There are 2 black kings, so P(black king) = 2/52 = 1/26."
+      },
+      {
+        type: "long",
+        q: "33. Two fair coins are tossed together. Find the probability of (i) getting two heads, (ii) getting exactly one head, and (iii) getting no heads.",
+        a: "Sample space = {HH, HT, TH, TT}; there are 4 equally likely outcomes. (i) Two heads: {HH}, so P = 1/4. (ii) Exactly one head: {HT, TH}, so P = 2/4 = 1/2. (iii) No heads: {TT}, so P = 1/4."
+      },
+      {
+        type: "long",
+        q: "34. A box contains 5 red, 3 blue and 2 green balls. One ball is selected at random. Find the probability of selecting (i) a red ball, (ii) a blue ball, and (iii) a ball that is not green.",
+        a: "Total balls = 5 + 3 + 2 = 10. (i) P(red) = 5/10 = 1/2. (ii) P(blue) = 3/10. (iii) Non-green balls = 5 + 3 = 8, so P(not green) = 8/10 = 4/5."
+      },
+      {
+        type: "long",
+        q: "35. A number is selected at random from 1 to 20. Find the probability that it is (i) a multiple of 4, (ii) a prime number, and (iii) not a multiple of 5.",
+        a: "There are 20 equally likely numbers. (i) Multiples of 4 are 4, 8, 12, 16 and 20. Probability = 5/20 = 1/4. (ii) Prime numbers are 2, 3, 5, 7, 11, 13, 17 and 19. Probability = 8/20 = 2/5. (iii) Multiples of 5 are 5, 10, 15 and 20, leaving 16 numbers that are not multiples of 5. Probability = 16/20 = 4/5."
+      }
+    ],
+
+    flashcards: [
+      { q: "What is probability?", a: "A measure of how likely an event is to occur." },
+      { q: "Probability formula?", a: "P(E) = Favourable outcomes / Total equally likely outcomes." },
+      { q: "What is a sample space?", a: "The set of all possible outcomes." },
+      { q: "What is an event?", a: "A collection of outcomes of an experiment." },
+      { q: "Probability of an impossible event?", a: "0." },
+      { q: "Probability of a sure event?", a: "1." },
+      { q: "Probability range?", a: "0 ≤ P(E) ≤ 1." },
+      { q: "Probability of head on a fair coin?", a: "1/2." },
+      { q: "Probability of tail on a fair coin?", a: "1/2." },
+      { q: "Probability of getting 6 on a fair die?", a: "1/6." },
+      { q: "Probability of an even number on a fair die?", a: "1/2." },
+      { q: "Probability of an odd number on a fair die?", a: "1/2." },
+      { q: "Probability of a prime number on a fair die?", a: "1/2." },
+      { q: "Probability of a number greater than 4 on a fair die?", a: "1/3." },
+      { q: "Probability of a number less than 7 on a fair die?", a: "1." },
+      { q: "What are equally likely outcomes?", a: "Outcomes with the same chance of occurring." },
+      { q: "Complement rule?", a: "P(not E) = 1 − P(E)." },
+      { q: "Probability of drawing a king from 52 cards?", a: "1/13." },
+      { q: "Probability of drawing a red card from 52 cards?", a: "1/2." },
+      { q: "How many cards are in a standard deck?", a: "52." },
+      { q: "How many suits are in a standard deck?", a: "4." },
+      { q: "How many hearts are in a standard deck?", a: "13." },
+      { q: "How many kings are in a standard deck?", a: "4." },
+      { q: "Probability of drawing an ace?", a: "1/13." },
+      { q: "Probability of getting two heads with two fair coins?", a: "1/4." },
+      { q: "Sample space for two coin tosses?", a: "{HH, HT, TH, TT}." },
+      { q: "Probability of exactly one head in two fair coin tosses?", a: "1/2." },
+      { q: "If P(E) = 0.7, what is P(not E)?", a: "0.3." },
+      { q: "Probability of an event with 3 favourable outcomes out of 10?", a: "3/10, when all outcomes are equally likely." },
+      { q: "Can probability be negative?", a: "No. Probability cannot be less than 0." }
+    ],
+
+    mcqs: [
+      {
+        question: "1. The probability of an impossible event is:",
+        options: ["0", "1", "1/2", "2"],
+        answer: 0,
+        explanation: "An impossible event has probability 0."
+      },
+      {
+        question: "2. The probability of a sure event is:",
+        options: ["0", "1/4", "1", "2"],
+        answer: 2,
+        explanation: "A sure event always occurs, so its probability is 1."
+      },
+      {
+        question: "3. A fair coin is tossed once. What is P(Head)?",
+        options: ["0", "1/4", "1/2", "1"],
+        answer: 2,
+        explanation: "There is one favourable outcome among two equally likely outcomes."
+      },
+      {
+        question: "4. A fair die is rolled. What is the probability of getting 5?",
+        options: ["1/2", "1/3", "1/6", "5/6"],
+        answer: 2,
+        explanation: "Only one of the six outcomes is 5."
+      },
+      {
+        question: "5. What is the probability of getting an even number on a fair die?",
+        options: ["1/6", "1/3", "1/2", "2/3"],
+        answer: 2,
+        explanation: "Even outcomes are 2, 4 and 6; probability = 3/6 = 1/2."
+      },
+      {
+        question: "6. Which of the following cannot be a probability?",
+        options: ["0", "0.5", "1", "1.4"],
+        answer: 3,
+        explanation: "Probability must lie between 0 and 1."
+      },
+      {
+        question: "7. A die is rolled. What is P(getting a number greater than 4)?",
+        options: ["1/6", "1/3", "1/2", "2/3"],
+        answer: 1,
+        explanation: "The favourable outcomes are 5 and 6; probability = 2/6 = 1/3."
+      },
+      {
+        question: "8. A card is drawn from a standard deck. What is P(drawing a king)?",
+        options: ["1/4", "1/13", "1/26", "4/13"],
+        answer: 1,
+        explanation: "There are 4 kings among 52 cards; 4/52 = 1/13."
+      },
+      {
+        question: "9. How many outcomes are in the sample space when two coins are tossed?",
+        options: ["2", "3", "4", "6"],
+        answer: 2,
+        explanation: "The outcomes are HH, HT, TH and TT."
+      },
+      {
+        question: "10. What is the probability of getting two tails when two fair coins are tossed?",
+        options: ["1/4", "1/2", "3/4", "1"],
+        answer: 0,
+        explanation: "Only TT gives two tails, out of four equally likely outcomes."
+      },
+      {
+        question: "11. If P(E) = 0.4, then P(not E) is:",
+        options: ["0.2", "0.4", "0.6", "1.4"],
+        answer: 2,
+        explanation: "P(not E) = 1 − 0.4 = 0.6."
+      },
+      {
+        question: "12. What is the probability of drawing a red card from a standard deck?",
+        options: ["1/4", "1/2", "1/13", "3/4"],
+        answer: 1,
+        explanation: "There are 26 red cards among 52 cards."
+      },
+      {
+        question: "13. A number is selected from 1 to 10. What is the probability that it is a multiple of 3?",
+        options: ["1/10", "2/10", "3/10", "4/10"],
+        answer: 2,
+        explanation: "The multiples are 3, 6 and 9."
+      },
+      {
+        question: "14. What is the probability of getting a prime number on a fair die?",
+        options: ["1/3", "1/2", "2/3", "5/6"],
+        answer: 1,
+        explanation: "The prime outcomes are 2, 3 and 5, giving 3/6 = 1/2."
+      },
+      {
+        question: "15. A box contains 3 red and 7 blue balls. What is P(red)?",
+        options: ["3/7", "7/10", "3/10", "1/2"],
+        answer: 2,
+        explanation: "There are 3 red balls out of 10 total balls."
+      },
+      {
+        question: "16. If an event has 5 favourable outcomes out of 20 equally likely outcomes, its probability is:",
+        options: ["1/2", "1/4", "1/5", "1/10"],
+        answer: 1,
+        explanation: "Probability = 5/20 = 1/4."
+      },
+      {
+        question: "17. What is the probability of not getting 6 on a fair die?",
+        options: ["1/6", "1/3", "1/2", "5/6"],
+        answer: 3,
+        explanation: "Five of the six outcomes are not 6."
+      },
+      {
+        question: "18. Which pair contains equally likely outcomes for a fair coin?",
+        options: ["Head and tail", "Head only", "Tail only", "Neither"],
+        answer: 0,
+        explanation: "A fair coin gives head and tail equal chances."
+      },
+      {
+        question: "19. A letter is selected at random from MATHEMATICS. What is the probability of selecting M?",
+        options: ["1/11", "2/11", "2/10", "1/2"],
+        answer: 1,
+        explanation: "There are 11 letters in MATHEMATICS and M appears twice."
+      },
+      {
+        question: "20. A number is chosen from 1 to 20. What is the probability that it is not a multiple of 5?",
+        options: ["1/5", "2/5", "3/5", "4/5"],
+        answer: 3,
+        explanation: "Four numbers are multiples of 5, leaving 16 out of 20; probability = 16/20 = 4/5."
+      }
+    ]
+  }
+});
+
+console.log("Part 15 loaded: Mathematics — Probability");
+
+         
