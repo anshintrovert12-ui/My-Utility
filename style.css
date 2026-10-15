@@ -780,6 +780,9 @@ body.text-large {
 
 /* TABLETS AND SMALL SCREENS */
 
+
+/* TABLET AND RESPONSIVE LAYOUT */
+
 @media (max-width: 1050px) {
   .card-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -789,6 +792,8 @@ body.text-large {
     padding: 28px 22px 45px;
   }
 }
+
+/* MOBILE MENU */
 
 @media (max-width: 760px) {
   :root {
@@ -802,24 +807,38 @@ body.text-large {
 
   .brand {
     font-size: 1rem;
+    min-width: 0;
   }
 
   .brand-logo {
     width: 35px;
     height: 35px;
+    flex-shrink: 0;
   }
 
+  /* Sidebar remains closed until hamburger is pressed */
   .sidebar {
+    position: fixed;
     top: 64px;
+    bottom: 0;
+    left: 0;
+    width: var(--sidebar-width);
+    max-width: 85vw;
     transform: translateX(-105%);
+    z-index: 90;
     box-shadow: var(--shadow);
+    transition: transform 0.25s ease;
   }
 
-  body.menu-open .sidebar {
+  /* Open sidebar when hamburger is pressed */
+  body.menu-open .sidebar,
+  .sidebar.open {
     transform: translateX(0);
   }
 
+  /* Hide overlay by default */
   .overlay {
+    display: none;
     position: fixed;
     inset: 64px 0 0;
     z-index: 80;
@@ -827,7 +846,9 @@ body.text-large {
     backdrop-filter: blur(2px);
   }
 
-  body.menu-open .overlay {
+  /* Show overlay only when menu is open */
+  body.menu-open .overlay,
+  .overlay.show {
     display: block;
   }
 
@@ -869,6 +890,8 @@ body.text-large {
   }
 }
 
+/* SMALL PHONES */
+
 @media (max-width: 420px) {
   .card-grid {
     grid-template-columns: 1fr;
@@ -890,6 +913,20 @@ body.text-large {
     font-size: 2.2rem;
   }
 }
+
+/* REDUCED MOTION ACCESSIBILITY */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 
 /* REDUCED MOTION ACCESSIBILITY */
 
