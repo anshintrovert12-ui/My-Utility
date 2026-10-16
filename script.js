@@ -1,1901 +1,2960 @@
-/* =====================================================
-   CLASS 10 HUB — SCRIPT.JS
-   PART 1: CORE NAVIGATION & APPEARANCE
-   Free • GitHub Pages compatible
-   Do not modify content.js
-===================================================== */
+"use strict";
 
-(function () {
-  "use strict";
+/* =========================================
+   CLASS 10 HUB — CORE SCRIPT
+   Navigation, themes, notes, bookmarks,
+   settings, local storage and utilities
+========================================= */
 
-  /* ---------- SAFE LOCAL STORAGE ---------- */
+(() => {
+  const $ = (selector, root = document) => root.querySelector(selector);
+  const $$ = (selector, root = document) =>
+    Array.from(root.querySelectorAll(selector));
 
-  const HubStorage = {
-    get: function (key, fallback) {
-      try {
-        const value = localStorage.getItem(key);
-        return value === null ? fallback : value;
-      } catch (error) {
-        return fallback;
-      }
-    },
-
-    set: function (key, value) {
-      try {
-        localStorage.setItem(key, String(value));
-      } catch (error) {
-        console.warn("Class 10 Hub: Setting could not be saved.");
-      }
-    }
+  const STORAGE = {
+    settings: "class10hub_settings",
+    notes: "class10hub_notes",
+    bookmarks: "class10hub_bookmarks",
+    progress: "class10hub_progress",
+    history: "class10hub_quiz_history",
+    completed: "class10hub_completed_chapters"
   };
 
-  const $ = function (id) {
-    return document.getElementById(id);
+  const defaults = {
+    theme: "dark",
+    textSize: "normal",
+    motion: "on",
+    festival: "off"
   };
 
-  const $$ = function (selector) {
-    return Array.from(document.querySelectorAll(selector));
+  function readData(key, fallback) {
+    try {
+      const value = localStorage.getItem(key);
+      return value ? JSON.parse(value) : fallback;
+    } catch (error) {
+      console.warn("Could not read saved data:", key, error);
+      return fallback;
+    }
+  }
+
+  function saveData(key, value) {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+      return true;
+    } catch (error) {
+      showToast("Could not save data. Device storage may be full.");
+      console.error(error);
+      return false;
+    }
+  }
+
+  let settings = {
+    ...defaults,
+    ...readData(STORAGE.settings, {})
   };
 
-  function listen(element, eventName, callback) {
-    if (element) {
-      element.addEventListener(eventName, callback);
-    }
+  let notes = readData(STORAGE.notes, []);
+  let bookmarks = readData(STORAGE.bookmarks, []);
+  let progress = readData(STORAGE.progress, {});
+  let history = readData(STORAGE.history, []);
+  let completed = readData(STORAGE.completed, []);
+
+  let currentPage = "home";
+  let editingNoteId = null;
+
+  /* ---------- Toast messages ---------- */
+
+  let toastTimer;
+
+  function showToast(message) {
+    const toast = $("#toast");
+    if (!toast) return;
+
+    toast.textContent = String(message);
+    toast.classList.add("show");
+
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toast.classList.remove("show");
+    }, 2600);
   }
 
-  /* ---------- SIDEBAR ---------- */
+  /* ---------- Navigation ---------- */
 
-  function setSidebar(open) {
-    const sidebar = $("sidebar");
-    const overlay = $("overlay");
-    const menuButton = $("menuBtn");
+  const pageTitles = {
+    home: "Dashboard",
+    subjects: "Subject Library",
+    flashcards: "Flashcards",
+    quiz: "Chapter Quiz",
+    mock: "80 MCQ Mock Test",
+    infographics: "Infographic Notes",
+    notes: "My Notes",
+    bookmarks: "Bookmarks",
+    games: "Mini Games",
+    progress: "My Progress",
+    settings: "Settings",
+    about: "About & Help"
+  };
 
-    if (!sidebar) return;
-
-    sidebar.classList.toggle("open", open);
-
-    if (overlay) {
-      overlay.classList.toggle("active", open);
-    }
-
-    if (menuButton) {
-      menuButton.setAttribute("aria-expanded", String(open));
-      menuButton.setAttribute(
-        "aria-label",
-        open ? "Close navigation menu" : "Open navigation menu"
-      );
-    }
-  }
-
-  function toggleSidebar() {
-    const sidebar = $("sidebar");
-
-    if (!sidebar) return;
-
-    setSidebar(!sidebar.classList.contains("open"));
-  }
-
-  function initialiseSidebar() {
-    // Always start closed, even if a previous CSS rule opened it.
-    setSidebar(false);
-
-    listen($("menuBtn"), "click", toggleSidebar);
-
-    listen($("overlay"), "click", function () {
-      setSidebar(false);
-    });
-
-    listen(document, "keydown", function (event) {
-      if (event.key === "Escape") {
-        setSidebar(false);
-      }
-    });
-  }
-
-  /* ---------- PAGE NAVIGATION ---------- */
-
-  function showPage(pageName) {
-    if (!pageName) return;
-
-    const target = $("page-" + pageName);
+  function navigate(page) {
+    const target = $("#page-" + page);
 
     if (!target) {
-      console.warn("Class 10 Hub: Unknown page:", pageName);
+      showToast("This page is not available.");
       return;
     }
 
-    $$(".page").forEach(function (page) {
-      page.classList.toggle("active", page === target);
-      page.setAttribute(
-        "aria-hidden",
-        page === target ? "false" : "true"
+    currentPage = page;
+
+    $$(".page").forEach(section => {
+      section.classList.toggle("active", section.id === "page-" + page);
+    });
+
+    $$("[data-page]").forEach(button => {
+      button.classList.toggle(
+        "active",
+        button.dataset.page === page &&
+        button.classList.contains("nav-item")
       );
     });
 
-    $$(".nav-link[data-page]").forEach(function (button) {
-      const active = button.dataset.page === pageName;
+    const title = $("#pageTitle");
+    if (title) title.textContent = pageTitles[page] || "Class 10 Hub";
 
-      button.classList.toggle("active", active);
+    closeMobileMenu();
 
-      if (active) {
-        button.setAttribute("aria-current", "page");
+    if (page === "notes") renderNotes();
+    if (page === "bookmarks") renderBookmarks();
+    if (page === "progress") renderProgress();
+    if (page === "settings") syncSettingsControls();
+
+    window.scrollTo({ top: 0, behavior: settings.motion === "off" ? "auto" : "smooth" });
+  }
+
+  document.addEventListener("click", event => {
+    const button = event.target.closest("[data-page]");
+    if (!button) return;
+
+    event.preventDefault();
+    navigate(button.dataset.page);
+  });
+
+  /* ---------- Responsive sidebar ---------- */
+
+  const menuToggle = $("#menuToggle");
+  const sidebar = $("#sidebar");
+  const appShell = $(".app-shell");
+
+  function closeMobileMenu() {
+    if (window.innerWidth <= 1050) {
+      if (sidebar) sidebar.classList.remove("is-open");
+      if (appShell) appShell.classList.remove("menu-open");
+      if (menuToggle) menuToggle.setAttribute("aria-expanded", "false");
+    }
+  }
+
+  if (menuToggle) {
+    menuToggle.addEventListener("click", () => {
+      if (window.innerWidth <= 1050) {
+        const isOpen = sidebar?.classList.toggle("is-open") || false;
+        if (appShell) appShell.classList.toggle("menu-open", isOpen);
+        menuToggle.setAttribute("aria-expanded", String(isOpen));
       } else {
-        button.removeAttribute("aria-current");
+        const collapsed = appShell?.classList.toggle("sidebar-collapsed") || false;
+        if (sidebar) sidebar.classList.toggle("is-collapsed", collapsed);
+        menuToggle.setAttribute("aria-expanded", String(!collapsed));
       }
     });
-
-    setSidebar(false);
-    HubStorage.set("class10hub-last-page", pageName);
-
-    // Do not force scrolling here. Let the browser scroll naturally.
   }
 
-  function initialiseNavigation() {
-    $$(".nav-link[data-page]").forEach(function (button) {
-      listen(button, "click", function () {
-        showPage(button.dataset.page);
-      });
-    });
+  document.addEventListener("click", event => {
+    if (window.innerWidth > 1050 || !sidebar?.classList.contains("is-open")) return;
+    if (sidebar.contains(event.target) || menuToggle?.contains(event.target)) return;
+    closeMobileMenu();
+  });
 
-    $$("[data-go]").forEach(function (button) {
-      listen(button, "click", function () {
-        showPage(button.dataset.go);
-      });
-    });
-  }
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 1050) closeMobileMenu();
+  });
 
-  /* ---------- DARK / LIGHT MODE ---------- */
+  /* ---------- Theme and appearance ---------- */
 
-  function applyTheme(theme, save) {
-    const selected = theme === "light" ? "light" : "dark";
-    const isLight = selected === "light";
+  function applyTheme() {
+    let theme = settings.theme;
 
-    document.documentElement.dataset.theme = selected;
-    document.body.classList.toggle("light-mode", isLight);
-    document.body.classList.toggle("dark-mode", !isLight);
-    document.body.classList.toggle("light-theme", isLight);
+    if (theme === "system") {
+      theme = window.matchMedia("(prefers-color-scheme: light)").matches
+        ? "light"
+        : "dark";
+    }
 
-    const themeButton = $("themeBtn");
+    document.documentElement.dataset.theme = theme;
+    document.body.classList.toggle("light-theme", theme === "light");
+    document.body.classList.toggle("dark-theme", theme === "dark");
 
+    document.documentElement.style.colorScheme = theme;
+
+    const themeButton = $("#themeToggle");
     if (themeButton) {
-      themeButton.textContent = isLight ? "☀" : "☾";
-      themeButton.title = isLight ? "Switch to dark mode" : "Switch to light mode";
+      themeButton.textContent = theme === "light" ? "☀" : "◐";
       themeButton.setAttribute(
         "aria-label",
-        isLight ? "Switch to dark mode" : "Switch to light mode"
+        theme === "light" ? "Switch to dark mode" : "Switch to light mode"
       );
     }
 
-    if (save !== false) {
-      HubStorage.set("class10hub-theme", selected);
-    }
+    applyTextSize();
   }
 
-  function toggleTheme() {
-    const current =
-      document.documentElement.dataset.theme ||
-      HubStorage.get("class10hub-theme", "dark");
+  function applyTextSize() {
+    document.documentElement.classList.remove(
+      "text-normal",
+      "text-large",
+      "text-xlarge"
+    );
 
-    applyTheme(current === "dark" ? "light" : "dark");
-  }
+    document.documentElement.classList.add(
+      "text-" + (settings.textSize || "normal")
+    );
 
-  function initialiseTheme() {
-    listen($("themeBtn"), "click", toggleTheme);
-    listen($("settingsThemeBtn"), "click", toggleTheme);
-
-    listen($("darkMode"), "click", function () {
-      applyTheme("dark");
-    });
-
-    listen($("lightMode"), "click", function () {
-      applyTheme("light");
-    });
-
-    applyTheme(
-      HubStorage.get("class10hub-theme", "dark"),
-      false
+    document.body.classList.toggle(
+      "reduce-motion",
+      settings.motion === "off"
     );
   }
 
-  /* ---------- SEASONAL APPEARANCE ---------- */
-
-  function applySeasonalTheme(theme, save) {
-    const valid = ["normal", "diwali", "christmas"];
-    const selected = valid.includes(theme) ? theme : "normal";
-
-    if (selected === "normal") {
-      document.documentElement.removeAttribute("data-seasonal-theme");
-    } else {
-      document.documentElement.dataset.seasonalTheme = selected;
-    }
-
-    const selector = $("seasonalThemeSelect");
-
-    if (selector) {
-      selector.value = selected;
-    }
-
-    if (save !== false) {
-      HubStorage.set("class10hub-seasonal-theme", selected);
-    }
+  function saveSettings() {
+    saveData(STORAGE.settings, settings);
+    applyTheme();
+    syncSettingsControls();
   }
 
-  function initialiseSeasonalTheme() {
-    listen($("seasonalThemeSelect"), "change", function (event) {
-      applySeasonalTheme(event.target.value);
+  const themeToggle = $("#themeToggle");
+
+  if (themeToggle) {
+    themeToggle.addEventListener("click", () => {
+      settings.theme = settings.theme === "light" ? "dark" : "light";
+      saveSettings();
+      showToast("Appearance updated.");
     });
-
-    applySeasonalTheme(
-      HubStorage.get("class10hub-seasonal-theme", "normal"),
-      false
-    );
   }
 
-  /* ---------- TEXT SIZE ---------- */
+  const themeSelect = $("#themeSelect");
+  const textSize = $("#textSize");
+  const motionSelect = $("#motionSelect");
 
-  function applyTextSize(size, save) {
-    const valid = ["small", "medium", "large"];
-    const selected = valid.includes(size) ? size : "medium";
+  if (themeSelect) {
+    themeSelect.addEventListener("change", () => {
+      settings.theme = themeSelect.value;
+      saveSettings();
+      showToast("Theme saved.");
+    });
+  }
 
-    document.documentElement.dataset.textSize = selected;
+  if (textSize) {
+    textSize.addEventListener("change", () => {
+      settings.textSize = textSize.value;
+      saveSettings();
+      showToast("Text size updated.");
+    });
+  }
+
+  if (motionSelect) {
+    motionSelect.addEventListener("change", () => {
+      settings.motion = motionSelect.value;
+      saveSettings();
+      showToast("Animation preference saved.");
+    });
+  }
+
+  function syncSettingsControls() {
+    if (themeSelect) themeSelect.value = settings.theme;
+    if (textSize) textSize.value = settings.textSize;
+    if (motionSelect) motionSelect.value = settings.motion;
+
+    const diwali = $("#diwaliSetting");
+    const christmas = $("#christmasSetting");
+
+    if (diwali) diwali.value = settings.festival === "diwali" ? "on" : "off";
+    if (christmas) christmas.value = settings.festival === "christmas" ? "on" : "off";
+  }
+
+  /* ---------- Festival appearances ---------- */
+
+  function removeFestivalEffects() {
+    $$(".festival-effects").forEach(element => element.remove());
 
     document.body.classList.remove(
-      "text-small",
-      "text-medium",
-      "text-large"
-    );
-
-    document.body.classList.add("text-" + selected);
-
-    const selector = $("textSize") || $("textSizeSelect");
-
-    if (selector) {
-      selector.value = selected;
-    }
-
-    if (save !== false) {
-      HubStorage.set("class10hub-text-size", selected);
-    }
-  }
-
-  function initialiseTextSize() {
-    const selector = $("textSize") || $("textSizeSelect");
-
-    listen(selector, "change", function (event) {
-      applyTextSize(event.target.value);
-    });
-
-    applyTextSize(
-      HubStorage.get("class10hub-text-size", "medium"),
-      false
+      "festival-diwali",
+      "festival-christmas"
     );
   }
 
-  /* ---------- STARTUP ---------- */
+  function makeFestivalEffects(type) {
+    removeFestivalEffects();
 
-  function initialise() {
-    initialiseSidebar();
-    initialiseNavigation();
-    initialiseTheme();
-    initialiseSeasonalTheme();
-    initialiseTextSize();
+    if (type === "off") return;
 
-    const savedPage = HubStorage.get("class10hub-last-page", "home");
+    document.body.classList.add("festival-" + type);
 
-    showPage($("page-" + savedPage) ? savedPage : "home");
-  }
+    const effects = document.createElement("div");
+    effects.className = "festival-effects";
+    effects.setAttribute("aria-hidden", "true");
 
-  // Expose helpers for the remaining script parts.
-  window.Class10Hub = window.Class10Hub || {};
+    if (type === "diwali") {
+      for (let i = 0; i < 12; i++) {
+        const light = document.createElement("span");
+        light.className = "diwali-light";
+        light.style.left = (i * 8.5) + "%";
+        light.style.animationDelay = (i * 0.13) + "s";
+        effects.appendChild(light);
+      }
 
-  window.Class10Hub.storage = HubStorage;
-  window.Class10Hub.showPage = showPage;
-  window.Class10Hub.setSidebar = setSidebar;
-  window.Class10Hub.applyTheme = applyTheme;
-  window.Class10Hub.applySeasonalTheme = applySeasonalTheme;
-  window.Class10Hub.applyTextSize = applyTextSize;
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initialise, {
-      once: true
-    });
-  } else {
-    initialise();
-  }
-})();
-/* =====================================================
-   CLASS 10 HUB — SCRIPT.JS
-   PART 2: SUBJECTS, CHAPTERS & CONTENT READING
-   Append this below Part 1.
-===================================================== */
-
-(function class10HubPart2() {
-  "use strict";
-
-  const Hub = window.Class10Hub;
-
-  if (!Hub) {
-    console.error("Class 10 Hub Part 1 was not loaded.");
-    return;
-  }
-
-  const $ = Hub.getElement;
-
-  function listen(element, eventName, callback) {
-    if (element) {
-      element.addEventListener(eventName, callback);
-    }
-  }
-
-  function safeText(value) {
-    return String(value == null ? "" : value);
-  }
-
-  function normaliseKey(value) {
-    return safeText(value)
-      .trim()
-      .toLowerCase()
-      .replace(/[_-]+/g, " ")
-      .replace(/\s+/g, " ");
-  }
-
-  /*
-   * Read the existing content.js data without changing it.
-   * Supports several common content-bank structures.
-   */
-  function getContentBank() {
-    const possibleNames = [
-      "chapterContent",
-      "subjectContent",
-      "contentBank",
-      "questionBank",
-      "flashcardBank",
-      "quizBank",
-      "class10Content",
-      "studyContent"
-    ];
-
-    for (const name of possibleNames) {
-      try {
-        if (
-          Object.prototype.hasOwnProperty.call(window, name) &&
-          window[name] &&
-          typeof window[name] === "object"
-        ) {
-          return window[name];
-        }
-      } catch (error) {
-        // Ignore unavailable global data.
+      for (let i = 0; i < 5; i++) {
+        const diya = document.createElement("span");
+        diya.className = "festival-diya";
+        diya.textContent = "🪔";
+        diya.style.left = (8 + i * 21) + "%";
+        diya.style.animationDelay = (i * 0.25) + "s";
+        effects.appendChild(diya);
       }
     }
 
-    return null;
+    if (type === "christmas") {
+      for (let i = 0; i < 32; i++) {
+        const snow = document.createElement("span");
+        snow.className = "christmas-snow";
+        snow.textContent = "❄";
+        snow.style.left = Math.random() * 100 + "%";
+        snow.style.animationDuration = (5 + Math.random() * 8) + "s";
+        snow.style.animationDelay = (-Math.random() * 10) + "s";
+        snow.style.opacity = String(0.3 + Math.random() * 0.6);
+        effects.appendChild(snow);
+      }
+    }
+
+    document.body.appendChild(effects);
   }
 
-  /*
-   * Identify subjects and chapters from the content bank.
-   * Example structures:
-   * Science: { "Chapter Name": [...] }
-   * "Science::Chapter Name": [...]
-   */
-  function getSubjectsFromBank(bank) {
-    if (!bank || typeof bank !== "object") return [];
+  function setFestival(type) {
+    settings.festival = settings.festival === type ? "off" : type;
+    saveData(STORAGE.settings, settings);
+    makeFestivalEffects(settings.festival);
+    syncSettingsControls();
 
-    const subjects = new Set();
+    showToast(
+      settings.festival === "off"
+        ? "Festival appearance turned off."
+        : type === "diwali"
+          ? "Diwali appearance enabled."
+          : "Christmas appearance enabled."
+    );
+  }
 
-    Object.keys(bank).forEach(function (key) {
-      const parts = key.split("::");
+  $$("[data-festival]").forEach(button => {
+    button.addEventListener("click", () => {
+      setFestival(button.dataset.festival);
+    });
+  });
 
-      if (parts.length > 1) {
-        subjects.add(parts[0].trim());
-      } else if (
-        bank[key] &&
-        typeof bank[key] === "object" &&
-        !Array.isArray(bank[key])
-      ) {
-        subjects.add(key.trim());
-      }
+  const diwaliSetting = $("#diwaliSetting");
+  const christmasSetting = $("#christmasSetting");
+
+  if (diwaliSetting) {
+    diwaliSetting.addEventListener("change", () => {
+      settings.festival = diwaliSetting.value === "on" ? "diwali" : "off";
+      saveData(STORAGE.settings, settings);
+      makeFestivalEffects(settings.festival);
+      syncSettingsControls();
+    });
+  }
+
+  if (christmasSetting) {
+    christmasSetting.addEventListener("change", () => {
+      settings.festival = christmasSetting.value === "on" ? "christmas" : "off";
+      saveData(STORAGE.settings, settings);
+      makeFestivalEffects(settings.festival);
+      syncSettingsControls();
+    });
+  }
+
+  /* ---------- Notes ---------- */
+
+  const noteTitle = $("#noteTitle");
+  const noteBody = $("#noteBody");
+  const saveNoteButton = $("#saveNote");
+
+  function renderNotes() {
+    const list = $("#notesList");
+    if (!list) return;
+
+    list.replaceChildren();
+
+    if (!notes.length) {
+      const empty = document.createElement("div");
+      empty.className = "content-panel";
+      empty.textContent = "No notes yet. Create your first revision note above.";
+      list.appendChild(empty);
+      updateStats();
+      return;
+    }
+
+    notes.slice().reverse().forEach(note => {
+      const card = document.createElement("article");
+      card.className = "content-panel note-card";
+
+      const heading = document.createElement("h3");
+      heading.textContent = note.title || "Untitled note";
+
+      const body = document.createElement("p");
+      body.textContent = note.body || "";
+      body.style.whiteSpace = "pre-wrap";
+
+      const date = document.createElement("small");
+      date.className = "muted";
+      date.textContent = note.updatedAt
+        ? "Updated: " + new Date(note.updatedAt).toLocaleString()
+        : "";
+
+      const actions = document.createElement("div");
+      actions.className = "button-row";
+
+      const edit = document.createElement("button");
+      edit.className = "secondary-btn";
+      edit.textContent = "Edit";
+      edit.addEventListener("click", () => {
+        editingNoteId = note.id;
+        if (noteTitle) noteTitle.value = note.title;
+        if (noteBody) noteBody.value = note.body;
+        noteTitle?.focus();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+
+      const remove = document.createElement("button");
+      remove.className = "danger-btn";
+      remove.textContent = "Delete";
+      remove.addEventListener("click", () => {
+        if (!confirm("Delete this note?")) return;
+        notes = notes.filter(item => item.id !== note.id);
+        saveData(STORAGE.notes, notes);
+        renderNotes();
+        showToast("Note deleted.");
+      });
+
+      actions.append(edit, remove);
+      card.append(heading, body, date, actions);
+      list.appendChild(card);
     });
 
-    return Array.from(subjects);
+    updateStats();
   }
 
-  function getChaptersForSubject(bank, subject) {
-    if (!bank || !subject) return [];
+  if (saveNoteButton) {
+    saveNoteButton.addEventListener("click", () => {
+      const title = noteTitle?.value.trim() || "";
+      const body = noteBody?.value.trim() || "";
 
-    const chapters = new Set();
-    const wantedSubject = normaliseKey(subject);
-
-    Object.keys(bank).forEach(function (key) {
-      const parts = key.split("::");
-
-      if (
-        parts.length > 1 &&
-        normaliseKey(parts[0]) === wantedSubject
-      ) {
-        chapters.add(parts.slice(1).join("::").trim());
+      if (!title && !body) {
+        showToast("Write a title or some note content first.");
         return;
       }
 
-      if (
-        normaliseKey(key) === wantedSubject &&
-        bank[key] &&
-        typeof bank[key] === "object" &&
-        !Array.isArray(bank[key])
-      ) {
-        Object.keys(bank[key]).forEach(function (chapter) {
-          chapters.add(chapter.trim());
+      const now = new Date().toISOString();
+
+      if (editingNoteId !== null) {
+        notes = notes.map(note =>
+          note.id === editingNoteId
+            ? { ...note, title: title || "Untitled note", body, updatedAt: now }
+            : note
+        );
+      } else {
+        notes.push({
+          id: Date.now(),
+          title: title || "Untitled note",
+          body,
+          createdAt: now,
+          updatedAt: now
         });
       }
-    });
 
-    return Array.from(chapters).filter(Boolean);
+      if (!saveData(STORAGE.notes, notes)) return;
+
+      editingNoteId = null;
+      if (noteTitle) noteTitle.value = "";
+      if (noteBody) noteBody.value = "";
+
+      renderNotes();
+      showToast("Note saved on this device.");
+    });
   }
 
-  function getChapterData(bank, subject, chapter) {
-    if (!bank || !subject || !chapter) return null;
+  /* ---------- Bookmarks ---------- */
 
-    const directKey = subject + "::" + chapter;
+  function renderBookmarks() {
+    const container = $("#bookmarksList");
+    if (!container) return;
 
-    if (
-      Object.prototype.hasOwnProperty.call(bank, directKey)
-    ) {
-      return bank[directKey];
+    container.replaceChildren();
+
+    if (!bookmarks.length) {
+      const empty = document.createElement("p");
+      empty.textContent = "No bookmarks yet.";
+      container.appendChild(empty);
+      updateStats();
+      return;
     }
 
-    const wantedSubject = normaliseKey(subject);
-    const wantedChapter = normaliseKey(chapter);
+    bookmarks.forEach((item, index) => {
+      const card = document.createElement("article");
+      card.className = "bookmark-item";
 
-    for (const key of Object.keys(bank)) {
+      const title = document.createElement("h3");
+      title.textContent = item.title || "Saved item";
+
+      const description = document.createElement("p");
+      description.textContent = item.text || item.chapter || "";
+
+      const remove = document.createElement("button");
+      remove.className = "danger-btn";
+      remove.textContent = "Remove bookmark";
+      remove.addEventListener("click", () => {
+        bookmarks.splice(index, 1);
+        saveData(STORAGE.bookmarks, bookmarks);
+        renderBookmarks();
+        showToast("Bookmark removed.");
+      });
+
+      card.append(title, description, remove);
+      container.appendChild(card);
+    });
+
+    updateStats();
+  }
+
+  function addBookmark(item) {
+    const key = JSON.stringify(item);
+
+    if (bookmarks.some(saved => JSON.stringify(saved) === key)) {
+      showToast("Already bookmarked.");
+      return;
+    }
+
+    bookmarks.push(item);
+    saveData(STORAGE.bookmarks, bookmarks);
+    updateStats();
+    showToast("Added to bookmarks.");
+  }
+
+  /* ---------- Dashboard stats ---------- */
+
+  function updateStats() {
+    const chaptersStat = $("#statChapters");
+    const quizzesStat = $("#statQuizzes");
+    const notesStat = $("#statNotes");
+    const bookmarksStat = $("#statBookmarks");
+
+    if (chaptersStat) chaptersStat.textContent = completed.length;
+    if (quizzesStat) quizzesStat.textContent = history.length;
+    if (notesStat) notesStat.textContent = notes.length;
+    if (bookmarksStat) bookmarksStat.textContent = bookmarks.length;
+  }
+
+  /* ---------- Progress page ---------- */
+
+  function renderProgress() {
+    const area = $("#progressArea");
+    const historyList = $("#historyList");
+
+    if (area) {
+      area.replaceChildren();
+
+      const cards = [
+        ["Completed chapters", completed.length],
+        ["Quiz attempts", history.length],
+        ["Saved notes", notes.length],
+        ["Bookmarks", bookmarks.length]
+      ];
+
+      cards.forEach(([label, value]) => {
+        const card = document.createElement("article");
+        card.className = "stat-card";
+
+        const name = document.createElement("span");
+        name.textContent = label;
+
+        const number = document.createElement("strong");
+        number.textContent = value;
+
+        card.append(name, number);
+        area.appendChild(card);
+      });
+    }
+
+    if (historyList) {
+      historyList.replaceChildren();
+
+      if (!history.length) {
+        historyList.textContent = "No quiz attempts recorded yet.";
+      } else {
+        history.slice().reverse().slice(0, 20).forEach(attempt => {
+          const row = document.createElement("p");
+          row.textContent =
+            `${attempt.title || "Quiz"} — ${attempt.score}/${attempt.total} — ` +
+            `${new Date(attempt.date).toLocaleDateString()}`;
+          historyList.appendChild(row);
+        });
+      }
+    }
+  }
+
+  /* ---------- Export saved data ---------- */
+
+  const exportButton = $("#exportData");
+
+  if (exportButton) {
+    exportButton.addEventListener("click", () => {
+      const exportObject = {
+        exportedAt: new Date().toISOString(),
+        settings,
+        notes,
+        bookmarks,
+        progress,
+        history,
+        completed
+      };
+
+      const blob = new Blob(
+        [JSON.stringify(exportObject, null, 2)],
+        { type: "application/json" }
+      );
+
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "class-10-hub-data.json";
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      URL.revokeObjectURL(url);
+
+      showToast("Data export started.");
+    });
+  }
+
+  /* ---------- Reset local data ---------- */
+
+  const resetButton = $("#resetData");
+
+  if (resetButton) {
+    resetButton.addEventListener("click", () => {
+      const confirmed = confirm(
+        "Reset all saved notes, bookmarks, settings and progress on this device? This cannot be undone."
+      );
+
+      if (!confirmed) return;
+
+      Object.values(STORAGE).forEach(key => localStorage.removeItem(key));
+
+      notes = [];
+      bookmarks = [];
+      progress = {};
+      history = [];
+      completed = [];
+      settings = { ...defaults };
+      editingNoteId = null;
+
+      if (noteTitle) noteTitle.value = "";
+      if (noteBody) noteBody.value = "";
+
+      removeFestivalEffects();
+      applyTheme();
+      syncSettingsControls();
+      renderNotes();
+      renderBookmarks();
+      renderProgress();
+      updateStats();
+
+      showToast("Saved website data has been reset.");
+    });
+  }
+
+  /* ---------- Initialise ---------- */
+
+  function initialise() {
+    applyTheme();
+    makeFestivalEffects(settings.festival);
+    syncSettingsControls();
+    updateStats();
+    renderNotes();
+    renderBookmarks();
+
+    if (!$("#page-" + currentPage)) navigate("home");
+
+    console.info("Class 10 Hub core script loaded.");
+  }
+
+  initialise();
+
+  /* Expose helpers for the study-content module. */
+  window.Class10Hub = {
+    navigate,
+    showToast,
+    readData,
+    saveData,
+    addBookmark,
+    renderBookmarks,
+    renderProgress,
+    updateStats,
+    getSettings: () => ({ ...settings }),
+    getProgress: () => ({ ...progress }),
+    setProgress: value => {
+      progress = value;
+      saveData(STORAGE.progress, progress);
+    },
+    markChapterComplete: chapterKey => {
+      if (!completed.includes(chapterKey)) {
+        completed.push(chapterKey);
+        saveData(STORAGE.completed, completed);
+        updateStats();
+      }
+    },
+    recordQuiz: attempt => {
+      history.push({
+        ...attempt,
+        date: new Date().toISOString()
+      });
+      saveData(STORAGE.history, history);
+      updateStats();
+      renderProgress();
+    }
+  };
+})();
+
+/* =========================================================
+   CLASS 10 HUB — SCRIPT.JS PART 2
+   Subjects • Chapters • Q&A • Flashcards • Quiz • Bookmarks
+   Requires content.js and Part 1 of script.js
+========================================================= */
+
+(() => {
+  "use strict";
+
+  const DB = window.CLASS10_CONTENT;
+  const HUB = window.Class10Hub;
+
+  if (!DB || !HUB) {
+    console.error(
+      "Class 10 Hub: content.js or script.js Part 1 is missing."
+    );
+    return;
+  }
+
+  const $ = (selector, root = document) =>
+    root.querySelector(selector);
+
+  const $$ = (selector, root = document) =>
+    [...root.querySelectorAll(selector)];
+
+  const esc = (value) =>
+    String(value ?? "").replace(/[&<>"']/g, (char) => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    })[char]);
+
+  const shuffle = (items) => {
+    const result = [...items];
+
+    for (let i = result.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [result[i], result[j]] = [result[j], result[i]];
+    }
+
+    return result;
+  };
+
+  const normalize = (value) =>
+    String(value ?? "").trim().toLowerCase();
+
+  function getSubjects() {
+    return Array.isArray(DB.subjects) ? DB.subjects : [];
+  }
+
+  function getSubjectId(subject) {
+    return subject?.id || subject?.subjectId || "";
+  }
+
+  function getSubjectName(subject) {
+    return subject?.name || subject?.title || getSubjectId(subject);
+  }
+
+  function getChapters(subjectId) {
+    if (typeof DB.getChapters === "function") {
+      const result = DB.getChapters(subjectId);
+      if (Array.isArray(result)) return result;
+    }
+
+    const subject = getSubjects().find(
+      (item) => getSubjectId(item) === subjectId
+    );
+
+    if (Array.isArray(subject?.chapters)) {
+      return subject.chapters;
+    }
+
+    return [];
+  }
+
+  function getChapterName(chapter) {
+    if (typeof chapter === "string") return chapter;
+
+    return chapter?.name ||
+      chapter?.title ||
+      chapter?.chapter ||
+      "";
+  }
+
+  function getChapterData(subjectId, chapterName) {
+    if (typeof DB.getChapterContent === "function") {
+      const data = DB.getChapterContent(subjectId, chapterName);
+      if (data) return data;
+    }
+
+    const store = DB.chapterContent || {};
+    const exactKey = `${subjectId}::${chapterName}`;
+
+    if (store[exactKey]) return store[exactKey];
+
+    const matchingKey = Object.keys(store).find((key) => {
       const parts = key.split("::");
 
-      if (
-        parts.length > 1 &&
-        normaliseKey(parts[0]) === wantedSubject &&
-        normaliseKey(parts.slice(1).join("::")) === wantedChapter
-      ) {
-        return bank[key];
-      }
-
-      if (
-        normaliseKey(key) === wantedSubject &&
-        bank[key] &&
-        typeof bank[key] === "object" &&
-        Object.prototype.hasOwnProperty.call(bank[key], chapter)
-      ) {
-        return bank[key][chapter];
-      }
-    }
-
-    return null;
-  }
-
-  function populateSelect(select, options, placeholder) {
-    if (!select) return;
-
-    const previousValue = select.value;
-
-    select.replaceChildren();
-
-    const firstOption = document.createElement("option");
-    firstOption.value = "";
-    firstOption.textContent = placeholder;
-    select.appendChild(firstOption);
-
-    options.forEach(function (item) {
-      const option = document.createElement("option");
-      option.value = item;
-      option.textContent = item;
-      select.appendChild(option);
+      return normalize(parts[0]) === normalize(subjectId) &&
+        normalize(parts.slice(1).join("::")) === normalize(chapterName);
     });
 
-    if (options.includes(previousValue)) {
-      select.value = previousValue;
+    return matchingKey ? store[matchingKey] : null;
+  }
+
+  function getSelectedSubject(selectId) {
+    return $(selectId)?.value || "";
+  }
+
+  function populateSubjectSelect(select, includeAll = false) {
+    if (!select) return;
+
+    const previous = select.value;
+    const subjects = getSubjects();
+
+    select.innerHTML = [
+      includeAll
+        ? '<option value="all">All subjects</option>'
+        : '<option value="">Select subject</option>',
+      ...subjects.map((subject) => {
+        const id = getSubjectId(subject);
+        return `<option value="${esc(id)}">${esc(getSubjectName(subject))}</option>`;
+      })
+    ].join("");
+
+    if (
+      previous &&
+      [...select.options].some((option) => option.value === previous)
+    ) {
+      select.value = previous;
     }
+  }
+
+  function populateChapterSelect(subjectSelect, chapterSelect) {
+    if (!subjectSelect || !chapterSelect) return;
+
+    const subjectId = subjectSelect.value;
+    const chapters = getChapters(subjectId);
+
+    chapterSelect.innerHTML = [
+      '<option value="">Select chapter</option>',
+      ...chapters.map((chapter) => {
+        const name = getChapterName(chapter);
+
+        return `<option value="${esc(name)}">${esc(name)}</option>`;
+      })
+    ].join("");
+
+    chapterSelect.disabled = !subjectId || chapters.length === 0;
   }
 
   function showMessage(container, message) {
     if (!container) return;
 
-    const paragraph = document.createElement("p");
-    paragraph.textContent = message;
-    container.replaceChildren(paragraph);
+    container.innerHTML = `
+      <div class="content-panel">
+        <p>${esc(message)}</p>
+      </div>
+    `;
   }
 
-  function renderChapterData(container, data) {
-    if (!container) return;
+  /* ---------------------------------------------------------
+     SUBJECT LIBRARY
+  --------------------------------------------------------- */
 
-    container.replaceChildren();
+  function renderSubjectCards() {
+    const grid = $("#subjectGrid");
+    if (!grid) return;
 
-    if (data == null) {
-      showMessage(
-        container,
-        "No content was found for this chapter in the available content bank."
-      );
+    const subjects = getSubjects();
+
+    if (!subjects.length) {
+      showMessage(grid, "Subject data is not available in content.js.");
       return;
     }
 
-    /*
-     * Display plain text safely.
-     * Detailed question rendering is handled in Part 3.
-     */
-    if (typeof data === "string" || typeof data === "number") {
-      const paragraph = document.createElement("p");
-      paragraph.textContent = String(data);
-      container.appendChild(paragraph);
-      return;
-    }
+    const icons = {
+      maths: "∑",
+      mathematics: "∑",
+      science: "⚗",
+      "social-science": "🌍",
+      english: "A",
+      hindi: "अ",
+      it: "⌘"
+    };
 
-    if (Array.isArray(data)) {
-      if (data.length === 0) {
-        showMessage(container, "No items are available in this chapter yet.");
-        return;
-      }
+    grid.innerHTML = subjects.map((subject) => {
+      const id = getSubjectId(subject);
+      const name = getSubjectName(subject);
+      const count = getChapters(id).length;
+      const icon = icons[normalize(id)] || "📘";
 
-      data.forEach(function (item, index) {
-        const card = document.createElement("article");
-        card.className = "question-card";
-
-        const heading = document.createElement("h3");
-        heading.textContent =
-          item && typeof item === "object"
-            ? safeText(item.q || item.question || item.title || "Item " + (index + 1))
-            : "Item " + (index + 1);
-
-        card.appendChild(heading);
-
-        if (item && typeof item === "object") {
-          const answerText =
-            item.a || item.answer || item.definition || "";
-
-          if (answerText) {
-            const answer = document.createElement("p");
-            answer.textContent = safeText(answerText);
-            card.appendChild(answer);
-          }
-        } else {
-          const paragraph = document.createElement("p");
-          paragraph.textContent = safeText(item);
-          card.appendChild(paragraph);
-        }
-
-        container.appendChild(card);
-      });
-
-      return;
-    }
-
-    /*
-     * Render object data as readable key-value sections.
-     */
-    if (typeof data === "object") {
-      Object.keys(data).forEach(function (key) {
-        const section = document.createElement("section");
-        section.className = "content-section";
-
-        const heading = document.createElement("h3");
-        heading.textContent = key;
-        section.appendChild(heading);
-
-        const value = data[key];
-
-        if (Array.isArray(value)) {
-          value.forEach(function (item) {
-            const paragraph = document.createElement("p");
-
-            if (item && typeof item === "object") {
-              paragraph.textContent = safeText(
-                item.q || item.question || item.title || JSON.stringify(item)
-              );
-            } else {
-              paragraph.textContent = safeText(item);
-            }
-
-            section.appendChild(paragraph);
-          });
-        } else if (value && typeof value === "object") {
-          const paragraph = document.createElement("p");
-          paragraph.textContent = JSON.stringify(value, null, 2);
-          section.appendChild(paragraph);
-        } else {
-          const paragraph = document.createElement("p");
-          paragraph.textContent = safeText(value);
-          section.appendChild(paragraph);
-        }
-
-        container.appendChild(section);
-      });
-    }
+      return `
+        <button
+          type="button"
+          class="subject-card"
+          data-open-subject="${esc(id)}"
+          aria-label="Open ${esc(name)}"
+        >
+          <span class="subject-icon">${icon}</span>
+          <span class="subject-card-title">${esc(name)}</span>
+          <span class="subject-card-meta">
+            ${count} chapter${count === 1 ? "" : "s"}
+          </span>
+          <span class="subject-card-arrow">Explore →</span>
+        </button>
+      `;
+    }).join("");
   }
 
-  function initialiseSubjectLibrary() {
-    const bank = getContentBank();
+  function openSubject(subjectId) {
+    const subject = getSubjects().find(
+      (item) => getSubjectId(item) === subjectId
+    );
 
-    const subjectSelect = $("subjectSelect");
-    const chapterSelect = $("chapterSelect");
-    const openButton = $("openChapterBtn");
-    const chapterContainer = $("chapterContent");
-
-    const subjects = getSubjectsFromBank(bank);
-
-    /*
-     * Keep the existing HTML subject options if the data bank
-     * uses a structure that cannot be identified automatically.
-     */
-    if (subjects.length > 0) {
-      populateSelect(subjectSelect, subjects, "Select subject");
+    if (!subject) {
+      HUB.showToast("Subject not found.");
+      return;
     }
 
-    function updateChapters() {
-      const selectedSubject = subjectSelect
-        ? subjectSelect.value
-        : "";
+    const area = $("#chapterArea");
+    const grid = $("#subjectGrid");
+    const heading = $("#chapterHeading");
+    const list = $("#chapterList");
+    const detail = $("#chapterDetail");
 
-      const chapters = getChaptersForSubject(bank, selectedSubject);
+    if (!area || !list) return;
 
-      populateSelect(
-        chapterSelect,
-        chapters,
-        chapters.length ? "Select chapter" : "No chapters found"
-      );
-
-      showMessage(
-        chapterContainer,
-        chapters.length
-          ? "Choose a chapter and tap Open Chapter."
-          : "Chapter data could not be detected. The content.js structure may need a matching reader."
-      );
+    if (heading) {
+      heading.textContent = getSubjectName(subject);
     }
 
-    listen(subjectSelect, "change", updateChapters);
+    if (grid) grid.classList.add("hidden");
 
-    listen(openButton, "click", function () {
-      const subject = subjectSelect ? subjectSelect.value : "";
-      const chapter = chapterSelect ? chapterSelect.value : "";
+    area.classList.remove("hidden");
 
-      if (!subject || !chapter) {
-        showMessage(
-          chapterContainer,
-          "Please select both a subject and a chapter."
-        );
-        return;
-      }
+    if (detail) {
+      detail.innerHTML = "";
+    }
 
-      const data = getChapterData(bank, subject, chapter);
-      renderChapterData(chapterContainer, data);
+    const chapters = getChapters(subjectId);
+
+    if (!chapters.length) {
+      showMessage(list, "Is subject ke chapters content.js mein nahi mile.");
+      return;
+    }
+
+    list.innerHTML = chapters.map((chapter, index) => {
+      const name = getChapterName(chapter);
+      const hasContent = Boolean(getChapterData(subjectId, name));
+
+      return `
+        <button
+          type="button"
+          class="chapter-item"
+          data-open-chapter="${esc(name)}"
+          data-subject-id="${esc(subjectId)}"
+        >
+          <span class="chapter-number">${index + 1}</span>
+          <span class="chapter-item-text">
+            <strong>${esc(name)}</strong>
+            <small>${hasContent ? "Study material available" : "Content not added yet"}</small>
+          </span>
+          <span aria-hidden="true">→</span>
+        </button>
+      `;
+    }).join("");
+  }
+
+  function closeSubject() {
+    $("#chapterArea")?.classList.add("hidden");
+    $("#subjectGrid")?.classList.remove("hidden");
+
+    const detail = $("#chapterDetail");
+    if (detail) detail.innerHTML = "";
+  }
+
+  function isChapterBookmarked(subjectId, chapterName) {
+    const bookmarks = HUB.readData("bookmarks", []);
+
+    return bookmarks.some((item) =>
+      item &&
+      item.type === "chapter" &&
+      item.subjectId === subjectId &&
+      item.chapterName === chapterName
+    );
+  }
+
+  function toggleChapterBookmark(subjectId, chapterName) {
+    const bookmarks = HUB.readData("bookmarks", []);
+
+    const index = bookmarks.findIndex((item) =>
+      item &&
+      item.type === "chapter" &&
+      item.subjectId === subjectId &&
+      item.chapterName === chapterName
+    );
+
+    if (index >= 0) {
+      bookmarks.splice(index, 1);
+      HUB.saveData("bookmarks", bookmarks);
+      HUB.renderBookmarks();
+      HUB.showToast("Chapter bookmark removed.");
+      return;
+    }
+
+    bookmarks.push({
+      type: "chapter",
+      subjectId,
+      chapterName,
+      createdAt: new Date().toISOString()
     });
 
-    if (subjectSelect && subjectSelect.value) {
-      updateChapters();
-    }
+    HUB.saveData("bookmarks", bookmarks);
+    HUB.renderBookmarks();
+    HUB.showToast("Chapter bookmarked.");
   }
 
-  /*
-   * Expose read-only helpers for later parts.
-   * Existing content.js is never modified.
-   */
-  Hub.getContentBank = getContentBank;
-  Hub.getSubjectsFromBank = getSubjectsFromBank;
-  Hub.getChaptersForSubject = getChaptersForSubject;
-  Hub.getChapterData = getChapterData;
-  Hub.renderChapterData = renderChapterData;
-  Hub.populateSelect = populateSelect;
-  Hub.showMessage = showMessage;
+  function renderQuestionGroup(title, questions) {
+    if (!Array.isArray(questions) || !questions.length) {
+      return `
+        <section class="content-panel">
+          <h3>${esc(title)}</h3>
+          <p>Questions have not been added yet.</p>
+        </section>
+      `;
+    }
 
-  function initialisePart2() {
-    initialiseSubjectLibrary();
+    return `
+      <section class="content-panel">
+        <h3>${esc(title)} (${questions.length})</h3>
+        <div class="question-list">
+          ${questions.map((item, index) => `
+            <article class="question-item">
+              <h4>Q${index + 1}. ${esc(item.q)}</h4>
+              <p>${esc(item.a)}</p>
+            </article>
+          `).join("")}
+        </div>
+      </section>
+    `;
+  }
+
+  function openChapter(subjectId, chapterName) {
+    const data = getChapterData(subjectId, chapterName);
+    const detail = $("#chapterDetail");
+
+    if (!detail) return;
+
+    if (!data) {
+      showMessage(
+        detail,
+        "Is chapter ka content abhi content.js mein available nahi hai."
+      );
+      HUB.showToast("Chapter content not found.");
+      return;
+    }
+
+    const subject = getSubjects().find(
+      (item) => getSubjectId(item) === subjectId
+    );
+
+    const bookmarked = isChapterBookmarked(subjectId, chapterName);
+
+    const points = Array.isArray(data.keyPoints)
+      ? data.keyPoints
+      : [];
+
+    detail.innerHTML = `
+      <div class="content-panel chapter-detail-heading">
+        <p class="eyebrow">${esc(getSubjectName(subject || {}))}</p>
+        <h2>${esc(chapterName)}</h2>
+        <div class="chapter-action-row">
+          <button type="button" class="secondary-btn"
+            data-toggle-bookmark="1"
+            data-subject-id="${esc(subjectId)}"
+            data-chapter-name="${esc(chapterName)}">
+            ${bookmarked ? "★ Bookmarked" : "☆ Bookmark chapter"}
+          </button>
+
+          <button type="button" class="secondary-btn"
+            data-mark-complete="1"
+            data-subject-id="${esc(subjectId)}"
+            data-chapter-name="${esc(chapterName)}">
+            Mark as completed
+          </button>
+        </div>
+      </div>
+
+      <section class="content-panel">
+        <h3>Chapter overview</h3>
+        <p>${esc(data.overview || "Overview not added yet.")}</p>
+        ${
+          points.length
+            ? `<h4>Key points</h4>
+               <ul>${points.map((point) => `<li>${esc(point)}</li>`).join("")}</ul>`
+            : ""
+        }
+      </section>
+
+      ${renderQuestionGroup("Very Short Answer Questions", data.questions?.veryShort)}
+      ${renderQuestionGroup("Short Answer Questions", data.questions?.short)}
+      ${renderQuestionGroup("Long Answer Questions", data.questions?.long)}
+
+      <section class="content-panel">
+        <h3>Chapter flashcards</h3>
+        <p>${Array.isArray(data.flashcards) ? data.flashcards.length : 0} flashcards available.</p>
+        <button type="button" class="primary-btn"
+          data-practice-flashcards="1"
+          data-subject-id="${esc(subjectId)}"
+          data-chapter-name="${esc(chapterName)}">
+          Practise flashcards
+        </button>
+      </section>
+
+      <section class="content-panel">
+        <h3>Chapter quiz</h3>
+        <p>${Array.isArray(data.mcqs) ? data.mcqs.length : 0} MCQs available.</p>
+        <button type="button" class="primary-btn"
+          data-practice-quiz="1"
+          data-subject-id="${esc(subjectId)}"
+          data-chapter-name="${esc(chapterName)}">
+          Start chapter quiz
+        </button>
+      </section>
+    `;
+
+    detail.scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }
+
+  /* ---------------------------------------------------------
+     FLASHCARDS
+  --------------------------------------------------------- */
+
+  let flashcards = [];
+  let flashIndex = 0;
+  let flashFlipped = false;
+
+  function startFlashcards(subjectId, chapterName) {
+    const data = getChapterData(subjectId, chapterName);
+
+    flashcards = Array.isArray(data?.flashcards)
+      ? data.flashcards
+      : [];
+
+    flashIndex = 0;
+    flashFlipped = false;
+
+    if (!flashcards.length) {
+      HUB.showToast("Is chapter ke flashcards available nahi hain.");
+      return;
+    }
+
+    const subjectSelect = $("#flashSubject");
+    const chapterSelect = $("#flashChapter");
+
+    if (subjectSelect) subjectSelect.value = subjectId;
+
+    populateChapterSelect(subjectSelect, chapterSelect);
+
+    if (chapterSelect) chapterSelect.value = chapterName;
+
+    HUB.navigate("flashcards");
+    renderFlashcard();
+  }
+
+  function renderFlashcard() {
+    const box = $("#flashcardBox");
+    if (!box || !flashcards.length) return;
+
+    const card = flashcards[flashIndex] || {};
+    const text = flashFlipped ? card.a : card.q;
+
+    box.innerHTML = `
+      <button type="button" class="flashcard-face ${flashFlipped ? "is-flipped" : ""}"
+        data-flash-flip="1"
+        aria-label="Flip flashcard">
+        <span class="flashcard-label">${flashFlipped ? "ANSWER" : "QUESTION"}</span>
+        <span class="flashcard-content">${esc(text || "No content")}</span>
+        <span class="flashcard-hint">Tap to flip</span>
+      </button>
+    `;
+
+    const count = $("#flashCount");
+    if (count) {
+      count.textContent = `${flashIndex + 1} / ${flashcards.length}`;
+    }
+
+    const previous = $("#flashPrev");
+    const next = $("#flashNext");
+
+    if (previous) previous.disabled = flashIndex === 0;
+    if (next) next.disabled = flashIndex === flashcards.length - 1;
+  }
+
+  function flipFlashcard() {
+    if (!flashcards.length) return;
+
+    flashFlipped = !flashFlipped;
+    renderFlashcard();
+  }
+
+  function moveFlashcard(direction) {
+    if (!flashcards.length) return;
+
+    flashIndex = Math.max(
+      0,
+      Math.min(flashcards.length - 1, flashIndex + direction)
+    );
+
+    flashFlipped = false;
+    renderFlashcard();
+  }
+
+  /* ---------------------------------------------------------
+     CHAPTER QUIZ — NO TIMER
+  --------------------------------------------------------- */
+
+  let quizQuestions = [];
+  let quizAnswers = {};
+  let quizSubmitted = false;
+  let quizSubjectId = "";
+  let quizChapterName = "";
+
+  function startChapterQuiz(subjectId, chapterName) {
+    const data = getChapterData(subjectId, chapterName);
+
+    quizQuestions = Array.isArray(data?.mcqs) ? data.mcqs : [];
+    quizAnswers = {};
+    quizSubmitted = false;
+    quizSubjectId = subjectId;
+    quizChapterName = chapterName;
+
+    if (!quizQuestions.length) {
+      HUB.showToast("Is chapter ke MCQs available nahi hain.");
+      return;
+    }
+
+    const subjectSelect = $("#quizSubject");
+    const chapterSelect = $("#quizChapter");
+
+    if (subjectSelect) subjectSelect.value = subjectId;
+
+    populateChapterSelect(subjectSelect, chapterSelect);
+
+    if (chapterSelect) chapterSelect.value = chapterName;
+
+    HUB.navigate("quiz");
+    renderChapterQuiz();
+  }
+
+  function renderChapterQuiz() {
+    const area = $("#quizArea");
+    if (!area) return;
+
+    if (!quizQuestions.length) {
+      showMessage(area, "Subject aur chapter select karke quiz start karo.");
+      return;
+    }
+
+    area.innerHTML = `
+      <div class="content-panel">
+        <h2>${esc(quizChapterName)} — Chapter Quiz</h2>
+        <p>${quizQuestions.length} questions · No timer</p>
+      </div>
+
+      ${quizQuestions.map((question, index) => {
+        const options = Array.isArray(question.options)
+          ? question.options
+          : [];
+
+        const selected = quizAnswers[index];
+        const correct = Number(question.answer);
+
+        return `
+          <section class="content-panel quiz-question">
+            <h3>Q${index + 1}. ${esc(question.q)}</h3>
+
+            <div class="quiz-options">
+              ${options.map((option, optionIndex) => {
+                let stateClass = "";
+                let disabled = "";
+
+                if (quizSubmitted) {
+                  disabled = "disabled";
+
+                  if (optionIndex === correct) {
+                    stateClass = "correct-option";
+                  } else if (selected === optionIndex) {
+                    stateClass = "wrong-option";
+                  }
+                }
+
+                return `
+                  <label class="quiz-option ${stateClass}">
+                    <input
+                      type="radio"
+                      name="chapter-question-${index}"
+                      value="${optionIndex}"
+                      data-quiz-answer="${index}"
+                      ${selected === optionIndex ? "checked" : ""}
+                      ${disabled}
+                    >
+                    <span>${esc(option)}</span>
+                  </label>
+                `;
+              }).join("")}
+            </div>
+
+            ${
+              quizSubmitted && selected !== correct
+                ? `<p class="answer-feedback">Correct answer: ${esc(options[correct] ?? "Not available")}</p>`
+                : ""
+            }
+          </section>
+        `;
+      }).join("")}
+
+      ${
+        quizSubmitted
+          ? `
+            <section class="content-panel quiz-result">
+              <h2>Result: ${quizQuestions.filter((q, i) => quizAnswers[i] === Number(q.answer)).length} / ${quizQuestions.length}</h2>
+              <p>Answers are now visible. Wrong answers show only the correct option.</p>
+              <button type="button" class="primary-btn" data-restart-quiz="1">Try again</button>
+            </section>
+          `
+          : `
+            <button type="button" class="primary-btn" data-submit-chapter-quiz="1">
+              Submit answers
+            </button>
+          `
+      }
+    `;
+  }
+
+  function submitChapterQuiz() {
+    if (!quizQuestions.length || quizSubmitted) return;
+
+    quizSubmitted = true;
+
+    const correct = quizQuestions.filter(
+      (question, index) =>
+        quizAnswers[index] === Number(question.answer)
+    ).length;
+
+    if (typeof HUB.recordQuiz === "function") {
+      HUB.recordQuiz({
+        subjectId: quizSubjectId,
+        chapterName: quizChapterName,
+        score: correct,
+        total: quizQuestions.length,
+        date: new Date().toISOString()
+      });
+    }
+
+    renderChapterQuiz();
+    HUB.showToast(`Quiz completed: ${correct}/${quizQuestions.length}`);
+  }
+
+  /* ---------------------------------------------------------
+     CHAPTER PROGRESS
+  --------------------------------------------------------- */
+
+  function markChapterComplete(subjectId, chapterName) {
+    const current = HUB.readData("completed_chapters", []);
+
+    const alreadyDone = current.some((item) =>
+      item.subjectId === subjectId &&
+      item.chapterName === chapterName
+    );
+
+    if (!alreadyDone) {
+      current.push({
+        subjectId,
+        chapterName,
+        completedAt: new Date().toISOString()
+      });
+
+      HUB.saveData("completed_chapters", current);
+    }
+
+    if (typeof HUB.updateStats === "function") {
+      HUB.updateStats();
+    }
+
+    HUB.showToast("Chapter progress saved.");
+  }
+
+  /* ---------------------------------------------------------
+     EVENT HANDLERS
+  --------------------------------------------------------- */
+
+  document.addEventListener("click", (event) => {
+    const subjectButton = event.target.closest("[data-open-subject]");
+
+    if (subjectButton) {
+      openSubject(subjectButton.dataset.openSubject);
+      return;
+    }
+
+    const chapterButton = event.target.closest("[data-open-chapter]");
+
+    if (chapterButton) {
+      openChapter(
+        chapterButton.dataset.subjectId,
+        chapterButton.dataset.openChapter
+      );
+      return;
+    }
+
+    if (event.target.closest("#backSubjects")) {
+      closeSubject();
+      return;
+    }
+
+    const bookmarkButton = event.target.closest("[data-toggle-bookmark]");
+
+    if (bookmarkButton) {
+      toggleChapterBookmark(
+        bookmarkButton.dataset.subjectId,
+        bookmarkButton.dataset.chapterName
+      );
+
+      openChapter(
+        bookmarkButton.dataset.subjectId,
+        bookmarkButton.dataset.chapterName
+      );
+      return;
+    }
+
+    const completeButton = event.target.closest("[data-mark-complete]");
+
+    if (completeButton) {
+      markChapterComplete(
+        completeButton.dataset.subjectId,
+        completeButton.dataset.chapterName
+      );
+      return;
+    }
+
+    const flashButton = event.target.closest("[data-practice-flashcards]");
+
+    if (flashButton) {
+      startFlashcards(
+        flashButton.dataset.subjectId,
+        flashButton.dataset.chapterName
+      );
+      return;
+    }
+
+    const quizButton = event.target.closest("[data-practice-quiz]");
+
+    if (quizButton) {
+      startChapterQuiz(
+        quizButton.dataset.subjectId,
+        quizButton.dataset.chapterName
+      );
+      return;
+    }
+
+    if (event.target.closest("[data-flash-flip]")) {
+      flipFlashcard();
+      return;
+    }
+
+    if (event.target.closest("#flashPrev")) {
+      moveFlashcard(-1);
+      return;
+    }
+
+    if (event.target.closest("#flashNext")) {
+      moveFlashcard(1);
+      return;
+    }
+
+    if (event.target.closest("#flashFlip")) {
+      flipFlashcard();
+      return;
+    }
+
+    if (event.target.closest("[data-submit-chapter-quiz]")) {
+      submitChapterQuiz();
+      return;
+    }
+
+    if (event.target.closest("[data-restart-quiz]")) {
+      startChapterQuiz(quizSubjectId, quizChapterName);
+    }
+  });
+
+  document.addEventListener("change", (event) => {
+    const answerInput = event.target.closest("[data-quiz-answer]");
+
+    if (answerInput && !quizSubmitted) {
+      quizAnswers[Number(answerInput.dataset.quizAnswer)] =
+        Number(answerInput.value);
+      return;
+    }
+
+    const flashSubject = event.target.closest("#flashSubject");
+
+    if (flashSubject) {
+      populateChapterSelect($("#flashSubject"), $("#flashChapter"));
+      return;
+    }
+
+    const quizSubject = event.target.closest("#quizSubject");
+
+    if (quizSubject) {
+      populateChapterSelect($("#quizSubject"), $("#quizChapter"));
+      return;
+    }
+
+    const mockSubject = event.target.closest("#mockSubject");
+
+    if (mockSubject) {
+      // Mock-test logic will be added in Part 3.
+      return;
+    }
+  });
+
+  /* ---------------------------------------------------------
+     INITIALISE SELECTS AND SUBJECT LIBRARY
+  --------------------------------------------------------- */
+
+  function initializeStudyContent() {
+    renderSubjectCards();
+
+    populateSubjectSelect($("#flashSubject"));
+    populateSubjectSelect($("#quizSubject"));
+    populateSubjectSelect($("#mockSubject"));
+
+    populateChapterSelect($("#flashSubject"), $("#flashChapter"));
+    populateChapterSelect($("#quizSubject"), $("#quizChapter"));
+
+    $("#flashcardBox") &&
+      showMessage($("#flashcardBox"), "Select a subject and chapter to begin.");
+
+    $("#quizArea") &&
+      showMessage($("#quizArea"), "Select a subject and chapter, then start your quiz.");
+
+    const subjectSelect = $("#flashSubject");
+    const chapterSelect = $("#flashChapter");
+
+    $("#flashFlip")?.addEventListener("click", flipFlashcard);
+
+    $("#startQuiz")?.addEventListener("click", () => {
+      const subjectId = getSelectedSubject("#quizSubject");
+      const chapterName = $("#quizChapter")?.value || "";
+
+      if (!subjectId || !chapterName) {
+        HUB.showToast("Please select a subject and chapter.");
+        return;
+      }
+
+      startChapterQuiz(subjectId, chapterName);
+    });
+
+    $("#startMock")?.addEventListener("click", () => {
+      HUB.showToast("Full-subject mock tests will be connected in Part 3.");
+    });
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initialisePart2, {
+    document.addEventListener("DOMContentLoaded", initializeStudyContent, {
       once: true
     });
   } else {
-    initialisePart2();
+    initializeStudyContent();
   }
-})();
-/* =====================================================
-   CLASS 10 HUB — SCRIPT.JS
-   PART 3: QUESTIONS, FLASHCARDS & CHAPTER QUIZ
-   Append below Part 2.
-===================================================== */
 
-(function class10HubPart3() {
+  // Other script sections can use these methods.
+  window.Class10HubStudy = {
+    getSubjects,
+    getChapters,
+    getChapterData,
+    openSubject,
+    openChapter,
+    startFlashcards,
+    startChapterQuiz,
+    markChapterComplete
+  };
+
+})();
+/* =========================================================
+   CLASS 10 HUB — SCRIPT.JS PART 3
+   Mock Tests • Infographics • Mini Games • Progress
+   Remaining Controls • Notes Autosave
+========================================================= */
+
+(() => {
   "use strict";
 
-  const Hub = window.Class10Hub;
+  const DB = window.CLASS10_CONTENT;
+  const HUB = window.Class10Hub;
+  const STUDY = window.Class10HubStudy;
 
-  if (
-    !Hub ||
-    typeof Hub.getContentBank !== "function" ||
-    typeof Hub.getChapterData !== "function"
-  ) {
+  if (!DB || !HUB || !STUDY) {
     console.error("Class 10 Hub: Parts 1 and 2 must load first.");
     return;
   }
 
-  const $ = Hub.getElement;
+  const $ = (selector, root = document) =>
+    root.querySelector(selector);
 
-  function listen(element, eventName, callback) {
-    if (element) {
-      element.addEventListener(eventName, callback);
-    }
-  }
+  const esc = (value) =>
+    String(value ?? "").replace(/[&<>"']/g, (char) => ({
+      "&": "&amp;",
+      "<": "&lt;",
+      ">": "&gt;",
+      '"': "&quot;",
+      "'": "&#39;"
+    })[char]);
 
-  function message(container, text) {
-    if (Hub.showMessage) {
-      Hub.showMessage(container, text);
-    } else if (container) {
-      container.textContent = text;
-    }
-  }
+  const shuffle = (items) => {
+    const output = [...items];
 
-  function normalise(value) {
-    return String(value == null ? "" : value)
-      .trim()
-      .toLowerCase();
-  }
-
-  function getSelectedData(subjectId, chapterId) {
-    const subject = $(subjectId);
-    const chapter = $(chapterId);
-
-    if (!subject || !chapter || !subject.value || !chapter.value) {
-      return null;
+    for (let i = output.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [output[i], output[j]] = [output[j], output[i]];
     }
 
-    return Hub.getChapterData(
-      Hub.getContentBank(),
-      subject.value,
-      chapter.value
-    );
+    return output;
+  };
+
+  const read = (key, fallback = []) =>
+    HUB.readData(key, fallback);
+
+  const save = (key, value) =>
+    HUB.saveData(key, value);
+
+  const notify = (message) =>
+    HUB.showToast(message);
+
+  function subjectId(subject) {
+    return subject?.id || subject?.subjectId || "";
   }
 
-  /*
-   * Convert common question objects into a consistent format.
-   * Original content is read, never modified.
-   */
-  function normaliseItems(data) {
-    if (Array.isArray(data)) {
-      return data.map(function (item, index) {
-        if (typeof item === "string") {
-          return {
-            question: item,
-            answer: "",
-            original: item,
-            index: index
-          };
-        }
+  function subjectName(subject) {
+    return subject?.name || subject?.title || subjectId(subject);
+  }
 
-        if (!item || typeof item !== "object") {
-          return null;
-        }
+  function chaptersFor(id) {
+    return STUDY.getChapters(id);
+  }
 
-        return {
-          question: String(
-            item.q || item.question || item.prompt || item.title || ""
-          ),
-          answer: String(
-            item.a || item.answer || item.solution ||
-            item.definition || item.explanation || ""
-          ),
-          options: Array.isArray(item.options) ? item.options : null,
-          correct: item.correct,
-          original: item,
-          index: index
-        };
-      }).filter(function (item) {
-        return item && (item.question || item.answer);
-      });
-    }
+  function chapterName(chapter) {
+    return typeof chapter === "string"
+      ? chapter
+      : chapter?.name || chapter?.title || "";
+  }
 
-    if (data && typeof data === "object") {
-      const items = [];
+  function chapterData(id, name) {
+    return STUDY.getChapterData(id, name);
+  }
 
-      Object.keys(data).forEach(function (key) {
-        const value = data[key];
+  function allSubjects() {
+    return Array.isArray(DB.subjects) ? DB.subjects : [];
+  }
 
-        if (Array.isArray(value)) {
-          value.forEach(function (item, index) {
-            if (typeof item === "string") {
-              items.push({
-                question: item,
-                answer: "",
-                original: item,
-                index: index,
-                category: key
-              });
-            } else if (item && typeof item === "object") {
-              items.push({
-                question: String(
-                  item.q || item.question || item.prompt || item.title || ""
-                ),
-                answer: String(
-                  item.a || item.answer || item.solution ||
-                  item.definition || item.explanation || ""
-                ),
-                options: Array.isArray(item.options) ? item.options : null,
-                correct: item.correct,
-                original: item,
-                index: index,
-                category: key
-              });
-            }
+  function allMCQs(id) {
+    const output = [];
+
+    chaptersFor(id).forEach((chapter) => {
+      const name = chapterName(chapter);
+      const data = chapterData(id, name);
+
+      if (!Array.isArray(data?.mcqs)) return;
+
+      data.mcqs.forEach((question) => {
+        if (
+          question &&
+          question.q &&
+          Array.isArray(question.options) &&
+          question.options.length >= 2 &&
+          Number.isInteger(Number(question.answer)) &&
+          Number(question.answer) >= 0 &&
+          Number(question.answer) < question.options.length
+        ) {
+          output.push({
+            ...question,
+            chapterName: name
           });
         }
       });
+    });
 
-      return items.filter(function (item) {
-        return item.question || item.answer;
-      });
-    }
-
-    return [];
+    return output;
   }
 
-  /* ---------- QUESTIONS & ANSWERS ---------- */
+  /* =========================================================
+     1. FULL SUBJECT MOCK TEST — EXACTLY 80 QUESTIONS
+  ========================================================= */
 
-  let questionItems = [];
-  let questionFilter = "all";
+  let mockQuestions = [];
+  let mockAnswers = {};
+  let mockSubmitted = false;
+  let mockSubject = "";
+  let mockTimeLeft = 90 * 60;
+  let mockTimerId = null;
+  let mockStartedAt = null;
 
-  function classifyQuestion(item) {
-    const category = normalise(item.category || "");
-    const original = item.original || {};
-    const explicitType = normalise(
-      original.type || original.category || original.length || category
+  function stopMockTimer() {
+    if (mockTimerId !== null) {
+      clearInterval(mockTimerId);
+      mockTimerId = null;
+    }
+  }
+
+  function formatTime(seconds) {
+    const minutes = Math.floor(seconds / 60);
+    const remainder = seconds % 60;
+
+    return `${String(minutes).padStart(2, "0")}:${String(remainder).padStart(2, "0")}`;
+  }
+
+  function startMockTest() {
+    const select = $("#mockSubject");
+    const id = select?.value || "";
+
+    if (!id || id === "all") {
+      notify("Pehle ek subject select karo.");
+      return;
+    }
+
+    const pool = allMCQs(id);
+
+    if (pool.length < 80) {
+      const area = $("#mockArea");
+
+      if (area) {
+        area.innerHTML = `
+          <section class="content-panel">
+            <h2>Mock test not ready yet</h2>
+            <p>
+              Is subject ke content.js mein abhi ${pool.length} valid MCQs
+              mile. Full mock test ke liye kam se kam 80 valid MCQs chahiye.
+            </p>
+            <p>Missing questions ko fake karke test nahi banaya jayega.</p>
+          </section>
+        `;
+      }
+
+      notify(`80 MCQs required; currently ${pool.length} available.`);
+      return;
+    }
+
+    stopMockTimer();
+
+    mockQuestions = shuffle(pool).slice(0, 80);
+    mockAnswers = {};
+    mockSubmitted = false;
+    mockSubject = id;
+    mockTimeLeft = 90 * 60;
+    mockStartedAt = new Date().toISOString();
+
+    HUB.navigate("mock");
+    renderMockTest();
+    startMockTimer();
+  }
+
+  function startMockTimer() {
+    stopMockTimer();
+
+    const timer = $("#mockTimer");
+
+    if (timer) {
+      timer.textContent = formatTime(mockTimeLeft);
+    }
+
+    mockTimerId = setInterval(() => {
+      if (mockSubmitted) {
+        stopMockTimer();
+        return;
+      }
+
+      mockTimeLeft = Math.max(0, mockTimeLeft - 1);
+
+      if (timer) {
+        timer.textContent = formatTime(mockTimeLeft);
+      }
+
+      if (mockTimeLeft <= 0) {
+        submitMockTest(true);
+      }
+    }, 1000);
+  }
+
+  function renderMockTest() {
+    const area = $("#mockArea");
+    if (!area) return;
+
+    if (!mockQuestions.length) {
+      area.innerHTML = `
+        <section class="content-panel">
+          <p>Select a subject and start your 80-question mock test.</p>
+        </section>
+      `;
+      return;
+    }
+
+    area.innerHTML = `
+      <section class="content-panel mock-test-header">
+        <div>
+          <h2>${esc(
+            subjectName(
+              allSubjects().find((item) => subjectId(item) === mockSubject) || {}
+            )
+          )} — Mock Test</h2>
+          <p>80 questions · 90 minutes · Answers after submission</p>
+        </div>
+        <div class="mock-timer" aria-live="polite">
+          <span>Time left</span>
+          <strong id="mockTimer">${formatTime(mockTimeLeft)}</strong>
+        </div>
+      </section>
+
+      ${mockQuestions.map((question, index) => {
+        const selected = mockAnswers[index];
+        const answer = Number(question.answer);
+
+        return `
+          <section class="content-panel quiz-question">
+            <p class="eyebrow">Question ${index + 1} of 80</p>
+            <h3>${esc(question.q)}</h3>
+
+            <div class="quiz-options">
+              ${question.options.map((option, optionIndex) => {
+                let state = "";
+
+                if (mockSubmitted && optionIndex === answer) {
+                  state = "correct-option";
+                } else if (
+                  mockSubmitted &&
+                  selected === optionIndex &&
+                  selected !== answer
+                ) {
+                  state = "wrong-option";
+                }
+
+                return `
+                  <label class="quiz-option ${state}">
+                    <input
+                      type="radio"
+                      name="mock-question-${index}"
+                      data-mock-answer="${index}"
+                      value="${optionIndex}"
+                      ${selected === optionIndex ? "checked" : ""}
+                      ${mockSubmitted ? "disabled" : ""}
+                    >
+                    <span>${esc(option)}</span>
+                  </label>
+                `;
+              }).join("")}
+            </div>
+
+            ${
+              mockSubmitted && selected !== answer
+                ? `<p class="answer-feedback">Correct answer: ${esc(question.options[answer])}</p>`
+                : ""
+            }
+          </section>
+        `;
+      }).join("")}
+
+      ${
+        mockSubmitted
+          ? `<section class="content-panel quiz-result" id="mockResult"></section>`
+          : `
+            <section class="content-panel">
+              <p>Answered: ${Object.keys(mockAnswers).length} / 80</p>
+              <button type="button" class="primary-btn" data-submit-mock="1">
+                Submit mock test
+              </button>
+            </section>
+          `
+      }
+    `;
+
+    if (mockSubmitted) renderMockResult();
+  }
+
+  function submitMockTest(autoSubmit = false) {
+    if (!mockQuestions.length || mockSubmitted) return;
+
+    mockSubmitted = true;
+    stopMockTimer();
+
+    const correct = mockQuestions.filter(
+      (question, index) =>
+        mockAnswers[index] === Number(question.answer)
+    ).length;
+
+    const history = read("quiz_history", []);
+
+    history.push({
+      type: "mock",
+      subjectId: mockSubject,
+      score: correct,
+      total: 80,
+      autoSubmitted: autoSubmit,
+      date: new Date().toISOString()
+    });
+
+    save("quiz_history", history);
+
+    if (typeof HUB.updateStats === "function") {
+      HUB.updateStats();
+    }
+
+    renderMockTest();
+
+    notify(
+      autoSubmit
+        ? "Time is up. Mock test submitted."
+        : "Mock test submitted successfully."
+    );
+  }
+
+  function renderMockResult() {
+    const result = $("#mockResult");
+    if (!result) return;
+
+    const correct = mockQuestions.filter(
+      (question, index) =>
+        mockAnswers[index] === Number(question.answer)
+    ).length;
+
+    const attempted = Object.keys(mockAnswers).length;
+
+    result.innerHTML = `
+      <h2>Mock Test Result</h2>
+      <p><strong>Score:</strong> ${correct} / 80</p>
+      <p><strong>Attempted:</strong> ${attempted} / 80</p>
+      <p><strong>Unanswered:</strong> ${80 - attempted}</p>
+      <p>Wrong answers show only the correct option.</p>
+      <button type="button" class="primary-btn" data-new-mock="1">
+        Start another mock test
+      </button>
+    `;
+  }
+
+  /* =========================================================
+     2. INFOGRAPHICS
+     Images must actually exist in the repository.
+  ========================================================= */
+
+  let infoImages = [];
+  let infoIndex = 0;
+
+  function findInfographic(id, name) {
+    if (typeof DB.getInfographic === "function") {
+      const found = DB.getInfographic(id, name);
+      if (found) return found;
+    }
+
+    const store = DB.infographicImages || {};
+    return store[`${id}::${name}`] || null;
+  }
+
+  function startInfographic() {
+    const id = $("#infoSubject")?.value || "";
+    const name = $("#infoChapter")?.value || "";
+
+    if (!id || !name) {
+      notify("Select a subject and chapter first.");
+      return;
+    }
+
+    const record = findInfographic(id, name);
+
+    if (!record || !Array.isArray(record.images) || !record.images.length) {
+      const screen = $("#infoScreen");
+
+      if (screen) {
+        screen.innerHTML = `
+          <section class="content-panel">
+            <h2>${esc(name)}</h2>
+            <p>Infographic image paths have not been added for this chapter.</p>
+            <p>Add the actual image file to the images/infographics folder and register its path in content.js.</p>
+          </section>
+        `;
+      }
+
+      notify("No infographic images registered for this chapter.");
+      return;
+    }
+
+    infoImages = record.images;
+    infoIndex = 0;
+
+    HUB.navigate("infographics");
+    renderInfographic();
+  }
+
+  function renderInfographic() {
+    const screen = $("#infoScreen");
+    if (!screen || !infoImages.length) return;
+
+    const path = infoImages[infoIndex];
+
+    screen.innerHTML = `
+      <section class="content-panel">
+        <h2>Infographic ${infoIndex + 1} / ${infoImages.length}</h2>
+        <div class="infographic-frame">
+          <img
+            src="${esc(path)}"
+            alt="Study infographic ${infoIndex + 1}"
+            loading="lazy"
+          >
+        </div>
+        <div class="chapter-action-row">
+          <button type="button" class="secondary-btn"
+            data-info-prev="1" ${infoIndex === 0 ? "disabled" : ""}>
+            ← Previous
+          </button>
+          <button type="button" class="secondary-btn"
+            data-info-next="1" ${infoIndex >= infoImages.length - 1 ? "disabled" : ""}>
+            Next →
+          </button>
+        </div>
+      </section>
+    `;
+
+    const img = $("img", screen);
+
+    img?.addEventListener("error", () => {
+      const frame = img.parentElement;
+
+      if (frame) {
+        frame.innerHTML = `
+          <p class="image-missing">
+            Image file not found: ${esc(path)}
+          </p>
+        `;
+      }
+    }, { once: true });
+  }
+
+  function populateInfoChapters() {
+    const subject = $("#infoSubject");
+    const chapter = $("#infoChapter");
+
+    if (!subject || !chapter) return;
+
+    chapter.innerHTML = [
+      '<option value="">Select chapter</option>',
+      ...chaptersFor(subject.value).map((item) => {
+        const name = chapterName(item);
+        return `<option value="${esc(name)}">${esc(name)}</option>`;
+      })
+    ].join("");
+
+    chapter.disabled = !subject.value;
+  }
+
+  /* =========================================================
+     3. SEVEN MINI-GAMES
+  ========================================================= */
+
+  const gameDefinitions = [
+    {
+      id: "quick-quiz",
+      name: "Quick Quiz",
+      description: "Answer random chapter MCQs."
+    },
+    {
+      id: "true-false",
+      name: "True or False",
+      description: "Check whether a statement is correct."
+    },
+    {
+      id: "flash-challenge",
+      name: "Flashcard Challenge",
+      description: "Recall an answer before revealing it."
+    },
+    {
+      id: "math-sprint",
+      name: "Math Sprint",
+      description: "Solve a short calculation."
+    },
+    {
+      id: "word-scramble",
+      name: "Word Scramble",
+      description: "Unscramble a study-related word."
+    },
+    {
+      id: "memory-match",
+      name: "Memory Match",
+      description: "Match study terms with their meanings."
+    },
+    {
+      id: "random-question",
+      name: "Random Question",
+      description: "Get a question from your study library."
+    }
+  ];
+
+  let activeGame = "";
+  let gameQuestion = null;
+  let gameScore = 0;
+  let gameWord = "";
+
+  const scrambleWords = [
+    { word: "REPRODUCTION", hint: "Process by which organisms produce offspring." },
+    { word: "ELECTRICITY", hint: "Study of electric charge and current." },
+    { word: "HEREDITY", hint: "Passing of traits from parents to offspring." },
+    { word: "PROBABILITY", hint: "Measure of the chance of an event." },
+    { word: "ECOSYSTEM", hint: "Organisms interacting with their environment." }
+  ];
+
+  const memoryPairs = [
+    ["Reactant", "Starting substance in a chemical reaction"],
+    ["Osmosis", "Movement of water through a selectively permeable membrane"],
+    ["Gene", "Unit of heredity"],
+    ["Voltage", "Potential difference between two points"],
+    ["Democracy", "Government elected by the people"]
+  ];
+
+  function renderGames() {
+    const grid = $("#gamesGrid");
+    if (!grid) return;
+
+    grid.innerHTML = gameDefinitions.map((game, index) => `
+      <button type="button" class="game-card"
+        data-start-game="${esc(game.id)}">
+        <span class="game-number">${String(index + 1).padStart(2, "0")}</span>
+        <strong>${esc(game.name)}</strong>
+        <span>${esc(game.description)}</span>
+        <span class="game-open">Play →</span>
+      </button>
+    `).join("");
+  }
+
+  function renderGameArea(html) {
+    const area = $("#gameArea");
+    if (area) area.innerHTML = html;
+  }
+
+  function getRandomMCQ() {
+    const subjectPool = allSubjects().flatMap((subject) =>
+      allMCQs(subjectId(subject)).map((question) => ({
+        ...question,
+        subjectName: subjectName(subject)
+      }))
     );
 
-    if (
-      explicitType.includes("very short") ||
-      explicitType.includes("very-short") ||
-      explicitType.includes("vsa")
-    ) {
-      return "very-short";
-    }
-
-    if (
-      explicitType.includes("long") ||
-      explicitType.includes("lsa")
-    ) {
-      return "long";
-    }
-
-    if (
-      explicitType.includes("short") ||
-      explicitType.includes("sa")
-    ) {
-      return "short";
-    }
-
-    return "all";
+    return subjectPool.length
+      ? subjectPool[Math.floor(Math.random() * subjectPool.length)]
+      : null;
   }
 
-  function renderQuestions() {
-    const container = $("questionsList");
-    if (!container) return;
+  function startGame(id) {
+    activeGame = id;
+    gameQuestion = getRandomMCQ();
+    gameScore = 0;
 
-    const search = normalise($("questionSearch")?.value || "");
+    switch (id) {
+      case "quick-quiz":
+        if (!gameQuestion) {
+          renderGameArea("<p>No MCQs available yet.</p>");
+          return;
+        }
 
-    const filtered = questionItems.filter(function (item) {
-      const text = normalise(item.question + " " + item.answer);
-      const matchesSearch = !search || text.includes(search);
-      const type = classifyQuestion(item);
+        renderGameArea(`
+          <section class="content-panel">
+            <h2>Quick Quiz</h2>
+            <p>${esc(gameQuestion.subjectName)}</p>
+            <h3>${esc(gameQuestion.q)}</h3>
+            <div class="quiz-options">
+              ${gameQuestion.options.map((option, index) => `
+                <button type="button" class="quiz-option"
+                  data-game-answer="${index}">
+                  ${esc(option)}
+                </button>
+              `).join("")}
+            </div>
+            <div id="gameFeedback"></div>
+          </section>
+        `);
+        break;
 
-      const matchesFilter =
-        questionFilter === "all" ||
-        type === questionFilter ||
-        (type === "all" && questionFilter === "all");
+      case "true-false":
+        if (!gameQuestion) {
+          renderGameArea("<p>No MCQs available yet.</p>");
+          return;
+        }
 
-      return matchesSearch && matchesFilter;
-    });
+        renderGameArea(`
+          <section class="content-panel">
+            <h2>True or False</h2>
+            <p>${esc(gameQuestion.q)}</p>
+            <p>Choose whether the correct option is the first option.</p>
+            <button class="primary-btn" data-true-false="true">True</button>
+            <button class="secondary-btn" data-true-false="false">False</button>
+            <p id="gameFeedback"></p>
+          </section>
+        `);
+        break;
 
-    container.replaceChildren();
+      case "flash-challenge": {
+        const cards = allSubjects().flatMap((subject) =>
+          chaptersFor(subjectId(subject)).flatMap((chapter) => {
+            const data = chapterData(subjectId(subject), chapterName(chapter));
+            return Array.isArray(data?.flashcards) ? data.flashcards : [];
+          })
+        );
 
-    if (filtered.length === 0) {
-      message(
-        container,
-        questionItems.length
-          ? "No questions match your search or selected filter."
-          : "No question data was found for this chapter."
+        if (!cards.length) {
+          renderGameArea("<p>No flashcards available yet.</p>");
+          return;
+        }
+
+        gameQuestion = cards[Math.floor(Math.random() * cards.length)];
+
+        renderGameArea(`
+          <section class="content-panel">
+            <h2>Flashcard Challenge</h2>
+            <h3>${esc(gameQuestion.q)}</h3>
+            <button class="primary-btn" data-reveal-game-answer="1">Reveal answer</button>
+            <p id="gameFeedback"></p>
+          </section>
+        `);
+        break;
+      }
+
+      case "math-sprint": {
+        const a = Math.floor(Math.random() * 20) + 1;
+        const b = Math.floor(Math.random() * 20) + 1;
+        const operator = ["+", "-", "×"][Math.floor(Math.random() * 3)];
+
+        gameQuestion = {
+          prompt: `${a} ${operator} ${b}`,
+          answer: operator === "+"
+            ? a + b
+            : operator === "-"
+              ? a - b
+              : a * b
+        };
+
+        renderGameArea(`
+          <section class="content-panel">
+            <h2>Math Sprint</h2>
+            <h3>${gameQuestion.prompt} = ?</h3>
+            <input id="mathSprintAnswer" type="number" placeholder="Your answer">
+            <button class="primary-btn" data-check-math="1">Check</button>
+            <p id="gameFeedback"></p>
+          </section>
+        `);
+        break;
+      }
+
+      case "word-scramble": {
+        const item = scrambleWords[Math.floor(Math.random() * scrambleWords.length)];
+        gameWord = item.word;
+
+        let scrambled = item.word;
+
+        while (scrambled === item.word && item.word.length > 3) {
+          scrambled = shuffle(item.word.split("")).join("");
+        }
+
+        renderGameArea(`
+          <section class="content-panel">
+            <h2>Word Scramble</h2>
+            <h3>${esc(scrambled)}</h3>
+            <p>Hint: ${esc(item.hint)}</p>
+            <input id="scrambleAnswer" type="text" placeholder="Enter the correct word">
+            <button class="primary-btn" data-check-word="1">Check</button>
+            <p id="gameFeedback"></p>
+          </section>
+        `);
+        break;
+      }
+
+      case "memory-match": {
+        const pairs = shuffle(memoryPairs).slice(0, 4);
+
+        renderGameArea(`
+          <section class="content-panel">
+            <h2>Memory Match</h2>
+            <p>Choose a term to see its meaning.</p>
+            <div class="memory-grid">
+              ${pairs.map(([term, meaning], index) => `
+                <button type="button" class="memory-card"
+                  data-memory-index="${index}"
+                  data-memory-meaning="${esc(meaning)}">
+                  ${esc(term)}
+                </button>
+              `).join("")}
+            </div>
+            <p id="gameFeedback"></p>
+          </section>
+        `);
+        break;
+      }
+
+      case "random-question":
+        if (!gameQuestion) {
+          renderGameArea("<p>No questions available yet.</p>");
+          return;
+        }
+
+        renderGameArea(`
+          <section class="content-panel">
+            <h2>Random Study Question</h2>
+            <p>${esc(gameQuestion.subjectName)}</p>
+            <h3>${esc(gameQuestion.q)}</h3>
+            <button class="primary-btn" data-reveal-game-answer="1">Show correct answer</button>
+            <p id="gameFeedback"></p>
+          </section>
+        `);
+        break;
+    }
+  }
+
+  /* =========================================================
+     4. NOTES AUTOSAVE + EDITING
+  ========================================================= */
+
+  let editingNoteId = null;
+  let noteSaveTimer = null;
+
+  function renderNotes() {
+    const list = $("#notesList");
+    if (!list) return;
+
+    const notes = read("notes", []);
+
+    if (!notes.length) {
+      list.innerHTML = `
+        <section class="content-panel">
+          <p>No notes saved yet. Create your first note above.</p>
+        </section>
+      `;
+      return;
+    }
+
+    list.innerHTML = notes.map((note) => `
+      <article class="content-panel note-item">
+        <h3>${esc(note.title || "Untitled note")}</h3>
+        <p>${esc(note.body || "")}</p>
+        <div class="chapter-action-row">
+          <button type="button" class="secondary-btn"
+            data-edit-note="${esc(note.id)}">Edit</button>
+          <button type="button" class="danger-btn"
+            data-delete-note="${esc(note.id)}">Delete</button>
+        </div>
+      </article>
+    `).join("");
+  }
+
+  function saveCurrentNote(showNotice = true) {
+    const titleInput = $("#noteTitle");
+    const bodyInput = $("#noteBody");
+
+    if (!titleInput || !bodyInput) return;
+
+    const title = titleInput.value.trim();
+    const body = bodyInput.value.trim();
+
+    if (!title && !body) return;
+
+    const notes = read("notes", []);
+    const id = editingNoteId || `note-${Date.now()}`;
+
+    const existingIndex = notes.findIndex((note) => note.id === id);
+
+    const item = {
+      id,
+      title: title || "Untitled note",
+      body,
+      updatedAt: new Date().toISOString()
+    };
+
+    if (existingIndex >= 0) {
+      notes[existingIndex] = item;
+    } else {
+      notes.unshift(item);
+    }
+
+    save("notes", notes);
+    editingNoteId = id;
+    renderNotes();
+
+    if (typeof HUB.updateStats === "function") {
+      HUB.updateStats();
+    }
+
+    if (showNotice) notify("Note saved.");
+  }
+
+  function scheduleNoteAutosave() {
+    clearTimeout(noteSaveTimer);
+
+    noteSaveTimer = setTimeout(() => {
+      saveCurrentNote(false);
+    }, 700);
+  }
+
+  function editNote(id) {
+    const note = read("notes", []).find((item) => item.id === id);
+    if (!note) return;
+
+    editingNoteId = id;
+
+    if ($("#noteTitle")) $("#noteTitle").value = note.title || "";
+    if ($("#noteBody")) $("#noteBody").value = note.body || "";
+
+    HUB.navigate("notes");
+    notify("Note opened for editing.");
+  }
+
+  function deleteNote(id) {
+    const notes = read("notes", []);
+    const updated = notes.filter((item) => item.id !== id);
+
+    if (updated.length === notes.length) return;
+
+    save("notes", updated);
+
+    if (editingNoteId === id) {
+      editingNoteId = null;
+      if ($("#noteTitle")) $("#noteTitle").value = "";
+      if ($("#noteBody")) $("#noteBody").value = "";
+    }
+
+    renderNotes();
+
+    if (typeof HUB.updateStats === "function") {
+      HUB.updateStats();
+    }
+
+    notify("Note deleted.");
+  }
+
+  /* =========================================================
+     5. BOOKMARKS — CHAPTER LEVEL
+  ========================================================= */
+
+  function renderChapterBookmarks() {
+    const list = $("#bookmarksList");
+    if (!list) return;
+
+    const bookmarks = read("bookmarks", []).filter(
+      (item) => item && item.type === "chapter"
+    );
+
+    if (!bookmarks.length) {
+      list.innerHTML = `
+        <section class="content-panel">
+          <p>No chapter bookmarks yet.</p>
+          <p>Open a chapter and select “Bookmark chapter”.</p>
+        </section>
+      `;
+      return;
+    }
+
+    list.innerHTML = bookmarks.map((item) => {
+      const subject = allSubjects().find(
+        (entry) => subjectId(entry) === item.subjectId
       );
-      return;
-    }
 
-    filtered.forEach(function (item, index) {
-      const card = document.createElement("article");
-      card.className = "question-card";
-
-      const heading = document.createElement("h3");
-      heading.textContent =
-        (index + 1) + ". " + (item.question || "Question");
-
-      card.appendChild(heading);
-
-      if (item.category) {
-        const category = document.createElement("p");
-        category.className = "muted-text";
-        category.textContent = item.category;
-        card.appendChild(category);
-      }
-
-      if (item.answer) {
-        const details = document.createElement("details");
-        const summary = document.createElement("summary");
-        summary.textContent = "Show Answer";
-
-        const answer = document.createElement("p");
-        answer.textContent = item.answer;
-
-        details.appendChild(summary);
-        details.appendChild(answer);
-        card.appendChild(details);
-      }
-
-      container.appendChild(card);
-    });
+      return `
+        <article class="content-panel bookmark-item">
+          <h3>${esc(item.chapterName)}</h3>
+          <p>${esc(subjectName(subject || { name: item.subjectId }))}</p>
+          <div class="chapter-action-row">
+            <button type="button" class="primary-btn"
+              data-open-bookmark="${esc(item.subjectId)}"
+              data-bookmark-chapter="${esc(item.chapterName)}">
+              Open chapter
+            </button>
+            <button type="button" class="danger-btn"
+              data-remove-bookmark="${esc(item.subjectId)}"
+              data-bookmark-chapter="${esc(item.chapterName)}">
+              Remove
+            </button>
+          </div>
+        </article>
+      `;
+    }).join("");
   }
 
-  function initialiseQuestions() {
-    listen($("loadQuestionsBtn"), "click", function () {
-      const data = getSelectedData("questionSubject", "questionChapter");
+  /* =========================================================
+     6. PROGRESS DASHBOARD
+  ========================================================= */
 
-      if (data === null) {
-        message(
-          $("questionsList"),
-          "Please select a subject and chapter first."
-        );
-        return;
+  function renderProgress() {
+    const area = $("#progressArea");
+    const historyList = $("#historyList");
+
+    const completed = read("completed_chapters", []);
+    const history = read("quiz_history", []);
+    const notes = read("notes", []);
+    const bookmarks = read("bookmarks", []).filter(
+      (item) => item?.type === "chapter"
+    );
+
+    if (area) {
+      area.innerHTML = `
+        <div class="stat-grid">
+          <article class="stat-card">
+            <span>Completed chapters</span>
+            <strong>${completed.length}</strong>
+          </article>
+          <article class="stat-card">
+            <span>Quiz attempts</span>
+            <strong>${history.length}</strong>
+          </article>
+          <article class="stat-card">
+            <span>Saved notes</span>
+            <strong>${notes.length}</strong>
+          </article>
+          <article class="stat-card">
+            <span>Bookmarked chapters</span>
+            <strong>${bookmarks.length}</strong>
+          </article>
+        </div>
+      `;
+    }
+
+    if (historyList) {
+      if (!history.length) {
+        historyList.innerHTML = `
+          <section class="content-panel">
+            <p>Your quiz history will appear here after you submit a quiz or mock test.</p>
+          </section>
+        `;
+      } else {
+        historyList.innerHTML = [...history].reverse().map((item) => `
+          <article class="content-panel">
+            <h3>${esc(item.type === "mock" ? "Mock Test" : "Chapter Quiz")}</h3>
+            <p>${esc(item.chapterName || item.subjectId || "Study practice")}</p>
+            <p>Score: ${Number(item.score) || 0} / ${Number(item.total) || 0}</p>
+            <small>${esc(item.date || "")}</small>
+          </article>
+        `).join("");
       }
-
-      questionItems = normaliseItems(data);
-      renderQuestions();
-    });
-
-    listen($("questionSearch"), "input", renderQuestions);
-
-    const filterContainer = $("questionFilters");
-
-    listen(filterContainer, "click", function (event) {
-      const button = event.target.closest("[data-filter]");
-      if (!button) return;
-
-      questionFilter = button.dataset.filter;
-
-      filterContainer.querySelectorAll("[data-filter]").forEach(function (item) {
-        item.classList.toggle("active", item === button);
-      });
-
-      renderQuestions();
-    });
-  }
-
-  /* ---------- FLASHCARDS ---------- */
-
-  let flashcards = [];
-  let flashcardIndex = 0;
-  let flashcardRevealed = false;
-
-  function renderFlashcard() {
-    const container = $("flashcardArea");
-    const counter = $("flashcardCounter");
-
-    if (!container) return;
-
-    container.replaceChildren();
-
-    if (flashcards.length === 0) {
-      message(container, "Select a subject and chapter to load flashcards.");
-
-      if (counter) counter.textContent = "No flashcards loaded";
-      return;
-    }
-
-    const item = flashcards[flashcardIndex];
-
-    const card = document.createElement("article");
-    card.className = "flashcard";
-
-    const label = document.createElement("p");
-    label.className = "eyebrow";
-    label.textContent = flashcardRevealed ? "ANSWER" : "QUESTION";
-    card.appendChild(label);
-
-    const content = document.createElement("h3");
-    content.textContent = flashcardRevealed
-      ? (item.answer || "No answer is available for this item.")
-      : (item.question || "Question");
-    card.appendChild(content);
-
-    container.appendChild(card);
-
-    const flipButton = $("flipFlashcardBtn");
-
-    if (flipButton) {
-      flipButton.textContent = flashcardRevealed
-        ? "Show Question"
-        : "Reveal Answer";
-    }
-
-    if (counter) {
-      counter.textContent =
-        "Card " + (flashcardIndex + 1) + " of " + flashcards.length;
     }
   }
 
-  function initialiseFlashcards() {
-    listen($("loadFlashcardsBtn"), "click", function () {
-      const data = getSelectedData("flashcardSubject", "flashcardChapter");
+  /* =========================================================
+     7. TEXT EXPORT + RESET SAVED DATA
+  ========================================================= */
 
-      if (data === null) {
-        message($("flashcardArea"), "Please select a subject and chapter first.");
-        return;
-      }
+  function exportTextData() {
+    const notes = read("notes", []);
+    const bookmarks = read("bookmarks", []);
+    const completed = read("completed_chapters", []);
+    const history = read("quiz_history", []);
 
-      flashcards = normaliseItems(data);
-      flashcardIndex = 0;
-      flashcardRevealed = false;
-      renderFlashcard();
+    const lines = [
+      "CLASS 10 HUB — MY STUDY DATA",
+      "================================",
+      "",
+      "NOTES",
+      "--------------------------------"
+    ];
 
-      if (flashcards.length === 0) {
-        message(
-          $("flashcardArea"),
-          "No flashcard items were found for this chapter."
-        );
-      }
+    notes.forEach((note, index) => {
+      lines.push(
+        `${index + 1}. ${note.title || "Untitled note"}`,
+        note.body || "",
+        ""
+      );
     });
 
-    listen($("flipFlashcardBtn"), "click", function () {
-      if (flashcards.length === 0) return;
+    lines.push(
+      "",
+      "BOOKMARKED CHAPTERS",
+      "--------------------------------"
+    );
 
-      flashcardRevealed = !flashcardRevealed;
-      renderFlashcard();
+    bookmarks.forEach((item) => {
+      lines.push(`${item.subjectId || ""} — ${item.chapterName || ""}`);
     });
 
-    listen($("nextFlashcardBtn"), "click", function () {
-      if (flashcards.length === 0) return;
+    lines.push(
+      "",
+      "COMPLETED CHAPTERS",
+      "--------------------------------"
+    );
 
-      flashcardIndex = (flashcardIndex + 1) % flashcards.length;
-      flashcardRevealed = false;
-      renderFlashcard();
+    completed.forEach((item) => {
+      lines.push(`${item.subjectId} — ${item.chapterName}`);
     });
 
-    listen($("prevFlashcardBtn"), "click", function () {
-      if (flashcards.length === 0) return;
+    lines.push(
+      "",
+      "QUIZ HISTORY",
+      "--------------------------------"
+    );
 
-      flashcardIndex =
-        (flashcardIndex - 1 + flashcards.length) % flashcards.length;
-
-      flashcardRevealed = false;
-      renderFlashcard();
+    history.forEach((item) => {
+      lines.push(
+        `${item.type || "Quiz"}: ${item.score}/${item.total} — ${item.date || ""}`
+      );
     });
+
+    const blob = new Blob(
+      [lines.join("\n")],
+      { type: "text/plain;charset=utf-8" }
+    );
+
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+
+    anchor.href = url;
+    anchor.download = "class-10-hub-study-data.txt";
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+
+    notify("Text export prepared.");
   }
 
-  /* ---------- CHAPTER QUIZ ---------- */
+  function resetSavedData() {
+    const confirmed = window.confirm(
+      "Reset all saved notes, bookmarks, progress and quiz history on this device? This cannot be undone."
+    );
 
-  let quizQuestions = [];
-  let quizIndex = 0;
-  let quizScore = 0;
-  let quizAnswered = false;
+    if (!confirmed) return;
 
-  function renderQuiz() {
-    const container = $("quizArea");
-    if (!container) return;
+    [
+      "class10hub_notes",
+      "class10hub_bookmarks",
+      "class10hub_progress",
+      "class10hub_quiz_history",
+      "class10hub_completed_chapters"
+    ].forEach((key) => localStorage.removeItem(key));
 
-    container.replaceChildren();
+    stopMockTimer();
 
-    if (quizQuestions.length === 0) {
-      message(container, "Choose a subject and chapter to start a quiz.");
+    notify("Saved study data reset.");
+
+    renderNotes();
+    renderChapterBookmarks();
+    renderProgress();
+
+    if (typeof HUB.updateStats === "function") {
+      HUB.updateStats();
+    }
+  }
+   /* =========================================================
+     8. WIRE BUTTONS AND SELECTS
+  ========================================================= */
+
+  document.addEventListener("click", (event) => {
+    const target = event.target;
+
+    if (target.closest("#startMock")) {
+      startMockTest();
       return;
     }
 
-    if (quizIndex >= quizQuestions.length) {
-      const heading = document.createElement("h2");
-      heading.textContent = "Quiz Complete!";
-      container.appendChild(heading);
-
-      const score = document.createElement("p");
-      score.textContent =
-        "Your score: " + quizScore + " / " + quizQuestions.length;
-      container.appendChild(score);
-
-      const restart = document.createElement("button");
-      restart.type = "button";
-      restart.className = "btn btn-primary";
-      restart.textContent = "Restart Quiz";
-
-      restart.addEventListener("click", function () {
-        quizIndex = 0;
-        quizScore = 0;
-        quizAnswered = false;
-        renderQuiz();
-      });
-
-      container.appendChild(restart);
+    if (target.closest("[data-submit-mock]")) {
+      submitMockTest(false);
       return;
     }
 
-    const item = quizQuestions[quizIndex];
+    if (target.closest("[data-new-mock]")) {
+      stopMockTimer();
+      mockQuestions = [];
+      mockAnswers = {};
+      mockSubmitted = false;
 
-    const progress = document.createElement("p");
-    progress.className = "muted-text";
-    progress.textContent =
-      "Question " + (quizIndex + 1) + " of " + quizQuestions.length;
-    container.appendChild(progress);
+      if ($("#mockArea")) {
+        $("#mockArea").innerHTML = "";
+      }
 
-    const heading = document.createElement("h3");
-    heading.textContent = item.question;
-    container.appendChild(heading);
-
-    if (!item.options || item.options.length < 2) {
-      const note = document.createElement("p");
-      note.textContent =
-        "This item does not contain multiple-choice options. " +
-        "Use the Questions & Answers section to study it.";
-      container.appendChild(note);
+      notify("Select a subject to begin another test.");
       return;
     }
 
-    const optionsContainer = document.createElement("div");
-    optionsContainer.className = "quiz-options";
+    if (target.closest("#openInfo")) {
+      startInfographic();
+      return;
+    }
 
-    item.options.forEach(function (option, index) {
-      const button = document.createElement("button");
-      button.type = "button";
-      button.className = "quiz-option";
-      button.textContent = String(option);
+    if (target.closest("[data-info-prev]")) {
+      infoIndex = Math.max(0, infoIndex - 1);
+      renderInfographic();
+      return;
+    }
 
-      button.addEventListener("click", function () {
-        if (quizAnswered) return;
+    if (target.closest("[data-info-next]")) {
+      infoIndex = Math.min(infoImages.length - 1, infoIndex + 1);
+      renderInfographic();
+      return;
+    }
 
-        quizAnswered = true;
+    const gameButton = target.closest("[data-start-game]");
 
-        const correctValue = item.correct;
-        const isCorrect =
-          String(correctValue) === String(index) ||
-          normalise(correctValue) === normalise(option) ||
-          String(correctValue) === String(index + 1);
+    if (gameButton) {
+      startGame(gameButton.dataset.startGame);
+      return;
+    }
 
-        if (isCorrect) quizScore++;
+    const gameAnswer = target.closest("[data-game-answer]");
 
-        const feedback = document.createElement("p");
-        feedback.className = "quiz-feedback";
-        feedback.textContent = isCorrect
+    if (gameAnswer && activeGame === "quick-quiz" && gameQuestion) {
+      const chosen = Number(gameAnswer.dataset.gameAnswer);
+      const correct = chosen === Number(gameQuestion.answer);
+      const feedback = $("#gameFeedback");
+
+      if (feedback) {
+        feedback.textContent = correct
+          ? "Correct! Well done."
+          : `Correct answer: ${gameQuestion.options[Number(gameQuestion.answer)]}`;
+      }
+
+      $$DisableGameOptions();
+      return;
+    }
+
+    const tf = target.closest("[data-true-false]");
+
+    if (tf && activeGame === "true-false" && gameQuestion) {
+      const chosenTrue = tf.dataset.trueFalse === "true";
+      const correctTrue = Number(gameQuestion.answer) === 0;
+
+      const feedback = $("#gameFeedback");
+
+      if (feedback) {
+        feedback.textContent = chosenTrue === correctTrue
           ? "Correct!"
-          : "Not quite. Review the answer in your study material.";
-
-        container.appendChild(feedback);
-
-        const nextButton = document.createElement("button");
-        nextButton.type = "button";
-        nextButton.className = "btn btn-primary";
-        nextButton.textContent =
-          quizIndex === quizQuestions.length - 1
-            ? "See Results"
-            : "Next Question";
-
-        nextButton.addEventListener("click", function () {
-          quizIndex++;
-          quizAnswered = false;
-          renderQuiz();
-        });
-
-        container.appendChild(nextButton);
-
-        optionsContainer.querySelectorAll("button").forEach(function (optionButton) {
-          optionButton.disabled = true;
-        });
-      });
-
-      optionsContainer.appendChild(button);
-    });
-
-    container.appendChild(optionsContainer);
-  }
-
-  function initialiseQuiz() {
-    listen($("startQuizBtn"), "click", function () {
-      const data = getSelectedData("quizSubject", "quizChapter");
-
-      if (data === null) {
-        message($("quizArea"), "Please select a subject and chapter first.");
-        return;
+          : `Correct answer: ${gameQuestion.options[Number(gameQuestion.answer)]}`;
       }
 
-      quizQuestions = normaliseItems(data).filter(function (item) {
-        return item.options && item.options.length >= 2;
-      });
+      return;
+    }
 
-      quizIndex = 0;
-      quizScore = 0;
-      quizAnswered = false;
+    if (target.closest("[data-reveal-game-answer]") && gameQuestion) {
+      const feedback = $("#gameFeedback");
 
-      if (quizQuestions.length === 0) {
-        message(
-          $("quizArea"),
-          "No multiple-choice questions with options were detected for this chapter."
+      if (feedback) {
+        feedback.textContent =
+          gameQuestion.a ||
+          gameQuestion.options?.[Number(gameQuestion.answer)] ||
+          "Answer not available.";
+      }
+
+      return;
+    }
+
+    if (target.closest("[data-check-math]")) {
+      const input = $("#mathSprintAnswer");
+      const feedback = $("#gameFeedback");
+
+      if (feedback) {
+        feedback.textContent =
+          Number(input?.value) === gameQuestion?.answer
+            ? "Correct!"
+            : `Correct answer: ${gameQuestion?.answer}`;
+      }
+
+      return;
+    }
+
+    if (target.closest("[data-check-word]")) {
+      const input = $("#scrambleAnswer");
+      const feedback = $("#gameFeedback");
+
+      if (feedback) {
+        feedback.textContent =
+          normalizeWord(input?.value) === normalizeWord(gameWord)
+            ? "Correct!"
+            : `Correct word: ${gameWord}`;
+      }
+
+      return;
+    }
+
+    const memoryButton = target.closest("[data-memory-index]");
+
+    if (memoryButton) {
+      const feedback = $("#gameFeedback");
+
+      if (feedback) {
+        feedback.textContent = memoryButton.dataset.memoryMeaning;
+      }
+
+      return;
+    }
+
+    const editButton = target.closest("[data-edit-note]");
+
+    if (editButton) {
+      editNote(editButton.dataset.editNote);
+      return;
+    }
+
+    const deleteButton = target.closest("[data-delete-note]");
+
+    if (deleteButton) {
+      deleteNote(deleteButton.dataset.deleteNote);
+      return;
+    }
+
+    const openBookmark = target.closest("[data-open-bookmark]");
+
+    if (openBookmark) {
+      HUB.navigate("subjects");
+
+      STUDY.openSubject(openBookmark.dataset.openBookmark);
+
+      setTimeout(() => {
+        STUDY.openChapter(
+          openBookmark.dataset.openBookmark,
+          openBookmark.dataset.bookmarkChapter
         );
-        return;
+      }, 0);
+
+      return;
+    }
+
+    const removeBookmark = target.closest("[data-remove-bookmark]");
+
+    if (removeBookmark) {
+      const updated = read("bookmarks", []).filter((item) =>
+        !(
+          item.subjectId === removeBookmark.dataset.removeBookmark &&
+          item.chapterName === removeBookmark.dataset.bookmarkChapter &&
+          item.type === "chapter"
+        )
+      );
+
+      save("bookmarks", updated);
+      renderChapterBookmarks();
+
+      if (typeof HUB.renderBookmarks === "function") {
+        HUB.renderBookmarks();
       }
 
-      renderQuiz();
+      notify("Bookmark removed.");
+      return;
+    }
+
+    if (target.closest("#saveNote")) {
+      clearTimeout(noteSaveTimer);
+      saveCurrentNote(true);
+      return;
+    }
+
+    if (target.closest("#exportData")) {
+      exportTextData();
+      return;
+    }
+
+    if (target.closest("#resetData")) {
+      resetSavedData();
+      return;
+    }
+  });
+
+  function $$DisableGameOptions() {
+    document.querySelectorAll("[data-game-answer]").forEach((button) => {
+      button.disabled = true;
     });
   }
 
-  /* ---------- INITIALISE PART 3 ---------- */
+  function normalizeWord(value) {
+    return String(value || "").replace(/\s+/g, "").toUpperCase();
+  }
 
-  function initialisePart3() {
-    initialiseQuestions();
-    initialiseFlashcards();
-    initialiseQuiz();
+  document.addEventListener("change", (event) => {
+    const select = event.target;
+
+    if (select.matches("#infoSubject")) {
+      populateInfoChapters();
+      return;
+    }
+
+    if (select.matches("#mockSubject")) {
+      // The user starts the test explicitly with Start Mock Test.
+      return;
+    }
+  });
+
+  $("#noteTitle")?.addEventListener("input", scheduleNoteAutosave);
+  $("#noteBody")?.addEventListener("input", scheduleNoteAutosave);
+
+  /* =========================================================
+     9. STARTUP
+  ========================================================= */
+
+  function initializePart3() {
+    renderGames();
+    renderNotes();
+    renderChapterBookmarks();
+    renderProgress();
+    populateInfoChapters();
+
+    if (typeof HUB.updateStats === "function") {
+      HUB.updateStats();
+    }
+
+    const infoSubject = $("#infoSubject");
+
+    if (infoSubject && !infoSubject.options.length) {
+      infoSubject.innerHTML = allSubjects().map((subject) => `
+        <option value="${esc(subjectId(subject))}">
+          ${esc(subjectName(subject))}
+        </option>
+      `).join("");
+
+      populateInfoChapters();
+    }
   }
 
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initialisePart3, {
+    document.addEventListener("DOMContentLoaded", initializePart3, {
       once: true
     });
   } else {
-    initialisePart3();
-  }
-})();
-/* =====================================================
-   CLASS 10 HUB — SCRIPT.JS — PART 4
-   Notes, Mock Test, Mini Games, Infographics & Reset
-   Keep content.js unchanged.
-===================================================== */
-
-(function () {
-  "use strict";
-
-  const Hub = window.Class10Hub;
-  if (!Hub) {
-    console.error("Class10Hub missing. Add Parts 1–3 before Part 4.");
-    return;
+    initializePart3();
   }
 
-  const $ = (id) => document.getElementById(id);
-
-  function readJSON(key, fallback) {
-    try {
-      const value = localStorage.getItem(key);
-      return value ? JSON.parse(value) : fallback;
-    } catch (error) {
-      return fallback;
-    }
-  }
-
-  function saveJSON(key, value) {
-    try {
-      localStorage.setItem(key, JSON.stringify(value));
-      return true;
-    } catch (error) {
-      return false;
-    }
-  }
-
-  function message(area, text) {
-    if (!area) return;
-    area.replaceChildren();
-    const p = document.createElement("p");
-    p.textContent = text;
-    area.appendChild(p);
-  }
-
-  function makeButton(text, action) {
-    const button = document.createElement("button");
-    button.type = "button";
-    button.textContent = text;
-    button.addEventListener("click", action);
-    return button;
-  }
-
-  function normalizeQuestions(data) {
-    if (!data) return [];
-
-    if (Array.isArray(data)) {
-      return data.map((item) => {
-        if (typeof item === "string") {
-          return { question: item, answer: "" };
-        }
-
-        return {
-          question:
-            item.question || item.q || item.questionText || item.text || "",
-          answer:
-            item.answer || item.a || item.answerText || item.explanation || "",
-          options: Array.isArray(item.options) ? item.options : [],
-          correct:
-            item.correct ?? item.correctAnswer ?? item.answerIndex ?? null
-        };
-      }).filter((item) => item.question);
-    }
-
-    if (typeof data === "object") {
-      return Object.entries(data).map(([question, answer]) => ({
-        question,
-        answer:
-          typeof answer === "string"
-            ? answer
-            : answer?.answer || answer?.a || answer?.explanation || "",
-        options: Array.isArray(answer?.options) ? answer.options : [],
-        correct:
-          answer?.correct ?? answer?.correctAnswer ?? answer?.answerIndex ?? null
-      }));
-    }
-
-    return [];
-  }
-
-  function getSelectedChapterData(subjectSelectId, chapterSelectId) {
-    const subject = $(subjectSelectId)?.value;
-    const chapter = $(chapterSelectId)?.value;
-
-    if (!subject || !chapter) return null;
-
-    try {
-      return Hub.getChapterData(subject, chapter);
-    } catch (error) {
-      return null;
-    }
-  }
-
-  /* =========================
-     MY NOTES
-  ========================= */
-
-  const NOTES_KEY = "class10hub-notes";
-
-  function renderNotes() {
-    const list = $("notesList");
-    if (!list) return;
-
-    const notes = readJSON(NOTES_KEY, []);
-    list.replaceChildren();
-
-    if (!notes.length) {
-      message(list, "No saved notes yet. Create your first note above.");
-      return;
-    }
-
-    notes.slice().reverse().forEach((note) => {
-      const card = document.createElement("article");
-      card.className = "note-card";
-
-      const heading = document.createElement("h3");
-      heading.textContent = note.title || "Untitled note";
-
-      const content = document.createElement("p");
-      content.textContent = note.content || "";
-      content.style.whiteSpace = "pre-wrap";
-
-      const date = document.createElement("small");
-      date.textContent = note.date || "";
-
-      const edit = makeButton("Edit", () => {
-        if ($("noteTitle")) $("noteTitle").value = note.title || "";
-        if ($("noteContent")) $("noteContent").value = note.content || "";
-        if ($("saveNoteBtn")) {
-          $("saveNoteBtn").dataset.editId = String(note.id);
-          $("saveNoteBtn").textContent = "Update Note";
-        }
-        $("noteTitle")?.focus();
-      });
-
-      const remove = makeButton("Delete", () => {
-        if (!confirm("Delete this note?")) return;
-        const updated = readJSON(NOTES_KEY, [])
-          .filter((item) => item.id !== note.id);
-        saveJSON(NOTES_KEY, updated);
-        renderNotes();
-      });
-
-      card.append(heading, content, date, edit, remove);
-      list.appendChild(card);
-    });
-  }
-
-  function initNotes() {
-    const saveButton = $("saveNoteBtn");
-    if (!saveButton) return;
-
-    saveButton.addEventListener("click", () => {
-      const titleInput = $("noteTitle");
-      const contentInput = $("noteContent");
-
-      const title = titleInput?.value.trim() || "";
-      const content = contentInput?.value.trim() || "";
-
-      if (!title && !content) {
-        alert("Please enter a note title or note content.");
-        return;
-      }
-
-      const notes = readJSON(NOTES_KEY, []);
-      const editId = saveButton.dataset.editId;
-
-      if (editId) {
-        const index = notes.findIndex(
-          (note) => String(note.id) === editId
-        );
-
-        if (index !== -1) {
-          notes[index].title = title || "Untitled note";
-          notes[index].content = content;
-          notes[index].date = new Date().toLocaleString();
-        }
-
-        delete saveButton.dataset.editId;
-        saveButton.textContent = "Save Note";
-      } else {
-        notes.push({
-          id: Date.now(),
-          title: title || "Untitled note",
-          content,
-          date: new Date().toLocaleString()
-        });
-      }
-
-      if (!saveJSON(NOTES_KEY, notes)) {
-        alert("Could not save. Your browser storage may be full or disabled.");
-        return;
-      }
-
-      if (titleInput) titleInput.value = "";
-      if (contentInput) contentInput.value = "";
-
-      renderNotes();
-      alert("Note saved on this device.");
-    });
-
-    $("clearNoteBtn")?.addEventListener("click", () => {
-      if ($("noteTitle")) $("noteTitle").value = "";
-      if ($("noteContent")) $("noteContent").value = "";
-      delete saveButton.dataset.editId;
-      saveButton.textContent = "Save Note";
-    });
-
-    renderNotes();
-  }
-
-  /* =========================
-     MOCK TEST
-  ========================= */
-
-  function initMockTest() {
-    const startButton = $("startMockBtn");
-    const area = $("mockArea");
-
-    if (!startButton || !area) return;
-
-    startButton.addEventListener("click", () => {
-      const subject = $("mockSubject")?.value;
-      if (!subject) {
-        message(area, "Please select a subject first.");
-        return;
-      }
-
-      const bank = Hub.getContentBank();
-      const chapters = Hub.getChaptersForSubject(subject) || [];
-      let questions = [];
-
-      chapters.forEach((chapter) => {
-        const data = Hub.getChapterData(subject, chapter);
-        questions = questions.concat(normalizeQuestions(data));
-      });
-
-      questions = questions.filter((q) => q.question);
-
-      if (!questions.length) {
-        message(
-          area,
-          "No mock-test questions were found for this subject. Check whether content.js exposes the question bank in a supported format."
-        );
-        return;
-      }
-
-      const mcqs = questions.filter(
-        (q) => Array.isArray(q.options) && q.options.length >= 2
-      );
-
-      if (!mcqs.length) {
-        message(
-          area,
-          "Questions were found, but no MCQs with options were detected. This mock test needs MCQ data in content.js."
-        );
-        return;
-      }
-
-      const selected = mcqs.slice()
-        .sort(() => Math.random() - 0.5)
-        .slice(0, Math.min(80, mcqs.length));
-
-      area.replaceChildren();
-
-      const heading = document.createElement("h2");
-      heading.textContent = subject + " Mock Test";
-
-      const info = document.createElement("p");
-      info.textContent =
-        "Questions available in this test: " + selected.length;
-
-      const form = document.createElement("form");
-      const questionElements = [];
-
-      selected.forEach((q, index) => {
-        const field = document.createElement("fieldset");
-        const legend = document.createElement("legend");
-        legend.textContent = (index + 1) + ". " + q.question;
-        field.appendChild(legend);
-
-        q.options.forEach((option, optionIndex) => {
-          const label = document.createElement("label");
-          label.style.display = "block";
-
-          const input = document.createElement("input");
-          input.type = "radio";
-          input.name = "mock-question-" + index;
-          input.value = String(optionIndex);
-
-          const text = document.createElement("span");
-          text.textContent = " " + (
-            typeof option === "object"
-              ? option.text || option.label || option.answer || ""
-              : option
-          );
-
-          label.append(input, text);
-          field.appendChild(label);
-        });
-
-        form.appendChild(field);
-        questionElements.push({ question: q, field });
-      });
-
-      const submit = document.createElement("button");
-      submit.type = "submit";
-      submit.textContent = "Submit Test";
-      form.appendChild(submit);
-
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        let score = 0;
-        let checkedCount = 0;
-
-        questionElements.forEach(({ question, field }, index) => {
-          const chosen = form.querySelector(
-            'input[name="mock-question-' + index + '"]:checked'
-          );
-
-          if (chosen) checkedCount++;
-
-          let correct = question.correct;
-
-          if (typeof correct === "string") {
-            const matchingOption = question.options.findIndex(
-              (option) =>
-                String(
-                  typeof option === "object"
-                    ? option.text || option.label || option.answer || ""
-                    : option
-                ) === correct
-            );
-
-            if (matchingOption !== -1) correct = matchingOption;
-          }
-
-          if (
-            chosen &&
-            correct !== null &&
-            correct !== undefined &&
-            Number(chosen.value) === Number(correct)
-          ) {
-            score++;
-          }
-        });
-
-        const result = document.createElement("h3");
-        result.textContent =
-          "Score: " + score + " / " + selected.length;
-
-        const attempted = document.createElement("p");
-        attempted.textContent =
-          "Attempted: " + checkedCount + " / " + selected.length;
-
-        const note = document.createElement("p");
-        note.textContent =
-          "Score is calculated only when the correct-answer data is available in the question bank.";
-
-        area.replaceChildren(result, attempted, note);
-      });
-
-      area.append(heading, info, form);
-    });
-  }
-
-  /* =========================
-     MINI GAMES
-  ========================= */
-
-  function collectStudyWords() {
-    const subjects = Hub.getSubjectsFromBank() || [];
-    const words = [];
-
-    subjects.forEach((subject) => {
-      const chapters = Hub.getChaptersForSubject(subject) || [];
-
-      chapters.forEach((chapter) => {
-        const data = Hub.getChapterData(subject, chapter);
-        normalizeQuestions(data).forEach((item) => {
-          if (item.question && item.answer) {
-            words.push({
-              question: item.question,
-              answer: item.answer
-            });
-          }
-        });
-      });
-    });
-
-    return words;
-  }
-
-  function initRecallGame() {
-    const start = $("recallStartBtn");
-    const area = $("recallArea");
-    if (!start || !area) return;
-
-    let cards = [];
-    let index = 0;
-
-    function showCard() {
-      area.replaceChildren();
-
-      if (!cards.length) {
-        message(area, "No question-answer cards were found in the available content.");
-        return;
-      }
-
-      const item = cards[index];
-      const question = document.createElement("h3");
-      question.textContent = item.question;
-
-      const answer = document.createElement("p");
-      answer.textContent = item.answer;
-      answer.hidden = true;
-
-      const reveal = makeButton("Reveal Answer", () => {
-        answer.hidden = false;
-      });
-
-      const next = makeButton("Next Question", () => {
-        index = (index + 1) % cards.length;
-        showCard();
-      });
-
-      const count = document.createElement("small");
-      count.textContent = "Card " + (index + 1) + " of " + cards.length;
-
-      area.append(question, answer, reveal, next, count);
-    }
-
-    start.addEventListener("click", () => {
-      cards = collectStudyWords()
-        .sort(() => Math.random() - 0.5);
-      index = 0;
-      showCard();
-    });
-  }
-
-  function initScrambleGame() {
-    const start = $("scrambleStartBtn");
-    const area = $("scrambleArea");
-    if (!start || !area) return;
-
-    let answer = "";
-
-    start.addEventListener("click", () => {
-      const words = collectStudyWords();
-      const usable = words.filter((item) =>
-        /^[a-zA-Z ]+$/.test(item.answer) &&
-        item.answer.trim().length >= 4 &&
-        item.answer.trim().length <= 24
-      );
-
-      if (!usable.length) {
-        message(
-          area,
-          "No suitable English answers were found for the word-scramble game."
-        );
-        return;
-      }
-
-      const item = usable[Math.floor(Math.random() * usable.length)];
-      answer = item.answer.trim();
-
-      const letters = answer.split("");
-      const original = answer.toLowerCase();
-
-      for (let i = letters.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [letters[i], letters[j]] = [letters[j], letters[i]];
-      }
-
-      if (letters.join("").toLowerCase() === original) {
-        letters.reverse();
-      }
-
-      area.replaceChildren();
-
-      const prompt = document.createElement("p");
-      prompt.textContent = "Unscramble this answer: " + letters.join("");
-
-      const input = document.createElement("input");
-      input.type = "text";
-      input.placeholder = "Type your answer";
-
-      const check = makeButton("Check Answer", () => {
-        const result = document.createElement("p");
-
-        if (
-          input.value.trim().toLowerCase() ===
-          answer.toLowerCase()
-        ) {
-          result.textContent = "Correct! Well done.";
-        } else {
-          result.textContent = "Not quite. Try again.";
-        }
-
-        const previous = area.querySelector(".scramble-result");
-        if (previous) previous.remove();
-
-        result.className = "scramble-result";
-        area.appendChild(result);
-      });
-
-      area.append(prompt, input, check);
-    });
-  }
-
-  /* =========================
-     INFOGRAPHICS
-  ========================= */
-
-  function initInfographics() {
-    const subjectSelect = $("infographicSubject");
-    const gallery = $("infographicGallery");
-    if (!gallery) return;
-
-    function renderGallery() {
-      const subject = subjectSelect?.value || "";
-      const possibleBanks = [
-        window.infographicBank,
-        window.infographics,
-        window.class10Infographics
-      ];
-
-      let entries = [];
-
-      possibleBanks.forEach((bank) => {
-        if (!bank || typeof bank !== "object") return;
-
-        const selected = subject && bank[subject]
-          ? bank[subject]
-          : bank;
-
-        if (Array.isArray(selected)) {
-          entries = entries.concat(selected);
-        }
-      });
-
-      gallery.replaceChildren();
-
-      if (!entries.length) {
-        message(
-          gallery,
-          "No inbuilt infographic data was detected. This section will need infographic entries in the existing content structure or image files referenced by your site."
-        );
-        return;
-      }
-
-      entries.forEach((item) => {
-        const card = document.createElement("article");
-        card.className = "infographic-card";
-
-        const title = document.createElement("h3");
-        title.textContent = item.title || item.name || "Study Infographic";
-        card.appendChild(title);
-
-        if (item.image || item.src || item.url) {
-          const img = document.createElement("img");
-          img.src = item.image || item.src || item.url;
-          img.alt = item.title || item.name || "Study infographic";
-          img.loading = "lazy";
-          img.style.maxWidth = "100%";
-          card.appendChild(img);
-        }
-
-        if (item.description || item.caption) {
-          const caption = document.createElement("p");
-          caption.textContent = item.description || item.caption;
-          card.appendChild(caption);
-        }
-
-        gallery.appendChild(card);
-      });
-    }
-
-    subjectSelect?.addEventListener("change", renderGallery);
-    renderGallery();
-  }
-
-  /* =========================
-     RESET & PROGRESS
-  ========================= */
-
-  function initResetButtons() {
-    $("resetData")?.addEventListener("click", () => {
-      const confirmed = confirm(
-        "Reset Class 10 Hub saved data, notes, preferences and progress on this device? This cannot be undone."
-      );
-
-      if (!confirmed) return;
-
-      try {
-        const keys = [];
-
-        for (let i = 0; i < localStorage.length; i++) {
-          const key = localStorage.key(i);
-          if (key && key.startsWith("class10hub-")) {
-            keys.push(key);
-          }
-        }
-
-        keys.forEach((key) => localStorage.removeItem(key));
-      } catch (error) {
-        alert("Browser storage could not be reset.");
-        return;
-      }
-
-      alert("Class 10 Hub saved data has been reset. The page will reload.");
-      location.reload();
-    });
-
-    $("resetProgressBtn")?.addEventListener("click", () => {
-      if (!confirm("Reset saved study progress? Your notes will be kept.")) {
-        return;
-      }
-
-      try {
-        [
-          "class10hub-progress",
-          "class10hub-completed-activities",
-          "class10hub-quiz-results",
-          "class10hub-mock-results"
-        ].forEach((key) => localStorage.removeItem(key));
-
-        alert("Study progress reset. Your notes have been kept.");
-      } catch (error) {
-        alert("Could not reset progress.");
-      }
-    });
-  }
-
-  /* =========================
-     START PART 4 FEATURES
-  ========================= */
-
-  function initPart4() {
-    initNotes();
-    initMockTest();
-    initRecallGame();
-    initScrambleGame();
-    initInfographics();
-    initResetButtons();
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", initPart4, { once: true });
-  } else {
-    initPart4();
-  }
 })();
